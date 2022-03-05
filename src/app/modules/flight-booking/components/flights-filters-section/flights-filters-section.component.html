@@ -1,0 +1,90 @@
+<div class="filter-fixed">
+    <h5 (click)=showFilter(0) title="Filter">
+        <i class="fa fa-filter"></i>
+        Filter
+    </h5>
+</div>
+
+<div class="filter_section">
+    <div class="card" [ngClass]="show_filter?'active':''">
+        <div class="card-header filter_header">
+            <div class="filter-title">
+                <i class="fa fa-times" (click)=showFilter(1)></i> 
+                <h5 class="mx-2">Filters</h5>
+                <span class=" btn-success">
+                    <button type="submit" class="btn apply_btn" (click)=showFilter(1)>Apply</button>
+                </span>
+            </div>
+            <button type="button" class="btn btn-primary btn-sm" (click)="resetFilters()"
+                [disabled]="!is_apply_filters">Reset All</button>
+        </div>
+        <div class="card-body">
+            <section class="price_range_filter">
+                <p class="section_heading mb-0">One Way Price</p>
+                <div class="custom-slider">
+                    <ngx-slider [(value)]="minValue" [(highValue)]="maxValue" [options]="options"
+                        (mouseup)="sliderEvent()" [(ngModel)]="priceSelection"></ngx-slider>
+                </div>
+                <div class="d-flex justify-content-between ">
+                    <div class="my-auto">
+                        <h6 class="Price">{{priceSelection[0] | currency:'INR'}}</h6>
+                    </div>
+                    <div class="my-auto">
+                        <h6 class="Price">{{priceSelection[1] | currency:'INR'}}</h6>
+                    </div>
+                </div>
+            </section>
+
+            <section class="Stops">
+                <div style="display: flex;justify-content: space-between;align-items: center;margin-bottom: 10px;">
+                    <h5 class="section_heading">Stop(s)</h5>
+                    <p style="color: var(--primary);cursor: pointer;margin: 0;" (click)="getFlightStop(null)">Show All
+                    </p>
+                </div>
+                <div class="getflightStop">
+
+                    <button class="flight_Stop_btn" type="button" (click)="getFlightStop(0)"
+                        [ngClass]="activeStop===0?'active':''">
+                        Nonstop
+                    </button>
+
+                    <button class="flight_Stop_btn" type="button" (click)="getFlightStop(1)"
+                        [ngClass]="activeStop===1?'active':''">
+                        1+ Stop
+                    </button>
+
+                    <button class="flight_Stop_btn" type="button" (click)="getFlightStop(2)"
+                        [ngClass]="activeStop===2?'active':''">
+                        2+ Stops
+                    </button>
+                </div>
+            </section>
+            <section class="air_lines_filter">
+                <div class="checkbox">
+                    <h5 class="section_heading">AirLines</h5>
+                    <ul class="list-group list-group-flush">
+                        <ng-container *ngFor="let airLine of AirLinesList; index as i">
+                            <li class="list-group-item px-0 py-2"
+                                style="display: flex;justify-content: space-between;align-items: center;border: none;cursor: pointer;"
+                                (click)="getAirLineCode(airLine.IATA)">
+                                <div style="display: flex;align-items: center;">
+                                    <div class="airline_icon"><img
+                                            [src]="this.apiRequestService.getAbsoluteImagePath(airLine.image)"
+                                            [alt]="airLine.airline" width="30"></div>
+                                    <div class="airline mx-2"><label
+                                            style="font-size: 14px;font-weight: 800;cursor: pointer;">{{airLine.airline}}</label>
+                                    </div>
+                                </div>
+                                <div>
+                                    <input class="form-check-input" type="checkbox" 
+                                       [checked]="selected_airlines_code_list.includes(airLine.IATA)" /> 
+                                </div>
+                            </li>
+                        </ng-container>
+                    </ul>
+
+                </div>
+            </section>
+
+        </div>
+    </div>

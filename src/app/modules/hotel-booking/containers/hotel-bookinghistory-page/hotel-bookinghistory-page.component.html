@@ -1,0 +1,902 @@
+<main-header [header]="'main'"></main-header>
+
+<section class="bid-history">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-xl-10 col-lg-11 mx-auto">
+        <div class="bid-data">
+          <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item" aria-current="page">
+                <a routerLink="" class="none_active">
+                  <i class="fa fa-home" aria-hidden="true"></i>
+                  Home
+                </a>
+              </li>
+              <li class="breadcrumb-item active">
+                <a>
+                  <i class="fa fa-history" aria-hidden="true"></i> Booking
+                  History
+                </a>
+              </li>
+            </ol>
+          </nav>
+
+          <div class="booking-header">
+            <div class="heading">
+              <h5><b>Booking History</b></h5>
+            </div>
+            <div class="filters">
+              <div class="filter_by_status">
+                <div
+                  class="wrap-drop"
+                  id="noble-gases"
+                  (click)="bookingFilterDropdown()"
+                  [ngClass]="showBookingFilter ? 'active' : ''"
+                >
+                  <span>{{ booking_name_status }}</span>
+                  <ul class="drop">
+                    <li
+                      class="selected"
+                      (click)="getBookingsByStatus('all', 'All Bookings')"
+                    >
+                      <a>All Bookings</a>
+                    </li>
+                    <li
+                      (click)="
+                        getBookingsByStatus('Current', 'Current Bookings')
+                      "
+                    >
+                      <a>Current Bookings</a>
+                    </li>
+                    <li
+                      (click)="
+                        getBookingsByStatus('Upcoming', 'Upcoming Bookings')
+                      "
+                    >
+                      <a>Upcoming Bookings</a>
+                    </li>
+                    <li
+                      (click)="
+                        getBookingsByStatus('Past', 'Completed Bookings')
+                      "
+                    >
+                      <a>Completed Bookings</a>
+                    </li>
+                    <li
+                      (click)="
+                        getBookingsByStatus('Refund_Init', 'Cancelled Bookings')
+                      "
+                    >
+                      <a>Cancelled Bookings</a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <div class="search_filter">
+                <div class="d-md-block d-none">
+                  <div class="search_input">
+                    <input
+                      type="text"
+                      class="form-control"
+                      placeholder="Search By Name"
+                      (keyup.enter)="search_by_hotel_name($event)"
+                    />
+                    <div class="icons"><i class="fa fa-search"></i></div>
+                  </div>
+                </div>
+                <div
+                  class="d-md-none d-block"
+                  style="
+                    box-shadow: 0px 0px 3px rgb(0 0 0 / 20%);
+                    padding: 12px 10px;
+                    border-radius: 0.25rem;
+                  "
+                >
+                  <i
+                    class="fa"
+                    [ngClass]="responsiveFilter ? 'fa-times' : 'fa-search'"
+                    (click)="showFilterSearch()"
+                  ></i>
+                </div>
+              </div>
+            </div>
+          </div>
+          <ng-container *ngIf="responsiveFilter">
+            <div class="d-md-none d-block">
+              <div class="form-group">
+                <input
+                  type="text"
+                  class="form-control"
+                  placeholder="Search By Name"
+                  (keyup)="search_by_hotel_name($event)"
+                  style="
+                    border-radius: 0.25rem;
+                    border: 1px solid #dedede;
+                    padding: 5px 20px;
+                  "
+                />
+              </div>
+            </div>
+          </ng-container>
+          <ul class="bidding_card_container">
+            <ng-container *ngIf="shimmerLoad">
+              <ng-container *ngFor="let in of [0, 1, 2, 3]">
+                <div class="bidding_card">
+                  <div class="row align-center">
+                    <div class="col-md-2">
+                      <div class="box shine"></div>
+                    </div>
+                    <div class="col-lg-6 col-md-5">
+                      <div>
+                        <div class="lines shine"></div>
+                        <div class="lines shine"></div>
+                        <div class="lines shine"></div>
+                        <div class="lines shine"></div>
+                      </div>
+                    </div>
+                    <div class="col-lg-4 col-md-5">
+                      <div style="text-align: right">
+                        <div class="responsive-date-shine">
+                          <div class="rightbutton shine"></div>
+                        </div>
+                        <br />
+                        <div class="rightbutton shine"></div>
+                        <br />
+                        <div class="rightlines shine"></div>
+                        <div class="shimmerbtns">
+                          <ul>
+                            <li>
+                              <div class="button shine"></div>
+                            </li>
+                            <li>
+                              <div class="button shine"></div>
+                            </li>
+                            <li>
+                              <div class="responsive-pricebtn-shine">
+                                <div class="button shine"></div>
+                              </div>
+                            </li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <hr />
+                  <div class="row align-center">
+                    <div class="col-lg-4 col-md-6">
+                      <div>
+                        <!-- <div class="lines shine"></div> -->
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </ng-container>
+            </ng-container>
+            <ng-container *ngIf="!shimmerLoad">
+              <ng-container *ngIf="myBookingList.length > 0">
+                <ng-container *ngFor="let booking of bookinglisted; index as i">
+                  <ng-container
+                    *ngIf="
+                      booking_status == booking.status ||
+                      booking_status == 'all'
+                    "
+                  >
+                    <li class="bidding_card">
+                      <div class="row align-center">
+                        <div class="col-xl-2 col-lg-3 col-md-2">
+                          <ng-container *ngIf="booking.hotel_img; else noImg">
+                            <div class="hotel_img">
+                              <img
+                                [src]="this.apiBaseURL + booking.hotel_img"
+                                alt=""
+                              />
+                            </div>
+                          </ng-container>
+                          <ng-template #noImg>
+                            <div class="hotel_img">
+                              <img
+                                src="/assets/images/placeholders/placeholder-hotel-house.png"
+                                alt=""
+                              />
+                            </div>
+                          </ng-template>
+                        </div>
+                        <div class="col-xl-6 col-md-5">
+                          <div class="hotel_info">
+                            <div class="info">
+                              <p class="booking_date">
+                                {{ booking.arrival_date }} -
+                                {{ booking.departure_date }}
+                              </p>
+                              <h5
+                                class="name"
+                                [routerLink]="['/hotel/id/', booking.hotel_id]"
+                                (click)="onHotelDetails(booking.hotel_id)"
+                              >
+                                {{ booking.hotel_name }}
+                              </h5>
+                              <p class="guest_and_room">
+                                {{ booking.adult + booking.child }} Guest,
+                                {{ booking.rooms }} Room
+                              </p>
+                              <p class="room_type">{{ booking.room_type }}</p>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-lg-4 col-md-5">
+                          <div class="text-right">
+                            <p class="bidding_date">
+                              <span>Bidding Date: </span
+                              >{{
+                                booking.createdAt | date: "MMM d, y, h:mm a"
+                              }}
+                            </p>
+                            <a
+                              *ngIf="booking.series"
+                              class="btn btn-light btn-sm border"
+                              [href]="
+                                this.apiBaseURL +
+                                '/my-booking-invoice/' +
+                                booking.series
+                              "
+                              target="_blank"
+                            >
+                              <i class="fa fa-download"></i>
+                              <span
+                                style="
+                                  font-size: 12px;
+                                  font-weight: 600;
+                                  margin-left: 5px;
+                                "
+                                >Download Invoice</span
+                              >
+                            </a>
+                          </div>
+                          <div class="bidding_action text-right">
+                            <p
+                              *ngIf="booking.status != 'Refund_Init'"
+                              class="approved"
+                            >
+                              <span style="margin-top: 10px"
+                                ><i class="fa fa-circle"></i> Booked</span
+                              >
+                            </p>
+                            <p
+                              *ngIf="booking.status == 'Refund_Init'"
+                              class="missed"
+                            >
+                              <span style="margin-top: 10px"
+                                ><i class="fa fa-circle"></i> Refund
+                                Initiated</span
+                              >
+                            </p>
+                            <div>
+                              <div class="btns">
+                                <ul
+                                  style="
+                                    margin: 0;
+                                    padding: 0;
+                                    list-style: none;
+                                  "
+                                >
+                                  <li style="margin: 0; padding: 0">
+                                    <p
+                                      class="price btn btn-orange"
+                                      style="
+                                        margin: 0;
+                                        margin-top: 10px;
+                                        margin-left: 15px;
+                                      "
+                                    >
+                                      <span class="amount"
+                                        ><span style="font-family: roboto"
+                                          >&#x20B9;</span
+                                        >{{ booking.price }}</span
+                                      ><br /><span class="time"
+                                        >Per Room
+                                        {{ math.floor(booking.days) }}
+                                        night</span
+                                      >
+                                    </p>
+                                  </li>
+                                  <li>
+                                    <div
+                                      *ngIf="booking.room_status == 'Checkout'"
+                                    >
+                                      <button
+                                        class="btn btn-green"
+                                        style="
+                                          margin: 0;
+                                          margin-top: 10px;
+                                          margin-left: 15px;
+                                        "
+                                        (click)="
+                                          getRatinDetails(
+                                            booking.id,
+                                            booking.hotel_id
+                                          )
+                                        "
+                                      >
+                                        Rate Hotel
+                                      </button>
+                                    </div>
+                                    <div
+                                      *ngIf="
+                                        booking.status == 'Upcoming' ||
+                                        booking.status == 'Current'
+                                      "
+                                    >
+                                      <ng-container
+                                        *ngIf="booking.room_status == 'Checkin'"
+                                      >
+                                        <button
+                                          class="btn btn-red"
+                                          style="
+                                            margin: 0;
+                                            margin-top: 10px;
+                                            margin-left: 15px;
+                                          "
+                                          (click)="
+                                            getIssueDetails(
+                                              booking.id,
+                                              booking.hotel_id
+                                            )
+                                          "
+                                          style="cursor: pointer"
+                                        >
+                                          Complaint
+                                        </button>
+                                      </ng-container>
+                                      <ng-container
+                                        *ngIf="
+                                          booking.room_status != 'Checkin' &&
+                                          booking.room_status != 'Checkout'
+                                        "
+                                      >
+                                        <button
+                                          class="btn btn-green"
+                                          class="btn btn-success"
+                                          style="
+                                            margin: 0;
+                                            margin-top: 10px;
+                                            margin-left: 15px;
+                                          "
+                                          (click)="
+                                            cancelMyBooking(
+                                              booking.id,
+                                              booking.hotel_name,
+                                              booking.is_cancel
+                                            )
+                                          "
+                                        >
+                                          Cancel Booking
+                                        </button>
+                                      </ng-container>
+                                    </div>
+                                  </li>
+                                  <li *ngIf="booking.status == 'Past'">
+                                    <div class="">
+                                      <button
+                                        class="btn btn-info"
+                                        class="btn btn-orange"
+                                        style="
+                                          margin: 0;
+                                          margin-top: 10px;
+                                          margin-left: 15px;
+                                        "
+                                        disabled
+                                      >
+                                        Past Booking
+                                      </button>
+                                    </div>
+                                  </li>
+                                </ul>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <hr
+                        *ngIf="
+                          (booking.status == 'Upcoming' ||
+                            booking.status == 'Current') &&
+                          booking.room_status != 'Checkin' &&
+                          booking.room_status != 'Checkout'
+                        "
+                      />
+                      <div
+                        class="travel_agent_detail"
+                        *ngIf="
+                          (booking.status == 'Upcoming' ||
+                            booking.status == 'Current') &&
+                          booking.room_status != 'Checkin' &&
+                          booking.room_status != 'Checkout'
+                        "
+                      >
+                        <div class="row align-center">
+                          <div class="col-lg-6 col-md-6">
+                            <div class="">
+                              <label
+                                for=""
+                                *ngIf="
+                                  !booking.customer_name &&
+                                  !booking.customer_email
+                                "
+                                class="customer-msg-label"
+                                ><b>Please Enter Customer details</b></label
+                              >
+                              <i
+                                class="fa fa-exclamation-circle error"
+                                *ngIf="
+                                  !booking.customer_name &&
+                                  !booking.customer_email
+                                "
+                              ></i>
+                              <label
+                                for=""
+                                *ngIf="
+                                  booking.customer_name &&
+                                  booking.customer_email
+                                "
+                                class="customer-msg-label"
+                                >Customer details already filled
+                              </label>
+                              <i
+                                class="fa fa-check-circle success text-success"
+                                *ngIf="
+                                  booking.customer_name &&
+                                  booking.customer_email
+                                "
+                              ></i>
+                              <div
+                                class="form-group"
+                                *ngIf="
+                                  !booking.customer_name &&
+                                  !booking.customer_email
+                                "
+                              >
+                                <label for="">Select Customer</label>
+                                <select
+                                  name="customer"
+                                  id=""
+                                  class="form-control"
+                                  ngModel
+                                  (change)="getUsername(i, $event)"
+                                >
+                                  <option value="" selected disabled>
+                                    Select Customer
+                                  </option>
+                                  <ng-container
+                                    *ngFor="
+                                      let customer of myCustomersList;
+                                      index as i
+                                    "
+                                  >
+                                    <option [value]="customer.id">
+                                      {{ customer.name }}
+                                    </option>
+                                  </ng-container>
+                                </select>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <ng-container
+                          *ngIf="customerdata.id && userActive == i"
+                        >
+                          <form
+                            #customerDetail="ngForm"
+                            autocomplete="off"
+                            (submit)="agentCustomer(customerDetail)"
+                          >
+                            <input
+                              type="hidden"
+                              name="booking_id"
+                              [(ngModel)]="booking.id"
+                            />
+                            <div class="row align-center">
+                              <div class="col-md-6">
+                                <div class="form-group">
+                                  <label for="">Customer Name</label>
+                                  <input
+                                    type="text"
+                                    name="customer_name"
+                                    class="form-control"
+                                    placeholder="Customer Name"
+                                    [(ngModel)]="customerdata.name"
+                                  />
+                                </div>
+                              </div>
+                              <div class="col-md-6">
+                                <div class="form-group">
+                                  <label for="">Customer Email</label>
+                                  <input
+                                    type="email"
+                                    name="customer_email"
+                                    class="form-control"
+                                    placeholder="Customer "
+                                    [(ngModel)]="customerdata.email"
+                                  />
+                                </div>
+                              </div>
+                              <div class="col-md-6">
+                                <div class="form-group">
+                                  <label for="">Customer Contact</label>
+                                  <input
+                                    type="number"
+                                    name="customer_contact"
+                                    class="form-control"
+                                    placeholder="Customer Contact"
+                                    [(ngModel)]="customerdata.contact"
+                                  />
+                                </div>
+                              </div>
+                              <div class="col-md-6">
+                                <div class="form-group">
+                                  <label for="">Customer Address</label>
+                                  <input
+                                    type="text"
+                                    name="customer_address"
+                                    class="form-control"
+                                    placeholder="Customer Address"
+                                    [(ngModel)]="customerdata.address"
+                                  />
+                                </div>
+                              </div>
+                              <div class="col-md-6">
+                                <button type="submit" class="btn btn-success">
+                                  Save
+                                </button>
+                              </div>
+                            </div>
+                          </form>
+                        </ng-container>
+                        <ng-container
+                          *ngIf="
+                            booking.customer_name && booking.customer_email
+                          "
+                        >
+                          <div class="row align-center">
+                            <div class="col-md-6">
+                              <div class="form-group">
+                                <label for="">Customer Name</label>
+                                <input
+                                  type="text"
+                                  name="customer_name"
+                                  class="form-control"
+                                  placeholder="Customer Name"
+                                  [(ngModel)]="booking.customer_name"
+                                  disabled
+                                />
+                              </div>
+                            </div>
+                            <div class="col-md-6">
+                              <div class="form-group">
+                                <label for="">Customer Email</label>
+                                <input
+                                  type="email"
+                                  name="customer_email"
+                                  class="form-control"
+                                  placeholder="Customer "
+                                  [(ngModel)]="booking.customer_email"
+                                  disabled
+                                />
+                              </div>
+                            </div>
+                            <div class="col-md-6">
+                              <div class="form-group">
+                                <label for="">Customer Contact</label>
+                                <input
+                                  type="number"
+                                  name="customer_contact"
+                                  class="form-control"
+                                  placeholder="Customer Contact"
+                                  [(ngModel)]="booking.customer_contact"
+                                  disabled
+                                />
+                              </div>
+                            </div>
+                            <div class="col-md-6">
+                              <div class="form-group">
+                                <label for="">Customer Address</label>
+                                <input
+                                  type="text"
+                                  name="customer_address"
+                                  class="form-control"
+                                  placeholder="Customer Address"
+                                  [(ngModel)]="booking.customer_address"
+                                  disabled
+                                />
+                              </div>
+                            </div>
+                          </div>
+                        </ng-container>
+                      </div>
+                    </li>
+                  </ng-container>
+                </ng-container>
+              </ng-container>
+              <ng-container *ngIf="recent_booking.length == 0">
+                <div
+                  class="text-center my-5 py-5"
+                  style="display: grid; align-items: center; height: 40vh"
+                >
+                  <h5>No Booking Available of {{ booking_name_status }}</h5>
+                </div>
+              </ng-container>
+            </ng-container>
+            <div
+              class="card-header text-center"
+              *ngIf="recent_booking.length < 0"
+            >
+              <h5 class="text-danger cursor-pointer" (click)="showMore()">
+                {{ showRecent_bookingText }}
+              </h5>
+            </div>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Rating Modal -->
+<div class="custom_modal" *ngIf="is_opnRatingModal">
+  <form #userRatingForm="ngForm" (submit)="getUserReviews(userRatingForm)">
+    <div class="card rounded p-5">
+      <div class="modal-content" style="border-radius: 0.5rem">
+        <div class="modal-header">
+          <h2 class="modal-title" id="staticBackdropLabel">Rating</h2>
+          <button type="button" class="btn-close" (click)="closeRatingModal()">
+            <span aria-hidden="true" style="color: #fff">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <h5 class="title">Value</h5>
+          <ul class="ratings" style="display: inline-block">
+            <ng-container *ngFor="let star of stars; index as i">
+              <li (click)="countStarForValue(star, i)">
+                <span
+                  class="rate fa fa-star"
+                  [ngClass]="i < value ? 'active' : ''"
+                ></span>
+              </li>
+            </ng-container>
+          </ul>
+          <h5 class="title">Location</h5>
+          <ul class="ratings" style="display: inline-block">
+            <ng-container *ngFor="let star of stars; index as i">
+              <li (click)="countStarForLocation(star, i)">
+                <span
+                  class="rate fa fa-star"
+                  [ngClass]="i < location ? 'active' : ''"
+                ></span>
+              </li>
+            </ng-container>
+          </ul>
+          <h5 class="title">Cleaning</h5>
+          <ul class="ratings" style="display: inline-block">
+            <ng-container *ngFor="let star of stars; index as i">
+              <li (click)="countStarForClean(star, i)">
+                <span
+                  class="rate fa fa-star"
+                  [ngClass]="i < clean ? 'active' : ''"
+                ></span>
+              </li>
+            </ng-container>
+          </ul>
+          <h5 class="title">Service</h5>
+          <ul class="ratings" style="display: inline-block">
+            <ng-container *ngFor="let star of stars; index as i">
+              <li (click)="countStarForService(star, i)">
+                <span
+                  class="rate fa fa-star"
+                  [ngClass]="i < service ? 'active' : ''"
+                ></span>
+              </li>
+            </ng-container>
+          </ul>
+
+          <div class="">
+            <label for="feedback" class="form-label">Enter your feedback</label>
+            <textarea
+              class="form-control"
+              id="feedback"
+              rows="5"
+              name="feedback"
+              ngModel
+            ></textarea>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
+<!-- Issues Modal -->
+<div class="show_query_modal" *ngIf="is_opnIssueModal">
+  <div class="container">
+    <form #userIssueForm="ngForm" (submit)="getUserIssues(userIssueForm)">
+      <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="staticBackdropLabel">Issues</h5>
+            <button
+              type="button"
+              class="btn btn-close"
+              (click)="closeIssueModal()"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <input type="hidden" name="hotelId" [(ngModel)]="hotelID" />
+            <input type="hidden" name="bookingId" [(ngModel)]="bookingID" />
+            <div class="row">
+              <div class="col-md-3">
+                <div class="form-group">
+                  <div>
+                    <img
+                      [src]="ImgSrc"
+                      (click)="first.click()"
+                      class="img-fluid cursor-pointer"
+                      alt=""
+                    />
+                  </div>
+                  <label for="issue">First Image</label>
+                  <input
+                    type="file"
+                    class="form-control"
+                    #first
+                    id="first"
+                    style="display: none"
+                    (change)="getHotelFirstImage($event)"
+                    accept=".jpg,.png,.jpeg"
+                  />
+                  <p class="text-danger" *ngIf="max_error_first_img">
+                    {{ max_error_first_img }}
+                  </p>
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="form-group">
+                  <div>
+                    <img
+                      [src]="secondImgSrc"
+                      (click)="second.click()"
+                      class="img-fluid cursor-pointer"
+                      alt=""
+                    />
+                  </div>
+                  <label for="second">Second Image</label>
+                  <input
+                    type="file"
+                    class="form-control"
+                    #second
+                    id="second"
+                    style="display: none"
+                    (change)="getHotelSecondImage($event)"
+                    accept=".jpg,.png,.jpeg"
+                  />
+                  <p class="text-danger" *ngIf="max_error_second_img">
+                    {{ max_error_second_img }}
+                  </p>
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="form-group">
+                  <div>
+                    <img
+                      [src]="thirdImgSrc"
+                      (click)="third.click()"
+                      class="img-fluid cursor-pointer"
+                      alt=""
+                    />
+                  </div>
+                  <label for="third">Third Image</label>
+                  <input
+                    type="file"
+                    class="form-control"
+                    #third
+                    id="third"
+                    style="display: none"
+                    (change)="getHotelThirdImage($event)"
+                    accept=".jpg,.png,.jpeg"
+                  />
+                  <p class="text-danger" *ngIf="max_error_third_img">
+                    {{ max_error_third_img }}
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-9">
+                <div class="progress">
+                  <div
+                    class="progress-bar progress-bar-info progress-bar-striped"
+                    role="progressbar"
+                    attr.aria-valuenow="{{ percentage }}"
+                    aria-valuemin="0"
+                    aria-valuemax="100"
+                    [ngStyle]="{ width: percentage + '%' }"
+                  >
+                    {{ percentage }}%
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="reason" class="col-form-label"
+                >Select Issue Reason:</label
+              >
+              <select
+                name="reason"
+                id="reason"
+                class="form-control"
+                ngModel
+                (change)="getOtherRsn($event)"
+              >
+                <option value="" selected disabled>Select Resson</option>
+                <ng-container *ngFor="let rsn of reason">
+                  <option [value]="rsn.text">{{ rsn.text }}</option>
+                </ng-container>
+                <option value="other">Other</option>
+              </select>
+            </div>
+            <div class="form-group" *ngIf="otherRsn">
+              <label for="reason" class="col-form-label">Other Reason:</label>
+              <input
+                type="text"
+                name="otherreason"
+                class="form-control"
+                placeholder="Enter Your Reason"
+                ngModel
+              />
+            </div>
+            <div class="form-group">
+              <label for="message-text" class="col-form-label"
+                >Description:</label
+              >
+              <textarea
+                name="description"
+                class="form-control"
+                placeholder="Enter Your Issue"
+                id="message-text"
+                ngModel
+              ></textarea>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="submit" class="btn btn-primary">Submit</button>
+            <!-- <button
+              type="button"
+              class="btn btn-light border"
+              (click)="closeIssueModal()"
+            >
+              Cancel
+            </button> -->
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+<!-- Booking Cancel -->
+
+<div class="custom_modal" *ngIf="successAlert">
+  <div class="alertBox">
+    <div class="card rounded p-5">
+      <div class="text-center mb-3">
+        <img src="/assets/images/icons/success_icon2.gif" width="120" alt="" />
+      </div>
+      <h5>
+        <b>{{ alertMsg }}</b>
+      </h5>
+    </div>
+  </div>
+</div>
+
+<main-footer></main-footer>

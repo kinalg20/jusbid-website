@@ -1,0 +1,85 @@
+.travellers_infomation_selection {
+    padding: 10px;
+    border: 1px solid #E2E1E1;
+    font-family: "Poppins";
+    color: #242424;
+    .Important_Id {
+        font-size: 14px;
+        color: #000;
+        font-weight: 600;
+    }
+    .Complete_button {
+        background-color: #33e265;
+        border: none;
+        color: white;
+        padding: 5px 15px;
+        border-radius: 50px;
+        font-size: 12px;
+        cursor: pointer;
+        float: right;
+    }
+    .topnav {
+        overflow: hidden;
+    }
+    .topnav a {
+        float: left;
+        display: block;
+        color: black;
+        text-align: center;
+        padding: 5px 15px;
+        text-decoration: none;
+        font-size: 17px;
+        border-bottom: 3px solid transparent;
+        font-family: "Poppins";
+    }
+    .topnav a:hover {
+        border-bottom: 3px solid red;
+    }
+    .topnav a.active {
+        border-bottom: 3px solid red;
+        color: #000;
+        font-weight: 900;
+    }
+    .topnav a.Genderactive {
+        border-bottom: 3px solid red;
+        color: #000;
+        font-weight: 900;
+    }
+    .btn-Red {
+        height: 50%;
+    }
+    .btn-outline-danger {
+        color: #dc3545;
+        border-color: #dc3545;
+    }
+    .btn-outline-danger:hover {
+        color: #fff;
+        background-color: #dc3545;
+        border-color: #dc3545
+    }
+}
+
+input.input_box, select.input_box {
+    width: 100%;
+    padding: 10px 15px;
+    color: #000;
+    font-size: 15px;
+    font-weight: 500;
+    font-family: "Poppins";
+    border: 1px solid #dedede;
+    border-radius: 5px;
+    &:focus {
+        outline-color: #b6b6b6;
+    }
+}
+.country_input_box {
+    width: 60%;
+    padding: 5px;
+    color: #000;
+    font-size: 15px;
+    font-weight: 500;
+    font-family: "Poppins";
+    &:focus {
+        outline: none;
+    }
+}

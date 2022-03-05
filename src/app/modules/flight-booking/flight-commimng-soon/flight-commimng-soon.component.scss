@@ -1,0 +1,16 @@
+.img_box{
+    align-items: center;
+    padding: 20px;
+    .img{
+        width: 100%;
+    }
+}
+  
+.flight_comming_soon {
+	width: 100%;
+	min-height: 80vh;
+	display: grid;
+	justify-content: center;
+	text-align: center;
+	align-items: center;
+}

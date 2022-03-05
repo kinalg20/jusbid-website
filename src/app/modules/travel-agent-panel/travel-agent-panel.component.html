@@ -1,0 +1,140 @@
+<main-header [header]="'main'"></main-header>
+<section class="traveller_details ">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-10 mx-auto">
+                <div class="traveller-data">
+                    <div class="breadcrumbs d-lg-block d-none">
+                        <ul class="steps">
+                            <li class="step" routerLink="" style="
+                            cursor: pointer;">
+                                <a>
+                                    <i class="fa fa-home" aria-hidden="true"></i> Home
+                                </a>
+                            </li>
+                            <li class="step">
+                                <a>
+                                    <i class="fa fa-history" aria-hidden="true">Traveller Booking's </i>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="traveller-header">
+                        <div class="heading">
+                            <h5><b>Traveller Booking's List</b></h5>
+                        </div>
+                        <div class="filters">
+                            <div class="filter_by_status">
+                                <div class="form-group banner-form">
+                                    <span class="input-top-holder">
+                                        <span>Date </span>
+                                        <i class="fa fa-calendar"></i>
+                                    </span>
+                                    <input name="date_range" type="text"
+                                    class="form-control daterange"
+                                    id="inputCheckOut" autocomplete="off"
+                                    title="{{minDate | date:'dd/MM/yy'}} - {{returnDate | date:'dd/MM/yy'}}"
+                                    placeholder="{{minDate | date:'dd/MM/yy'}} - {{returnDate | date:'dd/MM/yy'}}"
+                                    bsDaterangepicker [minDate]="minDate"
+                                    [maxDate]="maxDate" ngModel
+                                    [bsConfig]="{isAnimated: true, rangeInputFormat : 'DD/MM/YYYY'}"
+                                    onKeyPress="if(this.value.length>=0) return false">
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-10 mx-auto">
+                <div class="card  ">
+                    <div class="card-body">
+                        <ng-container *ngIf="TravelBookingDetails.length==0">
+                            <div class="text-center">
+                                <h4 class="card-title">
+                                    No Booking Found!
+                                </h4>
+                            </div>
+                        </ng-container>
+                        <div class="table-responsive" *ngIf="TravelBookingDetails.length>0">
+                            <table class="table table-hover" datatable [dtOptions]="dtOptions" style="width: 100%;">
+                                <thead>
+                                    <tr class="text-center">
+                                        <th>Sr No.</th>
+                                        <th>arrival Date</th>
+                                        <th>Departure Date</th>
+                                        <th>Hotel Name </th>
+                                        <th>Customer Name </th>
+                                        <th>Customer Email </th>
+                                        <th>Adult - Child </th>
+                                        <th>Price</th>
+                                        <th>BDE Name</th>
+                                        <th>Status</th>
+                                        <th>Commission</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <ng-container *ngFor="let booking of TravelBookingDetails ;index as i">
+                                        <tr class="text-center">
+                                            <td>{{ i+1 }}</td>
+                                            <td>{{ booking.arrival_date }}</td>
+                                            <td>{{ booking.departure_date }}</td>
+                                            <td>{{ booking.hotel_name }}</td>
+                                            <td>{{ booking.customer_name }}</td>
+                                            <td>{{ booking.customer_email }}</td>
+                                            <td>{{ booking.adult }} - {{booking.child}}</td>
+                                            <td>{{ booking.price }}</td>
+                                            <td>{{BDEName}}</td>
+                                            <td>{{booking.room_status}}</td>
+                                            <td>{{totalcommission}} </td>
+                                        </tr>
+                                    </ng-container>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-10 mx-auto">
+            <div class="row">
+                <div class="col-6 ">
+                    <div class="card ">
+                        <div class="card-body">
+                            <h4 class="card-title">Paid Invoice </h4>
+                            <p class="card-description">
+                                Traveller Payment Details
+                            </p>
+                            <ng-container>
+                                <div class="text-center">
+                                    <h4 class="card-title">
+                                        No Paid Invoice Found!
+                                    </h4>
+                                </div>
+                            </ng-container>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="card ">
+                        <div class="card-body">
+                            <h4 class="card-title">Unpaid Invoice Table</h4>
+                            <p class="card-description">
+                                Invoice Details
+                            </p>
+                            <ng-container>
+                                <div class="text-center">
+                                    <h4 class="card-title">
+                                        No Unpaid Invoice Found!
+                                    </h4>
+                                </div>
+                            </ng-container>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

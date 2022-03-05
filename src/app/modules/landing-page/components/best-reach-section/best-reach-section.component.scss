@@ -1,0 +1,352 @@
+.tm-section-pad-3 {
+    padding: 5px 40px;
+}
+
+.tm-section-pad {
+    padding: 30px 15px;
+    padding-top: 80px;
+    padding-bottom: 80px;
+    .font-bolder {
+        font-size: 12px;
+    }
+}
+h3.section-3-title {
+    color: #000;
+    font-size: 1.75rem;
+    font-weight: 400;
+    margin-bottom: 2rem;
+    margin-left: 10px;
+}
+.card {
+    .card-body {
+        .card-title {
+            &:focus {
+                border: none;
+                outline: none;
+            }
+        }
+    }
+}
+.card-body {
+    flex: 1 1 auto;
+    min-height: 1px;
+    padding: 0.6rem;
+}
+.popular-slider {
+    .card {
+        padding: 10px;
+        margin-bottom: 35px;
+        border-radius: 5px !important;
+        padding-bottom: 0px !important;
+        width: 100%;
+        cursor: pointer;
+        outline: none;
+        .photo {
+            height: 200px;
+        }
+        .card-img-top {
+            width: 100%;
+            padding: 15px;
+            min-height: 200px;
+            max-height: 250px;
+            border-radius: 5px;
+            position: relative;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            border: 1px solid #ccc;
+            span.top-side {
+                border-radius: 2px;
+                font-weight: 600;
+                text-transform: uppercase;
+                background: var(--primary);
+                color: rgb(255, 255, 255);
+                position: absolute;
+                top: 10px;
+                right: -6px;
+                font-size: 8px;
+                padding: 4px 6px;
+                display: block;
+                letter-spacing: 0.1rem;
+                z-index: 2;
+            }
+            &::before {
+                position: absolute;
+                top: 15px;
+                right: 0px;
+                content: "";
+                background: var(--primary);
+                height: 28px;
+                width: 28px;
+                transform: rotate(45deg);
+                z-index: -1;
+            }
+            .p-card-top {
+                color: #000;
+                background: #fff;
+                position: absolute;
+                top: 0;
+                right: 90px;
+                padding: 7px;
+                border-bottom-left-radius: 10px;
+                border-bottom-right-radius: 10px;
+                font-weight: 500;
+                font-size: 18px;
+                border: 1px solid #d0d0d0;
+            }
+            h2 {
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background: rgba(0, 0, 0, 0.75);
+                color: #fff;
+                margin-bottom: 0;
+                border-radius: 15px;
+                text-align: center;
+                height: 100%;
+                align-items: center;
+                display: none;
+                font-size: 1.2rem;
+                padding: 5px;
+            }
+            .card-bottom-buttons {
+                &:hover {
+                    color: #fff;
+                }
+            }
+            &:hover {
+                h2 {
+                    display: grid;
+                }
+            }
+        }
+        .card-body {
+            padding-top: 10px !important;
+            padding-bottom: 0px !important;
+        }
+    }
+}
+.city-img {
+    width: 157px;
+    height: 100px;
+    border-radius: 5px;
+}
+
+.tm-section{
+    max-width: 1541px;
+    .best-reach-container{
+        max-width: 1450px;
+    }
+}
+
+
+
+
+
+
+
+
+@media (max-width: 1920px) {
+    .tm-section-pad {
+        padding: 30px 38px;
+    }
+}
+
+@media (max-width: 1650px) {
+    .tm-section-pad {
+        padding: 30px 142px;
+    }
+}
+
+@media (max-width: 1600px) {
+    .tm-section-pad {
+        padding: 30px 142px;
+    }
+}
+
+@media (max-width: 1440px) {
+    .tm-section-pad {
+        padding: 30px 185px;
+    }
+    .popular-slider {
+        .card {
+            .card-img-top {
+                min-height: 174px;
+            }
+        }
+    }
+    .container {
+        max-width: 1410px;
+        .section-3-title {
+            font-size: 1.75rem;
+        }
+    }
+}
+
+@media (max-width: 1024px) {
+    .tm-section-pad {
+        padding: 30px 97px;
+    }
+    .container {
+        .section-3-title {
+            margin-top: 12px;
+            margin-bottom: 12px;
+            margin: 20px 25px;
+            font-size: 1.5rem;
+        }
+    }
+    .popular-slider {
+        .card {
+            padding: 0.6rem;
+            .card-img-top {
+                min-height: 120px;
+                max-height: 350px;
+            }
+            .photo {
+                height: 150px;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 900px) {
+    .tm-section {
+        .section-3-title {
+            font-size: 1.4rem;
+        }
+    }
+    .popular-slider {
+        .card {
+            padding: 15px;
+            .card-img-top {
+                min-height: 150px;
+                max-height: 350px;
+            }
+            .photo {
+                height: 150px;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .tm-section-pad {
+        padding: 30px 46px;
+    }
+}
+
+@media (max-width: 650px) {
+    .popular-slider {
+        padding: 21px 0;
+        .card {
+            padding: 15px;
+            .card-img-top {
+                min-height: 350px;
+                max-height: 350px;
+                .card-body {
+                    border: 1px solid rgba(0, 0, 0, 0.125);
+                    background: #ffffff;
+                    border-radius: 10px;
+                    padding: 0.5rem;
+                }
+            }
+        }
+    }
+}
+@media (max-width: 600px) {
+    .tm-section-pad {
+        padding: 30px 20px;
+    }
+    .tm-section .section-3-title {
+        margin-left: 14px;
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+    }
+    .tm-section {
+        min-height: auto !important;
+    }
+    .popular-slider {
+        .card {
+            padding: 0px;
+            border-radius: 10px !important;
+            margin-bottom: 0;
+            box-shadow: none;
+            .card-img-top {
+                min-height: 150px;
+                max-height: 150px;
+                border: none;
+                border-top-left-radius: 5px;
+                border-top-right-radius: 5px;
+                border-bottom-left-radius: 0;
+                border-bottom-right-radius: 0;
+                h2 {
+                    border-radius: 5px;
+                    font-size: 1rem;
+                }
+                span.top-side {
+                    display: inline-block;
+                }
+            }
+            .card-title {
+                padding-top: 2px;
+                font-size: 1rem;
+            }
+        }
+    }
+}
+
+@media (max-width: 524px) {
+    .tm-section-pad {
+        padding: 25px 0px !important;
+    }
+    .tm-section-pad {
+        padding: 30px 0px;
+        margin-bottom: 20px;
+    }
+    .popular-slider {
+        .card {
+            padding: 7px;
+            .card-img-top {
+                min-height: 140px;
+                max-height: 250px;
+            }
+            .photo {
+                height: 140px;
+            }
+            .backup-image {
+                background-size: contain;
+            }
+        }
+    }
+}
+
+@media (max-width: 425px) {
+    .tm-section-pad {
+        padding: 0px 0px 25px !important;
+    }
+    .popular-slider {
+        .card {
+            padding: 8px;
+            .card-img-top {
+                min-height: 140px;
+                max-height: 250px;
+            }
+            .photo {
+                height: 220px;
+            }
+            .backup-image {
+                background-size: contain;
+            }
+            .card-title {
+                font-weight: bold;
+            }
+            .nopopular {
+                h3 {
+                    font-size: 1rem;
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,1052 @@
+.tm-main-content-jusbid {
+  color: #fff;
+  justify-content: center;
+  align-items: center;
+  color: #000;
+  display: block;
+  .top_container_section-jusbid {
+    min-width: 80%;
+    max-width: 100%;
+    border-radius: 20px;
+
+    .header-headings-section {
+      text-align: center;
+      padding-top: 40px;
+
+      .heading-header-3-jusbid {
+        font-size: 3rem;
+      }
+
+      .heading-header-1-jusbid {
+        font-size: 4rem;
+      }
+    }
+  }
+}
+
+.card-front {
+  display: flex;
+
+  .first-part {
+    box-shadow: 0px 1px 5px #00000029;
+    border-radius: 100px;
+    width: 100%;
+    grid-template-columns: 30% 45% 30%;
+    gap: 10px;
+    display: grid;
+    margin: auto;
+    height: 60px;
+    padding-left: 25px;
+    padding-right: 25px;
+
+    .Where {
+      justify-content: space-between;
+      position: relative;
+
+      .section-1-text {
+        display: flex;
+        justify-content: space-between;
+
+
+        .label {
+          font-size: 1rem;
+          font-weight: 500;
+        }
+
+        .right-newf {
+          height: 40px;
+          margin-top: 10px;
+          border-right: 1px solid gray;
+        }
+      }
+
+      .section-1-input {
+        display: flex;
+        align-items: center;
+        position: absolute;
+        top: 16pt;
+        width: 98%;
+
+        img {
+          width: 20px;
+          height: 20px;
+        }
+
+        .label {
+          font-size: 1rem;
+          font-weight: 600;
+        }
+
+        .form-control {
+          font-size: 1rem;
+          font-weight: 600;
+        }
+      }
+
+      .mobile-section1 {
+        box-shadow: none;
+        border-radius: 100px;
+        height: 50px;
+
+        .card_box {
+          width: 13rem;
+          max-height: 173px;
+          background: white;
+          border-radius: 0.8rem;
+          position: absolute;
+          left: 0px;
+          border: 1px solid rgb(207, 207, 207);
+          box-shadow: rgb(28 28 28 / 8%) 0px 2px 8px;
+          top: 4rem;
+          opacity: 1;
+          transition: opacity 0.25s ease 0s, top 0.25s ease 0s;
+          z-index: 10;
+
+
+        }
+      }
+    }
+
+
+
+    .When {
+      justify-content: space-between;
+      position: relative;
+
+      .section-2-text {
+        display: flex;
+        justify-content: space-between;
+
+        .text-front {
+          font-size: 0.9rem;
+        }
+
+        .right-newf {
+          height: 40px;
+          margin-top: 10px;
+          border-right: 1px solid gray;
+        }
+      }
+
+      .section-2-input {
+        display: flex;
+        align-items: center;
+        position: absolute;
+        top: 16pt;
+
+        img {
+          width: 20px;
+          height: 20px;
+        }
+      }
+
+      .mobile-section2 {
+        box-shadow: none;
+        border-radius: 100px;
+        height: 50px;
+      }
+    }
+
+
+    .Traveller {
+      justify-content: space-between;
+      position: relative;
+
+      .section-4-text {
+        display: flex;
+        justify-content: space-between;
+
+        .text-front {
+          font-size: 0.9rem;
+        }
+
+        .right-newf {
+          height: 40px;
+          margin-top: 10px;
+          border-right: 1px solid gray;
+        }
+      }
+
+      .section-4-input {
+        display: flex;
+        align-items: center;
+        position: absolute;
+        top: 16pt;
+
+        img {
+          width: 20px;
+          height: 20px;
+        }
+
+        input {
+          width: 150px;
+        }
+
+        .showRoom {
+          padding: 0.5rem 0.75rem;
+          font-size: 1rem;
+          color: #000;
+          font-weight: 600;
+        }
+
+      }
+
+      .mobile-section4 {
+        box-shadow: none;
+        border-radius: 100px;
+        height: 50px;
+
+        .card_box {
+          width: 13rem;
+          max-height: 173px;
+          background: white;
+          border-radius: 0.8rem;
+          position: absolute;
+          left: 0px;
+
+          box-shadow: rgb(28 28 28 / 8%) 0px 2px 8px;
+          top: 4rem;
+          opacity: 1;
+          transition: opacity 0.25s ease 0s, top 0.25s ease 0s;
+          z-index: 10;
+
+          .guestRoomPickerPopUp {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 100%;
+            border-radius: 4px;
+            border-bottom-left-radius: 25px;
+            border-bottom-right-radius: 25px;
+            box-shadow: 2px 4px 6px 2px rgb(0 0 0 / 10%), 0 12px 11px 2px rgb(0 0 0 / 10%);
+            border: 1px solid #d6d6d6;
+            overflow: hidden;
+            z-index: 40;
+            background: #fff;
+
+            .guestRoomPickerPopUp__headingRow {
+              border-bottom: 1px solid #eee;
+              margin: 0 16px;
+              padding: 0;
+              display: flex;
+              justify-content: space-between;
+              text-align: center;
+
+              .guestRoomPickerPopUp__heading {
+                color: #333;
+                padding: 18px 0 14px;
+                font-weight: 700;
+                text-align: center;
+                font-size: 13px;
+              }
+            }
+
+            .guestRoomPickerPopUp__roomsRow {
+              .guestRoomPickerPopUp__roomTable {
+                margin: 16px 16px 0 !important;
+                padding-bottom: 16px !important;
+
+                .select_room {
+                  .wrapper {
+                    width: 100%;
+                    display: flex;
+                    border-radius: 15px;
+                    align-items: center;
+                    justify-content: space-between;
+
+                    input {
+                      text-align: center;
+                      border: 1px solid #6c757d;
+                      width: 100%;
+                    }
+
+                    .btn-light {
+                      padding: 0.2rem 0.5rem;
+                    }
+
+                  }
+                }
+              }
+            }
+
+
+          }
+
+        }
+      }
+    }
+  }
+
+  .second-part {
+    .submit-button {
+      .btn-primary {
+        padding: 22px;
+        border-radius: 100px;
+      }
+    }
+  }
+}
+
+.beloved-cities {
+  .beloved-card {
+    text-align: center;
+    margin-top: 60px;
+  }
+
+  .city-card {
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+
+    .photo1 {
+      height: 250px;
+
+      img {
+        width: 100%;
+        height: 100%;
+        border-radius: 30px;
+      }
+    }
+
+    .city_name_front {
+      position: absolute;
+      left: 100px;
+      bottom: 15px;
+      color: #fff;
+      display: flex;
+      margin: auto;
+    }
+  }
+}
+
+.World-jusbid {
+  padding: 50px;
+  text-align: center;
+  background-image: url("https://cdn.animaapp.com/projects/602bb6c06d47e4257493fc78/releases/61b9c78091d9876e7896366a/img/path-6892@1x.png");
+
+  .shadow-sm {
+    border-radius: 20px;
+
+    img {
+      height: 250px;
+      width: 100%;
+      border-radius: 20px;
+    }
+
+    .Head_line_fiexd {
+      position: absolute;
+      top: 8px;
+      left: 25px;
+      z-index: 3;
+
+      .head_line_tittle {
+        font-size: 18px;
+        font-weight: 800;
+        color: #fff;
+      }
+    }
+  }
+
+
+  .sub-title {
+    margin-bottom: 30px;
+  }
+
+  .photo {
+    position: relative;
+
+    .city_name_front {
+      position: absolute;
+      top: 15px;
+      left: 10px;
+      color: #fff;
+    }
+  }
+}
+
+.Experience-jusbid-poster {
+  margin-top: 40px;
+  padding-bottom: 40px;
+
+  .poster {
+    position: relative;
+    width: 100%;
+
+    img {
+      width: 100%;
+    }
+
+    .sub-title {
+      position: absolute;
+      bottom: 0%;
+      right: 0%;
+      color: white;
+      font-size: 3.1rem;
+      font-weight: 500;
+    }
+  }
+}
+
+.questionanswer-jusbid {
+  background-color: #263345;
+
+  .question-jusbid {
+    padding: 30px;
+
+    .question-jusbid-q {
+      color: #fff;
+      font-size: 16px;
+      font-weight: bolder;
+    }
+
+    .question-jusbid-a {
+      color: #fff;
+    }
+  }
+}
+
+@media (max-width: 1440px) {
+  .beloved-cities {
+    .city-card {
+      .city_name_front {
+        left: 96px;
+      }
+    }
+  }
+}
+
+@media (max-width: 1024px) {
+  .beloved-cities {
+    .city-card {
+      .photo1 {
+        height: 200px;
+      }
+
+      .city_name_front {
+        left: 76px;
+      }
+    }
+  }
+
+  .Experience-jusbid-poster {
+    margin-top: 40px;
+    padding-bottom: 40px;
+
+    .poster {
+      position: relative;
+      width: 100%;
+
+      img {
+        width: 100%;
+      }
+
+      .sub-title {
+        position: absolute;
+        bottom: 0%;
+        right: 0%;
+        color: white;
+        font-size: 40px;
+        font-weight: 500;
+      }
+    }
+  }
+}
+
+@media (max-width: 1199px) {
+  .tm-main-content-jusbid {
+    .top_container_section-jusbid {
+      .header-headings-section {
+        .heading-header-1-jusbid {
+          font-size: 3.5rem;
+        }
+
+        .heading-header-3-jusbid {
+          font-size: 3rem;
+        }
+      }
+    }
+  }
+
+  .card-front {
+    .first-part {
+      grid-template-columns: 35% 35% 35%;
+
+      .input-front {
+        width: 280px;
+      }
+    }
+
+    ::placeholder {
+      font-size: 13.5px;
+    }
+  }
+}
+
+@media (max-width: 990px) {
+  .card-front {
+    .first-part {
+      grid-template-columns: 30% 40% 30%;
+
+      .input-front {
+        width: 90px;
+      }
+
+      .Traveller {
+        .section-4-input {
+          .input-front {
+            width: 280x;
+          }
+        }
+      }
+
+      .Where {
+        .section-1-input {
+          .input-front {
+            width: 190px;
+          }
+        }
+      }
+    }
+  }
+
+  .front-container {
+    max-width: 891px;
+  }
+
+  .beloved-cities {
+    .city-card {
+      .city_name_front {
+        left: 52px;
+        font-size: 1.3rem;
+      }
+    }
+  }
+}
+
+
+
+@media (max-width: 867px) {
+  .card-front {
+    .first-part {
+      .Where {
+        .section-1-input {
+          .input-front {
+            width: 155px;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 827px) {
+  .card-front {
+    .first-part {
+      grid-template-columns: 35% 35% 30%;
+
+      .Where {
+        .section-1-input {
+          .input-front {
+            width: 200px
+          }
+        }
+      }
+
+      .Traveller {
+        .section-4-input {
+          .showRoom {
+            font-size: 0.9rem;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .tm-main-content-jusbid {
+    .top_container_section-jusbid {
+      .header-headings-section {
+        .heading-header-1-jusbid {
+          font-size: 2.7rem;
+        }
+
+        .heading-header-3-jusbid {
+          font-size: 2.2rem;
+        }
+      }
+    }
+  }
+
+  .card-front {
+    .first-part {
+      grid-template-columns: 30% 35% 30%;
+      padding-right: 5px;
+
+      .Where {
+        .section-1-input {
+          .input-front {
+            width: 153px;
+          }
+
+          .form-control {
+            font-size: 0.85rem;
+          }
+        }
+      }
+
+      .Traveller {
+        .section-4-input {
+          .input-front {
+            width: 121px;
+          }
+
+          .showRoom {
+            font-size: .8rem;
+          }
+        }
+      }
+    }
+  }
+
+  .front-container {
+    max-width: 777px;
+  }
+
+  .beloved-cities {
+    .city-card {
+      .photo1 {
+        height: 160px;
+      }
+    }
+  }
+}
+
+@media (max-width: 767px) {
+  .beloved-cities {
+    .city-card {
+      .city_name_front {
+        left: 92px;
+        font-size: 1.5rem;
+      }
+    }
+  }
+
+  .Experience-jusbid-poster {
+    .poster {
+      .sub-title {
+        font-size: 25px;
+      }
+    }
+  }
+}
+
+@media (max-width: 757px) {
+  .card-front {
+    .first-part {
+      .Where {
+        .section-1-input {
+          .input-front {
+            width: 150px;
+          }
+        }
+      }
+
+      .Traveller {
+        .section-4-input {
+          .input-front {
+            width: 98px;
+          }
+        }
+      }
+    }
+  }
+
+  .beloved-cities {
+    .city-card {
+      .city_name_front {
+        font-size: 0.9rem;
+        // left: 58px;
+      }
+    }
+  }
+
+  .Experience-jusbid-poster {
+    .poster {
+      .sub-title {
+        font-size: 20px;
+      }
+    }
+  }
+}
+
+@media (max-width: 727px) {
+  .card-front {
+    .first-part {
+
+      .Where {
+        .section-1-input {
+          .input-front {
+            width: 147px;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 715px) {
+  .card-front {
+    .first-part {
+
+      .Where {
+        .section-1-input {
+          .input-front {
+            width: 140px;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 676px) {
+  .tm-main-content-jusbid {
+    .top_container_section-jusbid {
+      .header-headings-section {
+        .heading-header-1-jusbid {
+          font-size: 2rem;
+        }
+
+        .heading-header-3-jusbid {
+          font-size: 1.8rem;
+        }
+      }
+    }
+  }
+
+  .card-front {
+    display: block;
+
+    .first-part {
+      grid-template-columns: 100%;
+      box-shadow: none;
+      padding-left: 0px;
+      padding-right: 0px;
+
+      .Where {
+        .mobile-section1 {
+          box-shadow: 0px 1px 5px #00000029;
+          height: 60px;
+          padding-left: 15px;
+          border-radius: 10px;
+
+          .right-newf {
+            display: none;
+          }
+
+          .section-1-text {
+            .text-front {
+              margin-top: 5px;
+            }
+          }
+
+          .section-1-input {
+            margin-top: 7px;
+
+            img {
+              width: 15px;
+              height: 15px;
+            }
+
+            .input-front {
+              height: 27px;
+              width: 95%;
+            }
+
+            .form-control {
+              font-size: 1rem;
+            }
+          }
+        }
+      }
+
+      .When {
+
+        .mobile-section2 {
+          box-shadow: 0px 1px 5px #00000029;
+          height: 60px;
+          padding-left: 15px;
+          border-radius: 10px;
+
+          .right-newf {
+            display: none;
+          }
+
+          .section-2-text {
+            .text-front {
+              margin-top: 5px;
+            }
+          }
+
+          .section-2-input {
+            margin-top: 7px;
+
+            img {
+              width: 15px;
+              height: 15px;
+            }
+
+            p .input-front {
+              height: 27px;
+              width: 100%;
+            }
+          }
+        }
+      }
+
+
+
+      .Traveller {
+        .mobile-section4 {
+          box-shadow: 0px 1px 5px #00000029;
+          height: 60px;
+          padding-left: 15px;
+          border-radius: 15px;
+
+          .right-newf {
+            display: none;
+          }
+
+          .section-4-text {
+            .text-front {
+              margin-top: 5px;
+            }
+          }
+
+          .section-4-input {
+            margin-top: 7px;
+
+            img {
+              width: 15px;
+              height: 15px;
+            }
+
+            .input-front {
+              height: 27px;
+              width: 100%;
+            }
+          }
+        }
+      }
+    }
+
+    .second-part {
+      .submit-button {
+        margin-top: 160px;
+        text-align: center;
+
+        .btn-primary {
+          border-radius: 10px;
+          border-radius: 10px;
+          padding: 15px;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 425px) {
+  .beloved-cities {
+    .beloved-card {
+      .sub-beloved {
+        font-size: 1.8rem;
+      }
+    }
+
+    .city-card {
+      .city_name_front {
+        font-size: 1.2rem;
+        left: 75px;
+      }
+    }
+  }
+
+  .World-jusbid {
+    padding: 30px;
+
+    .sub-world {
+      font-size: 1.8rem;
+    }
+
+    .sub-title {
+      font-size: 1.1rem;
+    }
+
+    .photo {
+      .city_name_front {
+        font-size: 1.4rem;
+      }
+    }
+  }
+
+  .Experience-jusbid-poster {
+    .poster {
+      .sub-title {
+        font-size: 20px;
+      }
+    }
+  }
+
+  .card-front {
+    .first-part {
+      .Where {
+        .mobile-section1 {
+          .section-1-text {
+            .text-front {
+              padding: 3px;
+            }
+          }
+        }
+      }
+
+      .When {
+        .mobile-section2 {
+          .section-2-text {
+            .text-front {
+              padding: 3px;
+            }
+          }
+        }
+      }
+
+      .Return {
+        .mobile-section3 {
+          .section-3-text {
+            .text-front {
+              padding: 3px;
+            }
+          }
+        }
+      }
+
+      .Traveller {
+        .mobile-section4 {
+          .section-4-text {
+            .text-front {
+              padding: 3px;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .tm-main-content-jusbid {
+    .top_container_section-jusbid {
+      .header-headings-section {
+        .heading-header-3-jusbid {
+          font-size: 1.6rem;
+        }
+
+        .heading-header-1-jusbid {
+          font-size: 2rem;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 375px) {
+  .tm-main-content-jusbid {
+    .top_container_section-jusbid {
+      .header-headings-section {
+        .heading-header-1-jusbid {
+          font-size: 1.8rem;
+        }
+
+        .heading-header-3-jusbid {
+          font-size: 1.3rem;
+        }
+      }
+    }
+  }
+
+  .World-jusbid {
+    padding: 20px;
+
+    .sub-world {
+      font-size: 1.8rem;
+    }
+
+    .sub-title {
+      font-size: 1.1rem;
+    }
+
+    .photo {
+      .city_name_front {
+        font-size: 1.4rem;
+      }
+    }
+  }
+
+  .beloved-cities {
+    .beloved-card {
+      .sub-beloved {
+        font-size: 1.8rem;
+      }
+    }
+
+    .city-card {
+      .city_name_front {
+        // font-size: 0.7rem;
+        left: 60px;
+      }
+    }
+  }
+}
+
+@media (max-width: 325px) {
+  .tm-main-content-jusbid {
+    .top_container_section-jusbid {
+      .header-headings-section {
+        .heading-header-1 {
+          font-size: 1.5rem;
+        }
+
+        .heading-header-3 {
+          font-size: 1rem;
+        }
+      }
+    }
+  }
+
+  .beloved-cities {
+    .beloved-card {
+      .sub-beloved {
+        font-size: 1.8rem;
+      }
+    }
+
+    .city-card {
+      .city_name_front {
+        // font-size: 0.7rem;
+        left: 42px;
+      }
+    }
+  }
+}
+
+
+
+
+.p-calendar {
+  display: inline-flex;
+  position: relative;
+
+  .p-calendar,
+  .p-inputtext {
+    flex: 1 1 auto;
+    width: 100% !important;
+  }
+}

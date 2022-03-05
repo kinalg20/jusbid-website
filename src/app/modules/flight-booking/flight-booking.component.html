@@ -1,0 +1,7 @@
+<flight-header [header]="''"></flight-header>
+<router-outlet></router-outlet>
+
+<main-footer></main-footer>
+<div class="flight_loader" *ngIf="this.flightService.flight_loader">
+    <img src="https://flight.easemytrip.com/Content/img/loading-ban.gif" alt="Loading...">
+</div>

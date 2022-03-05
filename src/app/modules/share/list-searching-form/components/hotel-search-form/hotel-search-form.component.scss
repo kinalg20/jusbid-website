@@ -1,0 +1,90 @@
+.PickerPopUp {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    border-radius: 4px;
+    box-shadow: 2px 4px 6px 2px rgb(0 0 0 / 10%), 0 12px 11px 2px rgb(0 0 0 / 10%);
+    border: 1px solid #d6d6d6;
+    overflow: hidden;
+    z-index: 40;
+    background: #fff;
+    .SerachByCity {
+        .SerchByType {
+            padding: 10px 15px !important;
+            text-align: center;
+            background-color: rgb(255, 255, 255);
+            span.badge {
+                color: #383838;
+                cursor: pointer;
+                font-size: 12px;
+                text-align: center;
+                font-weight: 600;
+                border-radius: 20px;
+
+            }
+        }
+        .SerchByType.select{
+           background-color: rgb(226, 226, 226);
+           span.badge.select {
+            color: #fd2828;
+            cursor: pointer;
+            font-size: 12px;
+            text-align: center;
+            font-weight: 600;
+            border-radius: 20px;
+
+        }
+        }
+        
+        hr{
+            margin-top: 0rem; 
+            margin-bottom: 0rem;
+            border-color:#00000026;
+        }
+    }
+}
+.icons{
+    font-size: 12px;
+    color: #5a5a5a;
+    position: absolute;
+    left:10px;
+    top: 46%;
+}
+.location-icon{
+    .icons{
+        top: 52%;
+    }
+}
+.calendar-icon{
+    .icons{
+        top:50%;
+    }
+}
+.room-icon{
+    .icons{
+        top: 48%;
+    }
+}
+.form-control{
+    .showroom{
+        margin-left: -8px !important;
+    }
+}
+@media (max-width:1024px) {
+    .icons{
+       top: 43%;
+        img{
+            width: 13px;
+        }
+	}
+}
+@media (max-width:650px) {
+    .icons{
+        font-size: 12px;
+        img{
+            width: 14px;
+        }
+    }
+    
+}

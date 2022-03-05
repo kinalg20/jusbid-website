@@ -1,0 +1,41 @@
+.icons{
+    font-size: 12px;
+    color: #5a5a5a;
+    position: absolute;
+    left:10px;
+    top: 50%;
+}
+.rotateimg180{
+    -webkit-transform:rotate(180deg);
+    -moz-transform: rotate(180deg);
+    -ms-transform: rotate(180deg);
+    -o-transform: rotate(180deg);
+    transform: rotate(180deg);
+}
+.wrapper{
+    color: #000;
+}
+.guestRoomPickerPopUp__roomCount{
+    color: #000;
+}
+.guestRoomPickerPopUp__roomsRow{
+    color: #000;
+}
+@media (max-width:1024px) {
+    .icons{
+       top: 47%;
+        img{
+            width: 13px;
+        }
+	}
+}
+@media (max-width:650px) {
+    .icons{
+        font-size: 12px;
+        img{
+            width: 14px;
+        }
+    }
+    
+}
+

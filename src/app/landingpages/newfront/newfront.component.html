@@ -1,0 +1,304 @@
+<ng-container *ngIf="!isShow_SingleBlog">
+    <app-header></app-header>
+    <section class="tm-main-content-jusbid">
+        <!--Heading-quotes-->
+        <div class="top_container_section-jusbid">
+            <ng-container *ngFor="let home of hometitle.slice(0,1);">
+                <div class="header-headings-section">
+                    <h1 class="heading-header-1-jusbid"><b>{{ home.title }}</b></h1>
+                    <h3 class="heading-header-3-jusbid">{{ home.text }}</h3>
+                </div>
+            </ng-container>
+        </div>
+
+        <!--Searching-box-->
+        <div class="container front-container">
+            <form #getHotelSearchForm="ngForm" (submit)="onSearchHotels(getHotelSearchForm)">
+                <section class="card-front mt-5">
+                    <div class="first-part">
+                        <div class="Where  pt-1">
+                            <div class="mobile-section1">
+                                <div class="section-1-text">
+                                    <span class="label">Where</span>
+                                    <span class="right-newf"></span>
+                                </div>
+                                <div class="section-1-input">
+                                    <img src="https://cdn.animaapp.com/projects/602bb6c06d47e4257493fc78/releases/61b9c78091d9876e7896366a/img/icon-awesome-location-arrow@1x.png"
+                                        alt="">
+                                    <input #searchInput ngx-google-places-autocomplete #placesRef="ngx-places"
+                                        (onAddressChange)="handleAddressChange($event)"
+                                        class="form-control  input-front" name="city" type="text" id="inputCity"
+                                        placeholder="Search by Area or Landmark" [title]="geoCity"
+                                        [(ngModel)]="geoAddress" required autocapitalize="off" style="border: none;"
+                                        autofocus="off" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="When pt-1">
+                            <div class="mobile-section2">
+                                <div class="section-2-text">
+                                    <span class="text-front">When</span>
+                                    <span class="right-newf"></span>
+                                </div>
+                                <div class="section-2-input">
+                                    <img src="https://cdn.animaapp.com/projects/602bb6c06d47e4257493fc78/releases/61b9c78091d9876e7896366a/img/path-175-1@1x.png"
+                                        alt="">
+                                    <p-calendar (input)="validateDateRange($event)" [numberOfMonths]="2" [minDate]="fromDate"
+                                        (onSelect)="validateDateRange($event)" [(ngModel)]="value" name="date_range"
+                                        placeholder="{{fromDate }} - {{toDate }}" rangeSeparator="-"
+                                        selectionMode="range" dateFormat="dd/mm/yy"   ></p-calendar>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="Traveller pt-1">
+                            <div class="mobile-section4">
+                                <div class="section-4-text">
+                                    <span class="text-front">Traveller</span>
+                                </div>
+                                <div class="section-4-input" (click)="showTraveller()" #toggleButton>
+                                    <img src="https://cdn.animaapp.com/projects/602bb6c06d47e4257493fc78/releases/61b9c78091d9876e7896366a/img/path-191@1x.png"
+                                        alt="">
+                                    <span class="showRoom" [ngClass]="GuestCount>1 ? 'select':''">{{
+                                        GuestCount }}
+                                        Guests in {{roomsSelector.length}}
+                                        Rooms</span>
+
+                                </div>
+
+                                <input name="rooms" type="hidden" class="form-control" id="inputGuest"
+                                    placeholder="Rooms" [value]="roomsSelector.length"
+                                    [(ngModel)]="roomsSelector.length">
+                                <input type="hidden" name="guest_no" [value]="GuestCount" [(ngModel)]="GuestCount">
+                                <div class="card_box" *ngIf="is_showTraveller" #menu>
+
+                                    <div class="guestRoomPickerPopUp">
+                                        <div class="guestRoomPickerPopUp__headingRow">
+                                            <div class="guestRoomPickerPopUp__heading">
+                                                Rooms
+                                            </div>
+                                            <div class="guestRoomPickerPopUp__heading">
+                                                Guests
+                                            </div>
+                                        </div>
+                                        <div class="guestRoomPickerPopUp__roomsRow">
+                                            <ng-container *ngFor="let room of roomsSelector; index as i">
+                                                <div class="guestRoomPickerPopUp__roomTable border-bottom">
+                                                    <div class="w-100 select_room">
+                                                        <div class="row align-center">
+                                                            <div class="col-md-5">
+                                                                <div class="">
+                                                                    <span
+                                                                        class="guestRoomPickerPopUp__roomCount u-displayBlock">Room
+                                                                        {{room.id}}</span>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-7">
+                                                                <div class="wrapper">
+                                                                    <button type="button" class="btn btn-light border"
+                                                                        (click)="descreseGuest(i)">-</button>
+                                                                    <span>{{room.total_guest}}</span>
+                                                                    <button type="button" class="btn btn-light border"
+                                                                        (click)="increaseGuest(i)">+</button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </ng-container>
+                                        </div>
+                                        <div class="guestRoomPickerPopUp__headingRow">
+                                            <div class="guestRoomPickerPopUp__heading cursor-pointer"
+                                                (click)="removeRoom()"
+                                                [ngClass]="(this.roomsSelector.length>1)?'':'text-muted cursor-default'">
+                                                Delete Room
+                                            </div>
+                                            <div class="guestRoomPickerPopUp__heading cursor-pointer"
+                                                (click)="addRoom()"
+                                                [ngClass]="(this.roomsSelector.length<6)?'':'text-muted cursor-default'">
+                                                Add Room</div>
+                                        </div>
+                                        <div>
+                                            <button type="button" class="btn btn-primary btn-sm"
+                                                style="padding: 12px 0;"
+                                                (click)="is_showTraveller=!is_showTraveller">Done</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="second-part">
+                        <div class="submit-button">
+                            <button class="btn btn-primary ml-1" type="submit"><b>Jusbid</b></button>
+                        </div>
+                    </div>
+                </section>
+            </form>
+        </div>
+        <!--beloved-cities-->
+        <section class="beloved-cities">
+            <div class="beloved-card">
+                <h1 class="sub-beloved"><b>Most beloved City's</b></h1>
+            </div>
+            <div class="container">
+                <div class="city-card mt-5">
+                    <div class="row">
+                        <ng-container *ngFor="let img of beloved_city.slice(0,4);">
+                            <div class="col-6 col-lg-3 col-md-3 col-sm-6 mb-2">
+
+                                <div class="photo1">
+                                    <a (click)="searchBestReach(img.city_name)">
+                                        <img [src]=img.img_url alt="" class="transition-jusbid">
+                                        <h2 class="city_name_front"><b>{{img.city_name}}</b></h2>
+                                    </a>
+
+                                </div>
+                            </div>
+                        </ng-container>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!--world Jusbid-->
+        <section class="World-jusbid mt-5">
+            <div class="container front-new">
+                <h1 class="sub-world"><b>Experience the World of Jusbid</b></h1>
+                <h5 class="sub-title">I do old man things by default, just stay in the hotel room, eat meal, and drink
+                    tea.
+                </h5>
+                <div class="row">
+                    <div class="col-lg-6 mb-3" *ngFor="let i of blogPost;">
+                        <div class="shadow-sm" (click)="show_SingleBlog(i.link)">
+                            <div class="Head_line_fiexd">
+                                <div [innerHtml]="sortDesc(i.title.rendered,60)" class="head_line_tittle">
+                                </div>
+                            </div>
+                            <img [src]="i.yoast_head_json.og_image[0].url" class="card-img-top" />
+                            <div class="">
+                                <div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!--Poster Jusbid-->
+        <section>
+            <div class="Experience-jusbid-poster">
+                <div class="container jusbid-poster">
+                    <div class="poster">
+                        <img src="https://cdn.animaapp.com/projects/602bb6c06d47e4257493fc78/releases/61b9c78091d9876e7896366a/img/dino-reichmuth-a5rcn8626ck-unsplash-1@1x.png"
+                            alt="">
+                        <h1 class="sub-title">Experience the<br> World of Jusbid</h1>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!--QuestionAnswer-->
+        <section>
+            <div class="questionanswer-jusbid">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="question-jusbid">
+                                <p class="question-jusbid-q">Q. How to book a hotel online with Jusbid?</p>
+                                <p class="question-jusbid-a">A. Booking a hotel online is easy through MakeMyTrip. All
+                                    you
+                                    need
+                                    to do first is to download our
+                                    app on your Android or iOS device or simply use your computer. On the app, tap on
+                                    the
+                                    Hotels
+                                    section on the top left corner and enter the details of the city, the area or the
+                                    hotel.
+                                    Fill out
+                                    the
+                                    check-in and check-out dates, along with the other details and tap Search. Use the
+                                    Sort
+                                    &
+                                    Filter options so that you can book one as per your convenience. You can also choose
+                                    hotels
+                                    according to user reviews and ratings. The same follows on our site.</p>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="question-jusbid">
+                                <p class="question-jusbid-q">Q. How to book a hotel online with Jusbid?</p>
+                                <p class="question-jusbid-a">A. Booking a hotel online is easy through MakeMyTrip. All
+                                    you
+                                    need
+                                    to do first is to download our
+                                    app on your Android or iOS device or simply use your computer. On the app, tap on
+                                    the
+                                    Hotels
+                                    section on the top left corner and enter the details of the city, the area or the
+                                    hotel.
+                                    Fill out
+                                    the
+                                    check-in and check-out dates, along with the other details and tap Search. Use the
+                                    Sort
+                                    &
+                                    Filter options so that you can book one as per your convenience. You can also choose
+                                    hotels
+                                    according to user reviews and ratings. The same follows on our site.</p>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="question-jusbid">
+                                <p class="question-jusbid-q">Q. How to book a hotel online with Jusbid?</p>
+                                <p class="question-jusbid-a">A. Booking a hotel online is easy through MakeMyTrip. All
+                                    you
+                                    need
+                                    to do first is to download our
+                                    app on your Android or iOS device or simply use your computer. On the app, tap on
+                                    the
+                                    Hotels
+                                    section on the top left corner and enter the details of the city, the area or the
+                                    hotel.
+                                    Fill out
+                                    the
+                                    check-in and check-out dates, along with the other details and tap Search. Use the
+                                    Sort
+                                    &
+                                    Filter options so that you can book one as per your convenience. You can also choose
+                                    hotels
+                                    according to user reviews and ratings. The same follows on our site.</p>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="question-jusbid">
+                                <p class="question-jusbid-q">Q. How to book a hotel online with Jusbid?</p>
+                                <p class="question-jusbid-a">A. Booking a hotel online is easy through MakeMyTrip. All
+                                    you
+                                    need
+                                    to do first is to download our
+                                    app on your Android or iOS device or simply use your computer. On the app, tap on
+                                    the
+                                    Hotels
+                                    section on the top left corner and enter the details of the city, the area or the
+                                    hotel.
+                                    Fill out
+                                    the
+                                    check-in and check-out dates, along with the other details and tap Search. Use the
+                                    Sort
+                                    &
+                                    Filter options so that you can book one as per your convenience. You can also choose
+                                    hotels
+                                    according to user reviews and ratings. The same follows on our site.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </section>
+</ng-container>
+
+
+
+<ng-container *ngIf="isShow_SingleBlog">
+    <app-jusbid-single-blog [link]="iframeLink"></app-jusbid-single-blog>
+</ng-container>
+
+<app-footer></app-footer>

@@ -1,0 +1,13 @@
+
+.rating {
+  padding-top: 5px;
+  padding-left: 9px;
+}
+a {
+  color: #ffa500fa;
+}
+@media (max-width: 426px) {
+  a {
+    font-size: 12px;
+  }
+}

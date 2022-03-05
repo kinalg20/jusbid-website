@@ -1,0 +1,38 @@
+.app_body{
+    background: #fff;
+   
+}
+.flight_listing_section{
+    flex-direction: column-reverse;
+    margin-top: 20px;
+    .card_list{
+        margin-top: 20px;
+    }
+    .flight_booking_Search{
+        display: block;
+    }
+}
+@media (max-width: 1199px) {
+    .flight_listing_section{
+        .flight_boking{
+            display: none;
+        }
+        .flight_booking_Search{
+            display: none;
+        }
+    }
+}
+@media (max-width: 767px) {
+    .flight_listing_section{
+        .card_list{
+            margin-top: 40px;
+        }
+    }
+}
+@media (max-width: 750px) {
+    .flight_listing_section{
+        .card_list{
+            margin-top: 135px;
+        }
+    }
+}

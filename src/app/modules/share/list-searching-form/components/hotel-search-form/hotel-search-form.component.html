@@ -1,0 +1,125 @@
+<form #getHotelSearchForm="ngForm" (submit)="onSearchHotels(getHotelSearchForm)">
+    <div class="top-form">
+        <div class="top-sm-form">
+            <div class="grid-container">
+                <div class="form-group banner-form searchcity">
+                    <span class="input-top-holder">
+                        <span>Where</span>
+                    </span>
+                    <div class="form-group banner-form searchcity ">
+                        <span class="input-top-holder">
+                            <span>Where </span>
+                        </span>
+                        <div class="location-icon">
+                            <span class="icons">
+                                <img src="/assets/images/svg_Icons/Icon awesome-location-arrow.svg" />
+                            </span>
+                        </div>
+                        <input #searchInput ngx-google-places-autocomplete #placesRef="ngx-places"
+                            (onAddressChange)="handleAddressChange($event)" class="form-control" name="city" type="text"
+                            id="inputCity" placeholder="Search by Area or Landmark" [title]="geoCity"
+                            [(ngModel)]="geoAddress" required autocapitalize="off" autofocus="off" />
+                    </div>
+                </div>
+                <div class="form-group banner-form">
+                    <span class="input-top-holder">
+                        <span>When & Return</span>
+                    </span>
+                    <div class="calendar-icon">
+                        <span class="icons">
+                            <img src="/assets/images/svg_Icons/Group 127.svg" width="20px" />
+                        </span>
+                    </div>
+                    <input name="date_range" type="text" class="form-control daterange" id="inputCheckOut"
+                        autocomplete="off" bsDaterangepicker [minDate]="check_in_date"
+                        placeholder="{{check_in_date | date:'dd/MM/yyy'}} - {{check_out_date | date:'dd/MM/yyy'}}"
+                        [bsConfig]="{isAnimated: true, rangeInputFormat : 'DD/MM/YYYY', showWeekNumbers: false, dateInputFormat: 'DD/MM/YYYY'}"
+                        [(ngModel)]="bsRangeValue" onKeyPress="if(this.value.length>=0) return false">
+
+                </div>
+                <div class="form-group banner-form" style="color: #222 !important;">
+                    <div class="guestRoomPicker">
+                        <span class="input-top-holder">
+                            <span>Rooms & Guests</span>
+                        </span>
+                        <div class="room-icon">
+                            <span class="icons">
+                                <img src="/assets/images/svg_Icons/Group 183.svg" width="15px" />
+                            </span>
+                        </div>
+                        <div class="form-control " (click)="showAddRoom($event)" #toggleButton>
+                            <span class="showRoom" [ngClass]="GuestCount>1 ? 'select':''">{{
+                                GuestCount }}
+                                Guests in {{roomsSelector.length}}
+                                Rooms</span>
+                        </div>
+                        <input name="rooms" type="hidden" class="form-control" id="inputGuest" placeholder="Rooms"
+                            [value]="roomsSelector.length" [(ngModel)]="roomsSelector.length">
+                        <input type="hidden" name="guest_no" [value]="GuestCount" [(ngModel)]="GuestCount">
+                        <div class="guestRoomPickerPopUp" *ngIf="show_room" #menu>
+                            <div class="guestRoomPickerPopUp__headingRow">
+                                <div class="guestRoomPickerPopUp__heading">
+                                    Rooms
+                                </div>
+                                <div class="guestRoomPickerPopUp__heading">
+                                    Guests
+                                </div>
+                            </div>
+                            <div class="guestRoomPickerPopUp__roomsRow">
+                                <ng-container *ngFor="let room of roomsSelector; index as i">
+                                    <div class="guestRoomPickerPopUp__roomTable border-bottom">
+                                        <div class="w-100 select_room">
+                                            <div class="row align-center">
+                                                <div class="col-md-5">
+                                                    <div class="">
+                                                        <span
+                                                            class="guestRoomPickerPopUp__roomCount u-displayBlock">Room
+                                                            {{room.id}}</span>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-7">
+                                                    <div class="wrapper">
+                                                        <button type="button" class="btn btn-light border"
+                                                            (click)="descreseGuest(i)">-</button>
+                                                        <span>{{room.total_guest}}</span>
+                                                        <button type="button" class="btn btn-light border"
+                                                            (click)="increaseGuest(i)">+</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </ng-container>
+                            </div>
+                            <div class="guestRoomPickerPopUp__headingRow">
+                                <div class="guestRoomPickerPopUp__heading cursor-pointer" (click)="removeRoom()"
+                                    [ngClass]="(this.roomsSelector.length>1)?'':'text-muted cursor-default'">
+                                    Delete Room
+                                </div>
+                                <div class="guestRoomPickerPopUp__heading cursor-pointer" (click)="addRoom()"
+                                    [ngClass]="(this.roomsSelector.length<6)?'':'text-muted cursor-default'">
+                                    Add Room</div>
+                            </div>
+                            <div>
+                                <button type="button" class="btn btn-primary btn-sm" style="padding: 12px 0;"
+                                    (click)="show_room=!show_room">Done</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <!-- added parent div to put mouseenter event -->
+                <div (mouseenter)='selectFirstEntry(searchInput)'>
+                    <button type="submit" class="btn btn-primary tm-btn-search mobile-width-full rounded"
+                        [disabled]="!geoAddress">
+                        Let's go place
+                    </button>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+</form>

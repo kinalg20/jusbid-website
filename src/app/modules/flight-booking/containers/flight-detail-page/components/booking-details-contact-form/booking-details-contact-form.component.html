@@ -1,0 +1,34 @@
+<form #contactForm="ngForm">
+    <div class="row row-cols-2 row-cols-lg-3 py-4">
+
+        <div class="col" style="display: flex;align-items: center;">
+            <div class="Text">
+                <label for="countryCode" class="input_label">Country Code</label>
+                <select name="countryCode" id="countryCode" class='input_box' [(ngModel)]="countryCode"
+                    (change)="getCountryCode($event)"
+                    style="border-top-right-radius: 0;border-bottom-right-radius: 0; padding: 8px;border-right: none;min-width: 70px;"
+                    required>
+                    <option value="91" selected>+91</option>
+                    <option value="92">+92</option>
+                    <option value="93">+93</option>
+                </select>
+            </div>
+            <div class="Text">
+                <label for="mobile" class="input_label">Phone Number</label>
+                <input type="number" id="mobile" class='input_box' name="mobile" [(ngModel)]="mobileNumber"
+                    style="border-top-left-radius: 0;border-bottom-left-radius: 0;" required onKeyPress="if(this.value.length>=10) return false"
+                    (input)="getMobileNumber($event)">
+            </div>
+        </div>
+
+        <div class="col">
+            <div class="Text">
+                <label for="email" class="input_label">Email </label>
+                <input type="email" id="email" name="email" class='input_box' [(ngModel)]="emailAddress" required
+                    (input)="getEmailAddress($event)" onKeyPress="if(this.value.length>=80) return false">
+                </div>
+                <small class="text-danger" *ngIf="!this.commonService.validateEmail(emailAddress) && emailAddress != ''">Email not valid</small>
+        </div>
+
+    </div>
+</form>

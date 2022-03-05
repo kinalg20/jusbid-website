@@ -1,0 +1,53 @@
+<form #gstForm="ngForm">
+    <div class="row row-cols-2 row-cols-lg-3 py-4">
+
+        <div class="col mb-2">
+            <div class="Text">
+                <label for="street" class="input_label">Street</label>
+                <input type="text" id="street" class='input_box' name="street" [(ngModel)]="street"
+                    (input)="getStreet($event)" required>
+            </div>
+        </div>
+        <div class="col mb-2">
+            <div class="Text">
+                <label for="state" class="input_label">State</label>
+                <select name="state" id="state" class='input_box p-2' [(ngModel)]="state" (change)="getStateName($event)" required>
+                    <ng-container *ngFor="let state of statesList;">
+                        <option [value]="state.code" selected>{{state.name}}</option>
+                    </ng-container>
+                </select>
+            </div>
+        </div>
+        <div class="col mb-2">
+            <div class="Text">
+                <label for="city" class="input_label">City</label>
+                <select name="city" id="city" class='input_box p-2' [(ngModel)]="city" (change)="getCity($event)" required>
+                    <ng-container *ngIf="citiesList.length===0">
+                        <option [value]="city" disabled>{{city}}</option>
+                    </ng-container>
+                    <ng-container *ngFor="let city of citiesList;">
+                        <option [value]="city" selected>{{city}}</option>
+                    </ng-container>
+                </select>
+            </div>
+        </div>
+        <div class="col mb-2">
+            <div class="Text">
+                <label for="PostalCode" class="input_label">Postal Code</label>
+                <input type="text" id="PostalCode" class='input_box' name="PostalCode" [(ngModel)]="PostalCode"
+                    (input)="getPostalCode($event)" required>
+            </div>
+        </div>
+
+        <div class="col mb-2">
+            <div class="Text">
+                <label for="country" class="input_label">Country</label>
+                <select name="country" id="country" class='input_box p-2' [(ngModel)]="country"
+                    (change)="getCountry($event)" required>
+                    <option value="INDIA" selected>India</option>
+                </select>
+            </div>
+        </div>
+
+    </div>
+</form>

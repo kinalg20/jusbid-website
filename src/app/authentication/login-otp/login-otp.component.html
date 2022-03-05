@@ -1,0 +1,106 @@
+<!-- Logo  -->
+<div class="header d-md-block d-none">
+    <nav class="navbar sticky-top">
+        <img src="https://storage.googleapis.com/jusbid_cloud_storage/assets/images/logos/Jusbid_logo.png"
+            routerLink="/" alt="">
+    </nav>
+</div>
+
+<!-- auth page -->
+<div class="auth_page">
+    <div class="login">
+        <div class="container-fluid">
+            <div class="login_body">
+                <div class="row">
+                    <div class="col-12 col-sm-0 col-md-6 col-xl-7">
+                        <div class="login_container">
+                            <div class="loginFrom">
+                                <h2 class="login_title"><span class="sub_title">Welcome to</span> JusBid</h2>
+                                <p class="title">Find the most affordable hotels and flights through the
+                                    JusBid and get the most suitable
+                                    accommodation for your vacation & work.
+                                </p>
+                                <p class="stay_connected">
+                                    To find budget hotels, Stay connected with us!
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 mx-md-auto col-md-6 col-xl-4">
+                        <div class="gap">
+                            <div class="form_card">
+                                <div class="glass-login">
+                                    <section class="otplogin">
+                                        <h5 class="auth_form_title">Please Login</h5>
+                                        <section *ngIf="!sendOTP">
+                                            <div class="form-field">
+                                                <form #myForm="ngForm">
+                                                    <div class="form-group">
+                                                        <label for="mobile" class="form-label">
+                                                            Please enter your phone number to continue
+                                                        </label>
+                                                        <input class="form-control" autocomplete="off" id="mobile"
+                                                            required [(ngModel)]="reqPhoneNo" name="mobile"
+                                                            maxlength="10" (input)="enableButton($event)"
+                                                            (keydown)="this._utilsService.inputMobile($event)" />
+                                                    </div>
+
+                                                    <button type="submit" [disabled]="disableMobile"
+                                                        class="btn btn-primary btn-block"
+                                                        (click)="loginWithPhoneNumber()">
+                                                        SEND OTP
+                                                    </button>
+                                                </form>
+                                            </div>
+                                        </section>
+                                        <section *ngIf="sendOTP">
+                                            <!-- sendOTP -->
+                                            <div class="form-group" *ngIf="false">
+                                                <label for="otp" class="mb-2">
+                                                    <b>We have sent a OTP to you at +91-{{ reqPhoneNo }}</b>
+                                                </label>
+                                                <ng-otp-input (onInputChange)="onOtpChange($event)"
+                                                    [config]="{ length: 6 }">
+                                                </ng-otp-input>
+                                            </div>
+
+                                            <div class="form-field">
+                                                <label for="mobile" class="form-label">We have sent a OTP to you at
+                                                    +91-{{
+                                                    reqPhoneNo }}
+                                                    <a class="text-primary" style="font-weight: 800"
+                                                        (click)="sendOTP = !sendOTP">Edit</a>
+                                                </label>
+                                                <ng-otp-input (onInputChange)="onOtpChange($event)"
+                                                    [config]="{ length: 6 }">
+                                                </ng-otp-input>
+                                            </div>
+
+                                            <div class="my-4">
+                                                <a class="text-primary" (click)="loginWithPhoneNumber()">Resend OTP?</a>
+                                            </div>
+                                            
+                                            <button type="button" class="btn btn-primary btn-block"
+                                                (click)="verifyOTP()">
+                                                VERIFY
+                                            </button>
+                                        </section>
+                                        <div class="text-center mt-4 usersignup" style="font-size: 14px">
+                                            <span>
+                                                Already have a account?
+                                                <a routerLink="/authentication" style="color: #007bff">Click here</a>
+                                            </span>
+                                        </div>
+                                    </section>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</div>

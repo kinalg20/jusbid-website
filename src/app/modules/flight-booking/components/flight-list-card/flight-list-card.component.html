@@ -1,0 +1,103 @@
+<ng-container>
+    <div class="list_card_container" > 
+        <a (click)="goToDetailsPage(flightDetailObj)">
+        <div class="list_card" (click)="getData()">
+
+            <div class="flight_brnd ">
+                <img [src]="this.apiRequestService?.getAbsoluteImagePath(flightDetailObj?.airlines?.image)"
+                    class="img-fluid" alt="Airline Logo">
+                <span  class="flight_name">{{flightDetailObj?.airlines?.airline}}</span>
+            </div>
+            <div class="flight_details_section">
+                <div class="flight_details">
+                    <div class="from">
+                        <span class="city">{{flightDetailObj.indexFlight?.Origin}},
+                            {{getCityNameByIATA_Code(flightDetailObj.indexFlight?.Origin)}}</span>
+                        <span class="time">{{flightDetailObj.indexFlight?.DepartureTime | date:'HH:mm'}}
+                        </span>
+                        <div class="date">
+                            <div>{{flightDetailObj.indexFlight?.DepartureTime | date:'EE, dd MMM'}}</div>
+                        </div>
+                    </div>
+                    <div class="duration">
+                        <span
+                            class="duration_time">{{seconds_to_days_hours_mins_secs_str(flightDetailObj.indexFlight?.FlightTime)}}</span>
+                        <span class="flight_destination_line"><img src="assets/images/flg-destionation.png"
+                                alt=""></span>
+                        <span class="flight_speed">{{flightDetailObj?.customSegment.length-1 === 0 ? 'Non-Stop' :
+                            flightDetailObj?.customSegment.length-1+'-Stop'}}</span>
+                    </div>
+                    <div class="destination">
+                        <span class="city">{{flightDetailObj.indexFlight?.Destination}},
+                            {{getCityNameByIATA_Code(flightDetailObj.indexFlight?.Destination)}}</span>
+                        <span class="time">{{flightDetailObj.indexFlight?.ArrivalTime | date:'HH:mm'}}
+                        </span>
+                        <div class="date">
+                            <div>{{flightDetailObj.indexFlight?.ArrivalTime | date:'EE, dd MMM'}}</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="price_book_section">
+                    <div class="price_section">
+                        <div class="prices">
+                            <span class="Price_from">from</span>
+                            <span class="booking_price"> {{ getPrice(flightDetailObj.TotalPrice) | currency:'INR'
+                                }}</span>
+                        </div>
+                    </div>
+                    <div class="booking_btn">
+                        <a (click)="goToDetailsPage(flightDetailObj)" class="btn btn-primary btn-sm rounded ">Book</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </a>
+        <hr class="my-2">
+        <div class="more_details">
+            <div class="more_detail_header">
+                <a (click)="showDetails()" class="noselect">
+                    Flight Details
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width=".6rem" height=".6rem"
+                        class="ArrowDown__ArrowDownIcon-sc-1oyna77-0 iEeRnk">
+                        <path d="M16 25.6L0 10.237l4.575-3.838L16 17.924 27.425 6.399 32 10.237 16 25.6z" stroke="red"
+                            fill="none"></path>
+                    </svg>
+                </a>
+            </div>
+            <div class="header" *ngIf="showDetailsCard">
+                <div class="tabs-header">
+                    <ul class="d-flex justify-content-between ">
+                        <li class="tab">
+                            <a class="cursor-pointer" [ngClass]="active == 0?'active':''" (click)="tabChange(0)">
+                                Flight details</a>
+                        </li>
+                        <li class="tab">
+                            <a class="cursor-pointer " [ngClass]="active == 1?'active':''" (click)="tabChange(1)">
+                                Fare Summury </a>
+                        </li>
+                        <li class="tab">
+                            <a class="cursor-pointer" [ngClass]="active == 2?'active':''" (click)="tabChange(2)">
+                                Cancellation</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <ng-container *ngIf="active == 0">
+                    <ng-container *ngFor="let flightSegment of flightDetailObj?.customSegment">
+                        <flight-details [flightSegment]="flightSegment" [airLineData]="airLinesData"
+                            [bookingInfoObj]="flightDetailObj?.bookingInfoObj" [airPortsList]="airPortsList">
+                        </flight-details>
+                    </ng-container>
+                </ng-container>
+                <ng-container *ngIf="active == 2">
+                    <cancellation-policy [AirPricingInfo]="AirPricingInfo"></cancellation-policy>
+                </ng-container>
+                <ng-container *ngIf="active == 1">
+                    <fare-information [AirPricingInfo]="AirPricingInfo"></fare-information>
+                </ng-container>
+                <ng-container *ngIf="active == 3">
+                </ng-container>
+            </div>
+        </div>
+    </div>
+</ng-container>

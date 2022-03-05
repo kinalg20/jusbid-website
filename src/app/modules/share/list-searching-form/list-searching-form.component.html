@@ -1,0 +1,59 @@
+<section class="tm-main-content" id="top">
+    <div class="top_container_section">
+        <div class="tm-top-bar-bg"></div>
+        <ng-container *ngFor="let home of hometitle.slice(0,1);">
+            <div class="header-headings-section ">
+                <h1 class="heading-header-1">{{ home.title }}</h1>
+                <h3 class="heading-header-3">{{ home.text }}</h3>
+            </div>
+        </ng-container>
+        <div class="banner-section-pad">
+            <div style="position: relative;">
+                <div class="ie-container-width-fix-2 header-form-wrapper">
+                    <div class="container list-container">
+                        <div class=" ie-h-align-center-fix tm-bg-glass">
+                            <div class="row">
+                                <div class="col-lg-12 mx-auto search-form">
+
+                                    <hotel-search-form *ngIf="activeTab==='Hotel'"></hotel-search-form>
+                                    <flight-serach-form *ngIf="activeTab==='Flight'"></flight-serach-form>
+                                    <bid-from *ngIf="activeTab==='BidBudget'"></bid-from>
+
+                                    <hr class="d-xl-block d-none">
+                                    <div class="d-xl-block d-none">
+                                        <div class="cnt-search">
+                                            <div>
+                                                <p class="header-text" *ngIf="recent_search.city">Continue Your Search</p>
+                                                <p class="header-text" *ngIf="!recent_search.city"></p>
+                                            </div>
+                                            <div *ngIf="recent_search.city">
+                                                <button type="button" class="btn btn-outline-header border"
+                                                    (click)="searchHotelByRecentData()">
+                                                    {{recent_search.city}} - {{recent_search.guestNo}} Guests -
+                                                    {{recent_search.rooms}} Rooms
+                                                </button>
+                                            </div>
+                                            <div class="home-download-section">
+                                                <a target="_blank"
+                                                    href="https://play.google.com/store/apps/details?id=com.jusbiduser.rudrouserin">
+                                                    <img src="/assets/images/svg_Icons/play-store.svg" alt="">
+                                                </a>
+                                                <a target="_blank"
+                                                    href="https://apps.apple.com/in/app/jusbid/id1588715866">
+                                                    <img src="/assets/images/svg_Icons/app-store.svg" alt="">
+                                                </a>
+                                                <div class="my-auto">
+                                                    <p class="header-text">Download Mobile App</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

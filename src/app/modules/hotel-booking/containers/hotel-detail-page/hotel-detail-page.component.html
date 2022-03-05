@@ -1,0 +1,2401 @@
+<main-header [header]="''"></main-header>
+<div class="bid-fixed">
+  <h5 (click)="showBid(0)">
+    Jusbid
+    <i class="fa fa-gavel"></i>
+  </h5>
+</div>
+<section class="hotel-detail mt-md-4">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-xl-10 col-lg-11 col-md-12 mx-auto p-0">
+        <div class="list_l">
+          <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item" aria-current="page">
+                <a
+                  routerLink=""
+                  class="text-muted"
+                  style="text-decoration: none"
+                >
+                  <i class="fa fa-home" aria-hidden="true"></i>
+                  Home
+                </a>
+              </li>
+              <li class="breadcrumb-item active">
+                <a
+                  href="javascript: history.go(-1)"
+                  class="text-muted"
+                  style="text-decoration: none"
+                >
+                  <i class="fa fa-list" aria-hidden="true"></i> Listing
+                </a>
+              </li>
+              <li
+                class="breadcrumb-item active"
+                *ngIf="hoteldata.name || hoteldata.view_name"
+              >
+                <a class="text-dark" style="text-decoration: none">
+                  <i class="fas fa-hotel" aria-hidden="true"></i>
+                  {{
+                    hoteldata.view_name ? hoteldata.view_name : hoteldata.name
+                  }}
+                </a>
+              </li>
+            </ol>
+          </nav>
+          <div>
+            <button
+              type="button"
+              class="share_btn"
+              (click)="is_open_share_model = !is_open_share_model"
+            >
+              <i class="fa fa-share"></i>
+              <span class="mx-1">Share</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- {{shimmerLoad}} -->
+        <div class="row">
+          <div class="col-lg-6 col-md-12 p-0">
+            <div class="hotel-map">
+              <ng-container *ngIf="shimmerLoad">
+                <div class="large-image">
+                  <div class="largephoto shine"></div>
+                </div>
+              </ng-container>
+              <ng-container *ngIf="!shimmerLoad">
+                <div class="large-image d-xl-block d-lg-block">
+                  <ng-container *ngIf="currentHotelImg">
+                    <div class="image_animation">
+                      <img
+                        [src]="currentHotelImg"
+                        alt=""
+                        class=""
+                        (click)="openModal()"
+                      />
+                    </div>
+                  </ng-container>
+                  <ng-container *ngIf="!currentHotelImg && currentImg">
+                    <img [src]="currentImg" alt="" (click)="openModal()" />
+                  </ng-container>
+                </div>
+                <ng-container *ngIf="hoteldata.threesixty_view">
+                  <div
+                    class="large-image d-none d-xl-none d-lg-none"
+                    *ngIf="image_show"
+                  >
+                    <img [src]="currentHotelImg" alt="" />
+                    <i
+                      class="fa fa-map-marker"
+                      (click)="showMap()"
+                      alt=""
+                      title="Show Map"
+                    ></i>
+                  </div>
+                  <div *ngIf="!image_show" class="d-none d-xl-none d-lg-none">
+                    <iframe
+                      [src]="hoteldata.threesixty_view | iframe"
+                      width="100%"
+                      height="620"
+                      frameborder="0"
+                      style="border: none"
+                      allowfullscreen=""
+                      aria-hidden="false"
+                      tabindex="0"
+                    ></iframe>
+                  </div>
+                </ng-container>
+                <ng-container *ngIf="!hoteldata.threesixty_view">
+                  <div
+                    class="large-image d-none d-xl-none d-lg-none"
+                    *ngIf="!image_show && currentImg"
+                  >
+                    <img [src]="currentImg" alt="" />
+                  </div>
+                  <div
+                    class="large-image d-none d-xl-block d-lg-block"
+                    *ngIf="image_show && currentHotelImg"
+                  >
+                    <img [src]="currentHotelImg" alt="" />
+                  </div>
+                </ng-container>
+              </ng-container>
+            </div>
+          </div>
+          <div class="col-lg-6 col-md-12 p-0 small-images">
+            <div class="row row-cols-4 row-cols-md-4 row-cols-lg-2">
+              <ng-container *ngIf="shimmerLoad">
+                <ng-container *ngFor="let in of [0, 1, 2, 3]">
+                  <div class="col p-0 hotel_overflow">
+                    <div class="hotel-image">
+                      <div class="hotel_show_more">
+                        <div class="photo shine"></div>
+                      </div>
+                    </div>
+                  </div>
+                </ng-container>
+              </ng-container>
+              <ng-container *ngIf="!shimmerLoad">
+                <ng-container
+                  *ngFor="
+                    let image of hotel_category_images?.slice(1, 5);
+                    index as i
+                  "
+                >
+                  <div class="col p-0 hotel_overflow">
+                    <div class="hotel-image">
+                      <div class="hotel_show_more" *ngIf="image.name != 'Logo'">
+                        <img
+                          [src]="apiBaseURL + image.min_path"
+                          onError="this.src='assets/images/dummy.jpg'"
+                          alt=""
+                          class="hotel_small_img"
+                          (click)="showImage(apiBaseURL + image.path)"
+                          (click)="openModal()"
+                        />
+                        <span
+                          (click)="openModal()"
+                          *ngIf="hotel_category_images.length > 4"
+                          >Show More</span
+                        >
+                      </div>
+                    </div>
+                  </div>
+                </ng-container>
+              </ng-container>
+            </div>
+            <!-- Button trigger modal -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="detail-view">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-xl-10 col-lg-11 col-md-12 mx-auto p-0">
+        <div class="row">
+          <div class="col-xl-8 col-lg-7">
+            <div class="detail-view-left">
+              <div
+                class="detail-head"
+                [ngClass]="fixedName ? 'fixed_name' : ''"
+              >
+                <ng-container *ngIf="shimmerLoad">
+                  <div class="lines shine"></div>
+                  <div class="lines shine"></div>
+                  <div class="lines shine"></div>
+                </ng-container>
+                <ng-container *ngIf="!shimmerLoad">
+                  <h1
+                    style="
+                      text-transform: capitalize !important;
+                      margin-bottom: 0px;
+                      font-weight: bold;
+                    "
+                  >
+                    {{
+                      hoteldata.view_name ? hoteldata.view_name : hoteldata.name
+                    }}
+                  </h1>
+                  <p class="address">
+                    <i class="fa fa-map-marker" aria-hidden="true"></i>
+                    <!-- <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30"
+                                            fill="currentColor" class="bi bi-geo-alt" viewBox="0 0 16 16">
+                                            <path
+                                                d="M12.166 8.94c-.524 1.062-1.234 2.12-1.96 3.07A31.493 31.493 0 0 1 8 14.58a31.481 31.481 0 0 1-2.206-2.57c-.726-.95-1.436-2.008-1.96-3.07C3.304 7.867 3 6.862 3 6a5 5 0 0 1 10 0c0 .862-.305 1.867-.834 2.94zM8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10z" />
+                                            <path
+                                                d="M8 8a2 2 0 1 1 0-4 2 2 0 0 1 0 4zm0 1a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" />
+                                        </svg> -->
+
+                    <!-- {{ hoteldata.landmark }}, {{ hoteldata.area }}, {{ hoteldata.city }} -->
+
+                    {{
+                      getHotelfullAddress(
+                        hoteldata.landmark,
+                        hoteldata.street,
+                        hoteldata.area,
+                        hoteldata.city,
+                        hoteldata.state,
+                        hoteldata.zip,
+                        hoteldata.country
+                      )
+                    }}
+                    <!-- {{getHotelfullAddress('landmark', 'street', 'area', 'city', 'state', 'zipCode', 'country')}} -->
+                  </p>
+                  <p class="">
+                    <span class="rating mb-4" *ngIf="hoteldata.rating">
+                      <rating [ratingNumber]="hoteldata.rating"></rating>
+                    </span>
+                    <!-- <span class="mx-2"> 78 reviews</span> -->
+                  </p>
+                </ng-container>
+              </div>
+
+              <!-- Description -->
+              <section class="detail_section" *ngIf="hoteldata.description">
+                <div class="section_header">
+                  <h4 class="section_heading text-color">Description</h4>
+                  <hr />
+                </div>
+                <div class="section_body">
+                  <ng-container *ngIf="shimmerLoad">
+                    <div class="lines shine"></div>
+                  </ng-container>
+                  <ng-container *ngIf="!shimmerLoad">
+                    <div *ngIf="descType != 'description'" class="description">
+                      <div
+                        [innerHtml]="sortDesc(hoteldata.description, 500)"
+                        *ngIf="hoteldata.description"
+                        class="desc"
+                      >
+                        <!-- [innerHtml]="hoteldata.description.slice(0, hotelDescription<200?hotelDescription+(hoteldata.description.length-hotelDescription):200+(hoteldata.description.length-hotelDescription))" -->
+                      </div>
+                      <div *ngIf="!hoteldata.description">NA</div>
+                    </div>
+                    <div *ngIf="descType == 'description'" class="description">
+                      <div
+                        [innerHtml]="hoteldata.description"
+                        *ngIf="hoteldata.description"
+                        class="desc"
+                      ></div>
+                      <div *ngIf="!hoteldata.description">NA</div>
+                    </div>
+                    <ng-container *ngIf="hoteldata.description">
+                      <a
+                        class="text-primary cursor-pointer"
+                        *ngIf="
+                          descType != 'description' &&
+                          hoteldata.description.length > 500
+                        "
+                        (click)="showMoreDesc('description')"
+                        >More</a
+                      >
+                      <a
+                        class="text-primary cursor-pointer"
+                        *ngIf="descType == 'description'"
+                        (click)="showMoreDesc('')"
+                        >Less</a
+                      >
+                    </ng-container>
+                  </ng-container>
+                </div>
+              </section>
+
+              <!-- Hotel Amenties -->
+              <section class="detail_section" *ngIf="hotelamenities.length > 0">
+                <div class="section_header">
+                  <h4 class="section_heading text-color">Amenities</h4>
+                  <hr />
+                </div>
+                <div class="section_body amenties sub-head">
+                  <ng-container *ngIf="shimmerLoad">
+                    <div class="amenties-img shine"></div>
+                  </ng-container>
+                  <ng-container *ngIf="!shimmerLoad">
+                    <div
+                      class="row row-cols-2 row-cols-sm-2 row-cols-md-4 mt-4 amenities-list-section"
+                      *ngIf="hotel_amenities.length > 0"
+                    >
+                      <ng-container *ngIf="showAmenities; else showAll">
+                        <ng-container
+                          *ngFor="let amenities of hotel_amenities?.slice(0, 7)"
+                        >
+                          <div class="col">
+                            <div class="amenties-list">
+                              <img [src]="apiBaseURL + amenities.icon" alt="" />
+                              <p>{{ amenities.name }}</p>
+                            </div>
+                          </div>
+                        </ng-container>
+                      </ng-container>
+                      <ng-template #showAll>
+                        <ng-container *ngFor="let amenities of hotel_amenities">
+                          <div class="col">
+                            <div class="amenties-list">
+                              <img [src]="apiBaseURL + amenities.icon" alt="" />
+                              <p>{{ amenities.name }}</p>
+                            </div>
+                          </div>
+                        </ng-container>
+                      </ng-template>
+                      <div
+                        class="col Show-more-section"
+                        *ngIf="hotel_amenities.length > 7"
+                      >
+                        <button class="show-more btn" (click)="showMore()">
+                          {{ showAmenityText }}
+                        </button>
+                      </div>
+                    </div>
+                    <div *ngIf="hotel_amenities.length == 0">NA</div>
+                  </ng-container>
+                </div>
+              </section>
+
+              <!-- Room Category -->
+              <section class="detail_section room-category">
+                <div class="section_header sub-head">
+                  <h4 class="section_heading text-color">Choose your room</h4>
+                  <hr />
+                </div>
+                <div class="section_body">
+                  <owl-carousel-o
+                    [options]="categoryOptions"
+                    class="room-category-slider"
+                  >
+                    <ng-container *ngIf="shimmerLoad">
+                      <ng-container *ngFor="let in of [0, 1, 2]">
+                        <ng-template carouselSlide>
+                          <div class="listing-box cursor-pointer">
+                            <div class="listing-box-image">
+                              <div class="box shine"></div>
+                            </div>
+                            <div class="listing-box-details">
+                              <div class="listing-box-head">
+                                <div class="lines shine"></div>
+                              </div>
+                            </div>
+                            <div class="detailbox shine"></div>
+                            <div class="listing-box-bottom">
+                              <div class="lines shine"></div>
+                              <div class="lines shine"></div>
+                            </div>
+                          </div>
+                        </ng-template>
+                      </ng-container>
+                    </ng-container>
+                    <ng-container *ngIf="!shimmerLoad">
+                      <ng-container
+                        *ngFor="let listing of hotel_rooms; index as i"
+                      >
+                        <ng-template carouselSlide>
+                          <!-- <div [ngClass]="recent_bidding.hotel_id == hotel_id?'my-disable':''"> -->
+                          <!--<div class="disabled-background"></div> -->
+                          <div
+                            class="listing-box cursor-pointer"
+                            (click)="getSelectedRoomForBidding(listing, i)"
+                          >
+                            <div class="listing-box-list">
+                              <div class="listing-box-image">
+                                <p class="p-card-top" *ngIf="listing.downfall">
+                                  Save {{ listing.downfall }} %
+                                </p>
+                                <div>
+                                  <ng-container *ngIf="listing.image">
+                                    <div class="overlay"></div>
+                                    <img
+                                      [src]="apiBaseURL + listing.min_path"
+                                      onError="this.src='assets/images/dummy.jpg'"
+                                      alt=""
+                                    />
+                                  </ng-container>
+                                  <ng-container *ngIf="!listing.image">
+                                    <div class="overlay"></div>
+                                    <img src="assets/images/dummy.jpg" alt="" />
+                                  </ng-container>
+                                </div>
+
+                                <div
+                                  style="
+                                    position: absolute;
+                                    bottom: 15px;
+                                    right: 15px;
+                                    z-index: 3;
+                                    background: rgba(0, 0, 0, 0.5);
+                                    border-radius: 100%;
+                                    padding: 10px;
+                                  "
+                                  (click)="roomSlider(listing.room_images)"
+                                >
+                                  <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    width="16"
+                                    height="13"
+                                    viewBox="0 0 16 13"
+                                  >
+                                    <path
+                                      fill="white"
+                                      fill-rule="evenodd"
+                                      d="M1.016.467h14.48c.267 0 .483.207.483.463v10.978c0 .256-.216.678-.483.678H1.016c-.266 0-.483-.422-.483-.678V.93c0-.256.217-.463.483-.463zm.483 8.984v2.142h9.025L5.183 6.096a.404.404 0 00-.295-.128.403.403 0 00-.291.135L1.499 9.45zm9.653-2.494c-1.065 0-1.93-.832-1.93-1.855 0-1.022.865-1.854 1.93-1.854s1.931.832 1.931 1.854c0 1.023-.866 1.855-1.93 1.855zm0-2.782c-.532 0-.965.417-.965.927 0 .511.433.928.965.928s.966-.417.966-.928c0-.51-.434-.927-.966-.927zm3.862 7.418v-10.2H1.499v6.662l2.376-2.568a1.374 1.374 0 011.001-.446c.385-.004.744.146 1.013.423l5.955 6.129h3.17z"
+                                    ></path>
+                                  </svg>
+                                </div>
+                                <div
+                                  style="
+                                    position: absolute;
+                                    top: 15px;
+                                    left: 15px;
+                                    z-index: 3;
+                                  "
+                                  *ngIf="i == categoryActive"
+                                >
+                                  <img
+                                    src="assets/images/icons/success_icon.png"
+                                    style="width: 35px; height: 35px"
+                                    alt=""
+                                  />
+                                </div>
+                                <ng-container
+                                  *ngIf="listing.room_images.length > 0"
+                                >
+                                  <div
+                                    style="
+                                      position: absolute;
+                                      top: -20px;
+                                      right: 15px;
+                                      z-index: 3;
+                                      background-color: white;
+                                      border-bottom-left-radius: 5px;
+                                      border-bottom-right-radius: 5px;
+                                    "
+                                  >
+                                    <div class="listing-box-bottom">
+                                      <h3>
+                                        &#x20B9;
+                                        <span>{{
+                                          listing.price.toLocaleString()
+                                        }}</span>
+                                      </h3>
+                                      <p>Per Room Per Night</p>
+                                    </div>
+                                  </div>
+                                </ng-container>
+                              </div>
+                            </div>
+
+                            <div class="listing-box-details">
+                              <div class="listing-box-head">
+                                <h4>{{ listing.room_type }}</h4>
+                                <span *ngIf="listing.rating"
+                                  ><i class="fa fa-star"></i>
+                                  {{ listing.rating }}</span
+                                >
+                              </div>
+                            </div>
+
+                            <div class="listing-room-details">
+                              <!-- <div class="listing-room-details-item"> -->
+                              <p class="m-0" style="color: black">
+                                Room Size:
+                                <b
+                                  >{{
+                                    listing.size.split("*")[0] *
+                                      listing.size.split("*")[1]
+                                  }}sqft</b
+                                >
+                              </p>
+                              <p class="m-0" *ngIf="listing.bed_size">
+                                Bed Size:
+                                <b>{{ listing.bed_size }}</b>
+                              </p>
+                              <!-- </div> -->
+                              <div
+                                class="listing-room-details-item"
+                                style="color: black"
+                              >
+                                <p class="m-0">
+                                  Complimentary: <b>Breakfast</b>
+                                </p>
+                              </div>
+                            </div>
+
+                            <div class="listing-amenities-details">
+                              <ng-container
+                                *ngIf="listing.amenityObj.length > 0"
+                              >
+                                <div
+                                  class="row row-cols-5 row-cols-sm-5 row-cols-md-5 align-center"
+                                >
+                                  <ng-container
+                                    *ngFor="
+                                      let amenities of listing.amenityObj.slice(
+                                        0,
+                                        5
+                                      )
+                                    "
+                                  >
+                                    <div class="col my-auto">
+                                      <div
+                                        class="amenties-list cursor-pointer"
+                                        [title]="amenities.name"
+                                      >
+                                        <img
+                                          [src]="apiBaseURL + amenities.icon"
+                                          onError="this.src='assets/images/noimage.png';"
+                                          alt=""
+                                          style="filter: opacity(1)"
+                                        />
+                                      </div>
+                                    </div>
+                                  </ng-container>
+                                </div>
+                              </ng-container>
+                            </div>
+                            <div class="listing-room-available-details">
+                              <p class="m-0">
+                                <b
+                                  >{{ listing.quantity }} Room Available of this
+                                  Category</b
+                                >
+                              </p>
+                            </div>
+                          </div>
+                          <!-- </div> -->
+                        </ng-template>
+                      </ng-container>
+                    </ng-container>
+                  </owl-carousel-o>
+
+                  <div class="card p-3 mt-4">
+                    <div *ngIf="cureentSelectedRoomDetails.description">
+                      <div class="sub-head mb-4">
+                        <h5 class="font-weight-bold text-color">
+                          Room Inclusions
+                        </h5>
+                        <hr />
+                      </div>
+                      <ng-container *ngIf="shimmerLoad">
+                        <div class="detailbox shine"></div>
+                      </ng-container>
+                      <ng-container *ngIf="!shimmerLoad">
+                        <div
+                          class="check-time"
+                          *ngIf="descType != 'inclusions'"
+                        >
+                          <div
+                            [innerHtml]="
+                              sortDesc(
+                                cureentSelectedRoomDetails.description,
+                                300
+                              )
+                            "
+                            *ngIf="cureentSelectedRoomDetails.description"
+                          ></div>
+                          <div *ngIf="!cureentSelectedRoomDetails.description">
+                            NA
+                          </div>
+                        </div>
+                        <div
+                          class="check-time"
+                          *ngIf="descType === 'inclusions'"
+                        >
+                          <div
+                            [innerHtml]="cureentSelectedRoomDetails.description"
+                            *ngIf="cureentSelectedRoomDetails.description"
+                          ></div>
+                          <div *ngIf="!cureentSelectedRoomDetails.description">
+                            NA
+                          </div>
+                        </div>
+
+                        <a
+                          class="text-primary cursor-pointer"
+                          *ngIf="
+                            descType != 'inclusions' &&
+                            cureentSelectedRoomDetails.description.length > 300
+                          "
+                          (click)="showMoreDesc('inclusions')"
+                          >More</a
+                        >
+                        <a
+                          class="text-primary cursor-pointer"
+                          *ngIf="descType == 'inclusions'"
+                          (click)="showMoreDesc('')"
+                          >Less</a
+                        >
+                      </ng-container>
+                    </div>
+                    <ng-container
+                      *ngIf="cureentSelectedRoomDetails.length != 0"
+                    >
+                      <div class="room-details">
+                        <div class="sub-head mb-4">
+                          <h5 class="font-weight-bold text-color">
+                            Room Amenties
+                          </h5>
+                          <hr />
+                        </div>
+                        <div
+                          class="row row-cols-2 row-cols-sm-2 row-cols-md-3 row-cols-lg-2 row-cols-xl-4 mb-4"
+                          *ngIf="cureentSelectedRoomAmenities.length > 0"
+                        >
+                          <ng-container *ngIf="showRoomAmenities; else showAll">
+                            <ng-container
+                              *ngFor="
+                                let amenities of cureentSelectedRoomAmenities.slice(
+                                  0,
+                                  7
+                                );
+                                index as i
+                              "
+                            >
+                              <div class="col">
+                                <div class="amenties-list">
+                                  <img
+                                    [src]="apiBaseURL + amenities.icon"
+                                    alt=""
+                                    style="filter: opacity(1)"
+                                  />
+                                  <p>{{ amenities.name }}</p>
+                                </div>
+                              </div>
+                            </ng-container>
+                          </ng-container>
+                          <ng-template #showAll>
+                            <ng-container
+                              *ngFor="
+                                let amenities of cureentSelectedRoomAmenities;
+                                index as i
+                              "
+                            >
+                              <div class="col">
+                                <div class="amenties-list">
+                                  <img
+                                    [src]="apiBaseURL + amenities.icon"
+                                    alt=""
+                                    style="filter: opacity(1)"
+                                  />
+                                  <p>{{ amenities.name }}</p>
+                                </div>
+                              </div>
+                            </ng-container>
+                          </ng-template>
+                          <ng-container
+                            *ngIf="cureentSelectedRoomAmenities.length > 7"
+                          >
+                            <div class="col Show-more-section">
+                              <button
+                                class="show-more btn"
+                                (click)="showRoomMore()"
+                              >
+                                {{ showRoomAmenityText }}
+                              </button>
+                            </div>
+                          </ng-container>
+                        </div>
+                        <div *ngIf="cureentSelectedRoomAmenities.length == 0">
+                          NA
+                        </div>
+                      </div>
+                    </ng-container>
+                    <ng-container *ngIf="cureentSelectedRoomViews.length > 0">
+                      <div class="room-details">
+                        <div class="sub-head mb-4">
+                          <h5 class="font-weight-bold text-color">
+                            Room Views
+                          </h5>
+                          <hr />
+                        </div>
+                        <ng-container *ngIf="shimmerLoad">
+                          <div class="detailbox shine"></div>
+                        </ng-container>
+                        <ng-container *ngIf="!shimmerLoad">
+                          <div
+                            class="row row-cols-2 row-cols-sm-2 row-cols-xl-5 row-cols-lg-3 row-cols-md-4 mb-4"
+                            *ngIf="cureentSelectedRoomViews.length > 0"
+                          >
+                            <ng-container
+                              *ngFor="
+                                let room_view of cureentSelectedRoomViews;
+                                index as i
+                              "
+                            >
+                              <div class="col p-0">
+                                <div class="view-list">
+                                  <p>★ {{ room_view }}</p>
+                                </div>
+                              </div>
+                            </ng-container>
+                          </div>
+                          <div *ngIf="cureentSelectedRoomViews.length == 0">
+                            NA
+                          </div>
+                        </ng-container>
+                      </div>
+                    </ng-container>
+                  </div>
+                </div>
+              </section>
+
+              <!-- Hotel Addons -->
+              <section class="detail_section" *ngIf="addonList.length > 0">
+                <div class="section_header">
+                  <h4 class="section_heading text-color">
+                    Enjoy Addons Sevices during your stay
+                  </h4>
+                  <hr />
+                </div>
+                <div class="section_body">
+                  <ng-container *ngIf="shimmerLoad">
+                    <div
+                      class="row row-cols-2 row-cols-sm-2 row-cols-md-3 row-cols-lg-2 row-cols-xl-4 mt-4"
+                    >
+                      <ng-container *ngFor="let in of [0, 1, 2, 3, 4, 5, 6, 7]">
+                        <div class="col mb-3">
+                          <div class="addonbox shine"></div>
+                        </div>
+                      </ng-container>
+                    </div>
+                  </ng-container>
+                  <ng-container *ngIf="!shimmerLoad">
+                    <div
+                      class="row row-cols-1 row-cols-sm-1 row-cols-md-1 row-cols-lg-1 row-cols-xl-3 mt-4"
+                      *ngIf="addonList.length > 0"
+                    >
+                      <ng-container *ngIf="showAddon; else showAll">
+                        <ng-container
+                          *ngFor="let addOn of addonList.slice(0, 7)"
+                        >
+                          <div class="col mb-3">
+                            <div class="card shadow-sm">
+                              <div class="enjoy_addoness">
+                                <div class="card_details">
+                                  <p class="m-0 addOnname">
+                                    <b>{{ addOn.name }}</b>
+                                  </p>
+                                  <p
+                                    class="m-0 description"
+                                    [title]="addOn.description"
+                                  >
+                                    {{ addOn.description.slice(0, 35)
+                                    }}{{
+                                      addOn.description.length > 35 ? "..." : ""
+                                    }}
+                                  </p>
+                                </div>
+                                <div class="Price">
+                                  <p class="m-0 price_name">Price</p>
+                                  <p class="price_number">
+                                    <b
+                                      ><span class="rupess">₹</span>
+                                      {{ addOn.price.toLocaleString() }}</b
+                                    >
+                                  </p>
+                                </div>
+                              </div>
+
+                              <!-- <span><b>₹{{addOn.price.toLocaleString()}}</b></span> -->
+                            </div>
+                          </div>
+                        </ng-container>
+                      </ng-container>
+                      <ng-template #showAll>
+                        <ng-container *ngFor="let addOn of addonList">
+                          <div class="col mb-3">
+                            <div class="card shadow-sm addon-card">
+                              <p class="m-0">
+                                <b>{{ addOn.name }}</b>
+                              </p>
+                              <p class="m-0">
+                                <small
+                                  >{{ addOn.description.slice(0, 35)
+                                  }}{{
+                                    addOn.description.length > 35 ? "..." : ""
+                                  }}</small
+                                >
+                              </p>
+                              <p>
+                                <b class="rupess"
+                                  >₹
+                                  <span>{{
+                                    addOn.price.toLocaleString()
+                                  }}</span></b
+                                >
+                              </p>
+                            </div>
+                          </div>
+                        </ng-container>
+                      </ng-template>
+                      <ng-container *ngIf="addonList.length > 7">
+                        <div class="col mb-3">
+                          <div
+                            class="card shadow-sm addon-card align-center"
+                            (click)="showAddonMore()"
+                            style="
+                              cursor: pointer;
+                              color: var(--primary);
+                              display: grid;
+                            "
+                          >
+                            <p class="text-center mb-0">{{ showAddonText }}</p>
+                          </div>
+                        </div>
+                        <!-- <div class="col">
+                                                    <button class="show-more btn" (click)="showAddonMore()">
+                                                        {{showAddonText}}
+                                                    </button>
+                                                </div> -->
+                      </ng-container>
+                      <!-- <ng-container *ngFor="let addOn of addonList;">
+                                                <div class="col mb-3">
+                                                    <div class="card shadow-sm addon-card">
+                                                        <p class="m-0"><b>{{ addOn.name }}</b></p>
+                                                        <p class="m-0"><small>{{addOn.description.slice(0,35)
+                                                                }}{{addOn.description.length>35?'...':''}}</small>
+                                                        </p>
+                                                        <span><b>₹{{addOn.price.toLocaleString()}}</b></span>
+                                                    </div>
+                                                </div>
+                                            </ng-container> -->
+                    </div>
+                    <div *ngIf="addonList.length == 0">NA</div>
+                  </ng-container>
+                </div>
+              </section>
+
+              <!-- Hotel Other Info -->
+              <ng-container
+                *ngFor="let info of hoteldata.HotelOtherInfo; index as i"
+              >
+                <section class="detail_section">
+                  <div class="section_header">
+                    <h4 class="section_heading text-color">{{ info.type }}</h4>
+                    <hr />
+                  </div>
+                  <div class="section_body">
+                    <div class="check-time" *ngIf="descType != info.type">
+                      <div
+                        [innerHtml]="sortDesc(info.content, 400)"
+                        *ngIf="info.content"
+                      ></div>
+                      <div *ngIf="!info.content">NA</div>
+                    </div>
+                    <div class="check-time" *ngIf="descType === info.type">
+                      <div
+                        [innerHtml]="info.content"
+                        *ngIf="info.content"
+                      ></div>
+                      <div *ngIf="!info.content">NA</div>
+                    </div>
+
+                    <a
+                      class="text-primary cursor-pointer"
+                      *ngIf="descType != info.type && info.content.length > 400"
+                      (click)="showMoreDesc(info.type)"
+                      >More</a
+                    >
+                    <a
+                      class="text-primary cursor-pointer"
+                      *ngIf="descType == info.type"
+                      (click)="showMoreDesc('')"
+                      >Less</a
+                    >
+                  </div>
+                </section>
+              </ng-container>
+
+              <!-- FAQs -->
+              <section class="detail_section" *ngIf="faqs.length > 0">
+                <div class="section_header">
+                  <h4 class="section_heading text-color">FAQ</h4>
+                  <hr />
+                </div>
+                <div class="section_body">
+                  <ng-container *ngIf="shimmerLoad">
+                    <div class="detailbox shine"></div>
+                  </ng-container>
+                  <ng-container *ngIf="!shimmerLoad">
+                    <div class="tabs" *ngIf="faqs.length > 0">
+                      <ng-container *ngFor="let faq of faqs">
+                        <div class="tab">
+                          <input type="checkbox" [id]="faq.id" />
+                          <label class="tab-label" [for]="faq.id">{{
+                            faq.question
+                          }}</label>
+                          <div class="tab-content">
+                            {{ faq.answer }}
+                          </div>
+                        </div>
+                      </ng-container>
+                    </div>
+                    <div *ngIf="faqs.length == 0">NA</div>
+                  </ng-container>
+                </div>
+              </section>
+
+              <!-- Map -->
+              <ng-container *ngIf="hoteldata.latitude && hoteldata.longitude">
+                <section class="map-nearyby">
+                  <!-- <div class="content-card">
+                                        <h4 class="heading">What's naerby</h4>
+    
+                                        <div class="get-locations">
+                                            <div class="input-control">
+                                                <label for="hotelName"><img src="assets/images/icons/Icon material-my-location.svg" alt=""></label>
+                                                <span class="hotel-name mx-2" id="hotelName">the oberoi udaivilas</span>
+                                            </div>
+                                            <div class="input-control">
+                                                <label for="hotelName"><img src="assets/images/icons/Icon material-location-on.svg" alt=""></label>
+                                                <input class="mx-2" placeholder="Find Distance From Place"/>
+                                            </div>
+    
+                                        </div>
+    
+                                        <ul class="labels">
+                                            <li class="active"><span>Places to visit</span></li>
+                                            <li><span>Restaurant</span></li>
+                                            <li><span>Transport</span></li>
+                                            <li><span>Shopping Mall</span></li>
+                                        </ul>
+    
+                                        <ul class="hotels-with-distance">
+                                            <ng-container *ngFor="let i of [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]">
+                                                <li>
+                                                    <span class="hotel-name">the oberoi udaivilas</span>
+                                                    <span class="distance">0.8kms</span>
+                                                </li>
+                                            </ng-container>
+                                        </ul>
+                                    </div> -->
+                  <div class="map">
+                    <iframe
+                      [src]="
+                        getMapUrl(hoteldata.latitude, hoteldata.longitude)
+                          | iframe
+                      "
+                      style="border: 0; width: 100%; height: 100%"
+                      allowfullscreen=""
+                      loading="lazy"
+                    ></iframe>
+                    <!-- <google-map height="100%" width="100%" [center]="center" [zoom]="zoom" (mapMousemove)="move($event)"
+                                            (mapRightclick)="removeLastMarker()">
+                                            <map-marker #marker *ngFor="let markerPosition of markerPositions"
+                                                [position]="markerPosition" [options]="markerOptions"
+                                                ></map-marker>
+                                            <map-info-window>Info Window</map-info-window>
+                                        </google-map> -->
+                  </div>
+                </section>
+              </ng-container>
+            </div>
+          </div>
+          <div class="col-xl-4 col-lg-5" style="padding-right: 0px">
+            <!-- <form> -->
+            <div class="deals-box" [ngClass]="show_bid ? 'active' : ''">
+              <div class="deals-close">
+                <i class="fa fa-times" (click)="showBid(1)"></i>
+              </div>
+              <div class="deals-head text-center">
+                <h5>JusBid Now</h5>
+              </div>
+              <div class="deals-bottom">
+                <!-- [ngClass]="recent_bidding.hotel_id == hotel_id?'my-disable':''" -->
+                <div
+                  *ngIf="
+                    is_adult_grthn_roomCap(
+                      adultCount,
+                      cureentSelectedRoomDetails.capacity,
+                      roomsQTY
+                    )
+                  "
+                >
+                  <p class="text-danger">Room capacity exceeded</p>
+                </div>
+                <div class="row">
+                  <div class="col-12">
+                    <div class="form-group mb-3">
+                      <!-- <label for="">Date</label> -->
+                      <h6 class="text-capitalize">Date</h6>
+                      <!-- <ng-container *ngIf="recent_bidding.length == 0"> -->
+                      <!-- <input name="date_range" type="text" class="form-control" id="dateRange"
+                                                autocomplete="off" bsDaterangepicker
+                                                [bsConfig]="{isAnimated: true, rangeInputFormat : 'DD/MM/YYYY', showWeekNumbers: false}"
+                                                [minDate]="minDate" [maxDate]="maxDate"
+                                                (bsValueChange)="getDateRange($event)" [(ngModel)]="bsRangeValue"
+                                                [disabled]="!this.common_service.isAuthenticated()"
+                                                onKeyPress="if(this.value.length>=0) return false"> -->
+                      <input
+                        name="date_range"
+                        type="text"
+                        class="form-control daterange"
+                        id="inputCheckOut"
+                        autocomplete="off"
+                        bsDaterangepicker
+                        [minDate]="check_in_date"
+                        placeholder="{{
+                          check_in_date | date: 'dd/MM/yyy'
+                        }} - {{ check_out_date | date: 'dd/MM/yyy' }}"
+                        [bsConfig]="{
+                          isAnimated: true,
+                          rangeInputFormat: 'DD/MM/YYYY',
+                          showWeekNumbers: false,
+                          dateInputFormat: 'DD/MM/YYYY'
+                        }"
+                        [(ngModel)]="bsRangeValue"
+                        onKeyPress="if(this.value.length>=0) return false"
+                      />
+
+                      <!-- </ng-container>
+                                                <ng-container *ngIf="recent_bidding.length>0">
+                                                    <input type="text" class="form-control"
+                                                        placeholder="{{recent_bidding.arrival_date}} - {{recent_bidding.departure_date}}">
+                                                </ng-container> -->
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div
+                    class="px-3"
+                    [ngClass]="is_child ? 'col-md-4' : 'col-md-6'"
+                  >
+                    <div class="form-group mb-3">
+                      <h6 class="text-capitalize">Adults</h6>
+                      <input
+                        type="text"
+                        autocomplete="off"
+                        name="adult"
+                        class="form-control"
+                        required
+                        [(ngModel)]="adultCount"
+                        (input)="getAdultCountForRoomQTY($event)"
+                        (keypress)="numberOnly($event)"
+                        [ngClass]="invalidBidForm ? 'border-danger' : ''"
+                        [disabled]="!this.common_service.isAuthenticated()"
+                        max="7"
+                        onKeyPress="if(this.value.length>=2) return false"
+                      />
+                    </div>
+                  </div>
+                  <div class="col-md-4 px-3" *ngIf="is_child">
+                    <div class="form-group mb-3">
+                      <h6 class="text-capitalize">Child</h6>
+                      <input
+                        type="text"
+                        autocomplete="off"
+                        name="child"
+                        class="form-control"
+                        required
+                        [(ngModel)]="childCount"
+                        (keypress)="numberOnly($event)"
+                        [ngClass]="invalidBidForm ? 'border-danger' : ''"
+                        [disabled]="!this.common_service.isAuthenticated()"
+                        onKeyPress="if(this.value.length>=1) return false"
+                      />
+                      <small
+                        *ngIf="
+                          childCount >
+                          cureentSelectedRoomDetails.capacity * roomsQTY
+                        "
+                        class="text-danger text-capitalize"
+                      >
+                        Add room for more than {{ childCount }} child
+                      </small>
+                    </div>
+                  </div>
+                  <div
+                    class="px-3"
+                    [ngClass]="is_child ? 'col-md-4' : 'col-md-6'"
+                  >
+                    <div class="form-group mb-3">
+                      <h6 class="text-capitalize">Rooms</h6>
+                      <input
+                        type="text"
+                        autocomplete="off"
+                        name="rooms"
+                        class="form-control"
+                        required
+                        max="6"
+                        [(ngModel)]="roomsQTY"
+                        (input)="CheckRoomQty($event)"
+                        (keypress)="numberOnly($event)"
+                        onKeyPress="if(this.value.length>=1) return false"
+                        [ngClass]="invalidBidForm ? 'border-danger' : ''"
+                        [disabled]="!this.common_service.isAuthenticated()"
+                      />
+                      <!-- <small *ngIf="ShowRoomQTYWarning" class="text-danger text-capitalize">Room
+                                                quantity be not less
+                                                than guest capacity</small> -->
+                    </div>
+                  </div>
+                </div>
+                <div class="text-capitalize my-2">
+                  <input
+                    type="checkbox"
+                    id="childCount"
+                    (input)="veriryChildAge()"
+                  />
+                  <label for="childCount" class="mx-2 cursor-pointer"
+                    >Child below 6 years old</label
+                  >
+                </div>
+
+                <h4>
+                  bid price <b><span class="rupess"> (&#x20B9;)</span></b>
+                </h4>
+                <div class="form-group mb-3">
+                  <input
+                    type="text"
+                    name="bid__price"
+                    class="form-control"
+                    placeholder="Please enter your bid price"
+                    style="font-size: 16px"
+                    required
+                    [(ngModel)]="bid_price"
+                    (input)="getBidPrice($event)"
+                    onKeyPress="if(this.value.length>7) return false"
+                    [ngClass]="invalidBidForm ? 'border-danger' : ''"
+                    [disabled]="!this.common_service.isAuthenticated()"
+                    (keydown)="this._utilsService.inputMobile($event)"
+                  />
+                  <span
+                    class="text-danger text-capitalize"
+                    *ngIf="invalidBidForm"
+                    >Please enter your bid here</span
+                  >
+                </div>
+                <!-- <div class="form-group">
+                                        <div class="form-check">
+                                            <input (input)="isRefunded()" name="isRefund" class="form-check-input"
+                                                type="checkbox" [value]="is_refunded" id="flexCheckDefault">
+                                            <label class="form-check-label" for="flexCheckDefault">Refund</label>
+                                        </div>
+                                        <div id="emailHelp" class="form-text text-capitalize"><span
+                                                class="badge bg-success text-white">NOTE</span>&nbsp;<small>Refund
+                                                Charges (10%)</small></div>
+                                    </div> -->
+
+                <div class="mb-4">
+                  <!-- <div class="d-flex justify-content-between" *ngIf="checkinDate && checkoutDate">
+                                        <div style="border: 1px solid #dedede;
+                                            padding: 10px 15px;
+                                            border-radius: 3px;
+                                            box-shadow: 0 0.125rem 0.25rem rgb(0 0 0 / 8%);
+                                            color: #000;
+                                            margin-bottom: 20px;
+                                            display: flex;
+                                            justify-content: space-between;
+                                            align-items: center;
+                                            width: 100%;
+                                            ">
+                                            <h6
+                                                style="font-size: 12.5px;font-weight: 600;margin: 0;padding: 0;text-transform: capitalize;">
+                                                {{ checkinDate | date:'EE, d MMMM' }} - {{
+                                                checkoutDate | date:'EE, d MMMM' }}
+                                            </h6>
+                                            <h6
+                                                style="font-size: 12.5px;font-weight: 600;margin: 0;padding: 0;text-transform: capitalize;">
+                                                {{roomsQTY+' Rooms'}} {{', '+adultCount+' Adults'}} {{childCount > 1 ? ', '+childCount+' Child' : ''}} -->
+
+                  <!-- <span>{{ roomsQTY > 1 ? roomsQTY+' Rooms' : roomsQTY+' Room' }}</span>
+                                                <span>, {{ adultCount > 1 ? adultCount+' Adults' : adultCount+' Adult'
+                                                    }}</span>
+                                                <span *ngIf="childCount>0">, {{ childCount > 1 ? childCount+' Childs' :
+                                                    childCount+' Child' }}</span> -->
+
+                  <!-- </h6> -->
+                  <!-- </div> -->
+                  <!-- </div> -->
+
+                  <div class="d-flex justify-content-between">
+                    <div class="my-auto">
+                      <h6 class="text-capitalize">Total Amount</h6>
+                    </div>
+                    <div class="my-auto">
+                      <!-- <h6 *ngIf="!is_refunded"><b> <span class="rupess">&#x20B9;</span>
+                                                    {{
+                                                    ((DateDiffDays?DateDiffDays:1)*(roomsQTY*cureentSelectedRoomDetails.price)).toLocaleString()
+                                                    }}
+                                                </b> </h6>
+                                            <h6 *ngIf="is_refunded"><b><span class="rupess">&#x20B9;</span>{{
+                                                    ((DateDiffDays?DateDiffDays:1)*(roomsQTY*(cureentSelectedRoomDetails.price
+                                                    + cureentSelectedRoomDetails.price * 0.10))).toLocaleString()
+                                                    }}</b>
+                                            </h6> -->
+
+                      <!-- <h6><b>
+                                                {{
+                                                this.payment_service.get_Calculated_Amount(cureentSelectedRoomDetails.price, roomsQTY, adultCount, DateDiffDays?DateDiffDays:1).total | currency:'INR'
+                                                }}
+                                            </b></h6> -->
+
+                      <div *ngIf="!is_refunded" class="total_price">
+                        <span class="rupess">&#x20B9;</span>
+                        <h5 class="Cureent_Price">
+                          <b>
+                            {{
+                              cureentSelectedRoomDetails.price *
+                                DateDiffDays *
+                                roomsQTY
+                            }}
+                          </b>
+                        </h5>
+                      </div>
+
+                      <h6 *ngIf="is_refunded">
+                        <b>
+                          {{
+                            cureentSelectedRoomDetails.price *
+                              DateDiffDays *
+                              roomsQTY *
+                              0.1 | currency: "INR"
+                          }}
+                        </b>
+                      </h6>
+                    </div>
+                  </div>
+
+                  <div
+                    class="dropdown_roomtype mb-3 bg-light cursor-pointer border px-3"
+                    (click)="opendetails()"
+                  >
+                    <div class="more_detail_header">
+                      <a
+                        class="noselect"
+                        style="
+                          display: flex;
+                          justify-content: space-between;
+                          align-items: center;
+                        "
+                      >
+                        <span>More Details</span>
+                        <div class="arror_button">
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="20"
+                            height="20"
+                            fill="currentColor"
+                            class="bi bi-chevron-down shadow-sm"
+                            style="
+                              background: #fafafa;
+                              border-radius: 100%;
+                              padding: 3px;
+                              border: 1px solid #dedede;
+                            "
+                            viewBox="0 0 16 16"
+                            [ngStyle]="{
+                              transform: opendetailsshow
+                                ? 'rotate(180deg)'
+                                : 'rotate(0deg)'
+                            }"
+                          >
+                            <path
+                              fill-rule="evenodd"
+                              d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"
+                            />
+                          </svg>
+                        </div>
+                      </a>
+                    </div>
+                  </div>
+                  <div class="dropdown_open" *ngIf="opendetailsshow">
+                    <div class="d-flex justify-content-between">
+                      <div class="my-auto">
+                        <h6 class="text-capitalize">Room Type</h6>
+                      </div>
+                      <div class="my-auto">
+                        <h6>
+                          <b>{{
+                            cureentSelectedRoomDetails.room_type
+                              ? cureentSelectedRoomDetails.room_type
+                              : "Default
+                                                        Type"
+                          }}</b>
+                        </h6>
+                      </div>
+                    </div>
+                    <hr />
+                    <div class="d-flex justify-content-between">
+                      <div class="my-auto">
+                        <h6 class="text-capitalize">Room price</h6>
+                      </div>
+                      <div class="my-auto d-flex">
+                        <span class="rupess" style="font-size: 16px"
+                          >&#x20B9;</span
+                        >
+                        <h6 class="cureent_Price">
+                          <b>{{ cureentSelectedRoomDetails.price }}</b>
+                        </h6>
+                      </div>
+                    </div>
+                    <!-- <div class="my-auto">
+                                                <h6><b><span class="rupess">&#x20B9;</span> {{
+                                                        this.payment_service.get_Calculated_Amount(((DateDiffDays?DateDiffDays:1)*(roomsQTY*cureentSelectedRoomDetails.price))).subTotal
+                                                        }}</b></h6>
+    
+                                            </div> -->
+                    <hr />
+                    <div class="d-flex justify-content-between">
+                      <div class="my-auto">
+                        <h6 class="text-capitalize">Bid Price</h6>
+                      </div>
+                      <div class="my-auto">
+                        <h6>
+                          <span class="rupess" style="font-size: 16px"
+                            >&#x20B9;</span
+                          >
+                          <b *ngIf="bid_price">
+                            <span>{{ bid_price }}</span>
+                          </b>
+                          <b *ngIf="!bid_price">
+                            {{ 0 }}
+                          </b>
+                        </h6>
+                      </div>
+                    </div>
+                    <hr />
+                    <div class="d-flex justify-content-between">
+                      <div class="my-auto">
+                        <h6 class="text-capitalize">Room QTY</h6>
+                      </div>
+                      <div class="my-auto">
+                        <h6>
+                          <b>{{ roomsQTY ? roomsQTY : "1" }}</b>
+                        </h6>
+                      </div>
+                    </div>
+                    <hr />
+                    <div class="d-flex justify-content-between">
+                      <div class="my-auto">
+                        <h6 class="text-capitalize">Total Room Price</h6>
+                      </div>
+                      <div class="my-auto">
+                        <h6>
+                          <span class="rupess" style="font-size: 16px"
+                            >&#x20B9;</span
+                          >
+                          <b>{{
+                            cureentSelectedRoomDetails.price *
+                              DateDiffDays *
+                              roomsQTY
+                          }}</b>
+                        </h6>
+                      </div>
+                    </div>
+                    <!-- <div class="my-auto">
+                                                <h6><b><span class="rupess">&#x20B9;</span> {{
+                                                        this.payment_service.get_Calculated_Amount(((DateDiffDays?DateDiffDays:1)*(roomsQTY*cureentSelectedRoomDetails.price))).Service_Fee
+                                                        }}</b></h6>
+                                            </div> -->
+                    <!-- <div class="d-flex justify-content-between">
+                                            <div class="my-auto">
+                                                <h6 class="text-capitalize">(Room Charges + Tax)</h6>
+                                            </div>
+                                            <div class="my-auto">
+                                                <h6>
+                                                    <b>
+                                                        {{ this.payment_service.get_Calculated_Amount(cureentSelectedRoomDetails.price, roomsQTY, adultCount, DateDiffDays?DateDiffDays:1).subTotal | currency:'INR' }}
+                                                    </b>
+                                                </h6>
+                                            </div>
+                                        </div>
+                                        <hr>
+                                        <div class="d-flex justify-content-between">
+                                            <div class="my-auto">
+                                                <h6 class="text-capitalize">Service Tax</h6>
+                                            </div>
+                                            <div class="my-auto">
+                                                <h6>
+                                                    <b>
+                                                       {{
+                                                        this.payment_service.get_Calculated_Amount(cureentSelectedRoomDetails.price, roomsQTY, adultCount, DateDiffDays?DateDiffDays:1).Service_Fee | currency:'INR'
+                                                       }}
+                                                    </b>
+                                                </h6>
+                                            </div>
+                                        </div> -->
+                    <!-- <div class="my-auto">
+                                                <h6 *ngIf="!is_refunded"><b> <span class="rupess">&#x20B9;</span>
+                                                        {{
+                                                        ((DateDiffDays?DateDiffDays:1)*(roomsQTY*cureentSelectedRoomDetails.price)).toLocaleString()
+                                                        }}
+                                                    </b> </h6>
+                                            </div> -->
+                    <hr />
+                  </div>
+                </div>
+
+                <div
+                  class="d-grid bid_botton_section"
+                  *ngIf="this.common_service.isAuthenticated()"
+                >
+                  <p class="text-center mb-2" *ngIf="!recent_bid_msg">
+                    You won't be charged yet
+                  </p>
+                  <p
+                    class="text-center text-danger"
+                    *ngIf="recent_bid_msg"
+                    style="text-transform: capitalize"
+                  >
+                    {{ recent_bid_msg }}
+                  </p>
+
+                  <div class="bid_botton">
+                    <ng-container *ngIf="roomsQTY < 7">
+                      <!-- [ngClass]="recent_bidding.hotel_id == hotel_id?'my-disable':''" -->
+                      <div>
+                        <button
+                          type="button"
+                          class="btn btn-primary btn-block btn-bid"
+                          (click)="
+                            onBidPlace(
+                              checkinDate,
+                              checkoutDate,
+                              roomsQTY,
+                              cureentSelectedRoomDetails.price,
+                              cureentSelectedRoomDetails.room_type,
+                              is_refunded,
+                              bid_price,
+                              adultCount,
+                              childCount,
+                              hoteldata.downfall
+                            )
+                          "
+                          [disabled]="
+                            !letsBid ||
+                            is_adult_grthn_roomCap(
+                              adultCount,
+                              cureentSelectedRoomDetails.capacity,
+                              roomsQTY
+                            )
+                          "
+                          style="width: 100%"
+                        >
+                          Jusbid
+                        </button>
+                      </div>
+                    </ng-container>
+                    <ng-container *ngIf="roomsQTY > 6">
+                      <button
+                        type="button"
+                        class="btn btn-primary btn-block btn-bid"
+                        (click)="bulkEnquiry()"
+                        style="width: 100%"
+                      >
+                        Bulk Booking
+                      </button>
+                    </ng-container>
+                  </div>
+                </div>
+
+                <div
+                  class="d-grid"
+                  *ngIf="!this.common_service.isAuthenticated()"
+                >
+                  <button
+                    type="button"
+                    class="btn btn-primary btn-block"
+                    routerLink="/auth"
+                    style="width: 100%"
+                  >
+                    Please Login
+                  </button>
+                </div>
+                <!-- </form> -->
+              </div>
+            </div>
+            <!-- </form> -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="recommended" *ngIf="recommended_hotels.length > 0">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-xl-10 col-lg-11 col-md-12 mx-auto p-0">
+        <div class="sub-head mb-4 recommended-head">
+          <h3 class="text-color">Recommended Hotels</h3>
+          <!-- <h3>See More</h3> -->
+          <hr />
+        </div>
+        <div class="list">
+          <ng-container *ngIf="recommended_hotels.length != 0">
+            <owl-carousel-o
+              [options]="recommenedOptions"
+              class="recommended-slider"
+            >
+              <ng-container *ngIf="shimmerLoad">
+                <ng-container *ngFor="let in of [0, 1, 2]">
+                  <ng-template carouselSlide>
+                    <div class="listing-box">
+                      <div class="listing-box-image">
+                        <div class="box shine"></div>
+                      </div>
+                      <div class="listing-box-details">
+                        <div class="listing-box-head">
+                          <div class="lines shine"></div>
+                        </div>
+                      </div>
+                      <div class="listing-box-bottom">
+                        <div class="lines shine"></div>
+                        <div class="lines shine"></div>
+                      </div>
+                      <div class="card-bottom-buttons_2">
+                        <div class="lines shine"></div>
+                      </div>
+                    </div>
+                  </ng-template>
+                </ng-container>
+              </ng-container>
+              <ng-container *ngIf="!shimmerLoad">
+                <ng-container *ngIf="recommended_hotels.length > 0">
+                  <ng-container
+                    *ngFor="let listing of recommended_hotels; index as i"
+                  >
+                    <ng-template carouselSlide>
+                      <div
+                        class="listing-box"
+                        (click)="go_to_details_page(listing.id)"
+                      >
+                        <div class="listing-box-image">
+                          <div
+                            style="
+                              position: absolute;
+                              top: 0px;
+                              right: 15px;
+                              z-index: 3;
+                              background-color: white;
+                              border-bottom-left-radius: 5px;
+                              border-bottom-right-radius: 5px;
+                            "
+                          >
+                            <div class="listing-box-bottom">
+                              <h3>
+                                <span class="rupess">&#x20B9;</span>
+                                {{ listing.room_price.toLocaleString() }}
+                              </h3>
+                              <p>Per Room Per Night</p>
+                            </div>
+                          </div>
+                          <ng-container *ngIf="listing.image">
+                            <img
+                              [src]="apiBaseURL + listing.image"
+                              onError="this.src='assets/images/dummy.jpg'"
+                              alt=""
+                              style="border-radius: 10px"
+                            />
+                          </ng-container>
+                          <ng-container *ngIf="!listing.image">
+                            <img
+                              src="assets/images/dummy.jpg"
+                              alt=""
+                              style="border-radius: 10px"
+                            />
+                          </ng-container>
+                        </div>
+                        <div
+                          class="listing-box-details"
+                          style="padding: 20px 0 5px 0"
+                        >
+                          <div class="listing-box-head">
+                            <ng-container *ngIf="listing.view_name">
+                              <h6 [title]="listing.view_name">
+                                {{ listing.view_name.slice(0, 21)
+                                }}{{
+                                  listing.view_name.length > 21 ? "..." : ""
+                                }}
+                              </h6>
+                            </ng-container>
+                            <ng-container *ngIf="!listing.view_name">
+                              <h6 [title]="listing.name">
+                                {{ listing.name.slice(0, 21)
+                                }}{{ listing.name.length > 21 ? "..." : "" }}
+                              </h6>
+                            </ng-container>
+                          </div>
+                          <div
+                            style="align-items: center; margin-bottom: 10px"
+                            *ngIf="listing.rating > 0"
+                          >
+                            <!-- <div class="rating">
+                                                            <span><i class="fa fa-star active"
+                                                                    style="color: rgb(245, 116, 11);font-size: 16px;"></i></span>
+                                                            <span><i class="fa fa-star active"
+                                                                    style="color: rgb(245, 116, 11);font-size: 16px;"></i></span>
+                                                            <span><i class="fa fa-star active"
+                                                                    style="color: rgb(245, 116, 11);font-size: 16px;"></i></span>
+                                                            <span><i class="fa fa-star active"
+                                                                    style="color: rgb(245, 116, 11);font-size: 16px;"></i></span>
+                                                            <span><i class="fa fa-star"
+                                                                    style="color: rgb(161, 161, 161);font-size: 16px;"></i></span>
+                                                        </div> -->
+
+                            <rating [ratingNumber]="listing.rating"></rating>
+
+                            <!-- <span
+                                                            style="font-size: 16px;font-weight: 800;margin-left: 5px;">{{
+                                                            listing.rating }}</span> -->
+                          </div>
+                          <p
+                            style="
+                              font-size: 14px;
+                              font-weight: 800;
+                              margin-top: 10px;
+                            "
+                          >
+                            {{ listing.city }}
+                          </p>
+                        </div>
+
+                        <!-- <div class="card-bottom-buttons_2">
+                                                    <a target="_blank" [routerLink]="['/hotel/id/', listing.id]"
+                                                        (click)="onHotelDetails(listing.city)" class="btn btn-primary ">
+                                                        View Details
+                                                    </a>
+                                                </div> -->
+                      </div>
+                    </ng-template>
+                  </ng-container>
+                </ng-container>
+              </ng-container>
+            </owl-carousel-o>
+          </ng-container>
+          <ng-container *ngIf="recommended_hotels.length == 0">
+            <h4 class="text-center">No Recommended Hotel Found!</h4>
+          </ng-container>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<br /><br />
+
+<section class="reviews" *ngIf="false">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-lg-10 mx-auto p-0">
+        <div class="sub-head mb-4">
+          <h3 class="text-color">Ratings & reviews</h3>
+          <hr />
+        </div>
+        <div *ngIf="userRatings.length > 0">
+          <ng-container *ngFor="let rating of userRatings">
+            <div class="reviewer-content mb-5" *ngIf="rating.is_active">
+              <ng-container *ngIf="rating.profile_img; else noProfile">
+                <div class="reviewer-pic">
+                  <img
+                    [src]="this.apiBaseURL + rating.profile_img"
+                    onError="this.src='assets/images/dummy.jpg'"
+                    alt=""
+                  />
+                </div>
+              </ng-container>
+              <ng-template #noProfile>
+                <div class="reviewer-pic">
+                  <img src="assets/images/nobody_m.original.jpg" alt="" />
+                </div>
+              </ng-template>
+              <div class="reviewer-details">
+                <h6>
+                  <b
+                    >{{ rating.name }} (Stayed
+                    {{ rating.createdAt | date: "MMM d, y" }})</b
+                  >
+                </h6>
+                <h6 class="rating" *ngIf="rating.rating">
+                  <i class="fa fa-star"></i>{{ rating.rating }}
+                </h6>
+                <h6>
+                  <b>{{ rating.feedback }}</b>
+                </h6>
+              </div>
+            </div>
+          </ng-container>
+        </div>
+        <div *ngIf="userRatings.length == 0">NA</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Ratings and reviews -->
+
+<section class="reviews" *ngIf="userRatings.length > 0">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-lg-10 mx-auto p-0">
+        <div class="sub-head mb-4">
+          <h3 class="text-color">Ratings & reviews</h3>
+          <hr />
+        </div>
+        <div class="container-fluid">
+          <div class="row mb-4" *ngIf="false">
+            <div class="col-sm-3">
+              <div class="rating-block">
+                <h4>Average user rating</h4>
+                <h2 class="bold padding-bottom-7">
+                  {{ hoteldata.RatingsData.totalRatings
+                  }}<small>/ {{ hoteldata.RatingsData.value }}</small>
+                </h2>
+              </div>
+            </div>
+            <div class="col-sm-3" *ngIf="false">
+              <h4>Rating breakdown</h4>
+              <div class="pull-left">
+                <div class="pull-left" style="width: 35px; line-height: 1">
+                  <div style="height: 9px; margin: 5px 0">
+                    5
+                    <span
+                      class="fa fa-star"
+                      style="color: rgb(205, 205, 205); font-size: 12px"
+                    ></span>
+                  </div>
+                </div>
+                <div class="pull-left" style="width: 180px">
+                  <div class="progress" style="height: 9px; margin: 8px 0">
+                    <div
+                      class="progress-bar progress-bar-success bg-progressbar"
+                      role="progressbar"
+                      aria-valuenow="5"
+                      aria-valuemin="0"
+                      aria-valuemax="5"
+                      style="width: 1000%"
+                    >
+                      <span class="sr-only">80% Complete (danger)</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="pull-right" style="margin-left: 10px">53%</div>
+              </div>
+              <div class="pull-left">
+                <div class="pull-left" style="width: 35px; line-height: 1">
+                  <div style="height: 9px; margin: 5px 0">
+                    4
+                    <span
+                      class="fa fa-star"
+                      style="color: rgb(205, 205, 205); font-size: 12px"
+                    ></span>
+                  </div>
+                </div>
+                <div class="pull-left" style="width: 180px">
+                  <div class="progress" style="height: 9px; margin: 8px 0">
+                    <div
+                      class="progress-bar progress-bar-primary bg-progressbar"
+                      role="progressbar"
+                      aria-valuenow="4"
+                      aria-valuemin="0"
+                      aria-valuemax="5"
+                      style="width: 80%"
+                    >
+                      <span class="sr-only">80% Complete (danger)</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="pull-right" style="margin-left: 10px">53%</div>
+              </div>
+              <div class="pull-left">
+                <div class="pull-left" style="width: 35px; line-height: 1">
+                  <div style="height: 9px; margin: 5px 0">
+                    3
+                    <span
+                      class="fa fa-star"
+                      style="color: rgb(205, 205, 205); font-size: 12px"
+                    ></span>
+                  </div>
+                </div>
+                <div class="pull-left" style="width: 180px">
+                  <div class="progress" style="height: 9px; margin: 8px 0">
+                    <div
+                      class="progress-bar progress-bar-info bg-progressbar"
+                      role="progressbar"
+                      aria-valuenow="3"
+                      aria-valuemin="0"
+                      aria-valuemax="5"
+                      style="width: 60%"
+                    >
+                      <span class="sr-only">80% Complete (danger)</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="pull-right" style="margin-left: 10px">53%</div>
+              </div>
+              <div class="pull-left">
+                <div class="pull-left" style="width: 35px; line-height: 1">
+                  <div style="height: 9px; margin: 5px 0">
+                    2
+                    <span
+                      class="fa fa-star"
+                      style="color: rgb(205, 205, 205); font-size: 12px"
+                    ></span>
+                  </div>
+                </div>
+                <div class="pull-left" style="width: 180px">
+                  <div class="progress" style="height: 9px; margin: 8px 0">
+                    <div
+                      class="progress-bar progress-bar-warning bg-progressbar"
+                      role="progressbar"
+                      aria-valuenow="2"
+                      aria-valuemin="0"
+                      aria-valuemax="5"
+                      style="width: 40%"
+                    >
+                      <span class="sr-only">80% Complete (danger)</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="pull-right" style="margin-left: 10px">53%</div>
+              </div>
+              <div class="pull-left">
+                <div class="pull-left" style="width: 35px; line-height: 1">
+                  <div style="height: 9px; margin: 5px 0">
+                    1
+                    <span
+                      class="fa fa-star"
+                      style="color: rgb(205, 205, 205); font-size: 12px"
+                    ></span>
+                  </div>
+                </div>
+                <div class="pull-left" style="width: 180px">
+                  <div class="progress" style="height: 9px; margin: 8px 0">
+                    <div
+                      class="progress-bar progress-bar-danger bg-progressbar"
+                      role="progressbar"
+                      aria-valuenow="1"
+                      aria-valuemin="0"
+                      aria-valuemax="5"
+                      style="width: 20%"
+                    >
+                      <span class="sr-only">80% Complete (danger)</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="pull-right" style="margin-left: 10px">53%</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- <div class="row">
+                        <div class="col-sm-7">
+                            <ng-container *ngFor="let rating of userRatings;">
+                                <div class="review-block">
+                                    <div class="mb-3"
+                                        style="display: grid;">
+                                        <div class="">
+                                            <img src="{{rating.profile_img}}" width="50px" height="50px"
+                                                class="img-fluid" style="border-radius: 100%;">
+                                        </div>
+                                        <div style="display: flex;justify-content: space-between;align-items: center;">
+                                            <div>
+                                                <div class="review-block-title">{{'User#ID: '+rating.userId}}</div>
+                                                <div class="review-block-description">{{rating.feedback}}</div>
+                                            </div>
+                                            <div class="review-block-date" style="float: right;">
+                                                <span>{{rating.createdAt | date:'MMMM d,
+                                                    y'}}, {{this.common_service.fromNowDate(rating.createdAt)}}</span>
+                                                <div class="my-2" style="display: flex;
+                                                justify-content: end;">
+                                                    <div style="background: rgb(52, 96, 0);font-size: 14px;
+                                                    line-height: 1;
+                                                    text-align: center;
+                                                    color: #ffffff;
+                                                    cursor: default;
+                                                    display: flex;
+                                                    justify-content: center;
+                                                    align-items: center;
+                                                    width: 50px;
+                                                    padding: 8px;
+                                                    border-radius: 5px;
+                                                "><span>{{rating.rating}}</span>
+                                                        <i class="fa fa-star ml-1" style="font-size: 14px;"></i>
+                                                    </div>
+                                                </div>
+
+
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                </div>
+                            </ng-container>
+                        </div>
+                    </div> -->
+          <!-- 
+          <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4">
+            <ng-container *ngFor="let rating of userRatings">
+              <div class="col mb-4">
+                <div class="col-sm-6 col-md-4">
+                  <img
+                    [src]="this._apiRequest.getAbsolutePath(rating.profile_img)"
+                    alt=""
+                    style="width: 100px; height: 100px; border-radius: 100%"
+                  />
+
+                  <div style="display: flex">
+                    <h5 style="font-weight: 600">{{ rating.name }}</h5>
+                  </div>
+                  <ng-container
+                    *ngFor="
+                      let star of [].constructor(get_rating(rating.rating))
+                    "
+                  >
+                    <span><i class="fa fa-star active"></i></span>
+                  </ng-container>
+                  <ng-container
+                    *ngFor="
+                      let star of [].constructor(5 - get_rating(rating.rating))
+                    "
+                  >
+                    <span><i class="fa fa-star"></i></span>
+                  </ng-container>
+                  <hr />
+                  <div class="review-block-description">
+                    <h6>{{ rating.feedback }}</h6>
+                  </div>
+                </div>
+              </div>
+            </ng-container>
+          </div> -->
+
+          <div class="row text-center row-cols-1 row-cols-sm-2 row-cols-md-4">
+            <ng-container *ngFor="let rating of userRatings">
+              <div class="col mb-4">
+                <div class="testimonial-box">
+                  <img
+                    [src]="this._apiRequest.getAbsolutePath(rating.profile_img)"
+                    onError="this.src='/assets/icons/profile-icon-png-909.png';"
+                    alt=""
+                    class="img-responsive"
+                    alt=""
+                    width="90"
+                  />
+                  <div class="ratings-icons">
+                    <ng-container
+                      *ngFor="
+                        let star of [].constructor(get_rating(rating.rating))
+                      "
+                    >
+                      <span><i class="fa fa-star active"></i></span>
+                    </ng-container>
+                    <ng-container
+                      *ngFor="
+                        let star of [].constructor(
+                          5 - get_rating(rating.rating)
+                        )
+                      "
+                    >
+                      <span><i class="fa fa-star"></i></span>
+                    </ng-container>
+                  </div>
+                  <h5 style="font-weight: 600">{{ rating.name }}</h5>
+                  <div class="review-block-description">
+                    <h6>{{ rating.feedback }}</h6>
+                  </div>
+                </div>
+              </div>
+            </ng-container>
+          </div>
+        </div>
+        <!-- /container -->
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 
+    [autoPlay]=true -->
+
+<!-- Modal -->
+<div class="modal" *ngIf="showModal">
+  <div class="container-fluid">
+    <div class="modal_card">
+      <div class="modal-header header mt-md-5">
+        <!-- <ul class="header-tabs">
+                    <li>
+                        <a class="cursor-pointer" [ngClass]="hotelimageName===''?'active':''"
+                            (click)="getImageName('')">
+                            Show All
+                        </a>
+                    </li>
+                    <ng-container *ngFor="let hotel_name of hotelImagesName">
+                        <li>
+                            <a class="cursor-pointer" (click)="getImageName(hotel_name)"
+                                [ngClass]="hotel_name == hotelimageName?'active':''">
+                                {{ hotel_name }} View
+                            </a>
+                        </li>
+                    </ng-container>
+                </ul> -->
+        <div></div>
+        <div class="close_modal" (click)="closeModal()">
+          <i class="fa fa-times"></i>
+        </div>
+      </div>
+      <div class="modal-body">
+        <div class="image-tab-content">
+          <div
+            class="large-image text-center"
+            *ngIf="hotelimageName == 'Video'"
+          >
+            <ng-container *ngIf="currentModalHotelImg">
+              <iframe
+                [src]="currentModalHotelImg | iframe"
+                style="width: 100%; height: 500px"
+                frameborder="0"
+                loop
+                controls
+                poster="assets/videos/placeholder-video.png"
+                allowtransparency="true"
+                allowfullscreen
+                style="background-color: transparent"
+              ></iframe>
+            </ng-container>
+          </div>
+          <owl-carousel-o
+            [options]="imagesOptions"
+            class="images-slider"
+            *ngIf="hotelimageName == 'Video'"
+          >
+            <ng-container *ngFor="let image of hotel_images">
+              <ng-container *ngIf="image.name == 'Video'">
+                <ng-template carouselSlide>
+                  <div class="hotel-images">
+                    <video
+                      class="video-fluid"
+                      loop
+                      poster="assets/videos/placeholder-video.png"
+                      (click)="showLargeImage(apiBaseURL + image.path, 'video')"
+                    >
+                      <source
+                        [src]="apiBaseURL + image.path"
+                        type="video/mp4"
+                      />
+                    </video>
+                  </div>
+                </ng-template>
+              </ng-container>
+            </ng-container>
+          </owl-carousel-o>
+          <ng-container *ngIf="items.length == 0">
+            <div class="no_image">
+              <h2>No Image Found Of {{ hotelimageName }}</h2>
+            </div>
+          </ng-container>
+          <ng-container *ngIf="hotelimageName != 'Video' && items.length > 0">
+            <gallery
+              id="basic-test"
+              class="custom"
+              [items]="items"
+              style="
+                background: transparent;
+                min-height: 80vh;
+                max-height: 90vh;
+              "
+            >
+            </gallery>
+          </ng-container>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Room Image -->
+<div class="modal" *ngIf="roomModel">
+  <div class="container-fluid">
+    <div class="modal_card">
+      <div class="modal-header header">
+        <ul class="header-tabs">
+          <li>
+            <a
+              class="cursor-pointer"
+              [ngClass]="roomimageName == '' ? 'active' : ''"
+              (click)="getRoomImages(roomImages, '')"
+            >
+              Show All
+            </a>
+          </li>
+          <ng-container *ngFor="let data of roomImagesName">
+            <li>
+              <a
+                class="cursor-pointer"
+                (click)="getRoomImages(roomImages, data)"
+                [ngClass]="data == roomimageName ? 'active' : ''"
+              >
+                {{ data }}
+              </a>
+            </li>
+          </ng-container>
+        </ul>
+        <div class="close_modal" (click)="closeRoomModal()">
+          <i class="fa fa-times"></i>
+        </div>
+      </div>
+      <div class="modal-body">
+        <div class="image-tab-content">
+          <ng-container *ngIf="roomitems.length == 0">
+            <div class="no_image">
+              <h2>No Image Found Of {{ roomimageName }}</h2>
+            </div>
+          </ng-container>
+          <ng-container *ngIf="roomitems.length > 0">
+            <gallery
+              id="basic-test"
+              class="custom"
+              [items]="roomitems"
+              style="
+                background: transparent;
+                min-height: 80vh;
+                max-height: 90vh;
+              "
+            >
+            </gallery>
+          </ng-container>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Bidding success -->
+<!-- bidPlaced -->
+<div class="modal" *ngIf="bidPlaced">
+  <div class="alertBox">
+    <div class="card rounded p-5" style="background: #fff">
+      <div class="mb-3">
+        <!-- <img src="assets/images/icons/success_icon2.gif" width="120" alt=""> -->
+        <video width="200" autoplay loop>
+          <source src="assets/videos/Check Mark_2.mp4" type="video/mp4" />
+          Your browser does not support HTML video.
+        </video>
+      </div>
+      <h5><b>Bid Place successfully! Thank You!</b></h5>
+    </div>
+  </div>
+</div>
+<!-- Bidding success -->
+
+<!-- <div class="modal" *ngIf="bidRejected">
+    <div class="alertBox">
+        <div class="card rounded p-5">
+            <div class="mb-3">
+                <i class="fa fa-exclamation-circle"></i>
+            </div>
+            <h5><b>Bid is too Low.</b></h5>
+        </div>
+    </div>
+</div> -->
+<!-- Bulk Enquires -->
+<div class="show_query_modal" *ngIf="showQueryModal">
+  <div class="container">
+    <div class="row">
+      <div class="col-8 mx-auto">
+        <div class="modal-dialog modal-dialog-centered modal-sm">
+          <div class="modal-content">
+            <form #addQueryForm="ngForm" (submit)="onAddQuery(addQueryForm)">
+              <div class="modal-header">
+                <h5 class="modal-title" id="addImagesLabel">
+                  Bulk Booking Enquiry
+                </h5>
+                <button type="button" class="close" (click)="bulkEnquiry()">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body py-3">
+                <div class="row">
+                  <div class="col-md-12 mx-auto">
+                    <div class="row">
+                      <div class="col-md-6">
+                        <div class="form-group mb-3">
+                          <label for="num_persons">Number Of Guests</label>
+                          <input
+                            type="number"
+                            class="form-control"
+                            name="persons"
+                            id="num_persons"
+                            onKeyPress="if(this.value>10) return false"
+                            ngModel
+                            required
+                          />
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="form-group mb-3">
+                          <label for="subject">Bulk Booking Details</label>
+                          <input
+                            type="text"
+                            class="form-control"
+                            name="subject"
+                            id="subject"
+                            onKeyPress="if(this.value.length>100) return false"
+                            ngModel
+                            required
+                          />
+                        </div>
+                      </div>
+                    </div>
+                    <div class="form-group mb-3">
+                      <label for="inputRange">Checkin - Checkout Date</label>
+                      <input
+                        name="bulk_date_range"
+                        type="text"
+                        class="form-control"
+                        id="dateRange"
+                        autocomplete="off"
+                        bsDaterangepicker
+                        [bsConfig]="{
+                          isAnimated: true,
+                          rangeInputFormat: 'DD/MM/YYYY',
+                          showWeekNumbers: false
+                        }"
+                        [minDate]="minDate"
+                        [maxDate]="maxDate"
+                        (bsValueChange)="getDateRange($event)"
+                        [(ngModel)]="bsRangeValue"
+                        [disabled]="!this.common_service.isAuthenticated()"
+                        onKeyPress="if(this.value.length>=0) return false"
+                      />
+                    </div>
+                    <div class="row">
+                      <div class="col-md-6">
+                        <div class="form-group mb-3">
+                          <label for="email">Email Address</label>
+                          <input
+                            type="email"
+                            class="form-control"
+                            name="email"
+                            id="email"
+                            ngModel
+                            required
+                          />
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="form-group mb-3">
+                          <label for="contact">Contact Number</label>
+                          <input
+                            type="number"
+                            class="form-control"
+                            name="contact"
+                            id="contact"
+                            onKeyPress="if(this.value.length>14) return false"
+                            ngModel
+                            required
+                          />
+                        </div>
+                      </div>
+                    </div>
+                    <div class="form-group mb-3">
+                      <label for="message">Message for Hoteliers</label>
+                      <textarea
+                        class="form-control"
+                        name="message"
+                        id="message"
+                        rows="5"
+                        onKeyPress="if(this.value.length>400) return false"
+                        ngModel
+                        required
+                      ></textarea>
+                    </div>
+                  </div>
+                </div>
+                <div
+                  style="
+                    display: flex;
+                    align-items: center;
+                    justify-content: start;
+                  "
+                >
+                  <button
+                    type="submit"
+                    class="btn btn-success"
+                    [disabled]="!addQueryForm.valid"
+                  >
+                    Save
+                  </button>
+                  <button
+                    type="button"
+                    class="btn btn-light border mx-2"
+                    (click)="bulkEnquiry()"
+                  >
+                    Close
+                  </button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal" *ngIf="this.successAlert">
+  <div class="alertBox">
+    <div class="card rounded p-5">
+      <div class="mb-3">
+        <img src="assets/images/icons/success_icon2.gif" width="120" alt="" />
+      </div>
+      <h5>
+        <b>{{ success_msg }}</b>
+      </h5>
+    </div>
+  </div>
+</div>
+<div class="modal" *ngIf="this.errorAlert">
+  <div class="alertBox">
+    <div class="card rounded p-5">
+      <div class="mb-3">
+        <img src="assets/images/icons/error.gif" width="120" alt="" />
+      </div>
+      <h5>
+        <b>{{ error_msg }}</b>
+      </h5>
+    </div>
+  </div>
+</div>
+
+<ng-container *ngIf="is_open_share_model">
+  <div class="shareModel">
+    <div class="card p-4">
+      <div class="header">
+        <h5>Share</h5>
+        <button
+          type="button"
+          class="btn btn-light btn-sm"
+          (click)="is_open_share_model = !is_open_share_model"
+        >
+          <i class="fa fa-times"></i>
+        </button>
+      </div>
+      <hr />
+
+      <ul class="share_options">
+        <!-- <li class="share_option">
+                    <a [href]="whatsapp_share_URL" target="_blank" class="share_option_div">
+                        <div class="icon mb-2"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18 18"> <path fill="#3D589A" fill-rule="nonzero" d="M18 3c0-1.576-1.423-3-3-3H3C1.423 0 0 1.424 0 3v12c0 1.576 1.423 3 3 3h6v-6.8H6.8v-3H9V7.031C9 5.015 10.514 3.2 12.375 3.2H14.8v3h-2.425c-.265 0-.575.322-.575.805V8.2h3v3h-3V18H15c1.577 0 3-1.424 3-3V3z"></path> </svg></div>
+                        <span>Facebook</span>
+                    </a>
+                </li> -->
+        <li class="share_option">
+          <a
+            [href]="whatsapp_share_URL"
+            target="_blank"
+            class="share_option_div"
+          >
+            <div class="icon mb-2">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18 18">
+                <path
+                  fill="#2AD560"
+                  fill-rule="nonzero"
+                  d="M9.002 0h-.004C4.035 0 0 4.037 0 9c0 1.969.634 3.793 1.713 5.275L.592 17.62l3.46-1.106A8.922 8.922 0 0 0 9.001 18C13.965 18 18 13.962 18 9s-4.035-9-8.998-9zm5.237 12.71c-.217.612-1.079 1.12-1.766 1.27-.47.1-1.085.18-3.152-.678-2.645-1.096-4.348-3.783-4.481-3.958C4.713 9.17 3.77 7.921 3.77 6.63c0-1.292.656-1.92.92-2.19.217-.222.576-.324.92-.324.112 0 .212.006.302.01.264.012.397.027.571.445.218.523.746 1.815.81 1.947.064.133.128.313.038.487-.085.18-.159.26-.292.413-.133.153-.258.27-.391.434-.122.143-.259.296-.106.56.153.26.682 1.122 1.46 1.815 1.005.895 1.82 1.18 2.11 1.302.218.09.477.069.635-.1.202-.217.45-.577.703-.932.18-.254.408-.285.646-.195.243.084 1.529.72 1.793.851.265.133.44.196.503.307.063.112.063.635-.154 1.25z"
+                ></path>
+              </svg>
+            </div>
+            <span>Whatsapp</span>
+          </a>
+        </li>
+        <li class="share_option">
+          <a [href]="mail_share_URL" class="share_option_div">
+            <div class="icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18 14">
+                <path
+                  fill="#222"
+                  fill-rule="nonzero"
+                  d="M1.728 4.315C1.313 4.037.92 3.655.552 3.167.184 2.68 0 2.227 0 1.81 0 1.293.139.862.417.517.695.172 1.09 0 1.607 0h14.786c.435 0 .812.156 1.13.467.318.312.477.686.477 1.124 0 .524-.164 1.024-.492 1.501a4.747 4.747 0 0 1-1.226 1.223l-4.7 3.232c-.067.046-.21.147-.427.303-.218.156-.399.282-.543.378-.144.096-.318.204-.522.323-.204.12-.397.209-.578.268-.18.06-.348.09-.502.09h-.02c-.154 0-.322-.03-.502-.09a3.045 3.045 0 0 1-.578-.268c-.204-.12-.378-.227-.522-.323a20.864 20.864 0 0 1-.543-.378c-.217-.156-.36-.257-.427-.303a503.86 503.86 0 0 0-2.631-1.815 465.176 465.176 0 0 1-2.06-1.417zM16.995 5.38A5.523 5.523 0 0 0 18 4.514v7.895c0 .438-.157.812-.472 1.124a1.555 1.555 0 0 1-1.135.467H1.607c-.442 0-.82-.156-1.135-.467A1.524 1.524 0 0 1 0 12.409V4.514c.295.325.633.613 1.015.865 2.424 1.63 4.088 2.774 4.992 3.43.381.279.691.496.929.652.238.156.554.315.949.477.395.163.763.244 1.105.244h.02c.342 0 .71-.081 1.105-.244.395-.162.711-.321.95-.477.237-.156.547-.373.928-.651 1.139-.816 2.806-1.96 5.002-3.43z"
+                ></path>
+              </svg>
+            </div>
+            <span>Email</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</ng-container>
+
+<main-footer></main-footer>

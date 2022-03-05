@@ -1,0 +1,35 @@
+<app-header></app-header>
+
+
+<!-- start app body -->
+<section class="app__body">
+
+    <!-- start filter section -->
+    <section class="filter__section">
+        <app-filter></app-filter>
+    </section>
+    <!-- end filter section -->
+
+
+    <!-- start listing section -->
+    <section class="listing__section">
+        Hotels List
+
+        <!-- List of Text Items -->
+        <ion-list mode="ios">
+            <ng-container *ngFor="let i of [].constructor(50);">
+                <ion-item>
+                    <app-hotel-list-card></app-hotel-list-card>
+                </ion-item>
+            </ng-container>
+        </ion-list>
+
+
+    </section>
+    <!-- end listing section -->
+
+    <!-- end app body -->
+
+</section>
+
+<app-footer></app-footer>

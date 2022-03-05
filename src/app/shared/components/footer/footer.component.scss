@@ -1,0 +1,66 @@
+$footer-bg-color : var (--jb-primary);
+$footer-text-color : var (--jb-primary);
+$important-link-bg-color: var(--jb-primary);
+$important_link-color : var(--jb-primary);
+$important_link-color-hover : var(--jb-primary);
+$footer-gray-bg-color : var (--jb-primary);
+
+// footer section 
+.partner_compaines_section {
+    width: 100%;
+    background: #f9f9f9;
+    padding: 20px 0 50px;
+    .state_wise_col-1 {
+        .header {
+            .state_name {
+                font-size: 18px;
+                font-weight: 600;
+                text-transform: uppercase;
+           }
+       }
+        ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            li {
+                margin-bottom: 2px;
+                a {
+                    text-decoration: none;
+                    color: #222;
+                    font-size: 14px;
+                    line-height: 26px;
+                    cursor: pointer;
+                    &:hover {
+                        color: var(--primary);
+                   }
+               }
+           }
+       }
+   }
+}
+// important_link for city 
+.important_link{
+    width: 100%;
+    background: #f1f1f1;
+    padding: 20px 0;
+    a{
+        cursor: pointer;
+        text-decoration: none;
+        color: #000;
+        &:hover{
+            color: #e21224;
+       }
+   }
+}
+.footer-gray {
+    background-color: #f9f9f9;
+    font-size: 0.8rem;
+    .row{
+        padding: 10px;
+   }
+}
+@media (max-width: 325px) {
+    .partner_compaines_section{
+        padding: 10px 0 ;
+   }
+}

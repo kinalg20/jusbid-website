@@ -1,0 +1,593 @@
+
+.filter-fixed {
+    background: #f9f9f9;
+    color: var(--primary);
+    text-align: center;
+    padding: 0.3em;
+    border-radius: 0.2em;
+    font-size: 25px;
+    box-shadow: 0 0 10px rgb(0 0 0 / 20%);
+    position: sticky;
+    left: 0%;
+    right: 0;
+    display: none;
+    top: 5px;
+    h5 {
+        margin-bottom: 0;
+        font-size: 1rem;
+    }
+}
+
+.filter_section {
+.card {
+	border-radius: 10px;  
+	box-shadow: 0px 0px 15px -4px rgba(0, 0, 0, 0.25);
+    margin-left: 20px;
+    padding: 0;
+    position: sticky;
+    top: 10%;
+    margin-bottom: 20px;
+    .filter_header{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background: transparent;
+        border: none;
+        padding-bottom: 0;
+        margin-bottom: 0;
+        label, span{
+            margin: 0;
+            padding: 0;
+        }
+        span{
+            color: var(--primary);
+            cursor: pointer;
+        }
+        span.disabled{
+            color: rgb(241, 170, 170);
+            cursor: default;
+        }
+    i{
+            display: none;
+    }
+    .apply_btn{
+        display: none;
+    }
+        .btn-primary {
+            background: var(--primary);
+                border-radius: 2.24px;
+                font-size: 12px;
+                font-style: normal;
+                font-weight: 400;
+                line-height: 26px;
+                letter-spacing: 0em;
+                text-align: left;
+                padding: 3px 20px;
+            &:disabled{
+                opacity: 0.8;
+                background: var(--primary);
+            }
+            &:focus, &:active{
+                background-color: var(--primary)!important;
+                border-color: var(--primary)!important;
+                box-shadow: none;
+            }
+            &:active:focus{
+                box-shadow: none!important;
+            }
+        }
+        .btn_apply{
+            border-radius: 2.24px;
+            font-size: 12px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: 26px;
+            letter-spacing: 0em;
+            text-align: left;
+            padding: 3px 20px;
+        &:focus, &:active{
+            box-shadow: none;
+        }
+        &:active:focus{
+            box-shadow: none!important;
+        }
+        }
+    }
+    .card-body{
+        margin: 0;
+        padding: 20px;
+        margin-left:10px ;
+        section{
+            margin-bottom: 20px;
+        }
+        .filter-title{
+           display: flex; 
+           justify-content:space-around ;
+           align-items: center;
+        
+        }
+        .section_heading {
+            font-size: 14px;
+            font-weight: 700;
+            font-style: normal;
+            line-height: 25px;
+            letter-spacing: 0em;
+            text-align: left;
+            .Price{
+                font-family: 'Poppins', sans-serif;
+                font-size: 15px;
+                font-style: normal;
+                font-weight: 400;
+                line-height: 23px;
+                letter-spacing: 0em;
+                text-align: left;
+            }
+          
+        }
+       .getflightStop{
+           display: flex;
+           button.flight_Stop_btn{
+            border: 1px solid var(--primary);
+            background: #fff;
+            border-radius: 5px;
+            margin-right: 10px; 
+            font-family:'Poppins', sans-serif;
+            padding: 5px 10px;
+            font-size: 12px;
+            color: var(--primary);
+        }
+        button.flight_Stop_btn.active{
+            color: #fff;
+            border-color: var(--primary);
+            background: var(--primary);
+        }
+       }
+      
+    }
+
+  
+}
+
+}
+
+
+.checkbox{
+    font-family: 'Poppins', sans-serif;
+}
+.check-box {
+    font-weight: 500;
+    font-size: 15px;
+}
+.numberbox {
+	padding: 5px 5px;
+	text-align: center;
+	color: gray;
+	border-top: 2px solid rgb(194, 192, 192);
+	border-bottom: 2px solid rgb(194, 192, 192);
+	border-right: 2px solid rgb(194, 192, 192);
+}
+
+.numberbox:first-child {
+	border-top-left-radius: 8px;
+	border-bottom-left-radius: 8px;
+	border-top: 2px solid rgb(194, 192, 192);
+	border-left: 2px solid rgb(194, 192, 192);
+	border-bottom: 2px solid rgb(194, 192, 192);
+}
+
+.numberbox:last-child {
+	border-top-right-radius: 8px;
+	border-bottom-right-radius: 8px;
+	border-top: 2px solid rgb(194, 192, 192);
+	border-right: 2px solid rgb(194, 192, 192);
+	border-bottom: 2px solid rgb(194, 192, 192);
+}
+
+
+
+
+
+
+// We need to use ::ng-deep to overcome view encapsulation
+::ng-deep {
+    .custom-slider .ngx-slider .ngx-slider-bar {
+      background: #f7b7b3;
+      height: 5px;
+    }
+    .custom-slider .ngx-slider .ngx-slider-selection {
+      background: var(--primary);
+      height: 5px;
+    }
+  
+    .custom-slider .ngx-slider .ngx-slider-pointer {
+        border: 1px solid rgb(217, 217, 217);
+        border-radius: 26px;
+        background: rgb(255, 255, 255);
+        cursor: pointer;
+        box-shadow: rgb(255 255 255) 0px 0px 1px inset, rgb(235 235 235) 0px 1px 7px inset, rgb(187 187 187) 0px 3px 6px -3px;
+        width: 26px;
+        height: 26px;
+        left: -20px;
+        top: -10px;
+        position: absolute;
+        z-index: 1;
+        outline: none;
+    }
+  
+    .custom-slider .ngx-slider .ngx-slider-pointer:after {
+      display: none;
+    }
+  
+    .custom-slider .ngx-slider .ngx-slider-bubble {
+      bottom: 14px;
+    }
+  
+    .custom-slider .ngx-slider .ngx-slider-limit {
+      font-weight: bold;
+      color: var(--primary);
+    }
+  
+    .custom-slider .ngx-slider .ngx-slider-tick {
+      width: 1px;
+      height: 10px;
+      margin-left: 4px;
+      border-radius: 0;
+      background: #f7b7b3;
+      top: -1px;
+    }
+  
+    .custom-slider .ngx-slider .ngx-slider-tick.ngx-slider-selected {
+      background: var(--primary);
+    }
+  }
+  
+
+
+  .form-check-input{
+    width: 1.2em;
+    height: 1.2em;
+    vertical-align: top;
+    background-color: #fff;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    border: 2px solid var(--primary);
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    -webkit-print-color-adjust: exact;
+    color-adjust: exact;
+    position: relative;
+    bottom: 4px;
+  }
+
+  .form-check-input[type=checkbox] {
+    border-radius: .25em
+}
+.form-check-input[type=radio] {
+    border-radius: 50%
+}
+.form-check-input:active {
+    filter: brightness(90%)
+}
+.form-check-input:focus {
+    outline: 0;
+    box-shadow: none;
+}
+.form-check-input:checked {
+    background-color: var(--primary);
+    border-color: var(--primary)
+}
+.form-check-input:checked[type=checkbox] {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3e%3cpath fill='none' stroke='%23fff' stroke-linecap='round' stroke-linejoin='round' stroke-width='3' d='M6 10l3 3l6-6'/%3e%3c/svg%3e")
+}
+.form-check-input:checked[type=radio] {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='2' fill='%23fff'/%3e%3c/svg%3e")
+}
+.form-check-input[type=checkbox]:indeterminate {
+    background-color: var(--primary);
+    border-color: var(--primary);
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3e%3cpath fill='none' stroke='%23fff' stroke-linecap='round' stroke-linejoin='round' stroke-width='3' d='M6 10h8'/%3e%3c/svg%3e")
+}
+.form-check-input:disabled {
+    pointer-events: none;
+    filter: none;
+    opacity: .5
+}
+.form-check-input:disabled ~ .form-check-label,
+.form-check-input[disabled] ~ .form-check-label {
+    opacity: .5
+}
+
+
+
+@media only screen and (max-width: 1450px) {
+.card {
+    .filter_header {
+        .section_heading {
+            width: 50%;
+        } 
+            .btn-primary {
+                background: var(--primary);
+                    border-radius: 2.24px;
+                    font-size: 10px;
+                    font-style: normal;
+                    font-weight: 400;
+                    line-height: 26px;
+                    letter-spacing: 0em;
+                    padding: 5px 10px;
+                &:disabled{
+                    opacity: 0.8;
+                    background: var(--primary);
+                }
+                &:focus, &:active{
+                    background-color: var(--primary)!important;
+                    border-color: var(--primary)!important;
+                    box-shadow: none;
+                }
+                &:active:focus{
+                    box-shadow: none!important;
+                }
+            
+        }
+    }
+}}
+@media only screen and (max-width: 1210px) {
+    .filter_section {
+        .card {
+          
+            .card-body{
+                margin: 0;
+                padding: 20px;
+                margin-left:10px ;
+                section{
+                    margin-bottom: 20px;
+                }
+                .filter-title{
+                   display: flex; 
+                   justify-content:space-around ;
+                   align-items: center;
+                }
+                .section_heading {
+                    font-size: 14px;
+                    font-weight: 700;
+                    font-style: normal;
+                    line-height: 25px;
+                    letter-spacing: 0em;
+                    text-align: left;
+                    .Price{
+                        font-family: 'Poppins', sans-serif;
+                        font-size: 15px;
+                        font-style: normal;
+                        font-weight: 400;
+                        line-height: 23px;
+                        letter-spacing: 0em;
+                        text-align: left;
+                    }
+                }
+                .getflightStop{  
+                    button.flight_Stop_btn{
+                     padding: 10px 10px;
+                     font-size: 10px;
+                     color: var(--primary);
+                 }
+               
+                }
+            }
+        
+          
+        }
+        
+        }
+}
+@media only screen and (max-width: 1145px) {
+    .filter_section {
+        .card {
+            .card-body{
+                .getflightStop{  
+                    display: flex;
+                    button.flight_Stop_btn{
+                     padding: 10px 8px;
+                     font-size: 10px;
+                     color: var(--primary);
+                 }
+               
+                }
+            }
+        
+          
+        }
+        
+        }
+}
+@media only screen and (max-width: 1098px) {
+    .filter_section {
+        .card {
+            .card-body{
+                .getflightStop{  
+                    button.flight_Stop_btn{
+                     padding: 10px 5px;
+                     font-size: 10px;
+                     color: var(--primary);
+                 }
+               
+                }
+            }
+        
+          
+        }
+        
+        }
+}
+@media only screen and (max-width: 1098px) {
+    .filter_section {
+        .card {
+            .card-body{
+                .getflightStop{  
+                    button.flight_Stop_btn{
+                     padding: 10px 5px;
+                     font-size: 10px;
+                     color: var(--primary);
+                 }
+               
+                }
+            }
+        
+          
+        }
+        
+        }
+}
+@media only screen and (max-width: 891px) {
+    .filter_section {
+        .card {
+            .card-header{
+                .btn-primary{
+                    padding: 3px 10px
+                }
+            }
+            .card-body{
+                margin: 0;
+                padding: 10px;
+                margin-left:5px ;
+                .getflightStop{  
+                    button.flight_Stop_btn{
+                     padding: 10px 5px;
+                     font-size: 10px;
+                     color: var(--primary);
+                 }
+               
+                }
+            }
+        
+          
+        }
+        
+        }
+}
+@media only screen and (max-width: 768px) {
+    .filter_section {
+        .card {
+            .card-header{
+                .btn-primary{
+                    padding: 3px 4px
+                }
+            }
+            .card-body{
+                margin: 0;
+                padding: 5px;
+                margin-left:0px ;
+                .getflightStop{  
+                    button.flight_Stop_btn{
+                     padding: 10px 5px;
+                     font-size: 10px;
+                     color: var(--primary);
+                 }
+               
+                }
+            }
+        
+          
+        }
+        
+        }
+ 
+    
+}
+@media only screen and (max-width: 767px) {
+    .filter_section {
+    .card {
+        float: none;
+        width: 100%;
+        position: fixed;
+        left: 0;
+        top: 20px;
+        right:  0;
+        bottom: 0;
+        z-index: 999999;
+        background: #fff;
+        padding-top: 10px;
+        display: none;
+        margin-left: 0px;
+        overflow-y: scroll;
+        .filter-title{
+            display: flex; 
+            justify-content:space-around ;
+            align-items: center;
+            i{
+                display: block;
+            }
+            .apply_btn{
+                display: block;
+                background: #41d833 !important;
+                border-radius: 2.24px;
+                font-size: 12px;
+                font-style: normal;
+                font-weight: 400;
+                line-height: 26px;
+                letter-spacing: 0em;
+                text-align: left;
+                padding: 2px 25px;
+                color: white;
+            }
+         }
+       
+    }
+    .card.active {
+        display: block;
+    }
+  
+    
+}
+    .filter-fixed {
+        display: block;
+        top: 90px;
+        z-index: 999;
+       position: fixed;
+    }
+    
+}
+
+@media only screen and (max-width: 297px) {
+    .filter_section {
+    .card {
+        .filter_header{
+            display: grid;
+            justify-content: space-between;   
+            .btn-primary {
+                background: var(--primary);
+                    border-radius: 2.24px;
+                    font-size: 12px;
+                    font-style: normal;
+                    font-weight: 400;
+                    line-height: 20px;
+                    letter-spacing: 0em;
+                    text-align: center;
+                    padding: 3px 0px;
+                   margin-top: 5px;
+            }
+        }
+        .filter-title{
+            display: flex; 
+            justify-content:space-around ;
+            align-items: center;
+            i{
+                display: block;
+            }
+         }
+        
+        }
+    .card.active {
+        display: block;
+    }
+  
+    
+}
+    .filter-fixed {
+        display: block;
+        top: 60px;
+        z-index: 999;
+       position: fixed;
+    }
+    
+}

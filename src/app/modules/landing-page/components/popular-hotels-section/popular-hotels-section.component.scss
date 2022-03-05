@@ -1,0 +1,614 @@
+.popular_hotels_container {
+    width: 80%;
+    background-color: #ffe5e1;
+    border-radius: 10px;
+    margin: 160px auto 100px auto;
+    padding: 120px auto 0 auto;
+
+    .popular_hotels {
+        padding-top: 300px;
+        padding-bottom: 20px;
+        position: relative;
+        .ads_banner_img {
+            position: absolute;
+            top: -100px;
+            display: flex;
+            justify-content: center;
+            text-align: center;
+            margin: auto 60px;
+            cursor: pointer;
+            img {
+                width: 1500px;
+                border-radius: 5px;
+                border: 1px solid #e1dcdc;
+            }
+        }
+    }
+}
+
+.container_section {
+    margin-bottom: 20px;
+    .section-3-title {
+        margin-top: 12px;
+        margin-bottom: 12px;
+        margin: 20px 50px;
+        color: #000;
+    }
+    .section_body {
+        margin: 20px 0px;
+    }
+    .section_body_ourBest {
+        margin: 20px 0px;
+    }
+    .PopularHotel_section_body {
+        margin: 20px 45px;
+    }
+    .ourBestReach {
+        margin: 20px 0px;
+    }
+}
+.ads_banner {
+    margin-bottom: 70px;
+    img {
+        border-radius: 5px;
+    }
+}
+h3.section-3-title {
+    color: #000;
+    font-size: 1.75rem;
+    font-weight: 400;
+    margin-bottom: 2rem;
+    margin-left: 10px;
+}
+.card-popularhotels {
+    border: none !important;
+}
+.card-popularhotels .row {
+    .img_section {
+        padding-right: 5px !important;
+    }
+    p {
+        line-height: 1.1;
+    }
+    .card-title {
+        font-size: 14px;
+        color: #000;
+        margin-bottom: 0.5rem;
+        margin-top: 0.5rem;
+        text-align: center;
+        font-weight: bold;
+    }
+    .card-text {
+        text-align: center;
+    }
+    .card-hotel-content {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding-left: 0px !important;
+        padding-right: 10px !important;
+    }
+}
+.best-reach-cards {
+    margin-bottom: 20px;
+    border: none;
+    border-radius: 10px;
+    border: 1px solid #dedede;
+    .span-cards {
+        font-size: 12px;
+        .marker-red {
+            color: rgb(124, 0, 0) !important;
+        }
+    }
+    .card-body {
+        cursor: pointer;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        .span-cards {
+            font-size: 15px;
+            .marker-red {
+                color: rgb(124, 0, 0) !important;
+            }
+        }
+    }
+}
+.card {
+    .card-body {
+        .card-title {
+            &:focus {
+                border: none;
+                outline: none;
+            }
+        }
+    }
+}
+@media (max-width: 2560px) {
+    .popular_hotels_container {
+        width: 60%;
+        .popular_hotels {
+            .ads_banner_img {
+                margin: auto 70px;
+                img {
+                    width: 1500px;
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 1920px) {
+    .popular_hotels_container {
+        width: 80%;
+        .popular_hotels {
+            .ads_banner_img {
+                margin: auto 60px;
+                img {
+                    width: 1450px;
+                }
+            }
+        }
+    }
+    .container_section {
+        .section-3-title {
+            margin: 20px 73px;
+        }
+        .PopularHotel_section_body {
+            margin: 40px 70px;
+        }
+    }
+}
+
+@media (max-width: 1884px) {
+    .popular_hotels_container {
+        width: 80%;
+        .popular_hotels {
+            .ads_banner_img {
+                margin: auto 60px;
+                img {
+                    width: 1400px;
+                }
+            }
+        }
+    }
+    .container_section {
+        .section-3-title {
+            margin: 20px 73px;
+        }
+        .PopularHotel_section_body {
+            margin: 40px 70px;
+        }
+    }
+}
+
+@media (max-width: 1650px) {
+    .popular_hotels_container {
+        width: 78%;
+        .popular_hotels {
+            padding-top: 190px;
+        }
+    }
+}
+
+@media (max-width: 1600px) {
+    .popular_hotels_container {
+        width: 78%;
+        .popular_hotels {
+            padding-top: 190px;
+            .ads_banner_img {
+                margin: auto 45px;
+                img {
+                    width: 1500px;
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 1440px) {
+    .popular-slider {
+        .owl-item {
+            max-width: 190px !important;
+        }
+        .card {
+            .card-img-top {
+                min-height: 174px;
+            }
+        }
+    }
+    .container {
+        max-width: 1410px;
+        .section-3-title {
+            font-size: 1.75rem;
+        }
+        .list-city-top {
+            margin-right: 15px;
+            .city-img {
+                width: 125px;
+                height: 110px;
+                border-radius: 5px;
+            }
+        }
+        .container_section_our_bestReach {
+            margin: 0 50px;
+        }
+        .container_section_PopularCity {
+            padding: 0px 200px;
+        }
+        .ads_banner_section {
+            margin: 0 183px;
+        }
+    }
+    .container_section {
+        .section-3-title {
+            margin-top: 80px !important;
+            margin-bottom: 12px;
+            margin: 20px 70px;
+            font-size: 1.5rem;
+        }
+        .PopularHotel_section_body {
+            margin: 18px 65px;
+        }
+    }
+    .popular_hotels_container {
+        width: 80%;
+        .popular_hotels {
+            margin-bottom: 0px;
+            padding-bottom: 10px;
+            padding-top: 110px;
+            .ads_banner_img {
+                margin: auto 66px;
+                img {
+                    width: 1400px;
+                }
+            }
+        }
+    }
+    .card-popularhotels .row {
+        .card-title {
+            font-size: 12px;
+        }
+        p {
+            line-height: 1;
+        }
+        .card-hotel-content {
+            align-items: flex-start;
+            padding-top: 5px;
+        }
+    }
+}
+
+@media (max-width: 1366px) {
+    .popular_hotels_container {
+        .popular_hotels {
+            padding-top: 155px;
+        }
+    }
+    .banner-form {
+        .form-control {
+            font-size: 15px !important;
+        }
+    }
+}
+
+@media (max-width: 1200px) {
+    .popular_hotels_container {
+        width: 93%;
+        .popular_hotels {
+            padding-top: 100px;
+        }
+    }
+}
+@media screen and (max-width: 900px) {
+    .popular-slider {
+        .card {
+            padding: 15px;
+            .card-img-top {
+                min-height: 150px;
+                max-height: 350px;
+            }
+            .photo {
+                height: 150px;
+            }
+        }
+    }
+}
+@media (max-width: 1024px) {
+    .popular-slider {
+        .card {
+            padding: 0.6rem;
+            .card-img-top {
+                min-height: 120px;
+                max-height: 350px;
+            }
+            .photo {
+                height: 150px;
+            }
+        }
+    }
+    .popular_hotels_container {
+        width: 88%;
+        .popular_hotels {
+            .ads_banner_img {
+                margin: auto 28px;
+                img {
+                    width: 1500px;
+                }
+            }
+        }
+    }
+    .card-popularhotels .row {
+        .card-title {
+            font-size: 12px;
+            padding-top: 5px;
+        }
+        .card-text {
+            font-size: 10px;
+            text-align: center;
+        }
+    }
+    .container_section {
+        .section-3-title {
+            margin: 20px 40px;
+        }
+        .PopularHotel_section_body {
+            margin: 18px 45px;
+        }
+    }
+    .container_section {
+        .section-3-title {
+            margin-top: 35px !important;
+            font-size: 1.5rem;
+        }
+        .PopularHotel_section_body {
+            margin: 18px 45px;
+        }
+    }
+}
+@media screen and (max-width: 767px) {
+    .card-popularhotels .row {
+        .card-title {
+            font-size: 1rem;
+            padding-top: 5px;
+            text-align: center;
+        }
+        .card-text {
+            display: none;
+        }
+    }
+}
+@media screen and (max-width: 768px) {
+    .popular_hotels_container {
+        width: 98%;
+        margin: 160px auto 40px auto;
+        .popular_hotels {
+            padding-top: 50px;
+            .ads_banner_img {
+                img {
+                    width: 1425px;
+                    height: 150px;
+                }
+            }
+        }
+    }
+    .ads_banner {
+        margin-bottom: 10px;
+        padding: 0 10px;
+    }
+    .container_section {
+        .PopularHotel_section_body {
+            margin: 18px 34px;
+        }
+        .section-3-title {
+            font-size: 1.4rem;
+        }
+    }
+}
+
+@media (max-width: 650px) {
+    .popular-slider {
+        padding: 21px 0;
+        .owl-item {
+            max-width: 203px !important;
+        }
+        .card {
+            padding: 15px;
+            .card-img-top {
+                min-height: 350px;
+                max-height: 350px;
+                .card-body {
+                    border: 1px solid rgba(0, 0, 0, 0.125);
+                    background: #ffffff;
+                    border-radius: 10px;
+                    padding: 0.5rem;
+                }
+            }
+            .photo {
+                height: 300px;
+            }
+        }
+    }
+    .popular_hotels_container {
+        .popular_hotels {
+            .PopularHotel_section_body {
+                margin: 21px 0;
+                .owl-item {
+                    max-width: 203px !important;
+                }
+            }
+        }
+    }
+    .card-popularhotels .row {
+        .card-title {
+            font-size: 15px;
+            padding-top: 5px;
+            margin-bottom: 4px;
+        }
+        .card-text {
+            font-size: 10px;
+        }
+    }
+    .card-popularhotels .row {
+        .img_section {
+            padding-right: 0px !important;
+        }
+    }
+}
+
+@media (max-width: 600px) {
+    .popular_hotels_container {
+        margin: 100px auto 0px auto;
+        background: #fff;
+        .popular_hotels {
+            .ads_banner_img {
+                margin: auto 10px;
+                img {
+                    width: 1100px;
+                    height: 130px;
+                    border-radius: 5px;
+                }
+            }
+        }
+    }
+    .popular-slider {
+		.card {
+			padding: 0px;
+			border-radius: 10px !important;
+			margin-bottom: 0;
+			box-shadow: none;
+			.card-img-top {
+				min-height: 150px;
+				max-height: 150px;
+				border: none;
+				border-top-left-radius: 5px;
+				border-top-right-radius: 5px;
+				border-bottom-left-radius: 0;
+				border-bottom-right-radius: 0;
+				h2 {
+					border-radius: 5px;
+					font-size: 1rem;
+				}
+				span.top-side {
+					display: inline-block;
+				}
+			}
+			.card-title {
+				padding-top: 2px;
+				font-size: 1rem;
+			}
+		}
+	}
+    .container_section {
+        .PopularHotel_section_body {
+            .card-body {
+                border: 1px solid rgba(0, 0, 0, 0.125);
+                background: #ffffff;
+                border-radius: 10px;
+                padding: 0.4rem;
+            }
+        }
+        .section-3-title {
+            margin: 20px 10px;
+            font-size: 1.5rem;
+        }
+    }
+}
+
+@media (max-width: 524px) {
+    .container_section {
+        .PopularHotel_section_body {
+            .card-body {
+                border: 1px solid rgba(0, 0, 0, 0.125);
+                background: #ffffff;
+                border-radius: 10px;
+            }
+        }
+    }
+    .popular-slider {
+		.card {
+			padding: 7px;
+			.card-img-top {
+				min-height: 140px;
+				max-height: 250px;
+			}
+			.photo {
+				height: 140px;
+			}
+			.backup-image {
+				background-size: contain;
+			}
+		}
+	}
+    .popular_hotels_container {
+        .popular_hotels {
+            padding-top: 30px;
+            .section-3-title {
+                margin: 20px 0px;
+                margin-bottom: 10px;
+            }
+            .ads_banner_img {
+                margin: auto 0px;
+                img {
+                    width: 940px;
+                    height: 130px;
+                    object-fit: fill;
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 425px) {
+    .container {
+        .container_section_PopularCity {
+            padding: 0 0px 20px;
+        }
+    }
+    .popular_hotels_container {
+        .popular_hotels {
+            padding-top: 30px;
+            .section-3-title {
+                margin: 20px 13px;
+            }
+            .ads_banner_img {
+                margin: auto 10px;
+
+                img {
+                    width: 940px;
+                    height: 105px;
+                    // object-fit: cover;
+                }
+            }
+            .PopularHotel_section_body {
+                margin: 21px 10px;
+            }
+        }
+        .owl-carousel {
+            .owl-item {
+                max-width: 203px !important;
+                img {
+                    display: block;
+                    width: 92% !important ;
+                }
+            }
+        }
+    }
+    .popular-slider {
+		.card {
+			padding: 8px;
+			.card-img-top {
+				min-height: 140px;
+				max-height: 250px;
+			}
+			.photo {
+				height: 220px;
+			}
+			.backup-image {
+				background-size: contain;
+			}
+			.card-title {
+				font-weight: bold;
+			}
+		}
+	}
+}

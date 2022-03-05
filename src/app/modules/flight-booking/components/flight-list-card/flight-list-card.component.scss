@@ -1,0 +1,6537 @@
+.list_card_container {
+	margin-bottom: 12px;
+	align-items: center;
+	&:hover{
+		box-shadow: 0px 0px 4.48px 1.12px rgba(0, 0, 0, 0.25);
+	}
+    border-radius: 12.32px;
+	padding: 20px;
+    background: #fff;
+	margin-left: 3%;
+	border: 1px solid #dedede;
+	.list_card {
+		display: flex;
+	    align-items: center;
+		justify-content: space-between;
+		.flight_brnd {
+			display: grid;
+			justify-content: start;
+			align-items: center;
+			text-align: left;
+		
+			img {
+				width: 50px;
+				height: 50px;
+			}
+			span.flight_name {	
+				font-size: 18px !important;
+				width: 80px;
+				font-weight: 600; 
+					}
+		}
+		.flight_details_section{
+			display: flex;
+			align-items: center;
+			width: 100%;
+			
+		.flight_details {
+			display: flex;
+			justify-content: space-between;
+			.from {
+				font-size: 12px;
+				font-style: normal;
+				font-weight: 400;
+				line-height: 18px;
+				letter-spacing: 0em;
+				text-align: right;
+				display: grid;
+				min-width: 100px;
+			
+				span.city {
+					font-weight: bold;
+					font-size: 12px;
+					
+				}
+				span.time {
+					font-size: 21px;
+					font-style: normal;
+					font-weight: 500;
+					line-height: 31px;
+					letter-spacing: 0em;
+					text-align: right;
+					
+				}
+				div.date {
+					font-size: 12px;
+					color: rgb(143, 141, 141);
+					font-weight: 500;
+					letter-spacing: 0em;
+					
+				}
+			}
+			.duration  {
+				align-items: flex-start;
+				text-align: center;
+				display: grid;
+				margin: 0 20px;
+				letter-spacing: 0em;
+				.duration_time,
+				.flight_destination_line{
+					img{
+						width: 150px;
+					}
+					}
+				.flight_speed {
+					font-weight: 500;
+					font-size: 14px;
+					
+				}
+			}
+			.destination {
+				font-size: 12px;
+				font-style: normal;
+				font-weight: 400;
+				line-height: 18px;
+				letter-spacing: 0em;
+				text-align: left;
+				display: grid;
+				min-width: 100px;
+				font-family: 'Poppins';
+				span.city {
+					font-weight: bold;
+					font-size: 12px;
+					font-family: 'Poppins';
+				}
+				span.time {
+					font-weight: 500;
+					font-size: 20px;
+					font-family: 'Poppins';
+				}
+				div.date {
+					font-size: 12px;
+					color: rgb(143, 141, 141);
+					font-weight: 500;
+					font-family: 'Poppins';
+				}
+			}
+		}
+	}
+	.price_book_section{
+		display: flex;
+		width: 100%;
+		justify-content: space-between;
+		.price_section {
+			padding: 0 65px;
+			.prices {
+				display: grid;
+				.Price_from{
+					display: none;
+				}
+				.booking_price {
+				font-family: 'Roboto', sans-serif;
+				font-size: 18px;
+				font-style: normal;
+				font-weight: 500;
+				line-height: 33px;
+				letter-spacing: 0em;
+				text-align: left;
+				
+				}
+				.off_price {
+					font-family: 'Poppins' sans-serif;
+					font-size: 12px;
+					font-style: normal;
+					font-weight: 400;
+					line-height: 18px;
+					letter-spacing: 0em;
+					text-align: left;
+					color: rgb(108, 173, 34);
+					font-family: 'Poppins';
+				}
+			}
+		}
+		.btn-sm{
+			background: var(--primary);
+			border-radius: 2.24px;
+			height: 35px;
+			font-size: 18px;
+			font-style: normal;
+			font-weight: 400;
+			line-height: 26px;
+			letter-spacing: 0em;
+			text-align: left;
+			padding: 5px 30px;
+			display: block;
+		}
+	}
+	
+	}
+	.more_details {
+		width: 100%;
+		.more_detail_header {
+			text-align: right;
+			a {
+				text-decoration: none;
+				font-size: 12px;
+				color: var(--primary);
+				font-weight: 600;
+				cursor: pointer;
+			}
+		}
+		.tabs-header{
+			margin: 13px;
+		    border: 1px solid #dedede;
+		     border-radius: 20px;
+		   background: #EFF3F8;
+		   ul{
+			   display: flex;
+			   justify-content: space-between;
+			   align-items: center;
+			list-style-type: none;
+			margin:0;
+			padding: 0;
+		   }
+		   .tab {
+			overflow: hidden;
+			
+		  }
+		  
+		  .tab a {
+			background-color: inherit;
+			float: left;
+			border: none;
+			outline: none;
+			cursor: pointer;
+			padding: 5px 30px;
+			text-transform: uppercase;
+			font-size: 12px;
+			text-decoration: none;
+			color: #000;
+		  }
+		  
+		  .tab a.active {
+			padding: 5px 30px;
+			border-radius: 20px;
+			background-color: var(--primary);
+			color: white;
+			font-size: 12px;
+		  }
+		  
+		
+		  .tabcontent {
+			display: none;
+			padding: 6px 12px;
+			border: 1px solid #ccc;
+			border-top: none;
+		  }
+	   
+	   }
+		.Tabs_body {
+			margin-top: 10px;
+			padding: 10px;
+			.titile_name{
+                    font-size: 18px;
+					font-weight: bold;
+					color: #000;
+			}
+		.Total_Price{
+			font-size: 15px;
+			font-weight: bold;
+			color: #000;
+		}
+		.fare_title{
+			font-size: 15px;
+			color: rgb(143, 141, 141);
+			font-weight: 500;
+		}
+		
+		
+			.detail_card {
+				.flight_brnd {
+					width: 100%;
+					display: grid;
+					justify-content: center;
+					font-family: "Poppins";
+					align-items: center;
+					text-align: center;
+					img {
+						width: 50px;
+						height: 50px;
+					}
+					span {
+						font-weight: 500;
+						font-size: 14px;
+					}
+				}
+				.detail_row {
+					display: flex;
+					justify-content: space-between;
+					width: 100%;
+					.flight_details {
+						display: flex;
+						align-items: left;
+						margin-top: 5px;
+						.from {
+							display: grid;
+							text-align: left;
+							span.time {
+								font-weight: 500;
+								font-size: 24px;
+							}
+							div.date {
+								font-size: 12px;
+								color: rgb(143, 141, 141);
+								font-weight: 500;
+							}
+						}
+						.duration {
+							text-align: center;
+							display: grid;
+							.duration_time,
+							.flight_destination_line{
+								img{
+									width: 150px;
+								}
+								}
+							.flight_speed {
+								font-weight: 500;
+								font-size: 14px;
+							}
+						}
+						.destination {
+							text-align: left;
+							display: grid;
+							span.time {
+								font-weight: 500;
+								font-size: 24px;
+							}
+							div.date {
+								font-size: 12px;
+								color: rgb(143, 141, 141);
+								font-weight: 500;
+							}
+						}
+					}
+					.extra_things_container {
+						display: flex;
+						justify-content: space-evenly;
+						.extra_things {
+							margin: 0 20px;
+							text-align: left;
+							.item_title {
+								font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+								font-size: 18px;
+								font-weight: 700;
+							}
+							.item_value {
+								font-size: 12px;
+								font-weight: 400;
+								color: #7c7c7c;
+							}
+						}
+					}
+				}
+			}
+		}
+		.Cancel_Tabs_body{
+			.tabs_title_selection{
+				.img-tab{
+					width: 15%;
+					height: 15%;
+				}
+				span{
+					font-size: 16px;
+					font-weight: bold;
+					color: #000;
+				}
+				.stop{
+					font-size: 16px;
+					font-weight: bold;
+					color: red;
+				}
+			}
+		}
+		.Scheduled{
+			font-size: 9.5px; 
+			font-weight: bold;
+			text-align: center;
+		}
+		
+	}
+
+}
+
+@media only screen and (max-width: 1780px) {
+	.list_card_container {
+		.list_card {
+		.price_book_section{
+			.price_section {
+				padding: 0 60px;
+				
+			}
+		}
+		
+		}
+	}
+	
+	}
+	
+@media only screen and (max-width: 1750px) {
+	.list_card_container {
+		.list_card {
+		.price_book_section{
+			.price_section {
+				padding: 0 50px;
+				
+			}
+		}
+		
+		}
+	}
+	}
+@media only screen and (max-width: 1705px) {
+		.list_card_container {
+			.list_card {
+			.price_book_section{
+				.price_section {
+					padding: 0 40px;
+					
+				}
+			}
+			
+			}
+		}
+		}
+
+@media only screen and (max-width: 1680px) {
+			.list_card_container {
+				.list_card {
+				.price_book_section{
+					.price_section {
+						padding: 0 30px;
+						
+					}
+				}
+				
+				}
+			}
+			}
+@media only screen and (max-width: 1630px) {
+				.list_card_container {
+					.list_card {
+					.price_book_section{
+						.price_section {
+							padding: 0 20px;
+							
+						}
+					}
+					
+					}
+				}
+				}
+@media only screen and (max-width: 1585px) {
+	.list_card_container {
+		.list_card {
+			.flight_details_section{
+			.flight_details {
+				.from {
+					span.city {
+						font-size: 10px;
+					}		
+				}
+				.duration  {
+					margin: 0 15px;
+				}
+				.destination {
+					span.city {
+						font-weight: bold;
+						font-size: 10px;
+						font-family: 'Poppins';
+					}
+				}
+			}
+		}
+		.price_book_section{
+			.price_section {
+				padding: 0 20px;	
+			}
+		}
+		}
+		
+	
+	}
+					}
+@media only screen and (max-width: 1565px) {
+	.list_card_container {
+	    .list_card {
+			.flight_details_section{
+					.flight_details {
+						.from {
+							span.city {
+								font-size: 10px;
+									}		
+							}
+						    .duration  {
+								margin: 0 15px;
+									}
+						.destination {
+								span.city {
+									font-weight: bold;
+									font-size: 10px;
+									}
+							}
+						}
+					}
+				.price_book_section{
+					.price_section {
+					     padding: 0 10px;	
+								}
+					}
+							}
+							
+						
+						}
+										}
+@media only screen and (max-width: 1525px) {
+		.list_card_container {
+		    .list_card {
+				.flight_details_section{
+						.flight_details {
+							.from {
+								span.city {
+									font-size: 10px;
+										}		
+									}
+								.duration  {
+									margin: 0 10px;
+										}
+								.destination {
+									span.city {
+											font-weight: bold;
+											font-size: 10px;
+											}
+												}
+												 }
+												}
+							.price_book_section{
+								.price_section {
+										padding: 0 10px;	
+										}
+											}
+										}
+										}
+								}
+@media only screen and (max-width: 1500px) {
+		.list_card_container {
+		    .list_card {
+				.flight_details_section{
+						.flight_details {
+							.from {
+								min-width: 80px;
+								span.city {
+									font-size: 10px;
+										}		
+									}
+								.duration  {
+									margin: 0 10px;
+										}
+								.destination {
+									min-width: 80px;
+									span.city {
+											font-weight: bold;
+											font-size: 10px;
+											}
+												}
+												 }
+												}
+							.price_book_section{
+								.price_section {
+										padding: 0 15px;	
+										}
+											}
+										}
+										}
+								}
+@media only screen and (max-width: 1420px) {
+		.list_card_container {
+		    .list_card {
+				.flight_details_section{
+						.flight_details {
+							.from {
+							
+								span.city {
+									font-size: 10px;
+										}
+										span.time {
+											font-size: 18px;
+										}		
+									}
+								.duration  {
+									margin: 0 10px;
+										}
+								.destination {
+									
+									span.city {
+											font-weight: bold;
+											font-size: 10px;
+											}
+											span.time {
+												font-size: 18px;
+											}	
+												}
+												 }
+												}
+							.price_book_section{
+								.price_section {
+										padding: 0 15px;	
+										}
+											}
+										}
+										}
+								}
+@media only screen and (max-width: 1280px) {
+		.list_card_container {
+		    .list_card {
+				.flight_brnd {
+					img {
+						width: 40px;
+						height: 45px;
+					}
+					span.flight_name {	
+						font-size: 16px !important;
+						width: 70px;
+						font-weight: 600; 
+							}
+				}
+				.flight_details_section{
+						.flight_details {
+							.from {
+							
+								span.city {
+									font-size: 10px;
+										}
+										span.time {
+											font-size: 18px;
+										}		
+									}
+								.duration  {
+									margin: 0 10px;
+										}
+								.destination {
+									
+									span.city {
+											font-weight: bold;
+											font-size: 10px;
+											}
+											span.time {
+												font-size: 18px;
+											}	
+												}
+												 }
+												}
+							.price_book_section{
+								display: grid;
+								padding-left: 15px;
+								.price_section {
+										padding: 0 0px;	
+										}
+										.btn-sm{
+											padding: 5px 20px;
+										}
+											}
+										}
+										}
+								}
+@media only screen and (max-width: 1199px) {
+		.list_card_container {
+		    .list_card {
+				.flight_brnd {
+				
+					justify-content: start;
+					align-items: center;
+					img {
+						width: 50px;
+						height: 50px;
+					}
+					span.flight_name {	
+						font-size: 15px !important;
+						width: 90px;
+						font-weight: 600; 
+							}
+				}
+				.flight_details_section{
+						.flight_details {
+							.from {
+								min-width: 100px;
+								span.city {
+									font-size: 10px;
+										}
+										span.time {
+											font-size: 18px;
+										}		
+									}
+								.duration  {
+									margin: 0 20px;
+										}
+								.destination {
+									min-width: 100px;
+									span.city {
+											font-weight: bold;
+											font-size: 10px;
+											}
+											span.time {
+												font-size: 18px;
+											}	
+												}
+												 }
+												}
+							.price_book_section{
+								display: flex;
+								justify-content: space-around;
+								.price_section {
+										padding: 0 45px;	
+										}
+											}
+										}
+										}
+								}
+@media only screen and (max-width: 1024px) {
+		.list_card_container {
+		    .list_card {
+				.flight_details_section{
+						.flight_details {
+							.from {
+								
+								span.city {
+									font-size: 10px;
+										}
+										span.time {
+											font-size: 18px;
+										}		
+									}
+								.duration  {
+									margin: 0 10px;
+										}
+								.destination {
+								
+									span.city {
+											font-weight: bold;
+											font-size: 10px;
+											}
+											span.time {
+												font-size: 18px;
+											}	
+												}
+												 }
+												}
+							.price_book_section{
+								.price_section {
+										padding: 0 20px;	
+										}
+											}
+										}
+										}
+								}
+
+@media only screen and (max-width: 999px) {
+		.list_card_container {
+		    .list_card {
+				.flight_details_section{
+						.flight_details {
+							.from {
+								
+								span.city {
+									font-size: 10px;
+										}
+										span.time {
+											font-size: 18px;
+										}		
+									}
+								.duration  {
+									margin: 0 10px;
+										}
+								.destination {
+								
+									span.city {
+											font-weight: bold;
+											font-size: 10px;
+											}
+											span.time {
+												font-size: 18px;
+											}	
+												}
+												 }
+												}
+							.price_book_section{
+								.price_section {
+										padding: 0 20px;	
+										}
+											}
+										}
+										}
+								}
+@media only screen and (max-width: 958px) {
+		.list_card_container {
+			margin-left: 1%;
+		    .list_card {
+				.flight_details_section{
+						.flight_details {
+							.from {
+								
+								span.city {
+									font-size: 10px;
+										}
+										span.time {
+											font-size: 18px;
+										}
+										div.date {
+											font-size: 10px;
+										}		
+									}
+								.duration  {
+									margin: 0 10px;
+										}
+								.destination {
+									
+									span.city {
+											font-weight: bold;
+											font-size: 10px;
+											}
+											span.time {
+												font-size: 18px;
+											}	
+											div.date {
+												font-size: 10px;
+											}
+												}
+												 }
+												}
+							.price_book_section{
+								.price_section {
+										padding: 0 10px;	
+										}
+											}
+										}
+										}
+								}
+@media only screen and (max-width: 915px) {
+		.list_card_container {
+			margin-left: 1%;
+		    .list_card {
+				.flight_details_section{
+						.flight_details {
+							.from {
+							
+								span.city {
+									font-size: 10px;
+										}
+										span.time {
+											font-size: 18px;
+										}
+										div.date {
+											font-size: 10px;
+										}		
+									}
+								.duration  {
+									margin: 0 10px;
+										}
+								.destination {
+									
+									span.city {
+											font-weight: bold;
+											font-size: 10px;
+											}
+											span.time {
+												font-size: 18px;
+											}	
+											div.date {
+												font-size: 10px;
+											}
+												}
+												 }
+												}
+							.price_book_section{
+								.price_section {
+										padding: 0 10px;	
+										}
+										.btn-sm{
+											font-size: 15px;
+											padding: 5px 25px;
+										}
+								}
+								    }
+								}
+								}
+@media only screen and (max-width: 875px) {
+		.list_card_container {
+			margin-left: 1%;
+		    .list_card {
+				.flight_brnd {
+					span.flight_name {	
+						font-size: 15px !important;
+						width: 70px;
+						font-weight: 600; 
+							}
+				}
+				.flight_details_section{
+						.flight_details {
+							.from {
+								
+								span.city {
+									font-size: 10px;
+										}
+										span.time {
+											font-size: 18px;
+										}
+										div.date {
+											font-size: 10px;
+										}		
+									}
+								.duration  {
+									margin: 0 10px;
+									.duration_time,
+				.flight_destination_line{
+					img{
+						width: 100px;
+					}
+					}
+										}
+								.destination {
+									
+									span.city {
+											font-weight: bold;
+											font-size: 10px;
+											}
+											span.time {
+												font-size: 18px;
+											}	
+											div.date {
+												font-size: 10px;
+											}
+												}
+												 }
+												}
+							.price_book_section{
+								.price_section {
+										padding: 0 5px;	
+										.prices {
+											display: grid;
+											.booking_price {
+											font-size: 15px;
+										
+											}
+										}
+										}
+										.btn-sm{
+											font-size: 15px;
+											padding: 5px 25px;
+										}
+								}
+								    }
+								}
+								}
+@media only screen and (max-width: 768px) {
+	.list_card_container {
+		.list_card {
+			.flight_brnd {
+
+				span.flight_name {
+					font-size: 16px !important;
+					width: 80px;
+					font-weight: 600; 
+						}
+			}
+			.flight_details_section{
+			.flight_details {
+				.from {
+					min-width: 80px;
+				}
+				.duration  {
+					margin: 0 15px;
+				}
+				.destination {
+					min-width: 80px;
+				
+				}
+			}
+		}
+		.price_book_section{
+			display: grid;
+			.price_section {
+				padding: 0 20px;
+				.prices {
+					display: grid;
+					.booking_price {
+					font-family: 'Roboto', sans-serif;
+					font-size: 18px;
+					font-style: normal;
+					font-weight: 500;
+					line-height: 33px;
+					letter-spacing: 0em;
+					text-align: left;
+					}
+					.off_price {
+						font-family: 'Poppins' sans-serif;
+						font-size: 12px;
+						font-style: normal;
+						font-weight: 400;
+						line-height: 18px;
+						letter-spacing: 0em;
+						text-align: left;
+						color: rgb(108, 173, 34);
+						font-family: 'Poppins';
+					}
+				}
+			}
+			.btn-sm{
+				background: var(--primary);
+				border-radius: 2.24px;
+				height: 35px;
+				font-size: 18px;
+				font-style: normal;
+				font-weight: 400;
+				line-height: 26px;
+				letter-spacing: 0em;
+				text-align: left;
+				padding: 5px 30px;
+			}
+		}
+		
+		}
+		.more_details {
+			width: 100%;
+			.more_detail_header {
+				text-align: right;
+				a {
+					text-decoration: none;
+					font-size: 12px;
+					color: var(--primary);
+					font-weight: 600;
+					cursor: pointer;
+				}
+			}
+			.tabs-header{
+				margin: 13px;
+				border: 1px solid #dedede;
+				 border-radius: 20px;
+			   background: #EFF3F8;
+			   ul{
+				   display: flex;
+				   justify-content: space-between;
+				   align-items: center;
+				list-style-type: none;
+				margin:0;
+				padding: 0;
+			   }
+			   .tab {
+				overflow: hidden;
+				
+			  }
+			  
+			  .tab a {
+				background-color: inherit;
+				float: left;
+				border: none;
+				outline: none;
+				cursor: pointer;
+				padding: 5px 30px;
+				text-transform: uppercase;
+				font-size: 12px;
+				text-decoration: none;
+				color: #000;
+			  }
+			  
+			  .tab a.active {
+				padding: 5px 30px;
+				border-radius: 20px;
+				background-color: var(--primary);
+				color: white;
+				font-size: 12px;
+			  }
+			  
+			
+			  .tabcontent {
+				display: none;
+				padding: 6px 12px;
+				border: 1px solid #ccc;
+				border-top: none;
+			  }
+		   
+		   }
+			.Tabs_body {
+				margin-top: 10px;
+				padding: 10px;
+				.titile_name{
+						font-size: 18px;
+						font-weight: bold;
+						color: #000;
+				}
+			.Total_Price{
+				font-size: 15px;
+				font-weight: bold;
+				color: #000;
+			}
+			.fare_title{
+				font-size: 15px;
+				color: rgb(143, 141, 141);
+				font-weight: 500;
+			}
+			
+			
+				.detail_card {
+					.flight_brnd {
+						width: 100%;
+						display: grid;
+						justify-content: center;
+						font-family: "Poppins";
+						align-items: center;
+						text-align: center;
+						img {
+							width: 50px;
+							height: 50px;
+						}
+						span {
+							font-weight: 500;
+							font-size: 14px;
+						}
+					}
+					.detail_row {
+						display: flex;
+						justify-content: space-between;
+						width: 100%;
+						.flight_details {
+							display: flex;
+							align-items: left;
+							margin-top: 5px;
+							.from {
+								display: grid;
+								text-align: left;
+								span.time {
+									font-weight: 500;
+									font-size: 24px;
+								}
+								div.date {
+									font-size: 12px;
+									color: rgb(143, 141, 141);
+									font-weight: 500;
+								}
+							}
+							.duration {
+								text-align: center;
+								display: grid;
+								.duration_time,
+								.flight_destination_line{
+									img{
+										width: 150px;
+									}
+									}
+								.flight_speed {
+									font-weight: 500;
+									font-size: 14px;
+								}
+							}
+							.destination {
+								text-align: left;
+								display: grid;
+								span.time {
+									font-weight: 500;
+									font-size: 24px;
+								}
+								div.date {
+									font-size: 12px;
+									color: rgb(143, 141, 141);
+									font-weight: 500;
+								}
+							}
+						}
+						.extra_things_container {
+							display: flex;
+							justify-content: space-evenly;
+							.extra_things {
+								margin: 0 20px;
+								text-align: left;
+								.item_title {
+									font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+									font-size: 18px;
+									font-weight: 700;
+								}
+								.item_value {
+									font-size: 12px;
+									font-weight: 400;
+									color: #7c7c7c;
+								}
+							}
+						}
+					}
+				}
+			}
+			.Cancel_Tabs_body{
+				.tabs_title_selection{
+					.img-tab{
+						width: 15%;
+						height: 15%;
+					}
+					span{
+						font-size: 16px;
+						font-weight: bold;
+						color: #000;
+					}
+					.stop{
+						font-size: 16px;
+						font-weight: bold;
+						color: red;
+					}
+				}
+			}
+			.Scheduled{
+				font-size: 9.5px; 
+				font-weight: bold;
+				text-align: center;
+			}
+			
+		}
+	
+	}
+								}
+@media only screen and (max-width: 767px) {
+	.list_card_container {
+		.list_card {
+			.flight_brnd {
+
+				span.flight_name {
+					font-size: 16px !important;
+					width: 80px;
+					font-weight: 600; 
+						}
+			}
+			.flight_details_section{
+			.flight_details {
+				.from {
+					min-width: 80px;
+				}
+				.duration  {
+					margin: 0 15px;
+				}
+				.destination {
+					min-width: 80px;
+				
+				}
+			}
+		}
+		.price_book_section{
+			.price_section {
+				padding: 0 60px;
+				.prices {
+					display: flex;
+					.booking_price {
+					font-family: 'Roboto', sans-serif;
+					font-size: 18px;
+					font-style: normal;
+					font-weight: 500;
+					line-height: 33px;
+					letter-spacing: 0em;
+					text-align: left;
+					}
+				
+				}
+			}
+			.btn-sm{
+			
+				padding: 5px 30px;
+			}
+		}
+		
+		}
+		.more_details {
+			width: 100%;
+			.more_detail_header {
+				text-align: right;
+				a {
+					text-decoration: none;
+					font-size: 12px;
+					color: var(--primary);
+					font-weight: 600;
+					cursor: pointer;
+				}
+			}
+			.tabs-header{
+				margin: 13px;
+				border: 1px solid #dedede;
+				 border-radius: 20px;
+			   background: #EFF3F8;
+			   ul{
+				   display: flex;
+				   justify-content: space-between;
+				   align-items: center;
+				list-style-type: none;
+				margin:0;
+				padding: 0;
+			   }
+			   .tab {
+				overflow: hidden;
+				
+			  }
+			  
+			  .tab a {
+				background-color: inherit;
+				float: left;
+				border: none;
+				outline: none;
+				cursor: pointer;
+				padding: 5px 30px;
+				text-transform: uppercase;
+				font-size: 12px;
+				text-decoration: none;
+				color: #000;
+			  }
+			  
+			  .tab a.active {
+				padding: 5px 30px;
+				border-radius: 20px;
+				background-color: var(--primary);
+				color: white;
+				font-size: 12px;
+			  }
+			  
+			
+			  .tabcontent {
+				display: none;
+				padding: 6px 12px;
+				border: 1px solid #ccc;
+				border-top: none;
+			  }
+		   
+		   }
+			.Tabs_body {
+				margin-top: 10px;
+				padding: 10px;
+				.titile_name{
+						font-size: 18px;
+						font-weight: bold;
+						color: #000;
+				}
+			.Total_Price{
+				font-size: 15px;
+				font-weight: bold;
+				color: #000;
+			}
+			.fare_title{
+				font-size: 15px;
+				color: rgb(143, 141, 141);
+				font-weight: 500;
+			}
+			
+			
+				.detail_card {
+					.flight_brnd {
+						width: 100%;
+						display: grid;
+						justify-content: center;
+						font-family: "Poppins";
+						align-items: center;
+						text-align: center;
+						img {
+							width: 50px;
+							height: 50px;
+						}
+						span {
+							font-weight: 500;
+							font-size: 14px;
+						}
+					}
+					.detail_row {
+						display: flex;
+						justify-content: space-between;
+						width: 100%;
+						.flight_details {
+							display: flex;
+							align-items: left;
+							margin-top: 5px;
+							.from {
+								display: grid;
+								text-align: left;
+								span.time {
+									font-weight: 500;
+									font-size: 24px;
+								}
+								div.date {
+									font-size: 12px;
+									color: rgb(143, 141, 141);
+									font-weight: 500;
+								}
+							}
+							.duration {
+								text-align: center;
+								display: grid;
+								.duration_time,
+								.flight_destination_line{
+									img{
+										width: 150px;
+									}
+									}
+								.flight_speed {
+									font-weight: 500;
+									font-size: 14px;
+								}
+							}
+							.destination {
+								text-align: left;
+								display: grid;
+								span.time {
+									font-weight: 500;
+									font-size: 24px;
+								}
+								div.date {
+									font-size: 12px;
+									color: rgb(143, 141, 141);
+									font-weight: 500;
+								}
+							}
+						}
+						.extra_things_container {
+							display: flex;
+							justify-content: space-evenly;
+							.extra_things {
+								margin: 0 20px;
+								text-align: left;
+								.item_title {
+									font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+									font-size: 18px;
+									font-weight: 700;
+								}
+								.item_value {
+									font-size: 12px;
+									font-weight: 400;
+									color: #7c7c7c;
+								}
+							}
+						}
+					}
+				}
+			}
+			.Cancel_Tabs_body{
+				.tabs_title_selection{
+					.img-tab{
+						width: 15%;
+						height: 15%;
+					}
+					span{
+						font-size: 16px;
+						font-weight: bold;
+						color: #000;
+					}
+					.stop{
+						font-size: 16px;
+						font-weight: bold;
+						color: red;
+					}
+				}
+			}
+			.Scheduled{
+				font-size: 9.5px; 
+				font-weight: bold;
+				text-align: center;
+			}
+			
+		}
+	
+	}
+	
+	}
+								
+@media only screen and (max-width: 735px) {
+	.list_card_container {
+		.list_card {
+			.flight_details {
+				.duration  {
+					margin: 0 15px;
+				}
+			}
+			.flight_details_section{
+			.flight_details {
+				.duration  {
+					margin: 0 15px;
+				}
+			}
+		}
+		.price_book_section{
+			.price_section {
+				padding: 0 35px;
+			}
+		}
+		}
+		.more_details {
+			width: 100%;
+			.more_detail_header {
+				text-align: right;
+				a {
+					text-decoration: none;
+					font-size: 12px;
+					color: var(--primary);
+					font-weight: 600;
+					cursor: pointer;
+				}
+			}
+			.tabs-header{
+				margin: 13px;
+				border: 1px solid #dedede;
+				 border-radius: 20px;
+			   background: #EFF3F8;
+			   ul{
+				   display: flex;
+				   justify-content: space-between;
+				   align-items: center;
+				list-style-type: none;
+				margin:0;
+				padding: 0;
+			   }
+			   .tab {
+				overflow: hidden;
+				
+			  }
+			  
+			  .tab a {
+				background-color: inherit;
+				float: left;
+				border: none;
+				outline: none;
+				cursor: pointer;
+				padding: 5px 30px;
+				text-transform: uppercase;
+				font-size: 12px;
+				text-decoration: none;
+				color: #000;
+			  }
+			  
+			  .tab a.active {
+				padding: 5px 30px;
+				border-radius: 20px;
+				background-color: var(--primary);
+				color: white;
+				font-size: 12px;
+			  }
+			  
+			
+			  .tabcontent {
+				display: none;
+				padding: 6px 12px;
+				border: 1px solid #ccc;
+				border-top: none;
+			  }
+		   
+		   }
+			.Tabs_body {
+				margin-top: 10px;
+				padding: 10px;
+				.titile_name{
+						font-size: 18px;
+						font-weight: bold;
+						color: #000;
+				}
+			.Total_Price{
+				font-size: 15px;
+				font-weight: bold;
+				color: #000;
+			}
+			.fare_title{
+				font-size: 15px;
+				color: rgb(143, 141, 141);
+				font-weight: 500;
+			}
+			
+			
+				.detail_card {
+					.flight_brnd {
+						width: 100%;
+						display: grid;
+						justify-content: center;
+						font-family: "Poppins";
+						align-items: center;
+						text-align: center;
+						img {
+							width: 50px;
+							height: 50px;
+						}
+						span {
+							font-weight: 500;
+							font-size: 14px;
+						}
+					}
+					.detail_row {
+						display: flex;
+						justify-content: space-between;
+						width: 100%;
+						.flight_details {
+							display: flex;
+							align-items: left;
+							margin-top: 5px;
+							.from {
+								display: grid;
+								text-align: left;
+								span.time {
+									font-weight: 500;
+									font-size: 24px;
+								}
+								div.date {
+									font-size: 12px;
+									color: rgb(143, 141, 141);
+									font-weight: 500;
+								}
+							}
+							.duration {
+								text-align: center;
+								display: grid;
+								.duration_time,
+								.flight_destination_line{
+									img{
+										width: 150px;
+									}
+									}
+								.flight_speed {
+									font-weight: 500;
+									font-size: 14px;
+								}
+							}
+							.destination {
+								text-align: left;
+								display: grid;
+								span.time {
+									font-weight: 500;
+									font-size: 24px;
+								}
+								div.date {
+									font-size: 12px;
+									color: rgb(143, 141, 141);
+									font-weight: 500;
+								}
+							}
+						}
+						.extra_things_container {
+							display: flex;
+							justify-content: space-evenly;
+							.extra_things {
+								margin: 0 20px;
+								text-align: left;
+								.item_title {
+									font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+									font-size: 18px;
+									font-weight: 700;
+								}
+								.item_value {
+									font-size: 12px;
+									font-weight: 400;
+									color: #7c7c7c;
+								}
+							}
+						}
+					}
+				}
+			}
+			.Cancel_Tabs_body{
+				.tabs_title_selection{
+					.img-tab{
+						width: 15%;
+						height: 15%;
+					}
+					span{
+						font-size: 16px;
+						font-weight: bold;
+						color: #000;
+					}
+					.stop{
+						font-size: 16px;
+						font-weight: bold;
+						color: red;
+					}
+				}
+			}
+			.Scheduled{
+				font-size: 9.5px; 
+				font-weight: bold;
+				text-align: center;
+			}
+			
+		}
+	
+	}
+								}
+@media only screen and (max-width: 710px) {
+	.list_card_container {
+		.list_card {
+			
+		.price_book_section{
+			.price_section {
+				padding: 0 25px;
+			}
+		}
+		}
+		.more_details {
+			width: 100%;
+			.more_detail_header {
+				text-align: right;
+				a {
+					text-decoration: none;
+					font-size: 12px;
+					color: var(--primary);
+					font-weight: 600;
+					cursor: pointer;
+				}
+			}
+			.tabs-header{
+				margin: 13px;
+				border: 1px solid #dedede;
+				 border-radius: 20px;
+			   background: #EFF3F8;
+			   ul{
+				   display: flex;
+				   justify-content: space-between;
+				   align-items: center;
+				list-style-type: none;
+				margin:0;
+				padding: 0;
+			   }
+			   .tab {
+				overflow: hidden;
+				
+			  }
+			  
+			  .tab a {
+				background-color: inherit;
+				float: left;
+				border: none;
+				outline: none;
+				cursor: pointer;
+				padding: 5px 30px;
+				text-transform: uppercase;
+				font-size: 12px;
+				text-decoration: none;
+				color: #000;
+			  }
+			  
+			  .tab a.active {
+				padding: 5px 30px;
+				border-radius: 20px;
+				background-color: var(--primary);
+				color: white;
+				font-size: 12px;
+			  }
+			  
+			
+			  .tabcontent {
+				display: none;
+				padding: 6px 12px;
+				border: 1px solid #ccc;
+				border-top: none;
+			  }
+		   
+		   }
+			.Tabs_body {
+				margin-top: 10px;
+				padding: 10px;
+				.titile_name{
+						font-size: 18px;
+						font-weight: bold;
+						color: #000;
+				}
+			.Total_Price{
+				font-size: 15px;
+				font-weight: bold;
+				color: #000;
+			}
+			.fare_title{
+				font-size: 15px;
+				color: rgb(143, 141, 141);
+				font-weight: 500;
+			}
+			
+			
+				.detail_card {
+					.flight_brnd {
+						width: 100%;
+						display: grid;
+						justify-content: center;
+						font-family: "Poppins";
+						align-items: center;
+						text-align: center;
+						img {
+							width: 50px;
+							height: 50px;
+						}
+						span {
+							font-weight: 500;
+							font-size: 14px;
+						}
+					}
+					.detail_row {
+						display: flex;
+						justify-content: space-between;
+						width: 100%;
+						.flight_details {
+							display: flex;
+							align-items: left;
+							margin-top: 5px;
+							.from {
+								display: grid;
+								text-align: left;
+								span.time {
+									font-weight: 500;
+									font-size: 24px;
+								}
+								div.date {
+									font-size: 12px;
+									color: rgb(143, 141, 141);
+									font-weight: 500;
+								}
+							}
+							.duration {
+								text-align: center;
+								display: grid;
+								.duration_time,
+								.flight_destination_line{
+									img{
+										width: 150px;
+									}
+									}
+								.flight_speed {
+									font-weight: 500;
+									font-size: 14px;
+								}
+							}
+							.destination {
+								text-align: left;
+								display: grid;
+								span.time {
+									font-weight: 500;
+									font-size: 24px;
+								}
+								div.date {
+									font-size: 12px;
+									color: rgb(143, 141, 141);
+									font-weight: 500;
+								}
+							}
+						}
+						.extra_things_container {
+							display: flex;
+							justify-content: space-evenly;
+							.extra_things {
+								margin: 0 20px;
+								text-align: left;
+								.item_title {
+									font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+									font-size: 18px;
+									font-weight: 700;
+								}
+								.item_value {
+									font-size: 12px;
+									font-weight: 400;
+									color: #7c7c7c;
+								}
+							}
+						}
+					}
+				}
+			}
+			.Cancel_Tabs_body{
+				.tabs_title_selection{
+					.img-tab{
+						width: 15%;
+						height: 15%;
+					}
+					span{
+						font-size: 16px;
+						font-weight: bold;
+						color: #000;
+					}
+					.stop{
+						font-size: 16px;
+						font-weight: bold;
+						color: red;
+					}
+				}
+			}
+			.Scheduled{
+				font-size: 9.5px; 
+				font-weight: bold;
+				text-align: center;
+			}
+			
+		}
+	
+	}
+								}
+@media only screen and (max-width: 680px) {
+	.list_card_container {
+		.list_card {
+			
+		.price_book_section{
+			.price_section {
+				padding: 0 15px;
+			}
+		}
+		}
+		.more_details {
+			width: 100%;
+			.more_detail_header {
+				text-align: right;
+				a {
+					text-decoration: none;
+					font-size: 12px;
+					color: var(--primary);
+					font-weight: 600;
+					cursor: pointer;
+				}
+			}
+			.tabs-header{
+				margin: 13px;
+				border: 1px solid #dedede;
+				 border-radius: 20px;
+			   background: #EFF3F8;
+			   ul{
+				   display: flex;
+				   justify-content: space-between;
+				   align-items: center;
+				list-style-type: none;
+				margin:0;
+				padding: 0;
+			   }
+			   .tab {
+				overflow: hidden;
+				
+			  }
+			  
+			  .tab a {
+				background-color: inherit;
+				float: left;
+				border: none;
+				outline: none;
+				cursor: pointer;
+				padding: 5px 30px;
+				text-transform: uppercase;
+				font-size: 12px;
+				text-decoration: none;
+				color: #000;
+			  }
+			  
+			  .tab a.active {
+				padding: 5px 30px;
+				border-radius: 20px;
+				background-color: var(--primary);
+				color: white;
+				font-size: 12px;
+			  }
+			  
+			
+			  .tabcontent {
+				display: none;
+				padding: 6px 12px;
+				border: 1px solid #ccc;
+				border-top: none;
+			  }
+		   
+		   }
+			.Tabs_body {
+				margin-top: 10px;
+				padding: 10px;
+				.titile_name{
+						font-size: 18px;
+						font-weight: bold;
+						color: #000;
+				}
+			.Total_Price{
+				font-size: 15px;
+				font-weight: bold;
+				color: #000;
+			}
+			.fare_title{
+				font-size: 15px;
+				color: rgb(143, 141, 141);
+				font-weight: 500;
+			}
+			
+			
+				.detail_card {
+					.flight_brnd {
+						width: 100%;
+						display: grid;
+						justify-content: center;
+						font-family: "Poppins";
+						align-items: center;
+						text-align: center;
+						img {
+							width: 50px;
+							height: 50px;
+						}
+						span {
+							font-weight: 500;
+							font-size: 14px;
+						}
+					}
+					.detail_row {
+						display: flex;
+						justify-content: space-between;
+						width: 100%;
+						.flight_details {
+							display: flex;
+							align-items: left;
+							margin-top: 5px;
+							.from {
+								display: grid;
+								text-align: left;
+								span.time {
+									font-weight: 500;
+									font-size: 24px;
+								}
+								div.date {
+									font-size: 12px;
+									color: rgb(143, 141, 141);
+									font-weight: 500;
+								}
+							}
+							.duration {
+								text-align: center;
+								display: grid;
+								.duration_time,
+								.flight_destination_line{
+									img{
+										width: 150px;
+									}
+									}
+								.flight_speed {
+									font-weight: 500;
+									font-size: 14px;
+								}
+							}
+							.destination {
+								text-align: left;
+								display: grid;
+								span.time {
+									font-weight: 500;
+									font-size: 24px;
+								}
+								div.date {
+									font-size: 12px;
+									color: rgb(143, 141, 141);
+									font-weight: 500;
+								}
+							}
+						}
+						.extra_things_container {
+							display: flex;
+							justify-content: space-evenly;
+							.extra_things {
+								margin: 0 20px;
+								text-align: left;
+								.item_title {
+									font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+									font-size: 18px;
+									font-weight: 700;
+								}
+								.item_value {
+									font-size: 12px;
+									font-weight: 400;
+									color: #7c7c7c;
+								}
+							}
+						}
+					}
+				}
+			}
+			.Cancel_Tabs_body{
+				.tabs_title_selection{
+					.img-tab{
+						width: 15%;
+						height: 15%;
+					}
+					span{
+						font-size: 16px;
+						font-weight: bold;
+						color: #000;
+					}
+					.stop{
+						font-size: 16px;
+						font-weight: bold;
+						color: red;
+					}
+				}
+			}
+			.Scheduled{
+				font-size: 9.5px; 
+				font-weight: bold;
+				text-align: center;
+			}
+			
+		}
+	
+	}
+								}
+@media only screen and (max-width: 650px) {
+	.list_card_container {
+		.list_card {
+			.flight_brnd {
+			
+				img {
+					width: 50px;
+					height: 50px;
+				}
+				span.flight_name {
+					font-size: 12px !important;
+					width: 60px;
+					font-weight: 600; 
+						}
+			}
+			.flight_details_section{
+				.flight_details {
+					.from {
+						min-width: 80px;
+						span.city {
+							font-size: 10px;
+								}
+								span.time {
+									font-size: 18px;
+								}		
+							}
+						.duration  {
+							margin: 0 10px;
+								}
+						.destination {
+							min-width: 80px;
+							span.city {
+									font-weight: bold;
+									font-size: 10px;
+									}
+									span.time {
+										font-size: 18px;
+									}	
+										}
+										 }
+										}
+		.price_book_section{
+			.price_section {
+				padding: 0 10px;
+			}
+		}
+		}
+		.more_details {
+			width: 100%;
+			.more_detail_header {
+				text-align: right;
+				a {
+					text-decoration: none;
+					font-size: 12px;
+					color: var(--primary);
+					font-weight: 600;
+					cursor: pointer;
+				}
+			}
+			.tabs-header{
+				margin: 13px;
+				border: 1px solid #dedede;
+				 border-radius: 20px;
+			   background: #EFF3F8;
+			   ul{
+				   display: flex;
+				   justify-content: space-between;
+				   align-items: center;
+				list-style-type: none;
+				margin:0;
+				padding: 0;
+			   }
+			   .tab {
+				overflow: hidden;
+				
+			  }
+			  
+			  .tab a {
+				background-color: inherit;
+				float: left;
+				border: none;
+				outline: none;
+				cursor: pointer;
+				padding: 5px 30px;
+				text-transform: uppercase;
+				font-size: 12px;
+				text-decoration: none;
+				color: #000;
+			  }
+			  
+			  .tab a.active {
+				padding: 5px 30px;
+				border-radius: 20px;
+				background-color: var(--primary);
+				color: white;
+				font-size: 12px;
+			  }
+			  
+			
+			  .tabcontent {
+				display: none;
+				padding: 6px 12px;
+				border: 1px solid #ccc;
+				border-top: none;
+			  }
+		   
+		   }
+			.Tabs_body {
+				margin-top: 10px;
+				padding: 10px;
+				.titile_name{
+						font-size: 18px;
+						font-weight: bold;
+						color: #000;
+				}
+			.Total_Price{
+				font-size: 15px;
+				font-weight: bold;
+				color: #000;
+			}
+			.fare_title{
+				font-size: 15px;
+				color: rgb(143, 141, 141);
+				font-weight: 500;
+			}
+			
+			
+				.detail_card {
+					.flight_brnd {
+						width: 100%;
+						display: grid;
+						justify-content: center;
+						font-family: "Poppins";
+						align-items: center;
+						text-align: center;
+						img {
+							width: 50px;
+							height: 50px;
+						}
+						span {
+							font-weight: 500;
+							font-size: 14px;
+						}
+					}
+					.detail_row {
+						display: flex;
+						justify-content: space-between;
+						width: 100%;
+						.flight_details {
+							display: flex;
+							align-items: left;
+							margin-top: 5px;
+							.from {
+								display: grid;
+								text-align: left;
+								span.time {
+									font-weight: 500;
+									font-size: 24px;
+								}
+								div.date {
+									font-size: 12px;
+									color: rgb(143, 141, 141);
+									font-weight: 500;
+								}
+							}
+							.duration {
+								text-align: center;
+								display: grid;
+								.duration_time,
+								.flight_destination_line{
+									img{
+										width: 150px;
+									}
+									}
+								.flight_speed {
+									font-weight: 500;
+									font-size: 14px;
+								}
+							}
+							.destination {
+								text-align: left;
+								display: grid;
+								span.time {
+									font-weight: 500;
+									font-size: 24px;
+								}
+								div.date {
+									font-size: 12px;
+									color: rgb(143, 141, 141);
+									font-weight: 500;
+								}
+							}
+						}
+						.extra_things_container {
+							display: flex;
+							justify-content: space-evenly;
+							.extra_things {
+								margin: 0 20px;
+								text-align: left;
+								.item_title {
+									font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+									font-size: 18px;
+									font-weight: 700;
+								}
+								.item_value {
+									font-size: 12px;
+									font-weight: 400;
+									color: #7c7c7c;
+								}
+							}
+						}
+					}
+				}
+			}
+			.Cancel_Tabs_body{
+				.tabs_title_selection{
+					.img-tab{
+						width: 15%;
+						height: 15%;
+					}
+					span{
+						font-size: 16px;
+						font-weight: bold;
+						color: #000;
+					}
+					.stop{
+						font-size: 16px;
+						font-weight: bold;
+						color: red;
+					}
+				}
+			}
+			.Scheduled{
+				font-size: 9.5px; 
+				font-weight: bold;
+				text-align: center;
+			}
+			
+		}
+	
+	}
+								}
+@media only screen and (max-width: 625px) {
+	.list_card_container {
+		.list_card {
+			.flight_brnd {
+				img {
+					width: 50px;
+					height: 50px;
+				}
+				span.flight_name {	
+					font-size: 12px !important;
+					width: 60px;
+					font-weight: 600; 
+						}
+			}
+			.flight_details_section{
+				.flight_details {
+					.from {
+						min-width: 80px;
+						span.city {
+							font-size: 10px;
+								}
+								span.time {
+									font-size: 18px;
+								}		
+							}
+						.duration  {
+							margin: 0 10px;
+								}
+						.destination {
+							min-width: 80px;
+							span.city {
+									font-weight: bold;
+									font-size: 10px;
+									}
+									span.time {
+										font-size: 18px;
+									}	
+										}
+										 }
+										}
+		.price_book_section{
+		    .price_section {
+				padding: 0 5px;
+			    }
+		      }
+		}
+		.more_details {
+			width: 100%;
+			.more_detail_header {
+				text-align: right;
+				a {
+					text-decoration: none;
+					font-size: 12px;
+					color: var(--primary);
+					font-weight: 600;
+					cursor: pointer;
+				}
+			}
+			.tabs-header{
+				margin: 13px;
+				border: 1px solid #dedede;
+				 border-radius: 20px;
+			   background: #EFF3F8;
+			   ul{
+				   display: flex;
+				   justify-content: space-between;
+				   align-items: center;
+				list-style-type: none;
+				margin:0;
+				padding: 0;
+			   }
+			   .tab {
+				overflow: hidden;
+				
+			  }
+			  
+			  .tab a {
+				background-color: inherit;
+				float: left;
+				border: none;
+				outline: none;
+				cursor: pointer;
+				padding: 5px 30px;
+				text-transform: uppercase;
+				font-size: 12px;
+				text-decoration: none;
+				color: #000;
+			  }
+			  
+			  .tab a.active {
+				padding: 5px 30px;
+				border-radius: 20px;
+				background-color: var(--primary);
+				color: white;
+				font-size: 12px;
+			  }
+			  
+			
+			  .tabcontent {
+				display: none;
+				padding: 6px 12px;
+				border: 1px solid #ccc;
+				border-top: none;
+			  }
+		   
+		   }
+			.Tabs_body {
+				margin-top: 10px;
+				padding: 10px;
+				.titile_name{
+						font-size: 18px;
+						font-weight: bold;
+						color: #000;
+				}
+			.Total_Price{
+				font-size: 15px;
+				font-weight: bold;
+				color: #000;
+			}
+			.fare_title{
+				font-size: 15px;
+				color: rgb(143, 141, 141);
+				font-weight: 500;
+			}
+			
+			
+				.detail_card {
+					.flight_brnd {
+						width: 100%;
+						display: grid;
+						justify-content: center;
+						font-family: "Poppins";
+						align-items: center;
+						text-align: center;
+						img {
+							width: 50px;
+							height: 50px;
+						}
+						span {
+							font-weight: 500;
+							font-size: 14px;
+						}
+					}
+					.detail_row {
+						display: flex;
+						justify-content: space-between;
+						width: 100%;
+						.flight_details {
+							display: flex;
+							align-items: left;
+							margin-top: 5px;
+							.from {
+								display: grid;
+								text-align: left;
+								span.time {
+									font-weight: 500;
+									font-size: 24px;
+								}
+								div.date {
+									font-size: 12px;
+									color: rgb(143, 141, 141);
+									font-weight: 500;
+								}
+							}
+							.duration {
+								text-align: center;
+								display: grid;
+								.duration_time,
+								.flight_destination_line{
+									img{
+										width: 150px;
+									}
+									}
+								.flight_speed {
+									font-weight: 500;
+									font-size: 14px;
+								}
+							}
+							.destination {
+								text-align: left;
+								display: grid;
+								span.time {
+									font-weight: 500;
+									font-size: 24px;
+								}
+								div.date {
+									font-size: 12px;
+									color: rgb(143, 141, 141);
+									font-weight: 500;
+								}
+							}
+						}
+						.extra_things_container {
+							display: flex;
+							justify-content: space-evenly;
+							.extra_things {
+								margin: 0 20px;
+								text-align: left;
+								.item_title {
+									font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+									font-size: 18px;
+									font-weight: 700;
+								}
+								.item_value {
+									font-size: 12px;
+									font-weight: 400;
+									color: #7c7c7c;
+								}
+							}
+						}
+					}
+				}
+			}
+			.Cancel_Tabs_body{
+				.tabs_title_selection{
+					.img-tab{
+						width: 15%;
+						height: 15%;
+					}
+					span{
+						font-size: 16px;
+						font-weight: bold;
+						color: #000;
+					}
+					.stop{
+						font-size: 16px;
+						font-weight: bold;
+						color: red;
+					}
+				}
+			}
+			.Scheduled{
+				font-size: 9.5px; 
+				font-weight: bold;
+				text-align: center;
+			}
+			
+		}
+	
+	}
+								}
+@media only screen and (max-width: 610px) {
+	.list_card_container {
+		.list_card {
+			.flight_brnd {
+				img {
+					width: 40px;
+					height: 50px;
+				}
+				span.flight_name {
+					font-size: 12px !important;
+					width: 60px;
+					font-weight: 600; 
+						}
+			}
+			.flight_details_section{
+				.flight_details {
+					.from {
+						min-width: 80px;
+						span.city {
+							font-size: 10px;
+								}
+								span.time {
+									font-size: 18px;
+								}		
+							}
+						.duration  {
+							margin: 0 10px;
+							.flight_destination_line{
+								img{
+									width: 80px;
+								}
+								}
+								}
+						.destination {
+							min-width: 80px;
+							span.city {
+									font-weight: bold;
+									font-size: 10px;
+									}
+									span.time {
+										font-size: 18px;
+									}	
+										}
+										 }
+										}
+		.price_book_section{
+		    .price_section {
+				padding: 0 5px;
+			    }
+		      }
+		}
+		.more_details {
+			width: 100%;
+			.more_detail_header {
+				text-align: right;
+				a {
+					text-decoration: none;
+					font-size: 12px;
+					color: var(--primary);
+					font-weight: 600;
+					cursor: pointer;
+				}
+			}
+			.tabs-header{
+				margin: 13px;
+				border: 1px solid #dedede;
+				 border-radius: 20px;
+			   background: #EFF3F8;
+			   ul{
+				   display: flex;
+				   justify-content: space-between;
+				   align-items: center;
+				list-style-type: none;
+				margin:0;
+				padding: 0;
+			   }
+			   .tab {
+				overflow: hidden;
+				
+			  }
+			  
+			  .tab a {
+				background-color: inherit;
+				float: left;
+				border: none;
+				outline: none;
+				cursor: pointer;
+				padding: 5px 30px;
+				text-transform: uppercase;
+				font-size: 12px;
+				text-decoration: none;
+				color: #000;
+			  }
+			  
+			  .tab a.active {
+				padding: 5px 30px;
+				border-radius: 20px;
+				background-color: var(--primary);
+				color: white;
+				font-size: 12px;
+			  }
+			  
+			
+			  .tabcontent {
+				display: none;
+				padding: 6px 12px;
+				border: 1px solid #ccc;
+				border-top: none;
+			  }
+		   
+		   }
+			.Tabs_body {
+				margin-top: 10px;
+				padding: 10px;
+				.titile_name{
+						font-size: 18px;
+						font-weight: bold;
+						color: #000;
+				}
+			.Total_Price{
+				font-size: 15px;
+				font-weight: bold;
+				color: #000;
+			}
+			.fare_title{
+				font-size: 15px;
+				color: rgb(143, 141, 141);
+				font-weight: 500;
+			}
+			
+			
+				.detail_card {
+					.flight_brnd {
+						width: 100%;
+						display: grid;
+						justify-content: center;
+						font-family: "Poppins";
+						align-items: center;
+						text-align: center;
+						img {
+							width: 50px;
+							height: 50px;
+						}
+						span {
+							font-weight: 500;
+							font-size: 14px;
+						}
+					}
+					.detail_row {
+						display: flex;
+						justify-content: space-between;
+						width: 100%;
+						.flight_details {
+							display: flex;
+							align-items: left;
+							margin-top: 5px;
+							.from {
+								display: grid;
+								text-align: left;
+								span.time {
+									font-weight: 500;
+									font-size: 24px;
+								}
+								div.date {
+									font-size: 12px;
+									color: rgb(143, 141, 141);
+									font-weight: 500;
+								}
+							}
+							.duration {
+								text-align: center;
+								display: grid;
+								.duration_time,
+								.flight_destination_line{
+									img{
+										width: 150px;
+									}
+									}
+								.flight_speed {
+									font-weight: 500;
+									font-size: 14px;
+								}
+							}
+							.destination {
+								text-align: left;
+								display: grid;
+								span.time {
+									font-weight: 500;
+									font-size: 24px;
+								}
+								div.date {
+									font-size: 12px;
+									color: rgb(143, 141, 141);
+									font-weight: 500;
+								}
+							}
+						}
+						.extra_things_container {
+							display: flex;
+							justify-content: space-evenly;
+							.extra_things {
+								margin: 0 20px;
+								text-align: left;
+								.item_title {
+									font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+									font-size: 18px;
+									font-weight: 700;
+								}
+								.item_value {
+									font-size: 12px;
+									font-weight: 400;
+									color: #7c7c7c;
+								}
+							}
+						}
+					}
+				}
+			}
+			.Cancel_Tabs_body{
+				.tabs_title_selection{
+					.img-tab{
+						width: 15%;
+						height: 15%;
+					}
+					span{
+						font-size: 16px;
+						font-weight: bold;
+						color: #000;
+					}
+					.stop{
+						font-size: 16px;
+						font-weight: bold;
+						color: red;
+					}
+				}
+			}
+			.Scheduled{
+				font-size: 9.5px; 
+				font-weight: bold;
+				text-align: center;
+			}
+			
+		}
+	
+	}
+								}
+@media only screen and (max-width: 600px) {
+	.list_card_container {
+		.list_card {
+			.flight_brnd {
+				img {
+					width: 50px;
+					height: 50px;
+				}
+				span.flight_name {
+					font-size: 15px !important;
+					width: 80px;
+					font-weight: 600; 
+						}
+			}
+			.flight_details_section{
+				.flight_details {
+					.from {
+						min-width: 100px;
+						span.city {
+							font-size: 10px;
+								}
+								span.time {
+									font-size: 18px;
+								}		
+							}
+						.duration  {
+							margin: 0 15px;
+							.flight_destination_line{
+								img{
+									width: 100px;
+								}
+								}
+								}
+						.destination {
+							min-width: 100px;
+							span.city {
+									font-weight: bold;
+									font-size: 10px;
+									}
+									span.time {
+										font-size: 18px;
+									}	
+										}
+										 }
+										}
+		.price_book_section{
+		    .price_section {
+				padding: 0 10px;
+			    }
+				.btn-sm{
+					display: none;
+				}
+		      }
+		}
+		.more_details {
+			width: 100%;
+			.more_detail_header {
+				text-align: right;
+				a {
+					text-decoration: none;
+					font-size: 12px;
+					color: var(--primary);
+					font-weight: 600;
+					cursor: pointer;
+				}
+			}
+			.tabs-header{
+				margin: 13px;
+				border: 1px solid #dedede;
+				 border-radius: 20px;
+			   background: #EFF3F8;
+			   ul{
+				   display: flex;
+				   justify-content: space-between;
+				   align-items: center;
+				list-style-type: none;
+				margin:0;
+				padding: 0;
+			   }
+			   .tab {
+				overflow: hidden;
+				
+			  }
+			  
+			  .tab a {
+				background-color: inherit;
+				float: left;
+				border: none;
+				outline: none;
+				cursor: pointer;
+				padding: 5px 30px;
+				text-transform: uppercase;
+				font-size: 12px;
+				text-decoration: none;
+				color: #000;
+			  }
+			  
+			  .tab a.active {
+				padding: 5px 30px;
+				border-radius: 20px;
+				background-color: var(--primary);
+				color: white;
+				font-size: 12px;
+			  }
+			  
+			
+			  .tabcontent {
+				display: none;
+				padding: 6px 12px;
+				border: 1px solid #ccc;
+				border-top: none;
+			  }
+		   
+		   }
+			.Tabs_body {
+				margin-top: 10px;
+				padding: 10px;
+				.titile_name{
+						font-size: 18px;
+						font-weight: bold;
+						color: #000;
+				}
+			.Total_Price{
+				font-size: 15px;
+				font-weight: bold;
+				color: #000;
+			}
+			.fare_title{
+				font-size: 15px;
+				color: rgb(143, 141, 141);
+				font-weight: 500;
+			}
+			
+			
+				.detail_card {
+					.flight_brnd {
+						width: 100%;
+						display: grid;
+						justify-content: center;
+						font-family: "Poppins";
+						align-items: center;
+						text-align: center;
+						img {
+							width: 50px;
+							height: 50px;
+						}
+						span {
+							font-weight: 500;
+							font-size: 14px;
+						}
+					}
+					.detail_row {
+						display: flex;
+						justify-content: space-between;
+						width: 100%;
+						.flight_details {
+							display: flex;
+							align-items: left;
+							margin-top: 5px;
+							.from {
+								display: grid;
+								text-align: left;
+								span.time {
+									font-weight: 500;
+									font-size: 24px;
+								}
+								div.date {
+									font-size: 12px;
+									color: rgb(143, 141, 141);
+									font-weight: 500;
+								}
+							}
+							.duration {
+								text-align: center;
+								display: grid;
+								.duration_time,
+								.flight_destination_line{
+									img{
+										width: 150px;
+									}
+									}
+								.flight_speed {
+									font-weight: 500;
+									font-size: 14px;
+								}
+							}
+							.destination {
+								text-align: left;
+								display: grid;
+								span.time {
+									font-weight: 500;
+									font-size: 24px;
+								}
+								div.date {
+									font-size: 12px;
+									color: rgb(143, 141, 141);
+									font-weight: 500;
+								}
+							}
+						}
+						.extra_things_container {
+							display: flex;
+							justify-content: space-evenly;
+							.extra_things {
+								margin: 0 20px;
+								text-align: left;
+								.item_title {
+									font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+									font-size: 18px;
+									font-weight: 700;
+								}
+								.item_value {
+									font-size: 12px;
+									font-weight: 400;
+									color: #7c7c7c;
+								}
+							}
+						}
+					}
+				}
+			}
+			.Cancel_Tabs_body{
+				.tabs_title_selection{
+					.img-tab{
+						width: 15%;
+						height: 15%;
+					}
+					span{
+						font-size: 16px;
+						font-weight: bold;
+						color: #000;
+					}
+					.stop{
+						font-size: 16px;
+						font-weight: bold;
+						color: red;
+					}
+				}
+			}
+			.Scheduled{
+				font-size: 9.5px; 
+				font-weight: bold;
+				text-align: center;
+			}
+			
+		}
+	
+	}
+								}
+@media only screen and (max-width: 590px) {
+	.list_card_container {
+		.list_card {
+			.flight_brnd {
+				img {
+					width: 50px;
+					height: 50px;
+				}
+				span.flight_name {
+					font-size: 15px !important;
+					width: 80px;
+					font-weight: 600; 
+						}
+			}
+			.flight_details_section{
+				.flight_details {
+					.from {
+						min-width: 90px;
+						span.city {
+							font-size: 10px;
+								}
+								span.time {
+									font-size: 18px;
+								}		
+							}
+						.duration  {
+							margin: 0 15px;
+							.flight_destination_line{
+								img{
+									width: 100px;
+								}
+								}
+								}
+						.destination {
+							min-width: 90px;
+							span.city {
+									font-weight: bold;
+									font-size: 10px;
+									}
+									span.time {
+										font-size: 18px;
+									}	
+										}
+										 }
+										}
+		.price_book_section{
+		    .price_section {
+				padding: 0 10px;
+			    }
+				.btn-sm{
+					display: none;
+				}
+		      }
+		}
+		.more_details {
+			width: 100%;
+			.more_detail_header {
+				text-align: right;
+				a {
+					text-decoration: none;
+					font-size: 12px;
+					color: var(--primary);
+					font-weight: 600;
+					cursor: pointer;
+				}
+			}
+			.tabs-header{
+				margin: 13px;
+				border: 1px solid #dedede;
+				 border-radius: 20px;
+			   background: #EFF3F8;
+			   ul{
+				   display: flex;
+				   justify-content: space-between;
+				   align-items: center;
+				list-style-type: none;
+				margin:0;
+				padding: 0;
+			   }
+			   .tab {
+				overflow: hidden;
+				
+			  }
+			  
+			  .tab a {
+				background-color: inherit;
+				float: left;
+				border: none;
+				outline: none;
+				cursor: pointer;
+				padding: 5px 30px;
+				text-transform: uppercase;
+				font-size: 12px;
+				text-decoration: none;
+				color: #000;
+			  }
+			  
+			  .tab a.active {
+				padding: 5px 30px;
+				border-radius: 20px;
+				background-color: var(--primary);
+				color: white;
+				font-size: 12px;
+			  }
+			  
+			
+			  .tabcontent {
+				display: none;
+				padding: 6px 12px;
+				border: 1px solid #ccc;
+				border-top: none;
+			  }
+		   
+		   }
+			.Tabs_body {
+				margin-top: 10px;
+				padding: 10px;
+				.titile_name{
+						font-size: 18px;
+						font-weight: bold;
+						color: #000;
+				}
+			.Total_Price{
+				font-size: 15px;
+				font-weight: bold;
+				color: #000;
+			}
+			.fare_title{
+				font-size: 15px;
+				color: rgb(143, 141, 141);
+				font-weight: 500;
+			}
+			
+			
+				.detail_card {
+					.flight_brnd {
+						width: 100%;
+						display: grid;
+						justify-content: center;
+						font-family: "Poppins";
+						align-items: center;
+						text-align: center;
+						img {
+							width: 50px;
+							height: 50px;
+						}
+						span {
+							font-weight: 500;
+							font-size: 14px;
+						}
+					}
+					.detail_row {
+						display: flex;
+						justify-content: space-between;
+						width: 100%;
+						.flight_details {
+							display: flex;
+							align-items: left;
+							margin-top: 5px;
+							.from {
+								display: grid;
+								text-align: left;
+								span.time {
+									font-weight: 500;
+									font-size: 24px;
+								}
+								div.date {
+									font-size: 12px;
+									color: rgb(143, 141, 141);
+									font-weight: 500;
+								}
+							}
+							.duration {
+								text-align: center;
+								display: grid;
+								.duration_time,
+								.flight_destination_line{
+									img{
+										width: 150px;
+									}
+									}
+								.flight_speed {
+									font-weight: 500;
+									font-size: 14px;
+								}
+							}
+							.destination {
+								text-align: left;
+								display: grid;
+								span.time {
+									font-weight: 500;
+									font-size: 24px;
+								}
+								div.date {
+									font-size: 12px;
+									color: rgb(143, 141, 141);
+									font-weight: 500;
+								}
+							}
+						}
+						.extra_things_container {
+							display: flex;
+							justify-content: space-evenly;
+							.extra_things {
+								margin: 0 20px;
+								text-align: left;
+								.item_title {
+									font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+									font-size: 18px;
+									font-weight: 700;
+								}
+								.item_value {
+									font-size: 12px;
+									font-weight: 400;
+									color: #7c7c7c;
+								}
+							}
+						}
+					}
+				}
+			}
+			.Cancel_Tabs_body{
+				.tabs_title_selection{
+					.img-tab{
+						width: 15%;
+						height: 15%;
+					}
+					span{
+						font-size: 16px;
+						font-weight: bold;
+						color: #000;
+					}
+					.stop{
+						font-size: 16px;
+						font-weight: bold;
+						color: red;
+					}
+				}
+			}
+			.Scheduled{
+				font-size: 9.5px; 
+				font-weight: bold;
+				text-align: center;
+			}
+			
+		}
+	
+	}
+								}
+@media only screen and (max-width: 565px) {
+	.list_card_container {
+		.list_card {
+			.flight_brnd {
+				img {
+					width: 50px;
+					height: 50px;
+				}
+				span.flight_name {	
+					font-size: 15px !important;
+					width: 80px;
+					font-weight: 600; 
+						}
+			}
+			.flight_details_section{
+				.flight_details {
+					.from {
+						min-width: 90px;
+						span.city {
+							font-size: 10px;
+								}
+								span.time {
+									font-size: 18px;
+								}		
+							}
+						.duration  {
+							margin: 0 10px;
+								}
+						.destination {
+							min-width: 90px;
+							span.city {
+									font-weight: bold;
+									font-size: 10px;
+									}
+									span.time {
+										font-size: 18px;
+									}	
+										}
+										 }
+										}
+		.price_book_section{
+		    .price_section {
+				padding: 0 8px;
+			    }
+				.btn-sm{
+					display: none;
+				}
+		      }
+		}
+		.more_details {
+			width: 100%;
+			.more_detail_header {
+				text-align: right;
+				a {
+					text-decoration: none;
+					font-size: 12px;
+					color: var(--primary);
+					font-weight: 600;
+					cursor: pointer;
+				}
+			}
+			.tabs-header{
+				margin: 13px;
+				border: 1px solid #dedede;
+				 border-radius: 20px;
+			   background: #EFF3F8;
+			   ul{
+				   display: flex;
+				   justify-content: space-between;
+				   align-items: center;
+				list-style-type: none;
+				margin:0;
+				padding: 0;
+			   }
+			   .tab {
+				overflow: hidden;
+				
+			  }
+			  
+			  .tab a {
+				background-color: inherit;
+				float: left;
+				border: none;
+				outline: none;
+				cursor: pointer;
+				padding: 5px 30px;
+				text-transform: uppercase;
+				font-size: 12px;
+				text-decoration: none;
+				color: #000;
+			  }
+			  
+			  .tab a.active {
+				padding: 5px 30px;
+				border-radius: 20px;
+				background-color: var(--primary);
+				color: white;
+				font-size: 12px;
+			  }
+			  
+			
+			  .tabcontent {
+				display: none;
+				padding: 6px 12px;
+				border: 1px solid #ccc;
+				border-top: none;
+			  }
+		   
+		   }
+			.Tabs_body {
+				margin-top: 10px;
+				padding: 10px;
+				.titile_name{
+						font-size: 18px;
+						font-weight: bold;
+						color: #000;
+				}
+			.Total_Price{
+				font-size: 15px;
+				font-weight: bold;
+				color: #000;
+			}
+			.fare_title{
+				font-size: 15px;
+				color: rgb(143, 141, 141);
+				font-weight: 500;
+			}
+			
+			
+				.detail_card {
+					.flight_brnd {
+						width: 100%;
+						display: grid;
+						justify-content: center;
+						font-family: "Poppins";
+						align-items: center;
+						text-align: center;
+						img {
+							width: 50px;
+							height: 50px;
+						}
+						span {
+							font-weight: 500;
+							font-size: 14px;
+						}
+					}
+					.detail_row {
+						display: flex;
+						justify-content: space-between;
+						width: 100%;
+						.flight_details {
+							display: flex;
+							align-items: left;
+							margin-top: 5px;
+							.from {
+								display: grid;
+								text-align: left;
+								span.time {
+									font-weight: 500;
+									font-size: 24px;
+								}
+								div.date {
+									font-size: 12px;
+									color: rgb(143, 141, 141);
+									font-weight: 500;
+								}
+							}
+							.duration {
+								text-align: center;
+								display: grid;
+								.duration_time,
+								.flight_destination_line{
+									img{
+										width: 150px;
+									}
+									}
+								.flight_speed {
+									font-weight: 500;
+									font-size: 14px;
+								}
+							}
+							.destination {
+								text-align: left;
+								display: grid;
+								span.time {
+									font-weight: 500;
+									font-size: 24px;
+								}
+								div.date {
+									font-size: 12px;
+									color: rgb(143, 141, 141);
+									font-weight: 500;
+								}
+							}
+						}
+						.extra_things_container {
+							display: flex;
+							justify-content: space-evenly;
+							.extra_things {
+								margin: 0 20px;
+								text-align: left;
+								.item_title {
+									font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+									font-size: 18px;
+									font-weight: 700;
+								}
+								.item_value {
+									font-size: 12px;
+									font-weight: 400;
+									color: #7c7c7c;
+								}
+							}
+						}
+					}
+				}
+			}
+			.Cancel_Tabs_body{
+				.tabs_title_selection{
+					.img-tab{
+						width: 15%;
+						height: 15%;
+					}
+					span{
+						font-size: 16px;
+						font-weight: bold;
+						color: #000;
+					}
+					.stop{
+						font-size: 16px;
+						font-weight: bold;
+						color: red;
+					}
+				}
+			}
+			.Scheduled{
+				font-size: 9.5px; 
+				font-weight: bold;
+				text-align: center;
+			}
+			
+		}
+	
+	}
+}
+@media only screen and (max-width: 550px) {
+	.list_card_container {
+		.list_card {
+			.flight_brnd {
+				img {
+					width: 40px;
+					height: 40px;
+				}
+				span.flight_name {	
+					font-size: 12px !important;
+					width: 60px;
+					font-weight: 600; 
+						}
+			}
+			.flight_details_section{
+				.flight_details {
+					.from {
+						min-width: 80px;
+						span.city {
+							font-size: 10px;
+								}
+								span.time {
+									font-size: 18px;
+								}		
+							}
+						.duration  {
+							margin: 0 10px;
+								}
+						.destination {
+							min-width: 80px;
+							span.city {
+									font-weight: bold;
+									font-size: 10px;
+									}
+									span.time {
+										font-size: 18px;
+									}	
+										}
+										 }
+										}
+		.price_book_section{
+		    .price_section {
+				padding: 0 25px;
+			    }
+				.btn-sm{
+					display: none;
+				}
+		      }
+		}
+		.more_details {
+			width: 100%;
+			.more_detail_header {
+				text-align: right;
+				a {
+					text-decoration: none;
+					font-size: 12px;
+					color: var(--primary);
+					font-weight: 600;
+					cursor: pointer;
+				}
+			}
+			.tabs-header{
+				margin: 13px;
+				border: 1px solid #dedede;
+				 border-radius: 20px;
+			   background: #EFF3F8;
+			   ul{
+				   display: flex;
+				   justify-content: space-between;
+				   align-items: center;
+				list-style-type: none;
+				margin:0;
+				padding: 0;
+			   }
+			   .tab {
+				overflow: hidden;
+				
+			  }
+			  
+			  .tab a {
+				background-color: inherit;
+				float: left;
+				border: none;
+				outline: none;
+				cursor: pointer;
+				padding: 5px 30px;
+				text-transform: uppercase;
+				font-size: 12px;
+				text-decoration: none;
+				color: #000;
+			  }
+			  
+			  .tab a.active {
+				padding: 5px 30px;
+				border-radius: 20px;
+				background-color: var(--primary);
+				color: white;
+				font-size: 12px;
+			  }
+			  
+			
+			  .tabcontent {
+				display: none;
+				padding: 6px 12px;
+				border: 1px solid #ccc;
+				border-top: none;
+			  }
+		   
+		   }
+			.Tabs_body {
+				margin-top: 10px;
+				padding: 10px;
+				.titile_name{
+						font-size: 18px;
+						font-weight: bold;
+						color: #000;
+				}
+			.Total_Price{
+				font-size: 15px;
+				font-weight: bold;
+				color: #000;
+			}
+			.fare_title{
+				font-size: 15px;
+				color: rgb(143, 141, 141);
+				font-weight: 500;
+			}
+			
+			
+				.detail_card {
+					.flight_brnd {
+						width: 100%;
+						display: grid;
+						justify-content: center;
+						font-family: "Poppins";
+						align-items: center;
+						text-align: center;
+						img {
+							width: 50px;
+							height: 50px;
+						}
+						span {
+							font-weight: 500;
+							font-size: 14px;
+						}
+					}
+					.detail_row {
+						display: flex;
+						justify-content: space-between;
+						width: 100%;
+						.flight_details {
+							display: flex;
+							align-items: left;
+							margin-top: 5px;
+							.from {
+								display: grid;
+								text-align: left;
+								span.time {
+									font-weight: 500;
+									font-size: 24px;
+								}
+								div.date {
+									font-size: 12px;
+									color: rgb(143, 141, 141);
+									font-weight: 500;
+								}
+							}
+							.duration {
+								text-align: center;
+								display: grid;
+								.duration_time,
+								.flight_destination_line{
+									img{
+										width: 150px;
+									}
+									}
+								.flight_speed {
+									font-weight: 500;
+									font-size: 14px;
+								}
+							}
+							.destination {
+								text-align: left;
+								display: grid;
+								span.time {
+									font-weight: 500;
+									font-size: 24px;
+								}
+								div.date {
+									font-size: 12px;
+									color: rgb(143, 141, 141);
+									font-weight: 500;
+								}
+							}
+						}
+						.extra_things_container {
+							display: flex;
+							justify-content: space-evenly;
+							.extra_things {
+								margin: 0 20px;
+								text-align: left;
+								.item_title {
+									font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+									font-size: 18px;
+									font-weight: 700;
+								}
+								.item_value {
+									font-size: 12px;
+									font-weight: 400;
+									color: #7c7c7c;
+								}
+							}
+						}
+					}
+				}
+			}
+			.Cancel_Tabs_body{
+				.tabs_title_selection{
+					.img-tab{
+						width: 15%;
+						height: 15%;
+					}
+					span{
+						font-size: 16px;
+						font-weight: bold;
+						color: #000;
+					}
+					.stop{
+						font-size: 16px;
+						font-weight: bold;
+						color: red;
+					}
+				}
+			}
+			.Scheduled{
+				font-size: 9.5px; 
+				font-weight: bold;
+				text-align: center;
+			}
+			
+		}
+	
+	}
+}
+@media only screen and (max-width: 530px) {
+	.list_card_container {
+		.list_card {
+			.flight_brnd {
+				img {
+					width: 40px;
+					height: 40px;
+				}
+				span.flight_name {	
+					font-size: 12px !important;
+					width: 60px;
+					font-weight: 600; 
+						}
+			}
+			.flight_details_section{
+				.flight_details {
+					.from {
+						min-width: 80px;
+						span.city {
+							font-size: 10px;
+								}
+								span.time {
+									font-size: 18px;
+								}		
+							}
+						.duration  {
+							margin: 0 10px;
+								}
+						.destination {
+							min-width: 80px;
+							span.city {
+									font-weight: bold;
+									font-size: 10px;
+									}
+									span.time {
+										font-size: 18px;
+									}	
+										}
+										 }
+										}
+		.price_book_section{
+		    .price_section {
+				padding: 0 10px;
+			    }
+				.btn-sm{
+					display: none;
+				}
+		      }
+		}
+		.more_details {
+			width: 100%;
+			.more_detail_header {
+				text-align: right;
+				a {
+					text-decoration: none;
+					font-size: 12px;
+					color: var(--primary);
+					font-weight: 600;
+					cursor: pointer;
+				}
+			}
+			.tabs-header{
+				margin: 13px;
+				border: 1px solid #dedede;
+				 border-radius: 20px;
+			   background: #EFF3F8;
+			   ul{
+				   display: flex;
+				   justify-content: space-between;
+				   align-items: center;
+				list-style-type: none;
+				margin:0;
+				padding: 0;
+			   }
+			   .tab {
+				overflow: hidden;
+				
+			  }
+			  
+			  .tab a {
+				background-color: inherit;
+				float: left;
+				border: none;
+				outline: none;
+				cursor: pointer;
+				padding: 5px 30px;
+				text-transform: uppercase;
+				font-size: 12px;
+				text-decoration: none;
+				color: #000;
+			  }
+			  
+			  .tab a.active {
+				padding: 5px 30px;
+				border-radius: 20px;
+				background-color: var(--primary);
+				color: white;
+				font-size: 12px;
+			  }
+			  
+			
+			  .tabcontent {
+				display: none;
+				padding: 6px 12px;
+				border: 1px solid #ccc;
+				border-top: none;
+			  }
+		   
+		   }
+			.Tabs_body {
+				margin-top: 10px;
+				padding: 10px;
+				.titile_name{
+						font-size: 18px;
+						font-weight: bold;
+						color: #000;
+				}
+			.Total_Price{
+				font-size: 15px;
+				font-weight: bold;
+				color: #000;
+			}
+			.fare_title{
+				font-size: 15px;
+				color: rgb(143, 141, 141);
+				font-weight: 500;
+			}
+			
+			
+				.detail_card {
+					.flight_brnd {
+						width: 100%;
+						display: grid;
+						justify-content: center;
+						font-family: "Poppins";
+						align-items: center;
+						text-align: center;
+						img {
+							width: 50px;
+							height: 50px;
+						}
+						span {
+							font-weight: 500;
+							font-size: 14px;
+						}
+					}
+					.detail_row {
+						display: flex;
+						justify-content: space-between;
+						width: 100%;
+						.flight_details {
+							display: flex;
+							align-items: left;
+							margin-top: 5px;
+							.from {
+								display: grid;
+								text-align: left;
+								span.time {
+									font-weight: 500;
+									font-size: 24px;
+								}
+								div.date {
+									font-size: 12px;
+									color: rgb(143, 141, 141);
+									font-weight: 500;
+								}
+							}
+							.duration {
+								text-align: center;
+								display: grid;
+								.duration_time,
+								.flight_destination_line{
+									img{
+										width: 150px;
+									}
+									}
+								.flight_speed {
+									font-weight: 500;
+									font-size: 14px;
+								}
+							}
+							.destination {
+								text-align: left;
+								display: grid;
+								span.time {
+									font-weight: 500;
+									font-size: 24px;
+								}
+								div.date {
+									font-size: 12px;
+									color: rgb(143, 141, 141);
+									font-weight: 500;
+								}
+							}
+						}
+						.extra_things_container {
+							display: flex;
+							justify-content: space-evenly;
+							.extra_things {
+								margin: 0 20px;
+								text-align: left;
+								.item_title {
+									font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+									font-size: 18px;
+									font-weight: 700;
+								}
+								.item_value {
+									font-size: 12px;
+									font-weight: 400;
+									color: #7c7c7c;
+								}
+							}
+						}
+					}
+				}
+			}
+			.Cancel_Tabs_body{
+				.tabs_title_selection{
+					.img-tab{
+						width: 15%;
+						height: 15%;
+					}
+					span{
+						font-size: 16px;
+						font-weight: bold;
+						color: #000;
+					}
+					.stop{
+						font-size: 16px;
+						font-weight: bold;
+						color: red;
+					}
+				}
+			}
+			.Scheduled{
+				font-size: 9.5px; 
+				font-weight: bold;
+				text-align: center;
+			}
+			
+		}
+	
+	}
+}
+@media only screen and (max-width: 500px) {
+	.list_card_container {
+		.list_card {
+			display: grid;
+			.flight_brnd {
+				display: flex;
+				margin-bottom: 10px;
+				img {
+					width: 50px;
+					height: 45px;
+				}
+				span.flight_name {
+					font-size: 15px !important;
+					width: 80px;
+					font-weight: 600; 
+						}
+			}
+			.flight_details_section{
+				
+				.flight_details {
+					.from {
+						min-width: 100px;
+						span.city {
+							font-size: 12px;
+								}
+								span.time {
+									font-size: 18px;
+								}		
+							}
+						.duration  {
+							margin: 0 10px;
+								}
+						.destination {
+							min-width: 100px;
+							span.city {
+									font-size: 12px;
+									}
+									span.time {
+										font-size: 18px;
+									}	
+										}
+										 }
+										}
+		.price_book_section{
+		    .price_section {
+				padding: 0 5px;
+			    }
+				.btn-sm{
+					display: none;
+				}
+		      }
+		}
+		.more_details {
+			width: 100%;
+			.more_detail_header {
+				text-align: right;
+				a {
+					text-decoration: none;
+					font-size: 12px;
+					color: var(--primary);
+					font-weight: 600;
+					cursor: pointer;
+				}
+			}
+			.tabs-header{
+				margin: 13px;
+				border: 1px solid #dedede;
+				 border-radius: 20px;
+			   background: #EFF3F8;
+			   ul{
+				   display: flex;
+				   justify-content: space-between;
+				   align-items: center;
+				list-style-type: none;
+				margin:0;
+				padding: 0;
+			   }
+			   .tab {
+				overflow: hidden;
+				
+			  }
+			  
+			  .tab a {
+				background-color: inherit;
+				float: left;
+				border: none;
+				outline: none;
+				cursor: pointer;
+				padding: 5px 30px;
+				text-transform: uppercase;
+				font-size: 12px;
+				text-decoration: none;
+				color: #000;
+			  }
+			  
+			  .tab a.active {
+				padding: 5px 30px;
+				border-radius: 20px;
+				background-color: var(--primary);
+				color: white;
+				font-size: 12px;
+			  }
+			  
+			
+			  .tabcontent {
+				display: none;
+				padding: 6px 12px;
+				border: 1px solid #ccc;
+				border-top: none;
+			  }
+		   
+		   }
+			.Tabs_body {
+				margin-top: 10px;
+				padding: 10px;
+				.titile_name{
+						font-size: 18px;
+						font-weight: bold;
+						color: #000;
+				}
+			.Total_Price{
+				font-size: 15px;
+				font-weight: bold;
+				color: #000;
+			}
+			.fare_title{
+				font-size: 15px;
+				color: rgb(143, 141, 141);
+				font-weight: 500;
+			}
+			
+			
+				.detail_card {
+					.flight_brnd {
+						width: 100%;
+						display: grid;
+						justify-content: center;
+						font-family: "Poppins";
+						align-items: center;
+						text-align: center;
+						img {
+							width: 50px;
+							height: 50px;
+						}
+						span {
+							font-weight: 500;
+							font-size: 14px;
+						}
+					}
+					.detail_row {
+						display: flex;
+						justify-content: space-between;
+						width: 100%;
+						.flight_details {
+							display: flex;
+							align-items: left;
+							margin-top: 5px;
+							.from {
+								display: grid;
+								text-align: left;
+								span.time {
+									font-weight: 500;
+									font-size: 24px;
+								}
+								div.date {
+									font-size: 12px;
+									color: rgb(143, 141, 141);
+									font-weight: 500;
+								}
+							}
+							.duration {
+								text-align: center;
+								display: grid;
+								.duration_time,
+								.flight_destination_line{
+									img{
+										width: 150px;
+									}
+									}
+								.flight_speed {
+									font-weight: 500;
+									font-size: 14px;
+								}
+							}
+							.destination {
+								text-align: left;
+								display: grid;
+								span.time {
+									font-weight: 500;
+									font-size: 24px;
+								}
+								div.date {
+									font-size: 12px;
+									color: rgb(143, 141, 141);
+									font-weight: 500;
+								}
+							}
+						}
+						.extra_things_container {
+							display: flex;
+							justify-content: space-evenly;
+							.extra_things {
+								margin: 0 20px;
+								text-align: left;
+								.item_title {
+									font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+									font-size: 18px;
+									font-weight: 700;
+								}
+								.item_value {
+									font-size: 12px;
+									font-weight: 400;
+									color: #7c7c7c;
+								}
+							}
+						}
+					}
+				}
+			}
+			.Cancel_Tabs_body{
+				.tabs_title_selection{
+					.img-tab{
+						width: 15%;
+						height: 15%;
+					}
+					span{
+						font-size: 16px;
+						font-weight: bold;
+						color: #000;
+					}
+					.stop{
+						font-size: 16px;
+						font-weight: bold;
+						color: red;
+					}
+				}
+			}
+			.Scheduled{
+				font-size: 9.5px; 
+				font-weight: bold;
+				text-align: center;
+			}
+			
+		}
+	
+	}
+}
+@media only screen and (max-width: 485px) {
+	.list_card_container {
+		.list_card {
+			display: grid;
+			.flight_brnd {
+				display: flex;
+				margin-bottom: 10px;
+				img {
+					width: 50px;
+					height: 45px;
+				}
+				span.flight_name {
+					font-size: 15px !important;
+					width: 80px;
+					font-weight: 600; 
+						}
+			}
+			.flight_details_section{
+				
+				.flight_details {
+					.from {
+						min-width: 100px;
+						span.city {
+							font-size: 12px;
+								}
+								span.time {
+									font-size: 18px;
+								}		
+							}
+						.duration  {
+							margin: 0 10px;
+								}
+						.destination {
+							min-width: 90px;
+							span.city {
+									font-size: 12px;
+									}
+									span.time {
+										font-size: 18px;
+									}	
+										}
+										 }
+										}
+		.price_book_section{
+		    .price_section {
+				padding: 0 5px;
+			    }
+				.btn-sm{
+					display: none;
+				}
+		      }
+		}
+		.more_details {
+			width: 100%;
+			.more_detail_header {
+				text-align: right;
+				a {
+					text-decoration: none;
+					font-size: 12px;
+					color: var(--primary);
+					font-weight: 600;
+					cursor: pointer;
+				}
+			}
+			.tabs-header{
+				margin: 13px;
+				border: 1px solid #dedede;
+				 border-radius: 20px;
+			   background: #EFF3F8;
+			   ul{
+				   display: flex;
+				   justify-content: space-between;
+				   align-items: center;
+				list-style-type: none;
+				margin:0;
+				padding: 0;
+			   }
+			   .tab {
+				overflow: hidden;
+				
+			  }
+			  
+			  .tab a {
+				background-color: inherit;
+				float: left;
+				border: none;
+				outline: none;
+				cursor: pointer;
+				padding: 5px 30px;
+				text-transform: uppercase;
+				font-size: 12px;
+				text-decoration: none;
+				color: #000;
+			  }
+			  
+			  .tab a.active {
+				padding: 5px 30px;
+				border-radius: 20px;
+				background-color: var(--primary);
+				color: white;
+				font-size: 12px;
+			  }
+			  
+			
+			  .tabcontent {
+				display: none;
+				padding: 6px 12px;
+				border: 1px solid #ccc;
+				border-top: none;
+			  }
+		   
+		   }
+			.Tabs_body {
+				margin-top: 10px;
+				padding: 10px;
+				.titile_name{
+						font-size: 18px;
+						font-weight: bold;
+						color: #000;
+				}
+			.Total_Price{
+				font-size: 15px;
+				font-weight: bold;
+				color: #000;
+			}
+			.fare_title{
+				font-size: 15px;
+				color: rgb(143, 141, 141);
+				font-weight: 500;
+			}
+			
+			
+				.detail_card {
+					.flight_brnd {
+						width: 100%;
+						display: grid;
+						justify-content: center;
+						font-family: "Poppins";
+						align-items: center;
+						text-align: center;
+						img {
+							width: 50px;
+							height: 50px;
+						}
+						span {
+							font-weight: 500;
+							font-size: 14px;
+						}
+					}
+					.detail_row {
+						display: flex;
+						justify-content: space-between;
+						width: 100%;
+						.flight_details {
+							display: flex;
+							align-items: left;
+							margin-top: 5px;
+							.from {
+								display: grid;
+								text-align: left;
+								span.time {
+									font-weight: 500;
+									font-size: 24px;
+								}
+								div.date {
+									font-size: 12px;
+									color: rgb(143, 141, 141);
+									font-weight: 500;
+								}
+							}
+							.duration {
+								text-align: center;
+								display: grid;
+								.duration_time,
+								.flight_destination_line{
+									img{
+										width: 150px;
+									}
+									}
+								.flight_speed {
+									font-weight: 500;
+									font-size: 14px;
+								}
+							}
+							.destination {
+								text-align: left;
+								display: grid;
+								span.time {
+									font-weight: 500;
+									font-size: 24px;
+								}
+								div.date {
+									font-size: 12px;
+									color: rgb(143, 141, 141);
+									font-weight: 500;
+								}
+							}
+						}
+						.extra_things_container {
+							display: flex;
+							justify-content: space-evenly;
+							.extra_things {
+								margin: 0 20px;
+								text-align: left;
+								.item_title {
+									font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+									font-size: 18px;
+									font-weight: 700;
+								}
+								.item_value {
+									font-size: 12px;
+									font-weight: 400;
+									color: #7c7c7c;
+								}
+							}
+						}
+					}
+				}
+			}
+			.Cancel_Tabs_body{
+				.tabs_title_selection{
+					.img-tab{
+						width: 15%;
+						height: 15%;
+					}
+					span{
+						font-size: 16px;
+						font-weight: bold;
+						color: #000;
+					}
+					.stop{
+						font-size: 16px;
+						font-weight: bold;
+						color: red;
+					}
+				}
+			}
+			.Scheduled{
+				font-size: 9.5px; 
+				font-weight: bold;
+				text-align: center;
+			}
+			
+		}
+	
+	}
+}
+@media only screen and (max-width: 485px) {
+	.list_card_container {
+		.list_card {
+			display: grid;
+			.flight_brnd {
+				display: flex;
+				margin-bottom: 10px;
+				img {
+					width: 50px;
+					height: 45px;
+				}
+				span.flight_name {	
+					font-size: 15px !important;
+					width: 80px;
+					font-weight: 600; 
+						}
+			}
+			.flight_details_section{
+				
+				.flight_details {
+					.from {
+						min-width: 80px;
+						span.city {
+							font-size: 10px;
+								}
+								span.time {
+									font-size: 12px;
+								}		
+							}
+						.duration  {
+							margin: 0 10px;
+								}
+						.destination {
+							min-width: 80px;
+							span.city {
+									font-size: 10px;
+									}
+									span.time {
+										font-size: 12px;
+									}	
+										}
+										 }
+										}
+		.price_book_section{
+		    .price_section {
+				padding: 0 15px;
+				.prices{
+					.booking_price {
+						font-size: 15px;
+						font-weight: 500;
+					}
+				}
+			    }
+		      }
+		}
+		.more_details {
+			width: 100%;
+			.more_detail_header {
+				text-align: right;
+				a {
+					text-decoration: none;
+					font-size: 12px;
+					color: var(--primary);
+					font-weight: 600;
+					cursor: pointer;
+				}
+			}
+			.tabs-header{
+				margin: 13px;
+				border: 1px solid #dedede;
+				 border-radius: 20px;
+			   background: #EFF3F8;
+			   ul{
+				   display: flex;
+				   justify-content: space-between;
+				   align-items: center;
+				list-style-type: none;
+				margin:0;
+				padding: 0;
+			   }
+			   .tab {
+				overflow: hidden;
+				
+			  }
+			  
+			  .tab a {
+				background-color: inherit;
+				float: left;
+				border: none;
+				outline: none;
+				cursor: pointer;
+				padding: 5px 30px;
+
+				text-transform: uppercase;
+				font-size: 12px;
+				text-decoration: none;
+				color: #000;
+			  }
+			  
+			  .tab a.active {
+				padding: 5px 30px;
+				border-radius: 20px;
+				background-color: var(--primary);
+				color: white;
+				font-size: 12px;
+			  }
+			  
+			
+			  .tabcontent {
+				display: none;
+				padding: 6px 12px;
+				border: 1px solid #ccc;
+				border-top: none;
+			  }
+		   
+		   }
+			.Tabs_body {
+				margin-top: 10px;
+				padding: 10px;
+				.titile_name{
+						font-size: 18px;
+						font-weight: bold;
+						color: #000;
+				}
+			.Total_Price{
+				font-size: 15px;
+				font-weight: bold;
+				color: #000;
+			}
+			.fare_title{
+				font-size: 15px;
+				color: rgb(143, 141, 141);
+				font-weight: 500;
+			}
+			
+			
+				.detail_card {
+					.flight_brnd {
+						width: 100%;
+						display: grid;
+						justify-content: center;
+						font-family: "Poppins";
+						align-items: center;
+						text-align: center;
+						img {
+							width: 50px;
+							height: 50px;
+						}
+						span {
+							font-weight: 500;
+							font-size: 14px;
+						}
+					}
+					.detail_row {
+						display: flex;
+						justify-content: space-between;
+						width: 100%;
+						.flight_details {
+							display: flex;
+							align-items: left;
+							margin-top: 5px;
+							.from {
+								display: grid;
+								text-align: left;
+								span.time {
+									font-weight: 500;
+									font-size: 24px;
+								}
+								div.date {
+									font-size: 12px;
+									color: rgb(143, 141, 141);
+									font-weight: 500;
+								}
+							}
+							.duration {
+								text-align: center;
+								display: grid;
+								.duration_time,
+								.flight_destination_line{
+									img{
+										width: 150px;
+									}
+									}
+								.flight_speed {
+									font-weight: 500;
+									font-size: 14px;
+								}
+							}
+							.destination {
+								text-align: left;
+								display: grid;
+								span.time {
+									font-weight: 500;
+									font-size: 24px;
+								}
+								div.date {
+									font-size: 12px;
+									color: rgb(143, 141, 141);
+									font-weight: 500;
+								}
+							}
+						}
+						.extra_things_container {
+							display: flex;
+							justify-content: space-evenly;
+							.extra_things {
+								margin: 0 20px;
+								text-align: left;
+								.item_title {
+									font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+									font-size: 18px;
+									font-weight: 700;
+								}
+								.item_value {
+									font-size: 12px;
+									font-weight: 400;
+									color: #7c7c7c;
+								}
+							}
+						}
+					}
+				}
+			}
+			.Cancel_Tabs_body{
+				.tabs_title_selection{
+					.img-tab{
+						width: 15%;
+						height: 15%;
+					}
+					span{
+						font-size: 16px;
+						font-weight: bold;
+						color: #000;
+					}
+					.stop{
+						font-size: 16px;
+						font-weight: bold;
+						color: red;
+					}
+				}
+			}
+			.Scheduled{
+				font-size: 9.5px; 
+				font-weight: bold;
+				text-align: center;
+			}
+			
+		}
+	
+	}
+}
+@media only screen and (max-width: 445px) {
+	.list_card_container {
+		.list_card {
+			display: grid;
+			.flight_brnd {
+				display: flex;
+				margin-bottom: 10px;
+				img {
+					width: 50px;
+					height: 45px;
+				}
+				span.flight_name {	
+					font-size: 15px !important;
+					width: 80px;
+					font-weight: 600; 
+						}
+			}
+			.flight_details_section{
+				
+				.flight_details {
+					.from {
+						min-width: 80px;
+						span.city {
+							font-size: 10px;
+								}
+								span.time {
+									font-size: 12px;
+								}		
+							}
+						.duration  {
+							margin: 0 10px;
+								}
+						.destination {
+							min-width: 80px;
+							span.city {
+									font-size: 10px;
+									}
+									span.time {
+										font-size: 12px;
+									}	
+										}
+										 }
+										}
+		.price_book_section{
+		    .price_section {
+				padding: 0 5px;
+				.prices{
+					.booking_price {
+						font-size: 15px;
+					}
+				}
+			    }
+		      }
+		}
+		.more_details {
+			width: 100%;
+			.more_detail_header {
+				text-align: right;
+				a {
+					text-decoration: none;
+					font-size: 12px;
+					color: var(--primary);
+					font-weight: 600;
+					cursor: pointer;
+				}
+			}
+			.tabs-header{
+				margin: 13px;
+				border: 1px solid #dedede;
+				 border-radius: 20px;
+			   background: #EFF3F8;
+			   ul{
+				   display: flex;
+				   justify-content: space-between;
+				   align-items: center;
+				list-style-type: none;
+				margin:0;
+				padding: 0;
+			   }
+			   .tab {
+				overflow: hidden;
+				
+			  }
+			  
+			  .tab a {
+				background-color: inherit;
+				float: left;
+				border: none;
+				outline: none;
+				cursor: pointer;
+				padding: 5px 30px;
+				text-transform: uppercase;
+				font-size: 12px;
+				text-decoration: none;
+				color: #000;
+			  }
+			  
+			  .tab a.active {
+				padding: 5px 30px;
+				border-radius: 20px;
+				background-color: var(--primary);
+				color: white;
+				font-size: 12px;
+			  }
+			  
+			
+			  .tabcontent {
+				display: none;
+				padding: 6px 12px;
+				border: 1px solid #ccc;
+				border-top: none;
+			  }
+		   
+		   }
+			.Tabs_body {
+				margin-top: 10px;
+				padding: 10px;
+				.titile_name{
+						font-size: 18px;
+						font-weight: bold;
+						color: #000;
+				}
+			.Total_Price{
+				font-size: 15px;
+				font-weight: bold;
+				color: #000;
+			}
+			.fare_title{
+				font-size: 15px;
+				color: rgb(143, 141, 141);
+				font-weight: 500;
+			}
+			
+			
+				.detail_card {
+					.flight_brnd {
+						width: 100%;
+						display: grid;
+						justify-content: center;
+						font-family: "Poppins";
+						align-items: center;
+						text-align: center;
+						img {
+							width: 50px;
+							height: 50px;
+						}
+						span {
+							font-weight: 500;
+							font-size: 14px;
+						}
+					}
+					.detail_row {
+						display: flex;
+						justify-content: space-between;
+						width: 100%;
+						.flight_details {
+							display: flex;
+							align-items: left;
+							margin-top: 5px;
+							.from {
+								display: grid;
+								text-align: left;
+								span.time {
+									font-weight: 500;
+									font-size: 24px;
+								}
+								div.date {
+									font-size: 12px;
+									color: rgb(143, 141, 141);
+									font-weight: 500;
+								}
+							}
+							.duration {
+								text-align: center;
+								display: grid;
+								.duration_time,
+								.flight_destination_line{
+									img{
+										width: 150px;
+									}
+									}
+								.flight_speed {
+									font-weight: 500;
+									font-size: 14px;
+								}
+							}
+							.destination {
+								text-align: left;
+								display: grid;
+								span.time {
+									font-weight: 500;
+									font-size: 24px;
+								}
+								div.date {
+									font-size: 12px;
+									color: rgb(143, 141, 141);
+									font-weight: 500;
+								}
+							}
+						}
+						.extra_things_container {
+							display: flex;
+							justify-content: space-evenly;
+							.extra_things {
+								margin: 0 20px;
+								text-align: left;
+								.item_title {
+									font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+									font-size: 18px;
+									font-weight: 700;
+								}
+								.item_value {
+									font-size: 12px;
+									font-weight: 400;
+									color: #7c7c7c;
+								}
+							}
+						}
+					}
+				}
+			}
+			.Cancel_Tabs_body{
+				.tabs_title_selection{
+					.img-tab{
+						width: 15%;
+						height: 15%;
+					}
+					span{
+						font-size: 16px;
+						font-weight: bold;
+						color: #000;
+					}
+					.stop{
+						font-size: 16px;
+						font-weight: bold;
+						color: red;
+					}
+				}
+			}
+			.Scheduled{
+				font-size: 9.5px; 
+				font-weight: bold;
+				text-align: center;
+			}
+			
+		}
+	
+	}
+}						
+
+@media only screen and (max-width: 425px) {
+	.list_card_container {
+		padding: 10px;
+		.list_card {
+			.flight_details_section{
+				.flight_details {
+					.from {
+						min-width: 80px;
+						span.city {
+							font-size: 10px;
+								}
+								span.time {
+									font-size: 18px;
+								}		
+							}
+						.duration  {
+							margin: 0 5px;
+								}
+						.destination {
+							min-width: 80px;
+							span.city {
+									font-weight: bold;
+									font-size: 10px;
+									}
+									span.time {
+										font-size: 18px;
+									}	
+										}
+										 }
+										}
+		.price_book_section{
+			.price_section {
+				padding: 0 5px;
+			}
+		}
+		}
+		.more_details {
+			width: 100%;
+			.more_detail_header {
+				text-align: right;
+				a {
+					text-decoration: none;
+					font-size: 12px;
+					color: var(--primary);
+					font-weight: 600;
+					cursor: pointer;
+				}
+			}
+			.tabs-header{
+				margin: 13px;
+				border: 1px solid #dedede;
+				 border-radius: 20px;
+			   background: #EFF3F8;
+			   ul{
+				   display: flex;
+				   justify-content: space-between;
+				   align-items: center;
+				list-style-type: none;
+				margin:0;
+				padding: 0;
+			   }
+			   .tab {
+				overflow: hidden;
+				
+			  }
+			  
+			  .tab a {
+				background-color: inherit;
+				float: left;
+				border: none;
+				outline: none;
+				cursor: pointer;
+				padding: 5px 30px;
+				text-transform: uppercase;
+				font-size: 12px;
+				text-decoration: none;
+				color: #000;
+			  }
+			  
+			  .tab a.active {
+				padding: 5px 30px;
+				border-radius: 20px;
+				background-color: var(--primary);
+				color: white;
+				font-size: 12px;
+			  }
+			  
+			
+			  .tabcontent {
+				display: none;
+				padding: 6px 12px;
+				border: 1px solid #ccc;
+				border-top: none;
+			  }
+		   
+		   }
+			.Tabs_body {
+				margin-top: 10px;
+				padding: 10px;
+				.titile_name{
+						font-size: 18px;
+						font-weight: bold;
+						color: #000;
+				}
+			.Total_Price{
+				font-size: 15px;
+				font-weight: bold;
+				color: #000;
+			}
+			.fare_title{
+				font-size: 15px;
+				color: rgb(143, 141, 141);
+				font-weight: 500;
+			}
+			
+			
+				.detail_card {
+					.flight_brnd {
+						width: 100%;
+						display: grid;
+						justify-content: center;
+						font-family: "Poppins";
+						align-items: center;
+						text-align: center;
+						img {
+							width: 50px;
+							height: 50px;
+						}
+						span {
+							font-weight: 500;
+							font-size: 14px;
+						}
+					}
+					.detail_row {
+						display: flex;
+						justify-content: space-between;
+						width: 100%;
+						.flight_details {
+							display: flex;
+							align-items: left;
+							margin-top: 5px;
+							.from {
+								display: grid;
+								text-align: left;
+								span.time {
+									font-weight: 500;
+									font-size: 24px;
+								}
+								div.date {
+									font-size: 12px;
+									color: rgb(143, 141, 141);
+									font-weight: 500;
+								}
+							}
+							.duration {
+								text-align: center;
+								display: grid;
+								.duration_time,
+								.flight_destination_line{
+									img{
+										width: 150px;
+									}
+									}
+								.flight_speed {
+									font-weight: 500;
+									font-size: 14px;
+								}
+							}
+							.destination {
+								text-align: left;
+								display: grid;
+								span.time {
+									font-weight: 500;
+									font-size: 24px;
+								}
+								div.date {
+									font-size: 12px;
+									color: rgb(143, 141, 141);
+									font-weight: 500;
+								}
+							}
+						}
+						.extra_things_container {
+							display: flex;
+							justify-content: space-evenly;
+							.extra_things {
+								margin: 0 20px;
+								text-align: left;
+								.item_title {
+									font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+									font-size: 18px;
+									font-weight: 700;
+								}
+								.item_value {
+									font-size: 12px;
+									font-weight: 400;
+									color: #7c7c7c;
+								}
+							}
+						}
+					}
+				}
+			}
+			.Cancel_Tabs_body{
+				.tabs_title_selection{
+					.img-tab{
+						width: 15%;
+						height: 15%;
+					}
+					span{
+						font-size: 16px;
+						font-weight: bold;
+						color: #000;
+					}
+					.stop{
+						font-size: 16px;
+						font-weight: bold;
+						color: red;
+					}
+				}
+			}
+			.Scheduled{
+				font-size: 9.5px; 
+				font-weight: bold;
+				text-align: center;
+			}
+			
+		}
+	
+	}
+								}
+@media only screen and (max-width: 410px) {
+	.list_card_container {
+		padding: 10px;
+		.list_card {
+			.flight_details_section{
+				.flight_details {
+					.from {
+						min-width: 80px;
+						span.city {
+							font-size: 10px;
+								}
+								span.time {
+									font-size: 15px;
+								}		
+							}
+						.duration  {
+							margin: 0 10px;
+							.duration_time
+							{
+								font-size: 12px;
+								font-weight: 500;
+							}
+							.flight_destination_line{
+								img{
+									width: 80px;
+								}
+								}
+								.flight_speed {
+									font-weight: 500;
+									font-size: 12px;
+									
+								}
+								}
+						.destination {
+							min-width: 80px;
+							span.city {
+									font-weight: bold;
+									font-size: 10px;
+									}
+									span.time {
+										font-size: 15px;
+									}	
+										}
+										 }
+										}
+		.price_book_section{
+			.price_section {
+				padding: 0 5px;
+			}
+		}
+		}
+		.more_details {
+			width: 100%;
+			.more_detail_header {
+				text-align: right;
+				a {
+					text-decoration: none;
+					font-size: 12px;
+					color: var(--primary);
+					font-weight: 600;
+					cursor: pointer;
+				}
+			}
+			.tabs-header{
+				margin: 13px;
+				border: 1px solid #dedede;
+				 border-radius: 20px;
+			   background: #EFF3F8;
+			   ul{
+				   display: flex;
+				   justify-content: space-between;
+				   align-items: center;
+				list-style-type: none;
+				margin:0;
+				padding: 0;
+			   }
+			   .tab {
+				overflow: hidden;
+				
+			  }
+			  
+			  .tab a {
+				background-color: inherit;
+				float: left;
+				border: none;
+				outline: none;
+				cursor: pointer;
+				padding: 5px 30px;
+				text-transform: uppercase;
+				font-size: 12px;
+				text-decoration: none;
+				color: #000;
+			  }
+			  
+			  .tab a.active {
+				padding: 5px 30px;
+				border-radius: 20px;
+				background-color: var(--primary);
+				color: white;
+				font-size: 12px;
+			  }
+			  
+			
+			  .tabcontent {
+				display: none;
+				padding: 6px 12px;
+				border: 1px solid #ccc;
+				border-top: none;
+			  }
+		   
+		   }
+			.Tabs_body {
+				margin-top: 10px;
+				padding: 10px;
+				.titile_name{
+						font-size: 18px;
+						font-weight: bold;
+						color: #000;
+				}
+			.Total_Price{
+				font-size: 15px;
+				font-weight: bold;
+				color: #000;
+			}
+			.fare_title{
+				font-size: 15px;
+				color: rgb(143, 141, 141);
+				font-weight: 500;
+			}
+			
+			
+				.detail_card {
+					.flight_brnd {
+						width: 100%;
+						display: grid;
+						justify-content: center;
+						font-family: "Poppins";
+						align-items: center;
+						text-align: center;
+						img {
+							width: 50px;
+							height: 50px;
+						}
+						span {
+							font-weight: 500;
+							font-size: 14px;
+						}
+					}
+					.detail_row {
+						display: flex;
+						justify-content: space-between;
+						width: 100%;
+						.flight_details {
+							display: flex;
+							align-items: left;
+							margin-top: 5px;
+							.from {
+								display: grid;
+								text-align: left;
+								span.time {
+									font-weight: 500;
+									font-size: 24px;
+								}
+								div.date {
+									font-size: 12px;
+									color: rgb(143, 141, 141);
+									font-weight: 500;
+								}
+							}
+							.duration {
+								text-align: center;
+								display: grid;
+								.duration_time,
+								.flight_destination_line{
+									img{
+										width: 150px;
+									}
+									}
+								.flight_speed {
+									font-weight: 500;
+									font-size: 14px;
+								}
+							}
+							.destination {
+								text-align: left;
+								display: grid;
+								span.time {
+									font-weight: 500;
+									font-size: 24px;
+								}
+								div.date {
+									font-size: 12px;
+									color: rgb(143, 141, 141);
+									font-weight: 500;
+								}
+							}
+						}
+						.extra_things_container {
+							display: flex;
+							justify-content: space-evenly;
+							.extra_things {
+								margin: 0 20px;
+								text-align: left;
+								.item_title {
+									font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+									font-size: 18px;
+									font-weight: 700;
+								}
+								.item_value {
+									font-size: 12px;
+									font-weight: 400;
+									color: #7c7c7c;
+								}
+							}
+						}
+					}
+				}
+			}
+			.Cancel_Tabs_body{
+				.tabs_title_selection{
+					.img-tab{
+						width: 15%;
+						height: 15%;
+					}
+					span{
+						font-size: 16px;
+						font-weight: bold;
+						color: #000;
+					}
+					.stop{
+						font-size: 16px;
+						font-weight: bold;
+						color: red;
+					}
+				}
+			}
+			.Scheduled{
+				font-size: 9.5px; 
+				font-weight: bold;
+				text-align: center;
+			}
+			
+		}
+	
+	}
+								}
+@media only screen and (max-width: 395px) {
+	.list_card_container {
+		padding: 10px;
+		.list_card {
+			.flight_details_section{
+				.flight_details {
+					.from {
+						min-width: 80px;
+						span.city {
+							font-size: 10px;
+								}
+								span.time {
+									font-size: 15px;
+								}		
+							}
+						.duration  {
+							margin: 0 8px;
+							.duration_time
+							{
+								font-size: 12px;
+								font-weight: 600;
+							}
+							.flight_destination_line{
+								img{
+									width: 75px;
+								}
+								}
+								.flight_speed {
+									font-weight: 600;
+									font-size: 12px;
+									
+								}
+								}
+						.destination {
+							min-width: 80px;
+							span.city {
+									font-weight: bold;
+									font-size: 10px;
+									}
+									span.time {
+										font-size: 15px;
+									}	
+										}
+										 }
+										}
+		.price_book_section{
+			.price_section {
+				padding: 0 5px;
+				.prices{
+					.booking_price{
+						font-size: 13px;
+						font-weight: 600;
+					}
+				}
+			}
+		}
+		}
+		.more_details {
+			width: 100%;
+			.more_detail_header {
+				text-align: right;
+				a {
+					text-decoration: none;
+					font-size: 12px;
+					color: var(--primary);
+					font-weight: 600;
+					cursor: pointer;
+				}
+			}
+			.tabs-header{
+				margin: 13px;
+				border: 1px solid #dedede;
+				 border-radius: 20px;
+			   background: #EFF3F8;
+			   ul{
+				   display: flex;
+				   justify-content: space-between;
+				   align-items: center;
+				list-style-type: none;
+				margin:0;
+				padding: 0;
+			   }
+			   .tab {
+				overflow: hidden;
+				
+			  }
+			  
+			  .tab a {
+				background-color: inherit;
+				float: left;
+				border: none;
+				outline: none;
+				cursor: pointer;
+				padding: 5px 30px;
+				text-transform: uppercase;
+				font-size: 12px;
+				text-decoration: none;
+				color: #000;
+			  }
+			  
+			  .tab a.active {
+				padding: 5px 30px;
+				border-radius: 20px;
+				background-color: var(--primary);
+				color: white;
+				font-size: 12px;
+			  }
+			  
+			
+			  .tabcontent {
+				display: none;
+				padding: 6px 12px;
+				border: 1px solid #ccc;
+				border-top: none;
+			  }
+		   
+		   }
+			.Tabs_body {
+				margin-top: 10px;
+				padding: 10px;
+				.titile_name{
+						font-size: 18px;
+						font-weight: bold;
+						color: #000;
+				}
+			.Total_Price{
+				font-size: 15px;
+				font-weight: bold;
+				color: #000;
+			}
+			.fare_title{
+				font-size: 15px;
+				color: rgb(143, 141, 141);
+				font-weight: 500;
+			}
+			
+			
+				.detail_card {
+					.flight_brnd {
+						width: 100%;
+						display: grid;
+						justify-content: center;
+						font-family: "Poppins";
+						align-items: center;
+						text-align: center;
+						img {
+							width: 50px;
+							height: 50px;
+						}
+						span {
+							font-weight: 500;
+							font-size: 14px;
+						}
+					}
+					.detail_row {
+						display: flex;
+						justify-content: space-between;
+						width: 100%;
+						.flight_details {
+							display: flex;
+							align-items: left;
+							margin-top: 5px;
+							.from {
+								display: grid;
+								text-align: left;
+								span.time {
+									font-weight: 500;
+									font-size: 24px;
+								}
+								div.date {
+									font-size: 12px;
+									color: rgb(143, 141, 141);
+									font-weight: 500;
+								}
+							}
+							.duration {
+								text-align: center;
+								display: grid;
+								.duration_time,
+								.flight_destination_line{
+									img{
+										width: 150px;
+									}
+									}
+								.flight_speed {
+									font-weight: 500;
+									font-size: 14px;
+								}
+							}
+							.destination {
+								text-align: left;
+								display: grid;
+								span.time {
+									font-weight: 500;
+									font-size: 24px;
+								}
+								div.date {
+									font-size: 12px;
+									color: rgb(143, 141, 141);
+									font-weight: 500;
+								}
+							}
+						}
+						.extra_things_container {
+							display: flex;
+							justify-content: space-evenly;
+							.extra_things {
+								margin: 0 20px;
+								text-align: left;
+								.item_title {
+									font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+									font-size: 18px;
+									font-weight: 700;
+								}
+								.item_value {
+									font-size: 12px;
+									font-weight: 400;
+									color: #7c7c7c;
+								}
+							}
+						}
+					}
+				}
+			}
+			.Cancel_Tabs_body{
+				.tabs_title_selection{
+					.img-tab{
+						width: 15%;
+						height: 15%;
+					}
+					span{
+						font-size: 16px;
+						font-weight: bold;
+						color: #000;
+					}
+					.stop{
+						font-size: 16px;
+						font-weight: bold;
+						color: red;
+					}
+				}
+			}
+			.Scheduled{
+				font-size: 9.5px; 
+				font-weight: bold;
+				text-align: center;
+			}
+			
+		}
+	
+	}
+								}
+@media only screen and (max-width: 380px) {
+	.list_card_container {
+		padding: 10px;
+		.list_card {
+			.flight_details_section{
+				display: grid;
+				.flight_details {
+					justify-content: inherit;
+					.from {
+						min-width: 80px;
+						span.city {
+							font-size: 10px;
+								}
+								span.time {
+									font-size: 15px;
+								}		
+							}
+						.duration  {
+							margin: 0 30px;
+							.duration_time
+							{
+								font-size: 12px;
+								font-weight: 600;
+							}
+							.flight_destination_line{
+								img{
+									width: 90px;
+								}
+								}
+								.flight_speed {
+									font-weight: 600;
+									font-size: 12px;
+									
+								}
+								}
+						.destination {
+							min-width: 80px;
+							span.city {
+									font-weight: bold;
+									font-size: 10px;
+									}
+									span.time {
+										font-size: 15px;
+									}	
+										}
+										 }
+										}
+		.price_book_section{
+			
+			.price_section {
+				padding: 0 100px;
+				.prices{
+					width: 100%;
+					display: flex;
+					align-items: center;
+					.Price_from{
+						font-size: 15px;
+						font-weight: 600;
+						display: block;
+                      margin-right: 10px;
+					}
+					.booking_price{
+						text-align: center;
+						font-size: 15px;
+						font-weight: 600;
+						
+					}
+				}
+			}
+		}
+		}
+		.more_details {
+			width: 100%;
+			.more_detail_header {
+				text-align: right;
+				a {
+					text-decoration: none;
+					font-size: 12px;
+					color: var(--primary);
+					font-weight: 600;
+					cursor: pointer;
+				}
+			}
+			.tabs-header{
+				margin: 13px;
+				border: 1px solid #dedede;
+				 border-radius: 20px;
+			   background: #EFF3F8;
+			   ul{
+				   display: flex;
+				   justify-content: space-between;
+				   align-items: center;
+				list-style-type: none;
+				margin:0;
+				padding: 0;
+			   }
+			   .tab {
+				overflow: hidden;
+				
+			  }
+			  
+			  .tab a {
+				background-color: inherit;
+				float: left;
+				border: none;
+				outline: none;
+				cursor: pointer;
+				padding: 5px 30px;
+				text-transform: uppercase;
+				font-size: 12px;
+				text-decoration: none;
+				color: #000;
+			  }
+			  
+			  .tab a.active {
+				padding: 5px 30px;
+				border-radius: 20px;
+				background-color: var(--primary);
+				color: white;
+				font-size: 12px;
+			  }
+			  
+			
+			  .tabcontent {
+				display: none;
+				padding: 6px 12px;
+				border: 1px solid #ccc;
+				border-top: none;
+			  }
+		   
+		   }
+			.Tabs_body {
+				margin-top: 10px;
+				padding: 10px;
+				.titile_name{
+						font-size: 18px;
+						font-weight: bold;
+						color: #000;
+				}
+			.Total_Price{
+				font-size: 15px;
+				font-weight: bold;
+				color: #000;
+			}
+			.fare_title{
+				font-size: 15px;
+				color: rgb(143, 141, 141);
+				font-weight: 500;
+			}
+			
+			
+				.detail_card {
+					.flight_brnd {
+						width: 100%;
+						display: grid;
+						justify-content: center;
+						font-family: "Poppins";
+						align-items: center;
+						text-align: center;
+						img {
+							width: 50px;
+							height: 50px;
+						}
+						span {
+							font-weight: 500;
+							font-size: 14px;
+						}
+					}
+					.detail_row {
+						display: flex;
+						justify-content: space-between;
+						width: 100%;
+						.flight_details {
+							display: flex;
+							align-items: left;
+							margin-top: 5px;
+							.from {
+								display: grid;
+								text-align: left;
+								span.time {
+									font-weight: 500;
+									font-size: 24px;
+								}
+								div.date {
+									font-size: 12px;
+									color: rgb(143, 141, 141);
+									font-weight: 500;
+								}
+							}
+							.duration {
+								text-align: center;
+								display: grid;
+								.duration_time,
+								.flight_destination_line{
+									img{
+										width: 150px;
+									}
+									}
+								.flight_speed {
+									font-weight: 500;
+									font-size: 14px;
+								}
+							}
+							.destination {
+								text-align: left;
+								display: grid;
+								span.time {
+									font-weight: 500;
+									font-size: 24px;
+								}
+								div.date {
+									font-size: 12px;
+									color: rgb(143, 141, 141);
+									font-weight: 500;
+								}
+							}
+						}
+						.extra_things_container {
+							display: flex;
+							justify-content: space-evenly;
+							.extra_things {
+								margin: 0 20px;
+								text-align: left;
+								.item_title {
+									font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+									font-size: 18px;
+									font-weight: 700;
+								}
+								.item_value {
+									font-size: 12px;
+									font-weight: 400;
+									color: #7c7c7c;
+								}
+							}
+						}
+					}
+				}
+			}
+			.Cancel_Tabs_body{
+				.tabs_title_selection{
+					.img-tab{
+						width: 15%;
+						height: 15%;
+					}
+					span{
+						font-size: 16px;
+						font-weight: bold;
+						color: #000;
+					}
+					.stop{
+						font-size: 16px;
+						font-weight: bold;
+						color: red;
+					}
+				}
+			}
+			.Scheduled{
+				font-size: 9.5px; 
+				font-weight: bold;
+				text-align: center;
+			}
+			
+		}
+	
+	}
+								}
+
+@media only screen and (max-width: 360px) {
+	.list_card_container {
+		padding: 10px;
+		.list_card {
+			.flight_brnd {
+				margin-bottom: 5px;
+				}
+			.flight_details_section{
+				display: grid;
+				.flight_details {
+					justify-content: inherit;
+					.from {
+						min-width: 80px;
+						span.city {
+							font-size: 10px;
+								}
+								span.time {
+									font-size: 15px;
+								}		
+							}
+						.duration  {
+							margin: 0 20px;
+							.duration_time
+							{
+								font-size: 12px;
+								font-weight: 600;
+							}
+							.flight_destination_line{
+								img{
+									width: 90px;
+								}
+								}
+								.flight_speed {
+									font-weight: 600;
+									font-size: 12px;
+									
+								}
+								}
+						.destination {
+							min-width: 80px;
+							span.city {
+									font-weight: bold;
+									font-size: 10px;
+									}
+									span.time {
+										font-size: 15px;
+									}	
+										}
+										 }
+										}
+		.price_book_section{
+			
+			.price_section {
+				padding: 0 80px;
+				.prices{
+					width: 100%;
+					display: flex;
+					align-items: center;
+					.Price_from{
+						font-size: 13px;
+						font-weight: 600;
+						display: block;
+                      margin-right: 10px;
+					}
+					.booking_price{
+						text-align: center;
+						font-size: 13px;
+						font-weight: 600;
+						
+					}
+				}
+			}
+		}
+		}
+		.more_details {
+			width: 100%;
+			.more_detail_header {
+				text-align: right;
+				a {
+					text-decoration: none;
+					font-size: 12px;
+					color: var(--primary);
+					font-weight: 600;
+					cursor: pointer;
+				}
+			}
+			.tabs-header{
+				margin: 13px;
+				border: 1px solid #dedede;
+				 border-radius: 20px;
+			   background: #EFF3F8;
+			   ul{
+				   display: flex;
+				   justify-content: space-between;
+				   align-items: center;
+				list-style-type: none;
+				margin:0;
+				padding: 0;
+			   }
+			   .tab {
+				overflow: hidden;
+				
+			  }
+			  
+			  .tab a {
+				background-color: inherit;
+				float: left;
+				border: none;
+				outline: none;
+				cursor: pointer;
+				padding: 5px 30px;
+				text-transform: uppercase;
+				font-size: 12px;
+				text-decoration: none;
+				color: #000;
+			  }
+			  
+			  .tab a.active {
+				padding: 5px 30px;
+				border-radius: 20px;
+				background-color: var(--primary);
+				color: white;
+				font-size: 12px;
+			  }
+			  
+			
+			  .tabcontent {
+				display: none;
+				padding: 6px 12px;
+				border: 1px solid #ccc;
+				border-top: none;
+			  }
+		   
+		   }
+			.Tabs_body {
+				margin-top: 10px;
+				padding: 10px;
+				.titile_name{
+						font-size: 18px;
+						font-weight: bold;
+						color: #000;
+				}
+			.Total_Price{
+				font-size: 15px;
+				font-weight: bold;
+				color: #000;
+			}
+			.fare_title{
+				font-size: 15px;
+				color: rgb(143, 141, 141);
+				font-weight: 500;
+			}
+			
+			
+				.detail_card {
+					.flight_brnd {
+						width: 100%;
+						display: grid;
+						justify-content: center;
+						font-family: "Poppins";
+						align-items: center;
+						text-align: center;
+						img {
+							width: 50px;
+							height: 50px;
+						}
+						span {
+							font-weight: 500;
+							font-size: 14px;
+						}
+					}
+					.detail_row {
+						display: flex;
+						justify-content: space-between;
+						width: 100%;
+						.flight_details {
+							display: flex;
+							align-items: left;
+							margin-top: 5px;
+							.from {
+								display: grid;
+								text-align: left;
+								span.time {
+									font-weight: 500;
+									font-size: 24px;
+								}
+								div.date {
+									font-size: 12px;
+									color: rgb(143, 141, 141);
+									font-weight: 500;
+								}
+							}
+							.duration {
+								text-align: center;
+								display: grid;
+								.duration_time,
+								.flight_destination_line{
+									img{
+										width: 150px;
+									}
+									}
+								.flight_speed {
+									font-weight: 500;
+									font-size: 14px;
+								}
+							}
+							.destination {
+								text-align: left;
+								display: grid;
+								span.time {
+									font-weight: 500;
+									font-size: 24px;
+								}
+								div.date {
+									font-size: 12px;
+									color: rgb(143, 141, 141);
+									font-weight: 500;
+								}
+							}
+						}
+						.extra_things_container {
+							display: flex;
+							justify-content: space-evenly;
+							.extra_things {
+								margin: 0 20px;
+								text-align: left;
+								.item_title {
+									font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+									font-size: 18px;
+									font-weight: 700;
+								}
+								.item_value {
+									font-size: 12px;
+									font-weight: 400;
+									color: #7c7c7c;
+								}
+							}
+						}
+					}
+				}
+			}
+			.Cancel_Tabs_body{
+				.tabs_title_selection{
+					.img-tab{
+						width: 15%;
+						height: 15%;
+					}
+					span{
+						font-size: 16px;
+						font-weight: bold;
+						color: #000;
+					}
+					.stop{
+						font-size: 16px;
+						font-weight: bold;
+						color: red;
+					}
+				}
+			}
+			.Scheduled{
+				font-size: 9.5px; 
+				font-weight: bold;
+				text-align: center;
+			}
+			
+		}
+	
+	}
+								}
+@media only screen and (max-width: 320px) {
+	.list_card_container {
+		padding: 10px;
+		.list_card {
+			.flight_brnd {
+				margin-bottom: 5px;
+				}
+			.flight_details_section{
+				display: grid;
+				.flight_details {
+					justify-content: inherit;
+					.from {
+						min-width: 80px;
+						span.city {
+							font-size: 10px;
+								}
+								span.time {
+									font-size: 15px;
+								}		
+							}
+						.duration  {
+							margin: 0 10px;
+							.duration_time
+							{
+								font-size: 12px;
+								font-weight: 600;
+							}
+							.flight_destination_line{
+								img{
+									width: 80px;
+								}
+								}
+								.flight_speed {
+									font-weight: 600;
+									font-size: 12px;
+									
+								}
+								}
+						.destination {
+							min-width: 80px;
+							span.city {
+									font-weight: bold;
+									font-size: 10px;
+									}
+									span.time {
+										font-size: 15px;
+									}	
+										}
+										 }
+										}
+		.price_book_section{
+			.price_section {
+				padding: 0 80px;
+			}
+		}
+		}
+		.more_details {
+			width: 100%;
+			.more_detail_header {
+				text-align: right;
+				a {
+					text-decoration: none;
+					font-size: 12px;
+					color: var(--primary);
+					font-weight: 600;
+					cursor: pointer;
+				}
+			}
+			.tabs-header{
+				margin: 13px;
+				border: 1px solid #dedede;
+				 border-radius: 20px;
+			   background: #EFF3F8;
+			   ul{
+				   display: flex;
+				   justify-content: space-between;
+				   align-items: center;
+				list-style-type: none;
+				margin:0;
+				padding: 0;
+			   }
+			   .tab {
+				overflow: hidden;
+				
+			  }
+			  
+			  .tab a {
+				background-color: inherit;
+				float: left;
+				border: none;
+				outline: none;
+				cursor: pointer;
+				padding: 5px 30px;
+				text-transform: uppercase;
+				font-size: 12px;
+				text-decoration: none;
+				color: #000;
+			  }
+			  
+			  .tab a.active {
+				padding: 5px 30px;
+				border-radius: 20px;
+				background-color: var(--primary);
+				color: white;
+				font-size: 12px;
+			  }
+			  
+			
+			  .tabcontent {
+				display: none;
+				padding: 6px 12px;
+				border: 1px solid #ccc;
+				border-top: none;
+			  }
+		   
+		   }
+			.Tabs_body {
+				margin-top: 10px;
+				padding: 10px;
+				.titile_name{
+						font-size: 18px;
+						font-weight: bold;
+						color: #000;
+				}
+			.Total_Price{
+				font-size: 15px;
+				font-weight: bold;
+				color: #000;
+			}
+			.fare_title{
+				font-size: 15px;
+				color: rgb(143, 141, 141);
+				font-weight: 500;
+			}
+			
+			
+				.detail_card {
+					.flight_brnd {
+						width: 100%;
+						display: grid;
+						justify-content: center;
+						font-family: "Poppins";
+						align-items: center;
+						text-align: center;
+						img {
+							width: 50px;
+							height: 50px;
+						}
+						span {
+							font-weight: 500;
+							font-size: 14px;
+						}
+					}
+					.detail_row {
+						display: flex;
+						justify-content: space-between;
+						width: 100%;
+						.flight_details {
+							display: flex;
+							align-items: left;
+							margin-top: 5px;
+							.from {
+								display: grid;
+								text-align: left;
+								span.time {
+									font-weight: 500;
+									font-size: 24px;
+								}
+								div.date {
+									font-size: 12px;
+									color: rgb(143, 141, 141);
+									font-weight: 500;
+								}
+							}
+							.duration {
+								text-align: center;
+								display: grid;
+								.duration_time,
+								.flight_destination_line{
+									img{
+										width: 150px;
+									}
+									}
+								.flight_speed {
+									font-weight: 500;
+									font-size: 14px;
+								}
+							}
+							.destination {
+								text-align: left;
+								display: grid;
+								span.time {
+									font-weight: 500;
+									font-size: 24px;
+								}
+								div.date {
+									font-size: 12px;
+									color: rgb(143, 141, 141);
+									font-weight: 500;
+								}
+							}
+						}
+						.extra_things_container {
+							display: flex;
+							justify-content: space-evenly;
+							.extra_things {
+								margin: 0 20px;
+								text-align: left;
+								.item_title {
+									font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+									font-size: 18px;
+									font-weight: 700;
+								}
+								.item_value {
+									font-size: 12px;
+									font-weight: 400;
+									color: #7c7c7c;
+								}
+							}
+						}
+					}
+				}
+			}
+			.Cancel_Tabs_body{
+				.tabs_title_selection{
+					.img-tab{
+						width: 15%;
+						height: 15%;
+					}
+					span{
+						font-size: 16px;
+						font-weight: bold;
+						color: #000;
+					}
+					.stop{
+						font-size: 16px;
+						font-weight: bold;
+						color: red;
+					}
+				}
+			}
+			.Scheduled{
+				font-size: 9.5px; 
+				font-weight: bold;
+				text-align: center;
+			}
+			
+		}
+	
+	}
+								}

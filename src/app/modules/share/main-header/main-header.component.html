@@ -1,0 +1,427 @@
+<ng-container *ngIf="main_header">
+    <nav class="navbar sticky-top">
+        <div class="logo">
+            <div class="d-none d-lg-block">
+                <a routerLink="/"><img src="/assets/icons/icon-128x128.png" width="100px" alt=""></a>
+            </div>
+            <div class="d-block d-lg-none">
+                <a routerLink="/"><img src="/assets/icons/icon-128x128.png" width="100px" alt=""></a>
+            </div>
+        </div>
+        <ul>
+            <li *ngIf="!this._common.isAuthenticated()">
+                <a routerLink="/auth">
+                    <span class="">
+                        <img src="/assets/images/svg_Icons/Icon awesome-user-astronaut.svg" width="15px" /> Log in &
+                        Create Account
+                    </span>
+                </a>
+            </li>
+            <li *ngIf="this._common.isAuthenticated()"></li>
+            <li *ngIf="this._common.isAuthenticated()">
+                <div class="dropdown">
+                    <a class="dropdownBtn cursor-pointer">
+                        <span class="text-capitalize d-lg-block d-md-block d-none">
+                            <img src="/assets/images/svg_Icons/Icon awesome-user-astronaut.svg" width="15px" />
+                            {{currentUserData.firstname}}
+                            {{currentUserData.lastname}}
+                        </span>
+                        <span class="text-capitalize d-lg-none d-md-none d-block">
+
+                            {{currentUserData?.firstname?.slice(0,1)}}{{currentUserData?.lastname?.slice(0,1)}}
+                        </span>
+                    </a>
+                    <div class="dropdown-content">
+                        <div class="list-group">
+                            <a routerLink="/bidhistory/bid" class="list-group-item list-group-item-action">My
+                                Biddings</a>
+                            <a routerLink="/bookinghistory/booking" class="list-group-item list-group-item-action">My
+                                Bookings</a>
+                            <a routerLink="/profilepage" class="list-group-item list-group-item-action">My Profile</a>
+                            <a (click)="logout()"
+                                class="list-group-item list-group-item-action cursor-pointer">Logout</a>
+                        </div>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </nav>
+</ng-container>
+<ng-container *ngIf="!main_header">
+    <div class="app_header">
+        <div class="navbar-brand d-lg-block d-block">
+            <a routerLink="/">
+                <img src="/assets/icons/icon-128x128.png" alt="Site logo">
+            </a>
+        </div>
+        <!-- <div class="d-none d-lg-none responsive-header">
+            <div class="row align-center">
+                <div class="col-10">
+                    <div class="d-flex align-center">
+                        <div class="text-center" style="margin-right: 10px;">
+                            <img src="https://storage.googleapis.com/jusbid_cloud_storage/assets/images/svg_Icons/left-arrow.svg"
+                                (click)="back()">
+                        </div>
+                        <div>
+                            <h5>{{recent_search.city}}</h5>
+                            <p>{{recent_search.arrival | date:'d MMM'}} - {{recent_search.departure | date:'d MMM'}} ,
+                                {{GuestCount}} Adults</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-2">
+                    <div class="text-right">
+                        <i class="fa" [ngClass]="responsiveSearch?'fa-times':'fa-search'" (click)="showSearch()"></i>
+                    </div>
+                </div>
+            </div>
+        </div> -->
+        <div class="hotel_search_form">
+            <form #getHotelSearchResultsOnTop="ngForm" (submit)="onSearchHotels(getHotelSearchResultsOnTop)">
+                <div class="top-form">
+                    <div class="d-none d-lg-block">
+                        <div class="top-sm-form">
+                            <div class="form-group  searchcity">
+                                <input ngx-google-places-autocomplete #placesRef="ngx-places"
+                                    (onAddressChange)="handleAddressChange($event)" class="form-control" name="city"
+                                    type="text" id="inputCity" placeholder="e.g. - Area or Landmark " [title]="geoCity"
+                                    [(ngModel)]="recent_search_key" />
+                            </div>
+                            <div class="form-group  date_range">
+                                <input name="date_range" type="text" class="form-control daterange" id="inputCheckOut"
+                                    autocomplete="off" bsDaterangepicker [minDate]="check_in_date"
+                                    placeholder="{{check_in_date | date:'dd/MM/yyy'}} - {{check_out_date | date:'dd/MM/yyy'}}"
+                                    [bsConfig]="{isAnimated: true, rangeInputFormat : 'DD/MM/YYYY', showWeekNumbers: false, dateInputFormat: 'DD/MM/YYYY'}"
+                                    [(ngModel)]="bsRangeValue" onKeyPress="if(this.value.length>=0) return false">
+                            </div>
+                            <div class="form-group  room_selector">
+                                <div class="guestRoomPicker form-control">
+                                    <div class="number" (click)="showAddRoom()">
+                                        {{ GuestCount }} Guests, {{roomCount}} Rooms
+                                    </div>
+                                    <input type="hidden" name="guest_no" [value]="GuestCount" [(ngModel)]="GuestCount">
+                                    <div class="guestRoomPickerPopUp" *ngIf="show_header_room">
+                                        <div class="guestRoomPickerPopUp__headingRow">
+                                            <div class="guestRoomPickerPopUp__heading">Rooms
+                                            </div>
+                                            <div class="guestRoomPickerPopUp__heading">Guests</div>
+                                        </div>
+                                        <div class="guestRoomPickerPopUp__roomsRow">
+                                            <ng-container *ngFor="let room of roomsSelector; index as i">
+                                                <div class="guestRoomPickerPopUp__roomTable border-bottom">
+                                                    <div class="w-100 select_room">
+                                                        <div class="row align-center">
+                                                            <div class="col-md-5">
+                                                                <div class="">
+                                                                    <span
+                                                                        class="guestRoomPickerPopUp__roomCount u-displayBlock">Room
+                                                                        {{room.id}}</span>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-7">
+                                                                <div class="wrapper">
+                                                                    <button type="button" class="btn btn-light border"
+                                                                        (click)="descreseGuest(i)">-</button>
+                                                                    <span>{{room.total_guest}}</span>
+                                                                    <button type="button" class="btn btn-light border"
+                                                                        (click)="increaseGuest(i)">+</button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </ng-container>
+                                        </div>
+                                        <div class="guestRoomPickerPopUp__headingRow">
+                                            <div class="guestRoomPickerPopUp__heading cursor-pointer"
+                                                (click)="removeRoom()"
+                                                [ngClass]="(this.roomsSelector.length>1)?'':'text-muted cursor-default'">
+                                                Delete Room
+                                            </div>
+                                            <div class="guestRoomPickerPopUp__heading cursor-pointer"
+                                                (click)="addRoom()"
+                                                [ngClass]="(this.roomsSelector.length<6)?'':'text-muted cursor-default'">
+                                                Add Room</div>
+                                        </div>
+                                        <div class="p-1">
+                                            <button type="button" class="btn btn-primary w-100"
+                                                (click)="show_header_room=false">Done</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div>
+                                <span class="d-xl-block d-lg-block d-none">
+                                    <button type="submit" class="btn btn-success search_btn px-5 rounded">
+                                        Search
+                                    </button>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </form>
+        </div>
+        <div class="d-none d-lg-block">
+            <div class="signIn">
+                <ul class="ul_login">
+                    <li *ngIf="!this._common.isAuthenticated()">
+                        <a routerLink="/auth">
+                            <span class="login_btn">
+                                <img src="/assets/images/svg_Icons/Icon awesome-user-astronaut.svg" width="15px" /> Log
+                                in & Create Account
+                            </span>
+                        </a>
+                    </li>
+                    <li *ngIf="this._common.isAuthenticated()">
+                        <div class="dropdown">
+                            <a class="dropdownBtn cursor-pointer">
+                                <span class="text-capitalize d-xl-block d-lg-none d-none">
+                                    <img src="/assets/images/svg_Icons/Icon awesome-user-astronaut.svg" width="15px" />
+                                    {{currentUserData.firstname}}
+                                    {{currentUserData.lastname}}
+                                </span>
+                                <span class="text-capitalize d-xl-none d-md-block d-block">
+                                    <img src="/assets/images/svg_Icons/Icon awesome-user-astronaut.svg" width="15px" />
+                                    {{getShortUserName(currentUserData.firstname, currentUserData.lastname)}}
+                                </span>
+                            </a>
+                            <div class="dropdown-content">
+                                <div class="list-group">
+                                    <a routerLink="/bidhistory/bid" class="list-group-item list-group-item-action">My
+                                        Biddings</a>
+                                    <a routerLink="/bookinghistory/booking"
+                                        class="list-group-item list-group-item-action">My
+                                        Bookings</a>
+                                    <a routerLink="/profilepage" class="list-group-item list-group-item-action">My
+                                        Profile</a>
+                                    <a (click)="logout()"
+                                        class="list-group-item list-group-item-action cursor-pointer">Logout</a>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="app_header1">
+        <div class="d-block d-lg-none responsive-header">
+            <div class="row align-center">
+                <div class="col-10">
+                    <div class="d-flex align-center app_header1_section">
+                        <div class="text-center" style="margin-right: 10px;">
+                            <img src="https://storage.googleapis.com/jusbid_cloud_storage/assets/images/svg_Icons/left-arrow.svg"
+                                (click)="back()">
+                        </div>
+                        <div>
+                            <h5>{{recent_search_key}} , {{recent_search_state}} </h5>
+                            <p>{{(recent_search.arrival) | date:'d MMM'}} -
+                                {{(recent_search.departure) | date:'d MMM'}} ,
+                                {{GuestCount}} Adults , {{recent_search.rooms}}
+                                Room</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-2">
+                    <div class="text-right">
+                        <img src="../../../../assets/images/akar-icons_search.svg" (click)="showSearch()" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <ng-container *ngIf="responsiveSearch">
+            <div class="hotel_search_form">
+                <form #getHotelSearchResultsOnTop="ngForm" (submit)="onSearchHotels(getHotelSearchResultsOnTop)">
+                    <div class="top-form">
+                        <div class="d-none d-lg-block">
+                            <div class="top-sm-form">
+                                <div class="form-group  searchcity">
+                                    <input ngx-google-places-autocomplete #placesRef="ngx-places"
+                                        (onAddressChange)="handleAddressChange($event)" class="form-control" name="city"
+                                        type="text" id="inputCity" placeholder="e.g. - Area or Landmark "
+                                        [title]="geoCity" [(ngModel)]="recent_search.city" />
+                                </div>
+                                <div class="form-group  date_range">
+                                    <input name="date_range" type="text" class="form-control daterange"
+                                        id="inputCheckOut" autocomplete="off" bsDaterangepicker
+                                        [minDate]="check_in_date"
+                                        [bsConfig]="{isAnimated: true, rangeInputFormat : 'DD/MM/YYYY', showWeekNumbers: false, dateInputFormat: 'DD/MM/YYYY'}"
+                                        [(ngModel)]="bsRangeValue" onKeyPress="if(this.value.length>=0) return false">
+
+                                </div>
+                                <div class="form-group  room_selector">
+                                    <div class="guestRoomPicker form-control">
+                                        <div class="number" (click)="showAddRoom()">
+                                            {{ GuestCount }} Guests, {{roomCount}} Rooms
+                                        </div>
+                                        <input type="hidden" name="guest_no" [value]="GuestCount"
+                                            [(ngModel)]="GuestCount">
+                                        <div class="guestRoomPickerPopUp" *ngIf="show_header_room">
+                                            <div class="guestRoomPickerPopUp__headingRow">
+                                                <div class="guestRoomPickerPopUp__heading">Rooms
+                                                </div>
+                                                <div class="guestRoomPickerPopUp__heading">Guests</div>
+                                            </div>
+                                            <div class="guestRoomPickerPopUp__roomsRow">
+                                                <ng-container *ngFor="let room of roomsSelector; index as i">
+                                                    <div class="guestRoomPickerPopUp__roomTable border-bottom">
+                                                        <div class="w-100 select_room">
+                                                            <div class="row align-center">
+                                                                <div class="col-md-5">
+                                                                    <div class="">
+                                                                        <span
+                                                                            class="guestRoomPickerPopUp__roomCount u-displayBlock">Room
+                                                                            {{room.id}}</span>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-7">
+                                                                    <div class="wrapper">
+                                                                        <button type="button"
+                                                                            class="btn btn-light border"
+                                                                            (click)="descreseGuest(i)">-</button>
+                                                                        <span>{{room.total_guest}}</span>
+                                                                        <button type="button"
+                                                                            class="btn btn-light border"
+                                                                            (click)="increaseGuest(i)">+</button>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </ng-container>
+                                            </div>
+                                            <div class="guestRoomPickerPopUp__headingRow">
+                                                <div class="guestRoomPickerPopUp__heading cursor-pointer"
+                                                    (click)="removeRoom()"
+                                                    [ngClass]="(this.roomsSelector.length>1)?'':'text-muted cursor-default'">
+                                                    Delete Room
+                                                </div>
+                                                <div class="guestRoomPickerPopUp__heading cursor-pointer"
+                                                    (click)="addRoom()"
+                                                    [ngClass]="(this.roomsSelector.length<6)?'':'text-muted cursor-default'">
+                                                    Add Room</div>
+                                            </div>
+                                            <div class="p-1">
+                                                <button type="button" class="btn btn-primary w-100"
+                                                    (click)="show_header_room=false">Done</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <span class="d-xl-block d-lg-none d-none">
+                                        <button type="submit" class="btn btn-success search_btn px-5 rounded">
+                                            Search
+                                        </button>
+                                    </span>
+                                    <span class="d-xl-none d-md-block d-block">
+                                        <button type="submit" class="btn btn-success search_btn rounded">
+                                            <i class="fa fa-search"></i>
+                                        </button>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="d-block d-lg-none my-3">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group  searchcity">
+                                        <input ngx-google-places-autocomplete #placesRef="ngx-places"
+                                            (onAddressChange)="handleAddressChange($event)" class="form-control"
+                                            name="city" type="text" id="inputCity"
+                                            placeholder="e.g. - Area, Landmark or Hotel Name" [title]="geoCity"
+                                            [(ngModel)]="recent_search.city" />
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group  date_range">
+                                        <input name="date_range" type="text" class="form-control daterange"
+                                            id="inputCheckOut" autocomplete="off" bsDaterangepicker
+                                            [minDate]="check_in_date"
+                                            placeholder="{{check_in_date | date:'dd/MM/yyy'}} - {{check_out_date | date:'dd/MM/yyy'}}"
+                                            [bsConfig]="{isAnimated: true, rangeInputFormat : 'DD/MM/YYYY', showWeekNumbers: false, dateInputFormat: 'DD/MM/YYYY'}"
+                                            [(ngModel)]="bsRangeValue"
+                                            onKeyPress="if(this.value.length>=0) return false">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group  room_selector">
+                                        <div class="guestRoomPicker form-control">
+                                            <div class="number" (click)="showAddRoom()">
+                                                {{ GuestCount }} Guests, {{roomCount}} Rooms
+                                            </div>
+                                            <input type="hidden" name="guest_no" [value]="GuestCount"
+                                                [(ngModel)]="GuestCount">
+                                            <input type="hidden" name="rooms" [value]="roomCount"
+                                                [(ngModel)]="roomCount">
+                                            <div class="guestRoomPickerPopUp" *ngIf="show_header_room">
+                                                <div class="guestRoomPickerPopUp__headingRow">
+                                                    <div class="guestRoomPickerPopUp__heading">Rooms
+                                                    </div>
+                                                    <div class="guestRoomPickerPopUp__heading">Guests</div>
+                                                </div>
+                                                <div class="guestRoomPickerPopUp__roomsRow">
+                                                    <ng-container *ngFor="let room of roomsSelector; index as i">
+                                                        <div class="guestRoomPickerPopUp__roomTable border-bottom">
+                                                            <div class="w-100 select_room">
+                                                                <div class="row align-center">
+                                                                    <div class="col-5">
+                                                                        <div class="">
+                                                                            <span
+                                                                                class="guestRoomPickerPopUp__roomCount u-displayBlock">Room
+                                                                                {{room.id}}</span>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-7">
+                                                                        <div class="wrapper">
+                                                                            <button type="button"
+                                                                                class="btn btn-light border"
+                                                                                (click)="descreseGuest(i)">-</button>
+                                                                            <span>{{room.total_guest}}</span>
+                                                                            <button type="button"
+                                                                                class="btn btn-light border"
+                                                                                (click)="increaseGuest(i)">+</button>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </ng-container>
+                                                </div>
+                                                <div class="guestRoomPickerPopUp__headingRow">
+                                                    <div class="guestRoomPickerPopUp__heading cursor-pointer"
+                                                        (click)="removeRoom()"
+                                                        [ngClass]="(this.roomsSelector.length>1)?'':'text-muted cursor-default'">
+                                                        Delete Room
+                                                    </div>
+                                                    <div class="guestRoomPickerPopUp__heading cursor-pointer"
+                                                        (click)="addRoom()"
+                                                        [ngClass]="(this.roomsSelector.length<6)?'':'text-muted cursor-default'">
+                                                        Add Room</div>
+                                                    <div class="p-1">
+                                                        <button type="button" class="btn btn-primary w-100"
+                                                            (click)="show_header_room=false">Done</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div [ngClass]="geoLat == 0?'my-disable':''">
+                                        <button type="submit" class="btn btn-success search_btn px-5 rounded">
+                                            Search
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </ng-container>
+    </div>
+</ng-container>

@@ -1,0 +1,945 @@
+<div class="app_body container-fluid">
+    <div class="col-10 mx-auto">
+        <div class="app_container">
+            <div class="conatiner left app_container_body">
+                <div class="mb-3" *ngIf="detailPageData_AirItinerary.Origin && detailPageData_AirItinerary.Destination">
+                    <h6 class="titlename">
+                        Flights from {{getCityNameByIATA_Code(detailPageData_AirItinerary.Origin)}} to
+                        {{getCityNameByIATA_Code(detailPageData_AirItinerary.Destination)}}, on
+                        {{detailPageData_AirItinerary.DepartureTime |
+                        date:'dd-MM-yyy'}}
+                    </h6>
+                </div>
+
+                <div class="flight_details_list" *ngIf="!searchQueryParams.is_two_way">
+                    <div class="flight_details mb-3">
+                        <div class="list_card_container mb-2">
+                            <div class="list_card">
+                                <div class="flight_brnd">
+                                    <img [src]="this.apiRequestService?.getAbsoluteImagePath(flightDetailsData?.airlines?.image)"
+                                        class="img-fluid" alt="Airline Logo">
+                                    <span
+                                        style="font-size: 18px; font-weight: 700;">{{flightDetailsData?.airlines?.airline}}</span>
+                                </div>
+                                <div class="flight_details">
+                                    <div class="from">
+                                        <span class="city">{{flightDetailsData.indexFlight?.Origin}},
+                                            {{getCityNameByIATA_Code(flightDetailsData.indexFlight?.Origin)}}</span>
+                                        <span class="time">{{flightDetailsData.indexFlight?.DepartureTime |
+                                            date:'HH:mm'}}
+                                        </span>
+                                        <div class="date">
+                                            <div>{{flightDetailsData.indexFlight?.DepartureTime | date:'EE, dd MMM'}}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="duration">
+                                        <span
+                                            class="duration_time">{{seconds_to_days_hours_mins_secs_str(flightDetailsData.indexFlight?.FlightTime)}}</span>
+                                        <span class="flight_destination_line"><img
+                                                src="assets/images/flg-destionation.png" width="150px" alt=""></span>
+                                        <span class="flight_speed">{{flightDetailsData?.customSegment.length-1 === 0 ?
+                                            'Non-Stop' :
+                                            flightDetailsData?.customSegment.length-1+'-Stop'}}</span>
+                                    </div>
+                                    <div class="destination pl-70">
+                                        <span class="city">{{flightDetailsData.indexFlight?.Destination}},
+                                            {{getCityNameByIATA_Code(flightDetailsData.indexFlight?.Destination)}}</span>
+                                        <span class="time">{{flightDetailsData.indexFlight?.ArrivalTime | date:'HH:mm'}}
+                                        </span>
+                                        <div class="date">
+                                            <div>{{flightDetailsData.indexFlight?.ArrivalTime | date:'EE, dd MMM'}}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <span
+                                    [ngClass]="flightDetailsData['air:AirPricingInfo']?.Refundable ? 'Refundable' : 'NoN_Refundable' ">{{flightDetailsData['air:AirPricingInfo']?.Refundable
+                                    ? 'Refundable' : 'Non-Refundable'}}</span>
+                            </div>
+                            <br><br>
+                            <ng-container *ngFor="let flightSegment of flightDetailsData?.customSegment;">
+                                <flight-details [flightSegment]="flightSegment" [airLineData]="airLinesData"
+                                    [bookingInfoObj]="flightDetailsData?.bookingInfoObj" [airPortsList]="airPortsList">
+                                </flight-details>
+                            </ng-container>
+
+                        </div>
+                    </div>
+                </div>
+
+
+                <!-- Round trip -->
+                <div class="flight_details_list" *ngIf="searchQueryParams.is_two_way">
+
+                    <div class="flight_details mb-3">
+                        <div style="padding: 0 20px;">
+                            <h5 class="text-danger" style="font-weight: 800;">DEPARTURE</h5>
+                        </div>
+                        <div class="list_card_container mb-2">
+                            <div class="list_card">
+                                <div class="flight_brnd">
+                                    <img [src]="this.apiRequestService?.getAbsoluteImagePath(getAirlineObj(flightDetailsData?.flights[0]?.flightSegment?.Carrier).image)"
+                                        class="img-fluid" alt="Airline Logo">
+                                    <span
+                                        style="font-size: 18px; font-weight: 700;">{{getAirlineObj(flightDetailsData?.flights[0]?.flightSegment?.Carrier).airline}}</span>
+                                </div>
+                                <div class="flight_details">
+                                    <div class="from">
+                                        <span class="city">{{flightDetailsData?.flights[0]?.flightSegment?.Origin}},
+                                            {{getCityNameByIATA_Code(flightDetailsData?.flights[0]?.flightSegment?.Origin)}}</span>
+                                        <span class="time">{{flightDetailsData?.flights[0]?.flightSegment?.DepartureTime
+                                            |
+                                            date:'HH:mm'}}
+                                        </span>
+                                        <div class="date">
+                                            <div>{{flightDetailsData?.flights[0]?.flightSegment?.DepartureTime |
+                                                date:'EE, dd MMM'}}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="duration">
+                                        <span
+                                            class="duration_time">{{seconds_to_days_hours_mins_secs_str(flightDetailsData?.flights[0]?.flightSegment?.FlightTime)}}</span>
+                                        <span class="flight_destination_line"><img
+                                                src="assets/images/flg-destionation.png" width="150px" alt=""></span>
+                                    </div>
+                                    <div class="destination pl-70">
+                                        <span
+                                            class="city">{{flightDetailsData?.flights[0]?.flightSegment?.Destination}},
+                                            {{getCityNameByIATA_Code(flightDetailsData?.flights[0]?.flightSegment?.Destination)}}</span>
+                                        <span class="time">{{flightDetailsData?.flights[0]?.flightSegment?.ArrivalTime |
+                                            date:'HH:mm'}}
+                                        </span>
+                                        <div class="date">
+                                            <div>{{flightDetailsData?.flights[0]?.flightSegment?.ArrivalTime | date:'EE,
+                                                dd MMM'}}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+          
+                            </div>
+                            <br><br>
+                            <ng-container
+                                *ngFor="let flightSegment of flightDetailsData?.flights[0]?.connectingFlights;">
+                                <flight-details [flightSegment]="flightSegment" [airLineData]="airLinesData"
+                                    [bookingInfoObj]="flightDetailsData?.bookingInfoObj" [airPortsList]="airPortsList">
+                                </flight-details>
+                            </ng-container>
+
+                        </div>
+                    </div>
+                    <div class="flight_details mb-3">
+                        <div style="padding: 0 20px;">
+                            <h5 class="text-danger" style="font-weight: 800;">RETURN</h5>
+                        </div>
+                        <div class="list_card_container mb-2">
+                            <div class="list_card">
+                                <div class="flight_brnd">
+                                    <img [src]="this.apiRequestService?.getAbsoluteImagePath(getAirlineObj(flightDetailsData?.flights[0]?.flightSegment?.Carrier).image)"
+                                        class="img-fluid" alt="Airline Logo">
+                                    <span
+                                        style="font-size: 18px; font-weight: 700;">{{getAirlineObj(flightDetailsData?.flights[1]?.flightSegment?.Carrier).airline}}</span>
+                                </div>
+                                <div class="flight_details">
+                                    <div class="from">
+                                        <span class="city">{{flightDetailsData?.flights[1]?.flightSegment?.Origin}},
+                                            {{getCityNameByIATA_Code(flightDetailsData?.flights[1]?.flightSegment?.Origin)}}</span>
+                                        <span class="time">{{flightDetailsData?.flights[1]?.flightSegment?.DepartureTime
+                                            |
+                                            date:'HH:mm'}}
+                                        </span>
+                                        <div class="date">
+                                            <div>{{flightDetailsData?.flights[1]?.flightSegment?.DepartureTime |
+                                                date:'EE, dd MMM'}}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="duration">
+                                        <span
+                                            class="duration_time">{{seconds_to_days_hours_mins_secs_str(flightDetailsData?.flights[1]?.flightSegment?.FlightTime)}}</span>
+                                        <span class="flight_destination_line"><img
+                                                src="assets/images/flg-destionation.png" width="150px" alt=""></span>
+                                    </div>
+                                    <div class="destination pl-70">
+                                        <span
+                                            class="city">{{flightDetailsData?.flights[1]?.flightSegment?.Destination}},
+                                            {{getCityNameByIATA_Code(flightDetailsData?.flights[1]?.flightSegment?.Destination)}}</span>
+                                        <span class="time">{{flightDetailsData?.flights[1]?.flightSegment?.ArrivalTime |
+                                            date:'HH:mm'}}
+                                        </span>
+                                        <div class="date">
+                                            <div>{{flightDetailsData?.flights[1]?.flightSegment?.ArrivalTime | date:'EE,
+                                                dd MMM'}}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <br><br>
+                            <ng-container
+                                *ngFor="let flightSegment of flightDetailsData?.flights[1]?.connectingFlights;">
+                                <flight-details [flightSegment]="flightSegment" [airLineData]="airLinesData"
+                                    [bookingInfoObj]="flightDetailsData?.bookingInfoObj" [airPortsList]="airPortsList">
+                                </flight-details>
+                            </ng-container>
+
+                        </div>
+                    </div>
+
+                </div>
+
+
+
+                <section class="mt-5">
+                    <div class="">
+                        <h6 class="titlename">Travellers Details</h6>
+                    </div>
+                    <div class="card-Showdow ">
+                        <!-- Adult -->
+                        <ng-container *ngIf="searchQueryParams.ADT>=1">
+                            <ng-container *ngFor="let form of [].constructor(searchQueryParams.ADT); index as i">
+                                <div class="card-area">
+                                    <div class="d-flex justify-content-between border-bottom mb-3">
+                                        <div>
+                                            <h6 class="adult"><b>ADULTS</b></h6>
+                                            <p class="text-danger" *ngIf="maxLengthAdult">You have already selected
+                                                {{maxAdultLength}} ADULT.</p>
+                                            <p class="text-danger" *ngIf="travellers_error_str">{{travellers_error_str}}
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <ng-container *ngFor="let adult of travellersDetails.adults;">
+                                        <traveller-details-adults-form [data]="travellersDetails.adults[i]"
+                                            [group]="'adultForm_'+i" [formIndex]="i"
+                                            (IndexOfRemoveAdultForm)="removeAdultForm($event)"
+                                            (adultsObjData)="getAdultData($event)"></traveller-details-adults-form>
+                                    </ng-container>
+                                </div>
+                            </ng-container>
+                        </ng-container>
+                        <!-- Child -->
+                        <ng-container *ngIf="searchQueryParams.CNN>=1">
+                            <ng-container *ngFor="let form of [].constructor(searchQueryParams.CNN)">
+                                <div class="card-area">
+                                    <div class="d-flex justify-content-between border-bottom mb-3">
+                                        <div>
+                                            <h6 class="adult"><b>CHILDRENS</b></h6>
+                                            <p class="text-danger" *ngIf="maxLengthChild">You have already selected
+                                                {{maxChildLength}} CHILD.</p>
+                                        </div>
+                                    </div>
+                                    <ng-container *ngFor="let child of travellersDetails.childs; index as i">
+                                        <traveller-details-child-form [data]="travellersDetails.childs[i]"
+                                            [group]="'childForm_'+i" [formIndex]="i"
+                                            (IndexOfRemoveChildForm)="removeChildForm($event)"
+                                            (childObjData)="getChildData($event)"></traveller-details-child-form>
+                                    </ng-container>
+                                </div>
+                            </ng-container>
+                        </ng-container>
+                        <!-- Infant -->
+                        <ng-container *ngIf="searchQueryParams.INF>=1">
+                            <ng-container *ngFor="let form of [].constructor(searchQueryParams.INF)">
+                                <div class="card-area">
+                                    <div class="d-flex justify-content-between border-bottom mb-3">
+                                        <div>
+                                            <h6 class="adult"><b>INFANT</b></h6>
+                                            <p class="text-danger" *ngIf="maxLengthInfant">You have already selected
+                                                {{maxInfantLength}} INFANT.</p>
+                                        </div>
+                                    </div>
+                                    <ng-container *ngFor="let infant of travellersDetails.infants; index as i">
+                                        <traveller-details-infant-form [data]="travellersDetails.infants[i]"
+                                            [group]="'infantForm_'+i" [formIndex]="i"
+                                            (IndexOfRemoveInfantForm)="removeInfantForm($event)"
+                                            (infantObjData)="getInfantData($event)"></traveller-details-infant-form>
+                                    </ng-container>
+                                </div>
+                            </ng-container>
+                        </ng-container>
+                    </div>
+                </section>
+
+                <section>
+                    <div class="mt-5">
+                        <h6 class="titlename">Contact Details</h6>
+                    </div>
+                    <div class="card card-Showdow mt-2">
+                        <div class="card-area">
+                            <span class="ticket_info">Your ticket and flights infromation will be sent here.</span>
+                            <booking-details-contact-form (output_countryCode)="get_traveller_country_code($event)"
+                                (output_mobileNumber)="get_traveller_mobile_number($event)"
+                                (output_emailAddress)="get_traveller_email_adress($event)">
+                            </booking-details-contact-form>
+                        </div>
+                    </div>
+                </section>
+
+                <section>
+                    <div class="mt-5">
+                        <h6 class="titlename">Shipping Address</h6>
+                    </div>
+                    <div class="card card-Showdow mt-2">
+                        <div class="card-area">
+                            <span class="ticket_info">Your ticket and flights infromation will be sent here.</span>
+                            <booking-shipping-address-details-form (output_street)="get_street($event)"
+                                (output_State)="get_State($event)" (output_City)="get_City($event)"
+                                (output_Country)="get_Country($event)" (output_PostalCode)="get_PostalCode($event)">
+                            </booking-shipping-address-details-form>
+                        </div>
+                    </div>
+                </section>
+
+                <section>
+                    <div class="mt-5">
+                        <h6 class="titlename"> GST number For Business travel (Optional) </h6>
+
+                        <div class="card card-Showdow mt-2">
+                            <div class="card-area">
+                                <div class="form-check px-0">
+                                    <label class="custom-check">
+                                        <input type="checkbox" name="selectAmenity" [(ngModel)]="is_select_gst_option"
+                                            [checked]="is_select_gst_option">
+                                        <span class="checkmark"></span>
+                                        <label class="form-check-label" for="exampleCheck1">To claim Credit of GST
+                                            changed
+                                            by airlines, please enter your company's GST Number</label>
+                                    </label>
+                                </div>
+                                <ng-container *ngIf="is_select_gst_option">
+                                    <booking-gst-details-form (output_company_name)="get_company_name($event)"
+                                        (output_registration_no)="get_registration_no($event)">
+                                    </booking-gst-details-form>
+                                </ng-container>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="mt-4">
+                        <p class='text_area'>By clicking on the Containue button below to proceed with the booking , I
+                            confrim that
+                            I have read and I accept the<span><a routerLink='/'> Fare Rule,</a></span> the<span> <a
+                                    routerLink='/'> Privacy Policy</a> </span>
+                            , The <span><a routerLink='/'>Terms of service</a></span> Agreement and of Jusbid</p>
+                    </div>
+                </section>
+            </div>
+
+            <div class="container right app_container_body">
+                <h6 class="titlename">Fare Summary</h6>
+                <div class="fare_summary_body">
+                    <div class="">
+                        <div class="Base_fare_section ">
+
+                            <div class="d-flex justify-content-between">
+                                <div>
+                                    <h6 class="TaxesName">Base Fare </h6>
+                                </div>
+                                <div>
+                                    <h6 class="Price">{{ getPrice(flightDetailsData.BasePrice) | currency:'INR' }}</h6>
+                                </div>
+                            </div>
+                            <div class="d-flex justify-content-between">
+                                <div>
+                                    <h6 class="TaxesName">Taxes & Fees </h6>
+                                </div>
+                                <div>
+                                    <h6 class="Price">{{ getPrice(flightDetailsData.Taxes) | currency:'INR' }}</h6>
+                                </div>
+                            </div>
+                            <div class="break_line"></div>
+                            <div class="d-flex justify-content-between mt-2">
+                                <div class="">
+                                    <h6 class="TaxesName">Total Amount </h6>
+                                </div>
+                                <div class="">
+                                    <h6 class="Price">{{ getPrice(flightDetailsData.TotalPrice) | currency:'INR' }}</h6>
+                                </div>
+                            </div>
+
+                            <div class="mt-2" style="margin-bottom: 12px;">
+
+
+                                
+                                <ng-container *ngIf="this.commonService.isAuthenticated(); else notLogedIn">
+                                    <button class="btn btn-danger w-100" (click)="getFlightBooking()"> Continue Booking
+                                        <span>
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="25"
+                                                fill="currentColor" class="bi bi-arrow-right" viewBox="0 0 16 16">
+                                                <path fill-rule="evenodd"
+                                                    d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z" />
+                                            </svg>
+                                        </span>
+                                    </button>
+                                </ng-container>
+                                <ng-template #notLogedIn>
+                                    <button type="button" class="btn btn-danger w-100" routerLink="/auth">Login</button>
+                                </ng-template>
+                            </div>
+                        </div>
+                        <div class="mt-4" *ngIf="false">
+                            <h6 class="titlename">Offers & Promocode</h6>
+                            <div class="card card-Showdow ">
+                                <div class="card-area">
+                                    <div class="conatiner">
+                                        <div class="input-group mb-3">
+                                            <input type="apply" class="coupan_input" placeholder="Enter Promocode here">
+                                            <div class="input-group-append">
+                                                <a class="Apply-buttom" routerLink=''>Apply</a>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="coupan_section">
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="radio" name="flexRadioDefault"
+                                                        id="flexRadioDefault1" />
+                                                    <label class="form-check-label mx-2" for="flexRadioDefault1">
+                                                        FLYKID
+                                                    </label>
+                                                    <div class="deatiles">Get Rs. 509 instant discount on you CitiBank
+                                                        cards.
+                                                        <h6><a class="tcApply">T&C apply</a></h6>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="coupan_section mt-2">
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="radio" name="flexRadioDefault"
+                                                        id="flexRadioDefault1" />
+                                                    <label class="form-check-label mx-2" for="flexRadioDefault1">
+                                                        FLYKID
+                                                    </label>
+                                                    <div class="deatiles">Get Rs. 509 instant discount on you CitiBank
+                                                        cards.
+                                                        <h6><a class="tcApply">T&C apply</a></h6>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="coupan_section mt-2">
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="radio" name="flexRadioDefault"
+                                                        id="flexRadioDefault1" />
+                                                    <label class="form-check-label mx-2" for="flexRadioDefault1">
+                                                        FLYKID
+                                                    </label>
+                                                    <div class="deatiles">Get Rs. 509 instant discount on you CitiBank
+                                                        cards.
+                                                        <h6><a class="tcApply">T&C apply</a></h6>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="coupan_section mt-2">
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="radio" name="flexRadioDefault"
+                                                        id="flexRadioDefault1" />
+                                                    <label class="form-check-label mx-2" for="flexRadioDefault1">
+                                                        FLYKID
+                                                    </label>
+                                                    <div class="deatiles">Get Rs. 509 instant discount on you CitiBank
+                                                        cards.
+                                                        <h6><a class="tcApply">T&C apply</a></h6>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+
+                            </div>
+                        </div>
+                        <div class="mt-4">
+                            <div class="card  card-Showdow">
+                                <div class="check_list_selection p-4">
+                                    <h6 class="check-list_text">Mandatory check-list for passengers:</h6>
+                                    <h6 class="Pre_Text">1. Pre-registration or e-Pass requirements:
+                                        <p> Download and update Aarogya Setu app</p>
+                                        <p>2. COVID test requirements: None</p>
+                                        <p>3. Quarantine Guidelines: None</p>
+                                        <p>4. Destination Restrictions: None</p>
+                                        <p>5. Remember to web check-in before arriving at
+                                            the airport; carry a printed or soft copy of the
+                                            boarding pass.</p>
+                                        <p>6. Please reach at least 2 hours prior to flight departure.</p>
+                                        <p>7. The latest DGCA guidelines state that it is
+                                            compulsory to wear a mask that covers the nose and mouth properly while at
+                                            the
+                                            airport and on the flight. Any lapse might result in de-boarding.
+                                        </p>
+                                        <p>8. Remember to download the baggage tag(s) and affix it on your bag(s).</p>
+                                        <h6 class="check-list_text">State Guidelines:</h6>
+                                        <p>Check the detailed list of travel guidelines issued
+                                            by Indian States and UTS. Know More</p>
+                                        <h6 class="check-list_text"> Baggage information:</h6>
+                                        <p>Carry no more than 1 check-in baggage and 1
+                                            hand baggage per passenger. Additional pieces of
+                                            Baggage will be subject to additional charges per piece in addition to the
+                                            excess baggage charges.</p>
+                                        <p></p>
+                                    </h6>
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+    <!----model box-->
+    <div class="custom_modal" *ngIf="is_openReviewModal">
+        <div class="card card-Showdow">
+            <div class="card_header">
+                <div class="title">
+                    <h5 class="Card-title">Review Details</h5>
+                </div>
+                <div class="close_modal"><i (click)="openReviewModal()" class="cursor-pointer fa fa-times"></i>
+                </div>
+            </div>
+            <div class="header-ttile">
+                <h6 style="font-size:14px ;"> Please ensure that the spelling of your name and other details match
+                    with your travel document/govt. ID, <p style="font-size:14px ;">as these cannot be changed
+                        after. Errors might lead to cancellation penalties.</p>
+                </h6>
+            </div>
+            <div class="d-flex  justify-content-between">
+                <div class="col-6 flight_Status">
+                    <span>DEPART</span>
+                </div>
+                <div class="col-6 flight_Status">
+                    <span>RETURN</span>
+                </div>
+            </div>
+
+            <div class="Scroll">
+                <div class="d-flex  justify-content-between">
+                    <div class="depart px-2">
+                        <div class="card title-bar ">
+                            <label for="text" class="Adult-label">ADULT 1</label>
+                            <div class="px-3">
+                                <div class="d-flex justify-content-between mt-1 ">
+                                    <h5 class=" Frist-name">First & Middle Name</h5>
+                                    <h5 class=" Name">Harshita </h5>
+
+                                </div>
+                                <div class="d-flex justify-content-between mt-1">
+                                    <h5 class=" Frist-name">Last Name</h5>
+                                    <h5 class=" Name"> shrimali</h5>
+
+                                </div>
+                                <div class="d-flex justify-content-between mt-1">
+                                    <h5 class=" Frist-name">Gender</h5>
+                                    <h5 class="Name"> Female</h5>
+
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="card title-bar ">
+                            <label for="text" class="Adult-label">ADULT 2</label>
+                            <div class="px-3">
+                                <div class="d-flex justify-content-between mt-1">
+                                    <h5 class=" Frist-name">First & Middle Name</h5>
+                                    <h5 class=" Name">Harshita </h5>
+
+                                </div>
+                                <div class="d-flex justify-content-between mt-1">
+                                    <h5 class=" Frist-name">Last Name</h5>
+                                    <h5 class=" Name"> shrimali</h5>
+
+                                </div>
+                                <div class="d-flex justify-content-between mt-1">
+                                    <h5 class=" Frist-name">Gender</h5>
+                                    <h5 class=" Name"> Female</h5>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <div class="card title-bar ">
+                            <label for="text" class="Adult-label">CHILD 1</label>
+                            <div class="px-3">
+                                <div class="d-flex justify-content-between mt-1">
+                                    <h5 class="col-6 Frist-name">First & Middle Name</h5>
+                                    <h5 class="col-6 Name">Harshita </h5>
+                                </div>
+                                <div class="d-flex justify-content-between mt-1">
+                                    <h5 class="col-6 Frist-name">Last Name</h5>
+                                    <h5 class="col-6 Name"> shrimali</h5>
+                                </div>
+                                <div class="d-flex justify-content-between mt-1">
+                                    <h5 class="col-6 Frist-name">Gender</h5>
+                                    <h5 class="col-6 Name"> Female</h5>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card title-bar ">
+                            <label for="text" class="Adult-label">CHILD 2</label>
+                            <div class="px-3">
+                                <div class="d-flex justify-content-between mt-1">
+                                    <h5 class="col-6 Frist-name">First & Middle Name</h5>
+                                    <h5 class="col-6 Name">Harshita </h5>
+                                </div>
+                                <div class="d-flex justify-content-between mt-1">
+                                    <h5 class="col-6 Frist-name">Last Name</h5>
+                                    <h5 class="col-6 Name"> shrimali</h5>
+                                </div>
+                                <div class="d-flex justify-content-between mt-1">
+                                    <h5 class="col-6 Frist-name">Gender</h5>
+                                    <h5 class="col-6 Name"> Female</h5>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="depart px-2">
+                        <div class="card title-bar ">
+                            <label for="text" class="Adult-label">ADULT 1</label>
+                            <div class="px-3">
+                                <div class="d-flex justify-content-between mt-1 ">
+                                    <h5 class=" Frist-name">First & Middle Name</h5>
+                                    <h5 class=" Name">Harshita </h5>
+
+                                </div>
+                                <div class="d-flex justify-content-between mt-1">
+                                    <h5 class=" Frist-name">Last Name</h5>
+                                    <h5 class=" Name"> shrimali</h5>
+
+                                </div>
+                                <div class="d-flex justify-content-between mt-1">
+                                    <h5 class=" Frist-name">Gender</h5>
+                                    <h5 class="Name"> Female</h5>
+
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="card title-bar ">
+                            <label for="text" class="Adult-label">ADULT 2</label>
+                            <div class="px-3">
+                                <div class="d-flex justify-content-between mt-1">
+                                    <h5 class=" Frist-name">First & Middle Name</h5>
+                                    <h5 class=" Name">Harshita </h5>
+
+                                </div>
+                                <div class="d-flex justify-content-between mt-1">
+                                    <h5 class=" Frist-name">Last Name</h5>
+                                    <h5 class=" Name"> shrimali</h5>
+
+                                </div>
+                                <div class="d-flex justify-content-between mt-1">
+                                    <h5 class=" Frist-name">Gender</h5>
+                                    <h5 class=" Name"> Female</h5>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <div class="card title-bar ">
+                            <label for="text" class="Adult-label">CHILD 1</label>
+                            <div class="px-3">
+                                <div class="d-flex justify-content-between mt-1">
+                                    <h5 class="col-6 Frist-name">First & Middle Name</h5>
+                                    <h5 class="col-6 Name">Harshita </h5>
+                                </div>
+                                <div class="d-flex justify-content-between mt-1">
+                                    <h5 class="col-6 Frist-name">Last Name</h5>
+                                    <h5 class="col-6 Name"> shrimali</h5>
+                                </div>
+                                <div class="d-flex justify-content-between mt-1">
+                                    <h5 class="col-6 Frist-name">Gender</h5>
+                                    <h5 class="col-6 Name"> Female</h5>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+            <div class="d-flex justify-content-between">
+                <div class="col-3"></div>
+                <div class="col-3 ">
+                    <button type="submit" class="btn btn-outline-success  btn-md"
+                        (click)="openReviewModal()">Edit</button>
+                </div>
+                <div class="col-6">
+                    <button type="submit" class="btn btn-success btn-md-2">Confrim</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="custom_modal" *ngIf="is_openAddExtraModal">
+        <div class="card card-Showdow">
+            <div class="card_header ">
+                <div class="title">
+                    <h5 class="Card-title">Add extra baggage</h5>
+                </div>
+                <div class="close_modal"><i (click)="openAddExtraModal()" class="cursor-pointer fa fa-times"></i>
+                </div>
+            </div>
+            <div class="header-ttile pb-4">
+                <h6 style="font-size:14px;  width:100%;"> Included Check-in baggage per person - 15 KGS
+                </h6>
+            </div>
+            <div class="ADD-Scroll">
+                <div class="card Add-title-bar">
+                    <div class="d-flex justify-content-between mt-2" style="align-items: center;">
+                        <h5 class=" Frist-name"></h5>
+                        <h5 class=" Additional">Additional 5 KG</h5>
+                        <h5 class=""></h5>
+                        <h5 class="Price">₹ 2,000 </h5>
+                        <button type="button" class="btn btn-danger  ">ADD +</button>
+
+
+                    </div>
+                    <hr>
+                    <div class="d-flex justify-content-between mt-2" style="align-items: center;">
+                        <h5 class=" Frist-name"></h5>
+                        <h5 class=" Additional">Additional 15 KG</h5>
+                        <h5 class=""></h5>
+                        <h5 class="Price">₹ 2,000 </h5>
+                        <button type="button" class="btn btn-danger  ">ADD +</button>
+                    </div>
+                    <hr>
+                    <div class="d-flex justify-content-between mt-2" style="align-items: center;">
+                        <h5 class=" Frist-name"></h5>
+                        <h5 class=" Additional">Additional 15 KG</h5>
+                        <h5 class=""></h5>
+                        <h5 class="Price">₹ 2,000 </h5>
+                        <button type="button" class="btn btn-danger  ">ADD +</button>
+                    </div>
+                </div>
+            </div>
+            <div class="d-flex justify-content-between mt-4">
+                <div class="col-6">0 Baggage(s) Selected
+                    <h6>0 of 1 Baggage(s) Selected</h6>
+                </div>
+                <div class="col-4 add-Total">
+                    (Added to total fare)
+                    <h3 style="font-size: 15px; font-weight: bold; text-align: center;">₹ 0</h3>
+                </div>
+                <div class="">
+
+                    <button type="submit" class="btn btn-success btn-md-2">Done</button>
+
+                </div>
+
+            </div>
+
+
+        </div>
+    </div>
+
+    <div class="custom_modal" *ngIf="is_openCancellationFeesModal">
+        <div class="card card-Showdow ">
+            <div class="card_header">
+                <div class="title">
+                    <h5 class="Card-title">Fare Rules</h5>
+                </div>
+                <div class="close_modal" style="color: black;"><i (click)="openCancellationFeesModal()"
+                        class="cursor-pointer fa fa-times"></i>
+                </div>
+            </div>
+            <div class="header">
+                <div class="tabs-header">
+                    <ul class="row">
+                        <li class="col-4 tab ">
+
+                        </li>
+                        <li class="col-2 tab ">
+                            <a class="cursor-pointer" [ngClass]="active == 0?'active':''" (click)="tabChange(0)">
+                                Cancellation</a>
+                        </li>
+                        <li class="col-2 tab ">
+                            <a class="cursor-pointer" [ngClass]="active == 1?'active':''" (click)="tabChange(1)">
+                                Date Change</a>
+                        </li>
+                        <li class="col-4 tab ">
+                        </li>
+                    </ul>
+                </div>
+                <ng-container *ngIf="active == 0">
+                    <div class="Cancel_Tabs_body">
+                        <div class="d-flex justify-content-between">
+                            <div class="col-6">
+                                <div class="tabs_title_selection">
+                                    <img src="https://play-lh.googleusercontent.com/AVcvRbkNrd8Tq3ZmEHoOnqYCtBbGmhyQ8ZYCcGBczDX8qxI_143o-ZtB-W_j0E-waut5=s1200"
+                                        class="img-tab" alt="">
+                                    <span>Air India</span>
+                                    <span class="stop px-2">DEL -BLR (via stop 1 - PNQ)</span>
+                                </div>
+                                <div class="Table-selection">
+                                    <table class="table table-bordered">
+                                        <tr>
+                                            <th>Time Frame
+                                                <h6 class="Scheduled"> (From Scheduled flight departure)</h6>
+                                            </th>
+                                            <th>Airline Free + Jusbid Fee
+                                                <h6 class="Scheduled"> (per Passenger)</h6>
+                                            </th>
+                                        </tr>
+                                        <tr>
+                                            <td>0 hours to 2 hours*</td>
+                                            <td>
+                                                ADULT : Non Refundable</td>
+                                        </tr>
+                                        <tr>
+                                            <td>2 hours to 4 days*</td>
+                                            <td>ADULT : 5,265 + 300</td>
+                                        </tr>
+                                        <tr>
+                                            <td>4 days to 365 days*</td>
+                                            <td>ADULT : 3000 + 300</td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="tabs_title_selection">
+                                    <img src="https://play-lh.googleusercontent.com/AVcvRbkNrd8Tq3ZmEHoOnqYCtBbGmhyQ8ZYCcGBczDX8qxI_143o-ZtB-W_j0E-waut5=s1200"
+                                        class="img-tab" alt="">
+                                    <span>Air India</span>
+                                    <span class="stop px-2">DEL -BLR (via stop 1 - PNQ)</span>
+                                </div>
+                                <div class="Table-selection">
+                                    <table class="table table-bordered">
+                                        <tr>
+                                            <th>Time Frame
+                                                <h6 class="Scheduled"> (From Scheduled flight departure)</h6>
+                                            </th>
+                                            <th>Airline Free + Jusbid Fee
+                                                <h6 class="Scheduled"> (per Passenger)</h6>
+                                            </th>
+                                        </tr>
+                                        <tr>
+                                            <td>0 hours to 2 hours*</td>
+                                            <td>
+                                                ADULT : Non Refundable</td>
+                                        </tr>
+                                        <tr>
+                                            <td>2 hours to 4 days*</td>
+                                            <td>ADULT : 5,265 + 300</td>
+                                        </tr>
+                                        <tr>
+                                            <td>4 days to 365 days*</td>
+                                            <td>ADULT : 3000 + 300</td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mt-4 px-4 w-100 ">
+                            <h6 style="font-size:12px; font-weight: bold; ">*Important:The airline fee is indicative.
+                                Jusbid does not guarantee the accuracy of this information. All Fees Mentioned are per
+                                Passenger .
+                                <span style="color: white;">
+                                    date change
+                                    charges are<br> applicable only on selection the same airline on a new date. the
+                                    difference
+                                    in fares between the old and the new booking will also be payable by the user.
+                                </span>
+                            </h6>
+                        </div>
+                    </div>
+                </ng-container>
+                <ng-container *ngIf="active == 1">
+                    <div class="Cancel_Tabs_body">
+                        <div class="d-flex justify-content-between">
+                            <div class="col-6">
+                                <div class="tabs_title_selection">
+                                    <img src="https://play-lh.googleusercontent.com/AVcvRbkNrd8Tq3ZmEHoOnqYCtBbGmhyQ8ZYCcGBczDX8qxI_143o-ZtB-W_j0E-waut5=s1200"
+                                        class="img-tab" alt="">
+                                    <span>Air India</span>
+                                    <span class="stop px-2">DEL -BLR (via stop 1 - PNQ)</span>
+                                </div>
+                                <div class="Table-selection">
+                                    <table class="table table-bordered">
+                                        <tr>
+                                            <th>Time Frame
+                                                <h6 class="Scheduled"> (From Scheduled flight departure)</h6>
+                                            </th>
+                                            <th>Airline Free + Jusbid Fee
+                                                <h6 class="Scheduled"> (per Passenger)</h6>
+                                            </th>
+                                        </tr>
+                                        <tr>
+                                            <td>0 hours to 2 hours*</td>
+                                            <td>
+                                                ADULT : Non Refundable</td>
+                                        </tr>
+                                        <tr>
+                                            <td>2 hours to 4 days*</td>
+                                            <td>ADULT : 5,265 + 300</td>
+                                        </tr>
+                                        <tr>
+                                            <td>4 days to 365 days*</td>
+                                            <td>ADULT : 3000 + 300</td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="tabs_title_selection">
+                                    <img src="https://play-lh.googleusercontent.com/AVcvRbkNrd8Tq3ZmEHoOnqYCtBbGmhyQ8ZYCcGBczDX8qxI_143o-ZtB-W_j0E-waut5=s1200"
+                                        class="img-tab" alt="">
+                                    <span>Air India</span>
+                                    <span class="stop px-2">DEL -BLR (via stop 1 - PNQ)</span>
+                                </div>
+                                <div class="Table-selection">
+                                    <table class="table table-bordered">
+                                        <tr>
+                                            <th>Time Frame
+                                                <h6 class="Scheduled"> (From Scheduled flight departure)</h6>
+                                            </th>
+                                            <th>Airline Free + Jusbid Fee
+                                                <h6 class="Scheduled"> (per Passenger)</h6>
+                                            </th>
+                                        </tr>
+                                        <tr>
+                                            <td>0 hours to 2 hours*</td>
+                                            <td>
+                                                ADULT : Non Refundable</td>
+                                        </tr>
+                                        <tr>
+                                            <td>2 hours to 4 days*</td>
+                                            <td>ADULT : 5,265 + 300</td>
+                                        </tr>
+                                        <tr>
+                                            <td>4 days to 365 days*</td>
+                                            <td>ADULT : 3000 + 300</td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mt-4 px-4 w-100">
+                            <h6 style="font-size:12px; font-weight: bold; ">*Important:The airline fee is indicative.
+                                Jusbid does not guarantee the accuracy of this information. All Fees Mentioned are per
+                                Passenger . date change
+                                charges are<br> applicable only on selection the same airline on a new date. the
+                                difference
+                                in fares between the old and the new booking will also be payable by the user.
+                            </h6>
+                        </div>
+                    </div>
+                </ng-container>
+            </div>
+
+
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<flight-booking-confirmation *ngIf="is_booking_confirm"></flight-booking-confirmation>

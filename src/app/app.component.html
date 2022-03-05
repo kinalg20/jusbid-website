@@ -1,0 +1,26 @@
+<ng-container *ngIf="!no_internet_connection; else connected">
+  <div
+    style="width: 100%;height: 100vh;overflow: hidden;background: #fff;display: grid;justify-content: center;align-items: center;text-align: center;">
+    <div class="card p-5 rounded shadow-sm">
+      <div class="text-center">
+        <img src="assets/images/icons/no-wifi.png" width="50" alt="">
+        <p class="my-2">No internet connection</p>
+        <button class="btn btn-primary btn-sm" (click)="reLoadWindow()">Retry</button>
+      </div>
+    </div>
+  </div>
+</ng-container>
+<ng-template #connected>
+  <router-outlet (activate)="onActivate($event)"></router-outlet>
+
+  <div class="loading_bar" *ngIf="this.common.is_app_loading">
+    <div class="spinner-border text-primary" role="status">
+      <span class="visually-hidden"></span>
+    </div>
+  </div>
+
+  <div class="loader" *ngIf="loading_effect">
+    <img src="assets/videos/loader.gif" alt="" srcset="">
+  </div>
+
+</ng-template>

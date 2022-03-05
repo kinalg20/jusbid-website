@@ -1,0 +1,123 @@
+.app_body_container {
+  width: 100%;
+
+  .absolute {
+    display: none;
+    position: fixed;
+    bottom: 70px;
+    z-index: 100;
+    right: 32px;
+    border-radius: 100%;
+    background: var(--primary);
+    color: #fff;
+    padding: 15px;
+    padding-bottom: 4px;
+    box-shadow: 4px 4px 9px 1px rgb(0 0 0 / 15%);
+  }
+}
+
+.hotel-listing-container {
+  width: 100%;
+  margin: 0 auto;
+
+  .hotel-listing {
+    position: relative;
+    padding: 0;
+
+    &::before {
+      position: absolute;
+      content: "";
+      left: 0;
+      top: 0;
+      bottom: 0;
+      background: #fff;
+      width: 15%;
+      height: 100%;
+      z-index: -1;
+    }
+
+    .filter {
+      width: 100%;
+      float: left;
+      padding: 15px;
+      margin: 10px 0;
+      border-radius: 10px;
+      border: 1px solid #ffffff;
+      box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+      background: white;
+
+      hr {
+        margin-top: 0.5rem;
+        margin-bottom: 0.5rem;
+      }
+
+      &::-webkit-scrollbar {
+        display: none;
+      }
+
+      .filter-head {
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        border-bottom: 1px solid #e6e6e6;
+        padding-bottom: 10px;
+        margin-bottom: 10px;
+
+        .filter-title {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+
+          .filters_name {
+            margin-top: 10px;
+            margin-bottom: 10px;
+            font-weight: 900;
+            font-size: 1rem;
+            letter-spacing: 1px;
+            display: flex;
+
+            i {
+              display: none;
+              margin-right: 10px;
+            }
+          }
+        }
+      }
+
+      .price_range_filter {
+        .Price-Range-title {
+          .price_range_name {
+            font-weight: 900;
+            font-size: 1rem;
+            letter-spacing: 1px;
+          }
+        }
+        h6.Price {
+          font-size: 14px;
+        }
+        .custom-slider {
+          padding: 0;
+          margin-top: -20px;
+          margin-bottom: 3px;
+          .ngx-slider {
+            width: 100%;
+            .ngx-slider .ngx-slider-pointer {
+              cursor: pointer;
+              width: 32px;
+              height: 32px;
+              top: -14px;
+              background-color: #ffffff;
+              z-index: 3;
+              border-radius: 16px;
+              .ngx-slider .ngx-slider-selection {
+                z-index: 2;
+                background: #ff0707;
+                border-radius: 2px;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

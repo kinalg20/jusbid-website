@@ -1,0 +1,251 @@
+<app-header></app-header>
+<section class="bid-history">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-10 mx-auto">
+                <div class="bid-data">
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item" aria-current="page">
+                                <a routerLink="" class="none_active">
+                                    <i class="fa fa-home" aria-hidden="true"></i>
+                                    Home
+                                </a>
+                            </li>
+                            <li class="breadcrumb-item active">
+                                <a>
+                                    <i class="fa fa-history" aria-hidden="true"></i> Bidding History
+                                </a>
+                            </li>
+                        </ol>
+                    </nav>
+                    <div class="bid-header">
+                        <div class="heading">
+                            <h5><b>Bidding History</b></h5>
+                        </div>
+                        <div class="filters">
+                            <div class="filter_by_status">
+                                <div class="wrap-drop" id="noble-gases"(click)="bidFilterDropdown()"
+                                [ngClass]="showBidFilter?'active':''" >
+                                    <span>All Bidding</span>
+                                    <ul class="drop" >
+                                        <li class="selected" ><a>All
+                                                Biddings</a></li>
+                                        <li ><a>Pending Bids</a>
+                                        </li>
+                                        <li ><a>Approved Bids</a>
+                                        </li>
+                                        <li ><a>Rejected Bids</a>
+                                        </li>
+                                        <li ><a>On Hold Bids</a></li>
+                                        <li ><a>Missed Bids</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="search_filter">
+                                <div class="d-md-block d-none">
+                                    <div class="search_input">
+                                        <input type="text" class="form-control" placeholder="Search By Name">
+                                        <div class="icons"><i class="fa fa-search"></i></div>
+                                    </div>
+                                </div>
+                                <div class="d-md-none d-block"
+                                    style="box-shadow: 0px 0px 3px rgb(0 0 0 / 20%); padding:12px 10px;border-radius: 0.25rem;">
+                                    <i class="fa" [ngClass]="responsiveFilter?'fa-times':'fa-search'"
+                                        (click)="showFilterSearch()"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <ng-container *ngIf="responsiveFilter">
+                        <div class="d-md-none d-block">
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="Search By Name"
+                                   style="border-radius: 0.25rem;border: 1px solid #dedede;
+                                    padding: 5px 20px;">
+                            </div>
+                        </div>
+                    </ng-container>
+                    <div class="bidding_card_container"> 
+                        <!-- {{shimmerLoad}} -->
+                      <ng-container *ngIf="false">
+                            <ng-container *ngFor='let in of [0,1,2,3];'>
+                                <div class="bidding_card">
+                                    <div class="row align-center">
+                                        <div class="">
+                                            <div class="box shine"></div>
+                                        </div>
+                                        <div class="col-lg-6 col-md-5">
+                                            <div>
+                                                <div class="lines shine"></div>
+                                                <div class="lines shine"></div>
+                                                <div class="lines shine"></div>
+                                                <div class="lines shine"></div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-4 col-md-5">
+                                            <div class="bid_btn_right">
+                                                <div class="rightlines shine"></div>
+                                                <div class="shimmerbtns">
+                                                    <ul>
+                                                        <li>
+                                                            <div class="button shine"></div>
+                                                        </li>
+                                                        <li>
+                                                            <div class="button shine"></div>
+
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </ng-container>
+                        </ng-container>
+                        <ng-container >
+                            <ng-container *ngIf="false">
+                                <div class="text-center my-5 py-5"
+                                    style="display: grid;align-items: center;height: 40vh;">
+                                    <h5>
+                                     noRecentBidding 
+                                    </h5>
+                                </div>
+                            </ng-container>
+                            <ng-container *ngIf="false">
+                                <div class="text-center my-5 py-5"
+                                    style="display: grid;align-items: center;height: 40vh;">
+                                    <h5>
+                                        No Bidding Available!
+                                    </h5>
+                                </div>
+                            </ng-container>
+                            <ng-container >
+                                <ng-container >
+                                    <div class="bidding_card">
+                                        <div class="row" style="align-items: center;">
+                                            <div class="col-md-2">
+                                                <ng-container *ngIf="false"> 
+                                                    <!-- <div class="hotel_img"><img [src]="this.apiBaseURL+bid.hotel_image"
+                                                          alt=""></div> -->
+                                                </ng-container>
+                                              
+                                                    <div class="hotel_img"><img
+                                                            src="assets/images/images.jpg"
+                                                            alt="">
+                                                    </div>
+                                            
+                                            </div>
+                                            <div class="col-lg-6 col-md-5 responsive-hotel-info">
+                                                <div class="hotel_info">
+                                                    <div class="info">
+                                                        <p class="booking_date">  15/12/2021 - 16/12/2021
+                                                        </p>
+                                                        <h5 class="name" routerLink="/hotels-details"
+                                                           >
+                                                           Jusbid</h5>
+                                                        <p class="guest_and_room"> 2 Guest , 2 
+                                                            Room</p>
+                                                        <p class="room_type"> Jusbid Comfort Room</p>
+                                                    </div>
+                                                </div>
+                                                <div class="mt-2">
+                                                    <div class="bid-rsn " >
+                                                        <p><i class="fa fa-circle"></i> Bid Is 10% Low</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-4 col-md-5">
+
+                                                <div class="bidding_action ">
+                                                    <p class="bidding_date"><span>Bidding Date: </span> 15/12/2021 01:05 p.m
+                                                    </p>
+                                                    <p  class="approved">
+                                                        <span>
+
+                                                            <img src="/assets/images/icons/success_icon.png"
+                                                                alt="Booked" width="15px">Approved
+                                                        </span>
+                                                    </p>
+
+                                                    <!-- <div class="large-view-status">
+                                                        <p  class="missed"><span><i
+                                                                    class="fa fa-times-circle"></i> Missed</span></p>
+                                                        <p class="Rejected"><span><i
+                                                                    class="fa fa-times-circle"></i> Rejected</span></p>
+                                                        <p class="On-Hold"><span><i
+                                                                    class="fa fa-circle"></i> On Hold</span></p>
+                                                    </div> -->
+
+                                                    <div class="btns">
+                                                        <ul style="margin: 0;padding: 0;list-style: none;">
+                                                            <li style="margin: 0;padding: 0;">
+                                                                <p class="price btn btn-orange"
+                                                                    style=" border-radius: 5px; margin: 0;">
+                                                                    <span class="amount"><span
+                                                                            style="font-family: roboto;">&#x20B9;</span>5000</span><br><p class="time">Per Room 
+                                                                    night</p>
+                                                                </p>
+                                                            </li>
+
+
+                                                            <li>
+                                                                <div
+                                                                    *ngIf="true">
+                                                                    <button class="btn btn-green">Just
+                                                                        Pay</button>
+                                                                </div>
+                                                                <div *ngIf="false"
+                                                                    class="btn btn-yellow">
+                                                                    <p></p>
+                                                                </div>
+                                                                <div *ngIf="false"
+                                                                    class="btn btn-yellow">
+                                                                    <p>OnHold</p>
+                                                                </div>
+                                                                <div class="btn btn-yellow" *ngIf="false">
+                                                                    <p>OnHold</p>
+                                                                </div>
+                                                                <ng-container *ngIf="false">
+                                                                    <div>
+                                                                        <button class="btn btn-green"
+                                                                            routerLink="/">Re
+                                                                            Bid</button>
+                                                                    </div>
+                                                                </ng-container>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                  
+                                                        <!-- <div class="mobile-view-status">
+                                                            <p  class="missed"><span><i
+                                                                        class="fa fa-times-circle"></i> Missed</span></p>
+                                                            <p *ngIf="bid.status=='Rejected'" class="Rejected"><span><i
+                                                                        class="fa fa-times-circle"></i> Rejected</span></p>
+                                                            <p *ngIf="bid.status=='OnHold'" class="On-Hold"><span><i
+                                                                        class="fa fa-circle"></i> On Hold</span></p>
+                                                            <div class="mt-2 bid-reason">
+                                                                <div class="bid-rsn" *ngIf="bid.reason">
+                                                                    <p><i class="fa fa-circle"></i> {{ bid.reason }}</p>
+                                                                </div>
+                                                            </div>
+                                                        </div> -->
+                                                   
+                                                    
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </ng-container>
+                            </ng-container>
+                        </ng-container>
+                    </div> 
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<app-footer></app-footer>

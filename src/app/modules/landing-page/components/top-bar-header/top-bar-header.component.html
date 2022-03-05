@@ -1,0 +1,1339 @@
+<section class="tm-main-content" id="top" *ngIf="false">
+    <div>
+        <div class="tm-top-bar-bg"></div>
+        <ng-container *ngFor="let home of hometitle.slice(0,1);">
+            <div class="header-headings-section ">
+                <h1 class="heading-header-1">{{ home.title }}</h1>
+                <h3 class="heading-header-3">{{ home.text }}</h3>
+            </div>
+        </ng-container>
+        <div class="banner-section-pad">
+            <div style="position: relative;">
+                <div class="ie-container-width-fix-2 header-form-wrapper">
+                    <div class="container">
+                        <ul class="booking_tab">
+                            <li class="cursor-pointer" (click)="getBookingOption('hotel')" style="margin-right: 5px;"
+                                [ngClass]="book=='hotel'?'active':''">
+                                <i class="fa fa-hotel"></i>
+                                Hotels
+                            </li>
+                            <li class="cursor-pointer" (click)="getBookingOption('flight')"
+                                [ngClass]="book=='flight'?'active':''">
+                                <i class="fa fa-plane"></i>
+                                Flight
+                            </li>
+                        </ul>
+                        <div class=" ie-h-align-center-fix tm-bg-glass">
+                            <div class="row">
+                                <div class="col-lg-12 mx-auto search-form">
+                                    <ng-container *ngIf="book=='hotel'">
+                                        <form #getHotelSearchResultsOnTop="ngForm"
+                                            (submit)="onSearchHotels(getHotelSearchResultsOnTop)">
+
+                                            <div class="top-form" [ngClass]="fixed_header?'fixed-header':''">
+                                                <div class="top-sm-form">
+                                                    <div class="grid-container">
+                                                        <ng-container *ngIf="!userStatus">
+                                                            <div class="form-group banner-form searchcity">
+                                                                <span class="input-top-holder">
+                                                                    <span>Where </span>
+                                                                    <i class="fa fa-map-marker"></i>
+                                                                </span>
+                                                                <input ngx-google-places-autocomplete
+                                                                    #placesRef="ngx-places"
+                                                                    (onAddressChange)="handleAddressChange($event)"
+                                                                    class="form-control" name="city" type="text"
+                                                                    id="inputCity"
+                                                                    placeholder="e.g. - Area or Landmark "
+                                                                    [title]="geoCity" ngModel required />
+                                                            </div>
+                                                        </ng-container>
+                                                        <ng-container *ngIf="userStatus">
+                                                            <div class="form-group banner-form searchcity">
+                                                                <span class="input-top-holder">
+                                                                    <span>Where</span>
+                                                                    <i class="fa fa-map-marker"></i>
+                                                                </span>
+
+                                                                <input name="city" type="text" class="form-control"
+                                                                    id="inputCity" placeholder="e.g. - Hotel Name"
+                                                                    title="e.g. - Hotel Name" ngModel required>
+
+                                                            </div>
+                                                        </ng-container>
+                                                        <div class="form-group banner-form">
+                                                            <span class="input-top-holder">
+                                                                <span>When </span>
+                                                                <i class="fa fa-calendar"></i>
+                                                            </span>
+                                                            <input name="arrival_date" type="text"
+                                                                class="form-control daterange" id="inputCheckOut"
+                                                                autocomplete="off"
+                                                                placeholder="{{minDate | date:'dd/MM/yyyy'}}"
+                                                                bsDatepicker [minDate]="minDate" ngModel
+                                                                [bsConfig]="{isAnimated: true, dateInputFormat: 'DD/MM/YYYY'}"
+                                                                onKeyPress="if(this.value.length>=0) return false">
+                                                        </div>
+                                                        <div class="form-group banner-form">
+                                                            <span class="input-top-holder">
+                                                                <span>Return </span>
+                                                                <i class="fa fa-calendar"></i>
+                                                            </span>
+                                                            <input name="return_date" type="text"
+                                                                class="form-control daterange" id="inputCheckOut"
+                                                                autocomplete="off"
+                                                                placeholder="{{returnDate | date:'dd/MM/yyyy'}}"
+                                                                bsDatepicker [minDate]="returnMinDate" [max]="maxDate"
+                                                                ngModel
+                                                                [bsConfig]="{isAnimated: true, dateInputFormat: 'DD/MM/YYYY'}"
+                                                                onKeyPress="if(this.value.length>=0) return false">
+                                                        </div>
+                                                        <div class="form-group banner-form">
+                                                            <span class="input-top-holder">
+                                                                <span>Rooms </span>
+                                                                <i class="fa fa-calendar"></i>
+                                                            </span>
+                                                            <div class="guestRoomPicker">
+                                                                <span class="input-top-holder">
+                                                                    <span>Rooms </span>
+                                                                    <i class="fa fa-briefcase"></i>
+                                                                </span>
+                                                                <div class="form-control showRoom"
+                                                                    (click)="showAddRoom($event)" #toggleButton>
+                                                                    <span [ngClass]="GuestCount>1 ? 'select':''">{{
+                                                                        GuestCount }}
+                                                                        Guests in {{roomsSelector.length}}
+                                                                        Rooms</span>
+                                                                </div>
+                                                                <input name="rooms" type="hidden" class="form-control"
+                                                                    id="inputGuest" placeholder="Rooms"
+                                                                    [value]="roomsSelector.length"
+                                                                    [(ngModel)]="roomsSelector.length">
+                                                                <input type="hidden" name="guest_no"
+                                                                    [value]="GuestCount" [(ngModel)]="GuestCount">
+                                                                <div class="guestRoomPickerPopUp" *ngIf="show_room"
+                                                                    #menu>
+                                                                    <div class="guestRoomPickerPopUp__headingRow">
+                                                                        <div class="guestRoomPickerPopUp__heading">
+                                                                            Rooms
+                                                                        </div>
+                                                                        <div class="guestRoomPickerPopUp__heading">
+                                                                            Guests
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="guestRoomPickerPopUp__roomsRow">
+                                                                        <ng-container
+                                                                            *ngFor="let room of roomsSelector; index as i">
+                                                                            <div
+                                                                                class="guestRoomPickerPopUp__roomTable border-bottom">
+                                                                                <div class="w-100 select_room">
+                                                                                    <div class="row align-center">
+                                                                                        <div class="col-md-5">
+                                                                                            <div class="">
+                                                                                                <span
+                                                                                                    class="guestRoomPickerPopUp__roomCount u-displayBlock">Room
+                                                                                                    {{room.id}}</span>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                        <div class="col-md-7">
+                                                                                            <div class="wrapper">
+                                                                                                <button type="button"
+                                                                                                    class="btn btn-light border"
+                                                                                                    (click)="descreseGuest(i)">-</button>
+                                                                                                <span>{{room.total_guest}}</span>
+                                                                                                <button type="button"
+                                                                                                    class="btn btn-light border"
+                                                                                                    (click)="increaseGuest(i)">+</button>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </ng-container>
+                                                                    </div>
+                                                                    <div class="guestRoomPickerPopUp__headingRow">
+                                                                        <div class="guestRoomPickerPopUp__heading cursor-pointer"
+                                                                            (click)="removeRoom()"
+                                                                            [ngClass]="(this.roomsSelector.length>1)?'':'text-muted cursor-default'">
+                                                                            Delete Room
+                                                                        </div>
+                                                                        <div class="guestRoomPickerPopUp__heading cursor-pointer"
+                                                                            (click)="addRoom()"
+                                                                            [ngClass]="(this.roomsSelector.length<6)?'':'text-muted cursor-default'">
+                                                                            Add Room</div>
+                                                                    </div>
+                                                                    <div>
+                                                                        <button type="button"
+                                                                            class="btn btn-primary btn-sm"
+                                                                            style="padding: 12px 0;"
+                                                                            (click)="show_room=!show_room">Done</button>
+                                                                    </div>
+                                                                </div>
+
+                                                            </div>
+
+                                                        </div>
+                                                        <div [ngClass]="geoLat == 0?'my-disable':''">
+                                                            <button type="submit"
+                                                                class="btn btn-primary tm-btn-search mobile-width-full rounded"
+                                                                [disabled]="!getHotelSearchResultsOnTop.valid">
+                                                                <ng-container *ngIf="searchLoader">
+                                                                    <i class="fa fa-spinner fa-spin"></i>
+                                                                </ng-container>
+                                                                Let's
+                                                                go places
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </ng-container>
+                                    <!-- Select Flight -->
+                                    <ng-container *ngIf="book=='flight'">
+                                        <div class="flight_badge_conatiner">
+                                        </div>
+                                        <!-- One Way -->
+                                        <form #getFlightSearchResultsOnTop="ngForm"
+                                            (submit)="onSearchFlights(getFlightSearchResultsOnTop)"
+                                            class="flight_section">
+                                            <div class="row ">
+                                                <div class="col-12">
+                                                    <div class="row flight_row">
+                                                        <div
+                                                            class="col-xl-2 col-lg-2 col-md-2 col-sm-12 p-0  flight_search">
+                                                            <div class="form-group banner-form ">
+                                                                <div class="Trip_Typepicker">
+                                                                    <span class="input-top-holder">
+                                                                        <span>Trip Type</span>
+                                                                    </span>
+                                                                    <div class="form-control showTriptype"
+                                                                        (click)="showaddTrip($event)" #toggleButton>
+                                                                        <span> {{Trip_Type==='R' ? 'Round Trip' : 'One
+                                                                            way'}}
+                                                                        </span>
+                                                                    </div>
+                                                                    <div class="guestRoomPickerPopUp" *ngIf="TripType">
+                                                                        <form>
+                                                                            <div
+                                                                                class="guestRoomPickerPopUp__roomsRow ">
+                                                                                <div class="oneway_TripType"
+                                                                                    (click)="setTripType('O')"
+                                                                                    [ngClass]="Trip_Type==='O' ? 'select' : ''">
+                                                                                    <span class="badge">One-Way</span>
+                                                                                </div>
+                                                                                <hr>
+                                                                                <div class="oneway_TripType"
+                                                                                    (click)="setTripType('R')"
+                                                                                    [ngClass]="Trip_Type==='R' ? 'select' : ''">
+                                                                                    <span
+                                                                                        class="badge">Round-Trip</span>
+                                                                                </div>
+                                                                            </div>
+
+                                                                        </form>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class=" col-xl-10 col-lg-10 col-md-10 col-sm-12">
+                                                            <div class="top-form"
+                                                                [ngClass]="fixed_header?'fixed-header':''">
+                                                                <div class="top-sm-form" *ngIf="Trip_Type==='O'">
+                                                                    <div class="row">
+                                                                        <div class="col-lg-12">
+                                                                            <div class="row flight_search_section">
+                                                                                <div
+                                                                                    class="col-xl-3 col-lg-3 col-md-4 col-sm-12 p-1">
+                                                                                    <div
+                                                                                        class="form-group banner-form searchcityflight">
+                                                                                        <span class="input-top-holder">
+                                                                                            <span>From </span>
+                                                                                        </span>
+                                                                                        <input name="departureAirport"
+                                                                                            type="text"
+                                                                                            class="form-control"
+                                                                                            id="inputDepartureAirport"
+                                                                                            placeholder="Search by city"
+                                                                                            title="Search by city"
+                                                                                            (keypress)="getDepartureAirportInput($event)"
+                                                                                            [(ngModel)]="departureAirport"
+                                                                                            required autocomplete="off"
+                                                                                            autofocus="off">
+                                                                                    </div>
+                                                                                    <ng-container
+                                                                                        *ngIf="showDepartureAirportModel && departureAirport">
+                                                                                        <ul class="card_airportList"
+                                                                                            *ngFor="let i of airPortsList | filter:departureAirport">
+                                                                                            <li
+                                                                                                (click)="getDepartureAirport(i.city_name,i.IATA_code)">
+                                                                                                <h5>{{i.city_name + ' ('
+                                                                                                    +
+                                                                                                    i.IATA_code +
+                                                                                                    ')'}}</h5>
+                                                                                                <small
+                                                                                                    class="text-muted">{{i.airport_name}}</small>
+                                                                                            </li>
+                                                                                        </ul>
+                                                                                    </ng-container>
+                                                                                </div>
+                                                                                <div
+                                                                                    class="col-xl-3 col-lg-3 col-md-4 col-sm-12 p-1">
+                                                                                    <div
+                                                                                        class="form-group banner-form searchcity">
+                                                                                        <span class="input-top-holder">
+                                                                                            <span>To</span>
+                                                                                        </span>
+                                                                                        <input name="arrivalAirport"
+                                                                                            type="text"
+                                                                                            class="form-control"
+                                                                                            id="inputCity"
+                                                                                            placeholder="Search by city"
+                                                                                            title="Search by city"
+                                                                                            (keypress)="getArrivalAirportInput($event)"
+                                                                                            [(ngModel)]="arrivalAirport"
+                                                                                            required autocomplete="off"
+                                                                                            autofocus="off">
+                                                                                    </div>
+                                                                                    <ng-container
+                                                                                        *ngIf="showArrivalAirportModel && arrivalAirport">
+                                                                                        <ul class="card_airportList"
+                                                                                            *ngFor="let i of airPortsList | search:arrivalAirport;index as index">
+                                                                                            <li
+                                                                                                (click)="getArrivalAirport(i.city_name,i.IATA_code)">
+                                                                                                <h5>{{i.city_name + ',
+                                                                                                    (' +
+                                                                                                    i.IATA_code
+                                                                                                    +
+                                                                                                    ')'}}</h5>
+                                                                                                <small
+                                                                                                    class="text-muted">{{i.airport_name}}</small>
+                                                                                            </li>
+                                                                                        </ul>
+                                                                                    </ng-container>
+                                                                                </div>
+                                                                                <div
+                                                                                    class="col-xl-2 col-lg-2 col-md-4 col-sm-12 p-1">
+                                                                                    <div class="form-group banner-form">
+                                                                                        <span class="input-top-holder">
+                                                                                            <span>Departure </span>
+                                                                                        </span>
+                                                                                        <input name="departure"
+                                                                                            type="text"
+                                                                                            class="form-control"
+                                                                                            id="inputCheckOut"
+                                                                                            autocomplete="off"
+                                                                                            title="DD-MM-YYY"
+                                                                                            placeholder="Departure"
+                                                                                            bsDatepicker
+                                                                                            [bsConfig]="{isAnimated: true, dateInputFormat: 'DD/MM/YYYY'}"
+                                                                                            [minDate]="flightMinDate"
+                                                                                            [max]="maxDate"
+                                                                                            [(ngModel)]="startdateSelect"
+                                                                                            onKeyPress="if(this.value.length>=0) return false">
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div
+                                                                                    class="col-xl-2 col-lg-2 col-md-4 col-sm-12 p-1">
+                                                                                    <div class="form-group banner-form">
+                                                                                        <span class="input-top-holder">
+                                                                                            <span>Travellers </span>
+                                                                                            <i
+                                                                                                class="fa fa-calendar"></i>
+                                                                                        </span>
+                                                                                        <div class="guestRoomPicker">
+                                                                                            <span
+                                                                                                class="input-top-holder">
+                                                                                                <span>Traveller(s)</span>
+                                                                                            </span>
+                                                                                            <div class="form-control showRoom"
+                                                                                                (click)="showAddRoom($event)"
+                                                                                                #toggleButton>
+                                                                                                <span
+                                                                                                    [ngClass]="totaltravellersCount>=1 ? 'select':''">{{totaltravellersCount}}
+                                                                                                    Traveller(s)</span>
+                                                                                            </div>
+                                                                                            <input name="rooms"
+                                                                                                type="hidden"
+                                                                                                class="form-control"
+                                                                                                id="inputGuest"
+                                                                                                placeholder="Rooms"
+                                                                                                [value]="roomsSelector.length"
+                                                                                                [(ngModel)]="roomsSelector.length">
+                                                                                            <input type="hidden"
+                                                                                                name="guest_no"
+                                                                                                [value]="GuestCount"
+                                                                                                [(ngModel)]="GuestCount">
+                                                                                            <div class="guestRoomPickerPopUp"
+                                                                                                *ngIf="show_room" #menu>
+                                                                                                <form
+                                                                                                    #travellerDetailsForm="ngForm"
+                                                                                                    (submit)=getTravellersDetails(travellerDetailsForm)>
+                                                                                                    <div
+                                                                                                        class="guestRoomPickerPopUp__roomsRow">
+                                                                                                        <!-- Adult -->
+                                                                                                        <div
+                                                                                                            class="guestRoomPickerPopUp__roomTable border-bottom">
+                                                                                                            <div
+                                                                                                                class="w-100 select_room">
+                                                                                                                <div
+                                                                                                                    class="row align-center">
+                                                                                                                    <div
+                                                                                                                        class="col-md-4">
+                                                                                                                        <div
+                                                                                                                            class="">
+                                                                                                                            <span
+                                                                                                                                class="guestRoomPickerPopUp__roomCount u-displayBlock">Adult</span>
+                                                                                                                        </div>
+                                                                                                                    </div>
+                                                                                                                    <div
+                                                                                                                        class="col-md-8">
+                                                                                                                        <div
+                                                                                                                            class="wrapper">
+                                                                                                                            <button
+                                                                                                                                type="button"
+                                                                                                                                class="btn btn-light btn-sm border"
+                                                                                                                                (click)="descreseAdultCount()">-</button>
+                                                                                                                            <span
+                                                                                                                                class="m-1">{{adultCount}}</span>
+                                                                                                                            <button
+                                                                                                                                type="button"
+                                                                                                                                class="btn btn-light btn-sm border"
+                                                                                                                                (click)="increaseAdultCount()">+</button>
+                                                                                                                        </div>
+                                                                                                                    </div>
+                                                                                                                </div>
+                                                                                                            </div>
+                                                                                                        </div>
+                                                                                                        <!-- Child -->
+                                                                                                        <div
+                                                                                                            class="guestRoomPickerPopUp__roomTable border-bottom">
+                                                                                                            <div
+                                                                                                                class="w-100 select_room">
+                                                                                                                <div
+                                                                                                                    class="row align-center">
+                                                                                                                    <div
+                                                                                                                        class="col-md-4">
+                                                                                                                        <div
+                                                                                                                            class="">
+                                                                                                                            <span
+                                                                                                                                class="guestRoomPickerPopUp__roomCount u-displayBlock">Child</span>
+                                                                                                                        </div>
+                                                                                                                    </div>
+                                                                                                                    <div
+                                                                                                                        class="col-md-8">
+                                                                                                                        <div
+                                                                                                                            class="wrapper">
+                                                                                                                            <button
+                                                                                                                                type="button"
+                                                                                                                                class="btn btn-light btn-sm border"
+                                                                                                                                (click)="descreseChildCount()">-</button>
+                                                                                                                            <span
+                                                                                                                                class="m-1">{{childCount}}</span>
+                                                                                                                            <button
+                                                                                                                                type="button"
+                                                                                                                                class="btn btn-light btn-sm border"
+                                                                                                                                (click)="increaseChildCount()">+</button>
+                                                                                                                        </div>
+                                                                                                                    </div>
+                                                                                                                </div>
+                                                                                                            </div>
+                                                                                                            <div *ngIf="childCount>=1"
+                                                                                                                class="mt-3">
+                                                                                                                <small>DoB
+                                                                                                                    of
+                                                                                                                    children
+                                                                                                                    at
+                                                                                                                    time
+                                                                                                                    of
+                                                                                                                    travel:</small>
+                                                                                                                <ng-container
+                                                                                                                    *ngFor="let child_Count of [].constructor(childCount);index as i">
+                                                                                                                    <div
+                                                                                                                        class="my-2">
+                                                                                                                        <label
+                                                                                                                            for="child_dob_{{i}}">Child
+                                                                                                                            {{i+1}}</label>
+                                                                                                                        <input
+                                                                                                                            type="date"
+                                                                                                                            name="child_dob_{{i}}"
+                                                                                                                            id="child_dob_{{i}}"
+                                                                                                                            class="date_picker"
+                                                                                                                            ngModel>
+                                                                                                                    </div>
+                                                                                                                </ng-container>
+                                                                                                            </div>
+                                                                                                        </div>
+                                                                                                        <!-- Infant -->
+                                                                                                        <div
+                                                                                                            class="guestRoomPickerPopUp__roomTable border-bottom">
+                                                                                                            <div
+                                                                                                                class="w-100 select_room">
+                                                                                                                <div
+                                                                                                                    class="row align-center">
+                                                                                                                    <div
+                                                                                                                        class="col-md-4">
+                                                                                                                        <div
+                                                                                                                            class="">
+                                                                                                                            <span
+                                                                                                                                class="guestRoomPickerPopUp__roomCount u-displayBlock">Infant</span>
+                                                                                                                        </div>
+                                                                                                                    </div>
+                                                                                                                    <div
+                                                                                                                        class="col-md-8">
+                                                                                                                        <div
+                                                                                                                            class="wrapper">
+                                                                                                                            <button
+                                                                                                                                type="button"
+                                                                                                                                class="btn btn-light btn-sm border"
+                                                                                                                                (click)="descreseInfantCount()">-</button>
+                                                                                                                            <span
+                                                                                                                                class="m-1">{{infantCount}}</span>
+                                                                                                                            <button
+                                                                                                                                type="button"
+                                                                                                                                class="btn btn-light btn-sm border"
+                                                                                                                                (click)="increaseInfantCount()">+</button>
+                                                                                                                        </div>
+                                                                                                                    </div>
+                                                                                                                </div>
+                                                                                                            </div>
+                                                                                                            <div *ngIf="infantCount>=1"
+                                                                                                                class="mt-3">
+                                                                                                                <small>DoB
+                                                                                                                    of
+                                                                                                                    infant
+                                                                                                                    at
+                                                                                                                    time
+                                                                                                                    of
+                                                                                                                    travel:</small>
+                                                                                                                <ng-container
+                                                                                                                    *ngFor="let infant_count of [].constructor(infantCount);index as i">
+                                                                                                                    <div
+                                                                                                                        class="my-2">
+                                                                                                                        <label
+                                                                                                                            for="infant_dob_{{i}}">Child
+                                                                                                                            {{i+1}}</label>
+                                                                                                                        <input
+                                                                                                                            type="date"
+                                                                                                                            name="infant_dob_{{i}}"
+                                                                                                                            id="infant_dob_{{i}}"
+                                                                                                                            class="date_picker"
+                                                                                                                            ngModel>
+                                                                                                                    </div>
+                                                                                                                </ng-container>
+                                                                                                            </div>
+                                                                                                        </div>
+                                                                                                    </div>
+                                                                                                    <div>
+                                                                                                        <button
+                                                                                                            type="submit"
+                                                                                                            class="btn btn-primary w-100 py-2">Done</button>
+                                                                                                    </div>
+                                                                                                </form>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div
+                                                                                    class="col-xl-2 col-lg-2 col-md-4 col-sm-12 p-1">
+                                                                                    <button type="button"
+                                                                                        style="margin-bottom: 15px;"
+                                                                                        (click)="searchFlights('O')"
+                                                                                        class="btn btn-primary tm-btn-search mobile-width-full  rounded"
+                                                                                        [disabled]="departureAirport===arrivalAirport">Let's
+                                                                                        Search
+                                                                                    </button>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+
+                                                                    </div>
+                                                                </div>
+                                                                <div class="top-sm-form" *ngIf="Trip_Type==='R'">
+                                                                    <div class="row flight_search_Round_section">
+                                                                        <div class="col-lg-12">
+                                                                            <div class="row " style="width: 100%;">
+                                                                                <div
+                                                                                    class="col-xl-2 col-lg-2 col-md-3 col-sm-12 p-1">
+                                                                                    <div
+                                                                                        class="form-group banner-form searchcityflight">
+                                                                                        <span class="input-top-holder">
+                                                                                            <span>From </span>
+                                                                                        </span>
+                                                                                        <input name="departureAirport"
+                                                                                            type="text"
+                                                                                            class="form-control"
+                                                                                            id="inputDepartureAirport"
+                                                                                            placeholder="Search by city"
+                                                                                            title="Search by city"
+                                                                                            (keypress)="getDepartureAirportInput($event)"
+                                                                                            [(ngModel)]="departureAirport"
+                                                                                            required autocomplete="off"
+                                                                                            autofocus="off">
+                                                                                    </div>
+                                                                                    <ng-container
+                                                                                        *ngIf="showDepartureAirportModel && departureAirport">
+                                                                                        <ul class="card_airportList"
+                                                                                            *ngFor="let i of airPortsList | search:departureAirport;">
+                                                                                            <li
+                                                                                                (click)="getDepartureAirport(i.city_name,i.IATA_code)">
+                                                                                                <h5>{{i.city_name + ' ('
+                                                                                                    +
+                                                                                                    i.IATA_code + ')'}}
+                                                                                                </h5>
+                                                                                                <small
+                                                                                                    class="text-muted">{{i.airport_name}}</small>
+                                                                                            </li>
+                                                                                        </ul>
+                                                                                    </ng-container>
+                                                                                </div>
+                                                                                <div
+                                                                                    class="col-xl-2 col-lg-2 col-md-3  col-sm-12 p-1">
+                                                                                    <div
+                                                                                        class="form-group banner-form searchcity">
+                                                                                        <span class="input-top-holder">
+                                                                                            <span>To</span>
+                                                                                        </span>
+                                                                                        <input name="arrivalAirport"
+                                                                                            type="text"
+                                                                                            class="form-control"
+                                                                                            id="inputCity"
+                                                                                            placeholder="Search by city"
+                                                                                            title="Search by city"
+                                                                                            (keypress)="getArrivalAirportInput($event)"
+                                                                                            [(ngModel)]="arrivalAirport"
+                                                                                            required autocomplete="off"
+                                                                                            autofocus="off">
+                                                                                    </div>
+                                                                                    <ng-container
+                                                                                        *ngIf="showArrivalAirportModel && arrivalAirport">
+                                                                                        <ul class="card_airportList"
+                                                                                            *ngFor="let i of airPortsList | search:arrivalAirport;">
+                                                                                            <li
+                                                                                                (click)="getArrivalAirport(i.city_name,i.IATA_code)">
+                                                                                                <h5>{{i.city_name + ',
+                                                                                                    (' +
+                                                                                                    i.IATA_code + ')'}}
+                                                                                                </h5>
+                                                                                                <small
+                                                                                                    class="text-muted">{{i.airport_name}}</small>
+                                                                                            </li>
+                                                                                        </ul>
+                                                                                    </ng-container>
+                                                                                </div>
+                                                                                <div
+                                                                                    class="col-xl-2 col-lg-2 col-md-3 col-sm-12 p-1">
+                                                                                    <div class="form-group banner-form">
+                                                                                        <span class="input-top-holder">
+                                                                                            <span>Departure </span>
+                                                                                        </span>
+                                                                                        <input name="departure"
+                                                                                            type="text"
+                                                                                            class="form-control"
+                                                                                            id="inputCheckOut"
+                                                                                            autocomplete="off"
+                                                                                            title="DD-MM-YYY"
+                                                                                            placeholder="Departure"
+                                                                                            bsDatepicker
+                                                                                            [bsConfig]="{isAnimated: true, dateInputFormat: 'DD/MM/YYYY'}"
+                                                                                            [minDate]="minDate"
+                                                                                            [max]="maxDate"
+                                                                                            [(ngModel)]="startdateSelect"
+                                                                                            onKeyPress="if(this.value.length>=0) return false">
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div
+                                                                                    class="col-xl-2 col-lg-2 col-md-3  col-sm-12 p-1">
+                                                                                    <div class="form-group banner-form">
+                                                                                        <span class="input-top-holder">
+                                                                                            <span>Return </span>
+                                                                                        </span>
+                                                                                        <input name="ReturnDateSelect"
+                                                                                            type="text"
+                                                                                            class="form-control"
+                                                                                            id="ReturnDateSelect"
+                                                                                            autocomplete="off"
+                                                                                            title="DD-MM-YYY"
+                                                                                            placeholder="Return"
+                                                                                            bsDatepicker
+                                                                                            [bsConfig]="{isAnimated: true, dateInputFormat: 'DD/MM/YYYY'}"
+                                                                                            [minDate]="returnMinDate"
+                                                                                            [max]="maxDate"
+                                                                                            [(ngModel)]="ReturnDateSelect"
+                                                                                            onKeyPress="if(this.value.length>=0) return false">
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div
+                                                                                    class="col-xl-2 col-lg-2 col-md-3  col-sm-12 p-1">
+                                                                                    <div class="form-group banner-form">
+                                                                                        <span class="input-top-holder">
+                                                                                            <span>Travellers </span>
+                                                                                            <i
+                                                                                                class="fa fa-calendar"></i>
+                                                                                        </span>
+                                                                                        <div class="guestRoomPicker">
+                                                                                            <span
+                                                                                                class="input-top-holder">
+                                                                                                <span>Traveller(s)</span>
+                                                                                            </span>
+                                                                                            <div class="form-control showRoom"
+                                                                                                (click)="showAddRoom($event)"
+                                                                                                #toggleButton>
+                                                                                                <span
+                                                                                                    [ngClass]="totaltravellersCount>=1 ? 'select':''">{{totaltravellersCount}}
+                                                                                                    Traveller(s)</span>
+                                                                                            </div>
+                                                                                            <input name="rooms"
+                                                                                                type="hidden"
+                                                                                                class="form-control"
+                                                                                                id="inputGuest"
+                                                                                                placeholder="Rooms"
+                                                                                                [value]="roomsSelector.length"
+                                                                                                [(ngModel)]="roomsSelector.length">
+                                                                                            <input type="hidden"
+                                                                                                name="guest_no"
+                                                                                                [value]="GuestCount"
+                                                                                                [(ngModel)]="GuestCount">
+                                                                                            <div class="guestRoomPickerPopUp"
+                                                                                                *ngIf="show_room" #menu>
+                                                                                                <form
+                                                                                                    #travellerDetailsFormRoundTrip="ngForm"
+                                                                                                    (submit)=getTravellersDetails(travellerDetailsFormRoundTrip)>
+                                                                                                    <div
+                                                                                                        class="guestRoomPickerPopUp__roomsRow">
+                                                                                                        <!-- Adult -->
+                                                                                                        <div
+                                                                                                            class="guestRoomPickerPopUp__roomTable border-bottom">
+                                                                                                            <div
+                                                                                                                class="w-100 select_room">
+                                                                                                                <div
+                                                                                                                    class="row align-center">
+                                                                                                                    <div
+                                                                                                                        class="col-md-4">
+                                                                                                                        <div
+                                                                                                                            class="">
+                                                                                                                            <span
+                                                                                                                                class="guestRoomPickerPopUp__roomCount u-displayBlock">Adult</span>
+                                                                                                                        </div>
+                                                                                                                    </div>
+                                                                                                                    <div
+                                                                                                                        class="col-md-8">
+                                                                                                                        <div
+                                                                                                                            class="wrapper">
+                                                                                                                            <button
+                                                                                                                                type="button"
+                                                                                                                                class="btn btn-light btn-sm border"
+                                                                                                                                (click)="descreseAdultCount()">-</button>
+                                                                                                                            <span
+                                                                                                                                class="m-1">{{adultCount}}</span>
+                                                                                                                            <button
+                                                                                                                                type="button"
+                                                                                                                                class="btn btn-light btn-sm border"
+                                                                                                                                (click)="increaseAdultCount()">+</button>
+                                                                                                                        </div>
+                                                                                                                    </div>
+                                                                                                                </div>
+                                                                                                            </div>
+                                                                                                        </div>
+                                                                                                        <!-- Child -->
+                                                                                                        <div
+                                                                                                            class="guestRoomPickerPopUp__roomTable border-bottom">
+                                                                                                            <div
+                                                                                                                class="w-100 select_room">
+                                                                                                                <div
+                                                                                                                    class="row align-center">
+                                                                                                                    <div
+                                                                                                                        class="col-md-4">
+                                                                                                                        <div
+                                                                                                                            class="">
+                                                                                                                            <span
+                                                                                                                                class="guestRoomPickerPopUp__roomCount u-displayBlock">Child</span>
+                                                                                                                        </div>
+                                                                                                                    </div>
+                                                                                                                    <div
+                                                                                                                        class="col-md-8">
+                                                                                                                        <div
+                                                                                                                            class="wrapper">
+                                                                                                                            <button
+                                                                                                                                type="button"
+                                                                                                                                class="btn btn-light btn-sm border"
+                                                                                                                                (click)="descreseChildCount()">-</button>
+                                                                                                                            <span
+                                                                                                                                class="m-1">{{childCount}}</span>
+                                                                                                                            <button
+                                                                                                                                type="button"
+                                                                                                                                class="btn btn-light btn-sm border"
+                                                                                                                                (click)="increaseChildCount()">+</button>
+                                                                                                                        </div>
+                                                                                                                    </div>
+                                                                                                                </div>
+                                                                                                            </div>
+                                                                                                            <div *ngIf="childCount>=1"
+                                                                                                                class="mt-3">
+                                                                                                                <small>DoB
+                                                                                                                    of
+                                                                                                                    children
+                                                                                                                    at
+                                                                                                                    time
+                                                                                                                    of
+                                                                                                                    travel:</small>
+                                                                                                                <ng-container
+                                                                                                                    *ngFor="let child_Count of [].constructor(childCount);index as i">
+                                                                                                                    <div
+                                                                                                                        class="my-2">
+                                                                                                                        <label
+                                                                                                                            for="child_dob_{{i}}">Child
+                                                                                                                            {{i+1}}</label>
+                                                                                                                        <input
+                                                                                                                            type="date"
+                                                                                                                            name="child_dob_{{i}}"
+                                                                                                                            id="child_dob_{{i}}"
+                                                                                                                            class="date_picker"
+                                                                                                                            ngModel>
+                                                                                                                    </div>
+                                                                                                                </ng-container>
+                                                                                                            </div>
+                                                                                                        </div>
+                                                                                                        <!-- Infant -->
+                                                                                                        <div
+                                                                                                            class="guestRoomPickerPopUp__roomTable border-bottom">
+                                                                                                            <div
+                                                                                                                class="w-100 select_room">
+                                                                                                                <div
+                                                                                                                    class="row align-center">
+                                                                                                                    <div
+                                                                                                                        class="col-md-4">
+                                                                                                                        <div
+                                                                                                                            class="">
+                                                                                                                            <span
+                                                                                                                                class="guestRoomPickerPopUp__roomCount u-displayBlock">Infant</span>
+                                                                                                                        </div>
+                                                                                                                    </div>
+                                                                                                                    <div
+                                                                                                                        class="col-md-8">
+                                                                                                                        <div
+                                                                                                                            class="wrapper">
+                                                                                                                            <button
+                                                                                                                                type="button"
+                                                                                                                                class="btn btn-light btn-sm border"
+                                                                                                                                (click)="descreseInfantCount()">-</button>
+                                                                                                                            <span
+                                                                                                                                class="m-1">{{infantCount}}</span>
+                                                                                                                            <button
+                                                                                                                                type="button"
+                                                                                                                                class="btn btn-light btn-sm border"
+                                                                                                                                (click)="increaseInfantCount()">+</button>
+                                                                                                                        </div>
+                                                                                                                    </div>
+                                                                                                                </div>
+                                                                                                            </div>
+                                                                                                            <div *ngIf="infantCount>=1"
+                                                                                                                class="mt-3">
+                                                                                                                <small>DoB
+                                                                                                                    of
+                                                                                                                    infant
+                                                                                                                    at
+                                                                                                                    time
+                                                                                                                    of
+                                                                                                                    travel:</small>
+                                                                                                                <ng-container
+                                                                                                                    *ngFor="let infant_count of [].constructor(infantCount);index as i">
+                                                                                                                    <div
+                                                                                                                        class="my-2">
+                                                                                                                        <label
+                                                                                                                            for="infant_dob_{{i}}">Child
+                                                                                                                            {{i+1}}</label>
+                                                                                                                        <input
+                                                                                                                            type="date"
+                                                                                                                            name="infant_dob_{{i}}"
+                                                                                                                            id="infant_dob_{{i}}"
+                                                                                                                            class="date_picker"
+                                                                                                                            ngModel>
+                                                                                                                    </div>
+                                                                                                                </ng-container>
+                                                                                                            </div>
+                                                                                                        </div>
+                                                                                                    </div>
+                                                                                                    <div>
+                                                                                                        <button
+                                                                                                            type="submit"
+                                                                                                            class="btn btn-primary w-100 py-2">Done</button>
+                                                                                                    </div>
+                                                                                                </form>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div
+                                                                                    class="col-xl-2 col-lg-2 col-md-3 col-sm-12  p-1">
+                                                                                    <button type="button"
+                                                                                        style="margin-bottom: 15px;"
+                                                                                        (click)="searchFlights('R')"
+                                                                                        class="btn btn-primary tm-btn-search mobile-width-full  rounded"
+                                                                                        [disabled]="departureAirport===arrivalAirport || departureAirport=='' || arrivalAirport==''"
+                                                                                        *ngIf="Trip_Type==='R'">Let's
+                                                                                        Search
+                                                                                    </button>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+
+
+                                                                </div>
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </form>
+
+                                    </ng-container>
+                                    <hr class="d-xl-block d-none">
+                                    <div class="d-xl-block d-none">
+                                        <div class="cnt-search">
+                                            <div *ngIf="recent_search.city && book=='hotel'">
+                                                <p class="header-text">Continue Your Search</p>
+                                            </div>
+                                            <div *ngIf="recent_search.city && book=='hotel'">
+                                                <button type="button" class="btn btn-outline-header"
+                                                    (click)="searchHotelByRecentData()">
+                                                    {{recent_search.city}} - {{recent_search.guestNo}} Guests -
+                                                    {{recent_search.rooms}} Rooms
+                                                </button>
+                                            </div>
+                                            <div class="home-download-section">
+                                                <a target="_blank"
+                                                    href="https://play.google.com/store/apps/details?id=org.jusbid_user">
+                                                    <img src="/assets/images/svg_Icons/play-store.svg" alt="">
+                                                </a>
+                                                <a target="_blank">
+                                                    <img src="/assets/images/svg_Icons/app-store.svg" alt="">
+                                                </a>
+                                                <div class="my-auto">
+                                                    <p class="header-text">Download Mobile App</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="">
+                <div class="container-fluid">
+                    <div class="banner-cities">
+                        <ul *ngIf="citiesList.length>0">
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- best reach -->
+<section class="tm-section tm-section-pad  container pt-0 pb-0 pt-0 mb-2">
+    <div class="container">
+        <div class="row">
+            <h3 class="section-3-title ">Our Best <b style="font-weight: bold;">Reach</b></h3>
+        </div>
+        <owl-carousel-o [options]="CitiesOptions" class="popular-slider cities-slider">
+            <ng-container *ngIf="shimmerLoad">
+                <ng-container *ngFor='let in of [0,1,2,3,4];'>
+                    <ng-template carouselSlide>
+                        <div class="card">
+                            <div class="photo shine"></div>
+
+                            <div class="card-body text-center">
+                                <div class="shine lines"></div>
+                            </div>
+                        </div>
+                    </ng-template>
+                </ng-container>
+            </ng-container>
+            <ng-container *ngIf="!shimmerLoad">
+                <ng-container *ngFor="let cities of popularCities; index as i">
+                    <ng-template carouselSlide>
+                        <div class="card" (click)="searchBestReach(cities.city)">
+                            <ng-container *ngIf="cities.image">
+                                <div class="card-img-top"
+                                    style="background-image:url('{{apiBaseURL+cities.image}}'), url('https://storage.googleapis.com/jusbid_cloud_storage/assets/images/dummy_horizontal.jpg')"
+                                    alt="Card image">
+                                    <span class="top-side">{{ cities.hotels }} Properties</span>
+                                </div>
+                            </ng-container>
+                            <ng-container *ngIf="!cities.image">
+                                <div class="card-img-top backup-image"
+                                    style="background-image:url('https://storage.googleapis.com/jusbid_cloud_storage/assets/images/dummy_horizontal.jpg')"
+                                    alt="Card image">
+                                    <span class="top-side">{{ cities.hotels-1 }} Properties</span>
+                                </div>
+                            </ng-container>
+                            <div class="card-body text-center">
+                                <h5 class="card-title font-bolder">{{ cities.city }}</h5>
+                            </div>
+                        </div>
+                    </ng-template>
+                </ng-container>
+            </ng-container>
+        </owl-carousel-o>
+        <ng-container *ngIf="popularCities.length==0 && !cityshimmerLoad">
+            <div class="col-12 text-center nopopular">
+                <h3>No Popular Cities Available!</h3>
+            </div>
+        </ng-container>
+    </div>
+</section>
+
+
+
+
+
+
+
+
+
+<!-- ads banner -->
+<section class="container  py-0 mt-2 mb-5">
+    <div class="ads_banner_section">
+        <div class="ads_banner">
+            <img src="/assets/images/web banner-02.jpg" class="img-fluid" alt="Ads">
+        </div>
+    </div>
+</section>
+
+
+
+
+
+
+<div class="show_query_modal" *ngIf="showQueryModal">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="modal-dialog modal-dialog-centered modal-lg">
+                    <div class="modal-content">
+                        <form #addQueryForm="ngForm" (submit)=onAddQuery(addQueryForm)>
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="addImagesLabel">For Bulk Booking</h5>
+                                <button type="button" class="close" (click)="bulkEnquiry()">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body py-3">
+                                <div class="row">
+                                    <div class="col-md-12 mx-auto">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group mb-3">
+                                                    <label for="num_persons">Enter Number Of Persons</label>
+                                                    <input type="number" class="form-control" name="persons"
+                                                        id="num_persons" onKeyPress="if(this.value>10) return false"
+                                                        placeholder="Please Enter Number Of Persons" ngModel required>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group mb-3">
+                                                    <label for="subject">Enter Subject</label>
+                                                    <input type="text" class="form-control" name="subject" id="subject"
+                                                        onKeyPress="if(this.value.length>100) return false"
+                                                        placeholder="Please Enter Subject" ngModel required>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group mb-3">
+                                            <label for="inputRange">Select Date</label>
+                                            <input name="bulk_date_range" type="text" class="form-control"
+                                                id="inputRange" autocomplete="off" placeholder="From - To Date"
+                                                title="YYYY-MM-DD" bsDaterangepicker
+                                                [bsConfig]="{isAnimated: true, dateInputFormat: 'DD/MM/YYYY'}"
+                                                [minDate]="minDate" [max]="maxDate" ngModel>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group mb-3">
+                                                    <label for="email">Enter Email</label>
+                                                    <input type="email" class="form-control" name="email" id="email"
+                                                        placeholder="Please Enter Email Address" ngModel required>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group mb-3">
+                                                    <label for="contact">Enter Contact Number</label>
+                                                    <input type="number" class="form-control" name="contact"
+                                                        id="contact" placeholder="Please Enter Contact Number"
+                                                        onKeyPress="if(this.value.length>14) return false" ngModel
+                                                        required>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group mb-3">
+                                            <label for="message">Message</label>
+                                            <textarea class="form-control" name="message" id="message"
+                                                placeholder="Please Enter Message"
+                                                onKeyPress="if(this.value.length>400) return false" ngModel
+                                                required></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" (click)="bulkEnquiry()">Close</button>
+                                <button type="submit" class="btn btn-primary"
+                                    [disabled]="!addQueryForm.valid">Save</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="show_query_modal" *ngIf="showAddHotelModal">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="modal-dialog modal-dialog-centered modal-lg">
+                    <div class="modal-content">
+                        <form #addHotelForm="ngForm" (submit)=onAddHotel(addHotelForm)>
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="addImagesLabel">Add Your Hotel Here</h5>
+                                <button type="button" class="close" (click)="addHotel()">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body py-3">
+                                <div class="row">
+                                    <div class="col-md-12 mx-auto">
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <div class="form-group mb-3">
+                                                    <label for="hotel_name">Hotel Name</label>
+                                                    <input type="text" class="form-control" name="name" id="hotel_name"
+                                                        onKeyPress="if(this.value>101) return false"
+                                                        placeholder="Please Enter Hotel Name" ngModel required>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="form-group mb-3">
+                                                    <label for="email">Email Address</label>
+                                                    <input type="email" class="form-control" name="email" id="email"
+                                                        onKeyPress="if(this.value.length>100) return false"
+                                                        placeholder="Please Enter Email address" ngModel required>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="form-group mb-3">
+                                                    <label for="contact">Contact Number</label>
+                                                    <input type="number" class="form-control" name="contact"
+                                                        id="contact" placeholder="Please Enter Contact Number"
+                                                        onKeyPress="if(this.value.length>14) return false" ngModel
+                                                        required>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="form-group mb-3">
+                                                    <label for="state">State</label>
+                                                    <select class="form-control" name="state" id="state" ngModel
+                                                        required (change)="getStateCode($event)">
+                                                        <option value="" selected disabled>Select State</option>
+                                                        <ng-container *ngFor="let state of stateList">
+                                                            <option [value]="state.name">{{ state.name }}</option>
+                                                        </ng-container>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="form-group mb-3">
+                                                    <label for="city">City</label>
+                                                    <select class="form-control" name="city" id="city" ngModel required>
+                                                        <option value="" selected disabled>Select City</option>
+                                                        <ng-container *ngFor="let city of cities_list">
+                                                            <option [value]="city">{{ city }}</option>
+                                                        </ng-container>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="form-group mb-3">
+                                                    <label for="plot_no">Plot Number</label>
+                                                    <input type="text" class="form-control" name="plot_no" id="plot_no"
+                                                        placeholder="Please Enter Plot Number"
+                                                        onKeyPress="if(this.value.length>14) return false" ngModel
+                                                        required>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="form-group mb-3">
+                                                    <label for="landmark">Landmark</label>
+                                                    <input type="text" class="form-control" name="landmark"
+                                                        id="landmark" placeholder="Please Enter Landmark"
+                                                        onKeyPress="if(this.value.length>100) return false" ngModel
+                                                        required>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group mb-3">
+                                            <label for="address">Address</label>
+                                            <textarea class="form-control" name="address" id="address"
+                                                placeholder="Please Enter Address"
+                                                onKeyPress="if(this.value.length>400) return false" ngModel
+                                                required></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" (click)="addHotel()">Close</button>
+                                <button type="submit" class="btn btn-primary"
+                                    [disabled]="!addHotelForm.valid">Save</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="show_query_modal" *ngIf="showAddAgentModal">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="modal-dialog modal-dialog-centered modal-lg">
+                    <div class="modal-content">
+                        <form #addTravelAgentForm="ngForm" (submit)=onAddTravelAgent(addTravelAgentForm)>
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="addImagesLabel">Become Partner</h5>
+                                <button type="button" class="close" (click)="addTravelAgent()">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body py-3">
+                                <div class="row">
+                                    <div class="col-md-12 mx-auto">
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <div class="form-group mb-3">
+                                                    <label for="company">Company Name</label>
+                                                    <input type="text" class="form-control" name="company" id="company"
+                                                        placeholder="Please Enter Company Name"
+                                                        onKeyPress="if(this.value.length>101) return false" ngModel
+                                                        required>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="form-group mb-3">
+                                                    <label for="agent_name">Agent Name</label>
+                                                    <input type="text" class="form-control" name="agent_name"
+                                                        id="agent_name" onKeyPress="if(this.value>101) return false"
+                                                        placeholder="Please Enter Agent Name" ngModel required>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="form-group mb-3">
+                                                    <label for="email">Email Address</label>
+                                                    <input type="email" class="form-control" name="email" id="email"
+                                                        onKeyPress="if(this.value.length>100) return false"
+                                                        placeholder="Please Enter Email address" ngModel required>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="form-group mb-3">
+                                                    <label for="contact">Contact Number</label>
+                                                    <input type="number" class="form-control" name="contact"
+                                                        id="contact" placeholder="Please Enter Contact Number"
+                                                        onKeyPress="if(this.value.length>14) return false" ngModel
+                                                        required>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="form-group mb-3">
+                                                    <label for="state">State</label>
+                                                    <select class="form-control" name="state" id="state" ngModel
+                                                        required (change)="getStateCode($event)">
+                                                        <option value="" selected disabled>Select State</option>
+                                                        <ng-container *ngFor="let state of stateList">
+                                                            <option [value]="state.name">{{ state.name }}</option>
+                                                        </ng-container>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="form-group mb-3">
+                                                    <label for="city">City</label>
+                                                    <select class="form-control" name="city" id="city" ngModel required>
+                                                        <option value="" selected disabled>Select City</option>
+                                                        <ng-container *ngFor="let city of cities_list">
+                                                            <option [value]="city">{{ city }}</option>
+                                                        </ng-container>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="form-group mb-3">
+                                                    <label for="area">Area</label>
+                                                    <input type="text" class="form-control" name="area" id="area"
+                                                        onKeyPress="if(this.value>101) return false"
+                                                        placeholder="Please Enter Area" ngModel required>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="form-group mb-3">
+                                                    <label for="zip">Zip Code</label>
+                                                    <input type="text" class="form-control" name="zip" id="zip"
+                                                        onKeyPress="if(this.value>101) return false"
+                                                        placeholder="Please Enter Zip Code" ngModel required>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group mb-3">
+                                            <label for="address">Address</label>
+                                            <textarea class="form-control" name="address" id="address"
+                                                placeholder="Please Enter Address"
+                                                onKeyPress="if(this.value.length>400) return false" ngModel
+                                                required></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary"
+                                    (click)="addTravelAgent()">Close</button>
+                                <button type="submit" class="btn btn-primary"
+                                    [disabled]="!addTravelAgentForm.valid">Save</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Become Partner End -->
+<div class="modal" *ngIf="this.successAlert">
+    <div class="alertBox">
+        <div class="card rounded p-5">
+            <div class="mb-3">
+                <img src="/assets/images/icons/success_icon2.gif" width="120" alt="">
+            </div>
+            <h5><b>{{ success_msg }}</b></h5>
+        </div>
+    </div>
+</div>
+<div class="modal" *ngIf="this.errorAlert">
+    <div class="alertBox">
+        <div class="card rounded p-5">
+            <div class="mb-3">
+                <img src="/assets/images/icons/error.gif" width="120" alt="">
+            </div>
+            <h5><b>{{ error_msg }}</b></h5>
+        </div>
+    </div>
+</div>

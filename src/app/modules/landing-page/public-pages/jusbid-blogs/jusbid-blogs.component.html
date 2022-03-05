@@ -1,0 +1,319 @@
+
+<ng-container *ngIf="!isShow_SingleBlog">
+  <main-header [header]="'main'"></main-header>
+  <div class="loading_bar" *ngIf="this.common.is_app_loading">
+    <div class="text-primary" role="status">
+        <span class="visually-hidden">Loading...</span>
+    </div>
+</div>
+  <div class="container">
+    <div class="blogs_title_name">
+      <a class="blog-header-logo text-dark" href="#">
+        Discover the Lastest India Updates
+      </a>
+    </div>
+  
+    <div class="city-name-list">
+      <ul>
+        <li>
+          <a href="#">Rajasthan</a>
+          <ul class="dropdown">
+            <li><a href="#">Ajmer</a></li>
+            <li><a href="#">Alwar</a></li>
+            <li><a href="#">Baran</a></li>
+            <li><a href="#">Beawar</a></li>
+            <li><a href="#">Bharatpur</a></li>
+            <li><a href="#">Bhilwara</a></li>
+            <li><a href="#">Bikaner</a></li>
+            <li><a href="#">Chittaurgarh</a></li>
+            <li><a href="#">Churu</a></li>
+            <li><a href="#">Dhaulpur</a></li>
+            <li><a href="#">Ganganagar</a></li>
+            <li><a href="#">Gangapur</a></li>
+            <li><a href="#">Hanumangarh</a></li>
+            <li><a href="#">Jaipur</a></li>
+            <li><a href="#">Jhunjhunu</a></li>
+            <li><a href="#">Jodhpur</a></li>
+            <li><a href="#">Kishangarh</a></li>
+            <li><a href="#">Kota</a></li>
+            <li><a href="#">Makrana</a></li>
+            <li><a href="#">Nagaur</a></li>
+            <li><a href="#">Pali</a></li>
+            <li><a href="#">Sawai Madhopur</a></li>
+            <li><a href="#">Sikar</a></li>
+            <li><a href="#">Tonk</a></li>
+            <li><a href="#">Udaipur</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#">Madhya Pradesh</a>
+          <ul class="dropdown">
+            <li><a href="#">Agar Malwa</a></li>
+            <li><a href="#">Alirajpur</a></li>
+            <li><a href="#">Anuppur</a></li>
+            <li><a href="#">Ashoknagar</a></li>
+            <li><a href="#">Balaghat</a></li>
+            <li><a href="#">Barwan</a></li>
+            <li><a href="#">Betul</a></li>
+            <li><a href="#">Bhind</a></li>
+            <li><a href="#">Bhopal</a></li>
+            <li><a href="#">Burhanpur</a></li>
+            <li><a href="#">Chhatarpur</a></li>
+            <li><a href="#">Chhindwara</a></li>
+            <li><a href="#">Damoh</a></li>
+            <li><a href="#">Datia</a></li>
+            <li><a href="#">Dewas</a></li>
+            <li><a href="#">Dhar</a></li>
+            <li><a href="#">Dindori</a></li>
+            <li><a href="#">East Nimar</a></li>
+            <li><a href="#">Guna</a></li>
+            <li><a href="#">Gwalior</a></li>
+            <li><a href="#">Harda</a></li>
+            <li><a href="#">Hoshangabad</a></li>
+            <li><a href="#">Indore</a></li>
+            <li><a href="#">Jabalpur</a></li>
+            <li><a href="#">Jhabua</a></li>
+            <li><a href="#">Katni</a></li>
+            <li><a href="#">Mandla</a></li>
+            <li><a href="#">Mandsaur</a></li>
+            <li><a href="#">Morena</a></li>
+            <li><a href="#">Narsinghpur</a></li>
+            <li><a href="#">Neemuch</a></li>
+            <li><a href="#">Niwari</a></li>
+            <li><a href="#">Panna</a></li>
+            <li><a href="#">Raisen</a></li>
+            <li><a href="#">Rajgarh</a></li>
+            <li><a href="#">Ratlam</a></li>
+            <li><a href="#">Rewa</a></li>
+            <li><a href="#">Sagar</a></li>
+            <li><a href="#">Satna</a></li>
+            <li><a href="#">Sehore</a></li>
+            <li><a href="#">Seoni</a></li>
+            <li><a href="#">Shahdol</a></li>
+            <li><a href="#">Shajapur</a></li>
+            <li><a href="#">Sheopur</a></li>
+            <li><a href="#">Shivpuri</a></li>
+            <li><a href="#">Sidhi</a></li>
+            <li><a href="#">Singrauli</a></li>
+            <li><a href="#">Tikamgarh</a></li>
+            <li><a href="#">Ujjain</a></li>
+            <li><a href="#">Umaria</a></li>
+            <li><a href="#">Vidisha</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#">West Bengal</a>
+          <ul class="dropdown">
+            <li><a href="#">Alipurduar</a></li>
+            <li><a href="#">Bankura</a></li>
+            <li><a href="#">Birbhum</a></li>
+            <li><a href="#">Cooch Behar </a></li>
+            <li><a href="#">Dakshin Dinajpur</a></li>
+            <li><a href="#">Darjeeling</a></li>
+            <li><a href="#">Hooghly</a></li>
+            <li><a href="#">Howrah</a></li>
+            <li><a href="#">Jalpaiguri</a></li>
+            <li><a href="#">Jhargram</a></li>
+            <li><a href="#">Kalimpong</a></li>
+            <li><a href="#">Kolkata</a></li>
+            <li><a href="#">Malda</a></li>
+            <li><a href="#">Murshidabad</a></li>
+            <li><a href="#">Nadia</a></li>
+            <li><a href="#">North 24 Parganas</a></li>
+            <li><a href="#">Paschim Bardhaman</a></li>
+            <li><a href="#">Paschim Medinipur </a></li>
+            <li><a href="#">Purba Bardhaman</a></li>
+            <li><a href="#">Purba Medinipur</a></li>
+            <li><a href="#">Purulia</a></li>
+            <li><a href="#">Purulia</a></li>
+            <li><a href="#">South 24 Parganas </a></li>
+            <li><a href=#>Uttar Dinajpur</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#">Karnataka</a>
+          <ul class="dropdown">
+            <li><a href="#">Bagalkot</a></li>
+            <li><a href="#">Bengaluru Urban</a></li>
+            <li><a href="#">Bengaluru Rural</a></li>
+            <li><a href="#">Belagavi</a></li>
+            <li><a href="#">Ballari</a></li>
+            <li><a href="#">Bidar</a></li>
+            <li><a href="#">Chamarajanagar</a></li>
+            <li><a href="#">Chikballapur</a></li>
+            <li><a href="#">Chikkamagaluru</a></li>
+            <li><a href="#">Chitradurga</a></li>
+            <li><a href="#">Dakshina Kannada</a></li>
+            <li><a href="#">Davanagere</a></li>
+            <li><a href="#">Dharwad</a></li>
+            <li><a href="#">Gadag</a></li>
+            <li><a href="#">Hassan</a></li>
+            <li><a href="#">Haveri</a></li>
+            <li><a href="#">Kalaburagi</a></li>
+            <li><a href="#">Kalaburagi</a></li>
+            <li><a href="#">Kodagu</a></li>
+            <li><a href="#">Kolar</a></li>
+            <li><a href="#">Koppal</a></li>
+            <li><a href="#">Mandya</a></li>
+            <li><a href="#">Mysuru</a></li>
+            <li><a href="#">Raichur</a></li>
+            <li><a href="#">Ramanagara</a></li>
+            <li><a href="#">Shivamogga</a></li>
+            <li><a href="#">Tumakuru</a></li>
+            <li><a href="#">Udupi</a></li>
+            <li><a href="#">Uttara Kannada</a></li>
+            <li><a href="#">Vijayapur</a></li>
+            <li><a href="#">Yadgir</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#">Kerala</a>
+          <ul class="dropdown">
+            <li><a href="#">Alappuzha</a></li>
+            <li><a href="#">Ernakulam</a></li>
+            <li><a href="#">Idukki</a></li>
+            <li><a href="#">Kannur</a></li>
+            <li><a href="#">Kasaragod</a></li>
+            <li><a href="#">Kollam</a></li>
+            <li><a href="#">Kottayam</a></li>
+            <li><a href="#">Kozhikode</a></li>
+            <li><a href="#">Malappuram</a></li>
+            <li><a href="#">Palakkad</a></li>
+            <li><a href="#">Pathanamthitta</a></li>
+            <li><a href="#">Thiruvananthapuram</a></li>
+            <li><a href="#">Thrissur</a></li>
+            <li><a href="#">Wayanad</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#">Assam</a>
+          <ul class="dropdown">
+            <li><a href="#">Baksa</a></li>
+            <li><a href="#">Barpeta</a></li>
+            <li><a href="#">Biswanath</a></li>
+            <li><a href="#">Bongaigaon</a></li>
+            <li><a href="#">Cachar</a></li>
+            <li><a href="#">Charaideo</a></li>
+            <li><a href="#">Chirang</a></li>
+            <li><a href="#">Darrang</a></li>
+            <li><a href="#">Dhemaji</a></li>
+            <li><a href="#">Dhubri</a></li>
+            <li><a href="#">Dibrugarh</a></li>
+            <li><a href="#">Dima Hasao</a></li>
+            <li><a href="#">Goalpara</a></li>
+            <li><a href="#">Golaghat</a></li>
+            <li><a href="#">Hailakandi</a></li>
+            <li><a href="#">Hojai</a></li>
+            <li><a href="#">Jorhat</a></li>
+            <li><a href="#">Kamrup Metropolitan</a></li>
+            <li><a href="#">Kamrup</a></li>
+            <li><a href="#">Karbi Anglong</a></li>
+            <li><a href="#">Karimganj</a></li>
+            <li><a href="#">Kokrajhar</a></li>
+            <li><a href="#">Lakhimpur</a></li>
+            <li><a href="#">Majuli</a></li>
+            <li><a href="#">Morigaon</a></li>
+            <li><a href="#">Nagaon</a></li>
+            <li><a href="#">Nalbari</a></li>
+            <li><a href="#">Sivasagar</a></li>
+            <li><a href="#">Sonitpur</a></li>
+            <li><a href="#">South Salmara-Mankachar </a></li>
+            <li><a href="#">Tinsukia</a></li>
+            <li><a href="#">Udalguri</a></li>
+            <li><a href="#">West Karbi Anglong</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#">Arunchal Pradesh</a>
+          <ul class="dropdown">
+            <li><a href="#">Changlang</a></li>
+            <li><a href="#">Upper Dibang Vally</a></li>
+            <li><a href="#">East Kameng</a></li>
+            <li><a href="#">East Siang</a></li>
+            <li><a href="#">Lohit</a></li>
+            <li><a href="#">Lower Subansiri</a></li>
+            <li><a href="#">Majuli</a></li>
+            <li><a href="#">Papum-Pare</a></li>
+            <li><a href="#">Tawang</a></li>
+            <li><a href="#">Tirap</a></li>
+            <li><a href="#">Upper Siang</a></li>
+            <li><a href="#">Upper Subansiri </a></li>
+            <li><a href="#">West Kameng</a></li>
+            <li><a href="#">West Siang</a></li>
+            <li><a href="#">Anjaw</a></li>
+            <li><a href="#">Lower Dibang Vally</a></li>
+            <li><a href="#">Kurung Kumey</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#">Others</a>
+          <ul class="dropdown">
+            <li><a href="#">jk</a></li>
+            <li><a href="#">bh</a></li>
+          </ul>
+        </li>
+  
+      </ul>
+    </div>
+  
+    <div class="blog_banner ">
+
+      <div class="row p-4 p-md-5 mb-4 rounded border">
+        <div class="col-md-6 px-0">
+          <h1 class="display-4 fst-italic"
+            style="font-weight: 800;font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">Love the
+            Life
+            you <br>Live.Live the life</h1>
+          <p class="lead my-3 text-muted">This is a wider card with supporting text below as a natural lead-in to
+            additional
+            content</p>
+          <p class="m-0"><a href="#" style="color: rgb(235, 210, 74);">See More</a></p>
+        </div>
+        <div class="col-md-6 px-0 text-right">
+          <img
+            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQSk5ogfDK1ZPbTDqls7qygUViNksJUFcwp5e1qI9RfmCHJy9lWgRtfLleccIyOG4xYgzw&usqp=CAU"
+            class="img-fluid rounded-circle" alt="">
+        </div>
+      </div>
+    </div>
+  
+    <section>
+  
+      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4">
+        <div class="col p-2">
+          <div class="card border shadow-sm" style="height: 310px;">
+            <div class="card-body" style="text-align: center; padding-top: 50px;">
+              <p class="card-text" style="font-size: large; padding: 10px; "><b>Subscribe Now to get the latest
+                  updates</b>
+              </p>
+              <div class="form-floating mb-3">
+                <input type="email" class="form-control rounded-4" id="floatingInput" placeholder="Enter your e-mail">
+              </div>
+              <button class="w-100 mb-2 btn btn-m rounded-4 btn-primary" type="submit">Subscribe now</button>
+            </div>
+          </div>
+        </div>
+        <div class="col p-2" *ngFor="let i of blogPost">
+          <div class="card border shadow-sm" (click)="show_SingleBlog(i.link)">
+            <img [src]="i.yoast_head_json.og_image[0].url" class="card-img-top" height="150px" />
+            <div class="card-body">
+              <div [innerHtml]="sortDesc(i.title.rendered,50)"
+                style="font-size: 15px; font-weight: 800; margin-bottom: 10px;">
+              </div>
+              <div [innerHtml]="sortDesc(i.excerpt.rendered,140)">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+  <main-footer></main-footer>
+
+</ng-container>
+
+
+<ng-container *ngIf="isShow_SingleBlog">
+  <app-jusbid-single-blog [link]="iframeLink"></app-jusbid-single-blog>
+</ng-container>

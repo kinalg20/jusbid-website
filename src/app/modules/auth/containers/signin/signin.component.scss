@@ -1,0 +1,731 @@
+.auth_form_title {
+    font-size: 32px;
+    line-height: 1.2;
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 20px;
+}
+.hello_title {
+    font-size: 2.25rem;
+    .auth_form_title_Sign_in {
+        font-size: 32px;
+        line-height: 1.2;
+        font-weight: 700;
+        color: #ff033e;
+        margin-bottom: 5px;
+        font-family: "Poppins", sans-serif;
+    }
+}
+
+.gap {
+    .form-card {
+        .form-card-demo {
+            margin-top: 250px;
+        }
+    }
+}
+.header {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #dedede;
+    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+    padding: 0px 0 0 10px;
+    background: #fff;
+    position: fixed;
+    z-index: 9999;
+    top: 0;
+
+    img {
+        width: 100px;
+        outline: none;
+        cursor: pointer;
+        margin-left: 40px;
+    }
+}
+.auth_page {
+    background-image: url("../../../../../assets/images/login-background.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+    min-height: 100vh;
+    position: relative;
+    display: grid;
+    align-items: center;
+    z-index: 999;
+    .login {
+        display: block;
+        height: 100%;
+        background: rgb(30 30 30 / 25%);
+        box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+        backdrop-filter: blur(6px);
+        -webkit-backdrop-filter: blur(6px);
+        border-radius: 10px;
+        border: 1px solid rgba(255, 255, 255, 0.18);
+        box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+        backdrop-filter: blur(6px);
+        -webkit-backdrop-filter: blur(6px);
+        border-radius: 10px;
+        border: 1px solid rgba(255, 255, 255, 0.18);
+    }
+    .login_container {
+        align-items: center;
+        padding: 200px 70px;
+        .login_title {
+            color: #fff;
+            font-size: 8rem;
+            font-weight: bold;
+            .sub_title {
+                color: #fff;
+                font-size: 8rem;
+                font-weight: 200;
+            }
+        }
+        .title {
+            color: #fff;
+            line-height: 34px;
+            margin-bottom: 0.5rem;
+        }
+        p {
+            font-size: 1.5rem;
+        }
+    }
+    .auth_card {
+        display: grid;
+        align-items: center;
+    }
+    .gap {
+        padding: 0px 70px;
+        .form_card {
+            position: relative;
+            background: #fff;
+            padding: 50px 40px 70px;
+            width: 100%;
+            height: 100%;
+            border-radius: 10px;
+            overflow: hidden;
+            &:after {
+                content: "";
+                width: 100%;
+                height: 100%;
+                background: #fff;
+                position: absolute;
+                left: 0px;
+                right: 0;
+                top: 0px;
+                bottom: 0;
+                background-color: rgba(255, 255, 255, 0.95);
+                @supports (-webkit-backdrop-filter: none) or (backdrop-filter: none) {
+                    background-color: rgba(255, 255, 255, 0);
+                    -webkit-backdrop-filter: blur(30px) brightness(115%);
+                    backdrop-filter: blur(30px) brightness(115%);
+                }
+            }
+
+            hr {
+                border-color: #aababb;
+            }
+            .glass-login {
+                position: relative;
+                z-index: 2;
+                background: transparent;
+                a {
+                    cursor: pointer;
+                    color: var(--primary);
+                }
+                .logo {
+                    margin-bottom: 20px;
+                }
+                .btn-primary {
+                    padding: 12px 20px;
+                }
+            }
+        }
+        .loading_bar {
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.2);
+            display: grid;
+            justify-content: center;
+            text-align: center;
+            align-items: center;
+            position: absolute;
+            top: 0;
+            left: 0px;
+            z-index: 99999;
+        }
+    }
+}
+a {
+    text-decoration: none;
+    .link {
+        font-size: 15px;
+    }
+}
+
+.form-group {
+    position: relative;
+}
+.floating-label {
+    color: #000;
+    font-size: 14px;
+    font-weight: normal;
+    position: absolute;
+    pointer-events: none;
+    left: 0px;
+    top: 5px;
+    transition: 0.2s ease all;
+    -moz-transition: 0.2s ease all;
+    -webkit-transition: 0.2s ease all;
+}
+.floating-input {
+    border: none;
+    border-bottom: 1px solid #aababb;
+    padding: 0;
+    margin-top: 30px;
+    margin-bottom: 10px;
+    background: transparent;
+    height: 30px;
+    border-radius: 0;
+}
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+    transition: background-color 5000s ease-in-out 0s;
+}
+.passowrd-input {
+    position: relative;
+}
+.icon {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    img {
+        width: 30px;
+    }
+}
+.floating-input:focus {
+    outline: none;
+    box-shadow: none;
+    border-color: var(--primary);
+    background: transparent;
+}
+.floating-input:focus ~ .floating-label,
+.floating-input:valid ~ .floating-label,
+.floating-input:not(:placeholder-shown) ~ .floating-label {
+    top: -32px;
+    font-size: 14px;
+    color: var(--primary);
+}
+/* highlighter */
+.highlight {
+    position: absolute;
+    height: 50%;
+    width: 100%;
+    top: 15%;
+    left: 0;
+    pointer-events: none;
+    opacity: 0.5;
+}
+.floating-input:focus ~ .highlight {
+    -webkit-animation: inputHighlighter 0.3s ease;
+    -moz-animation: inputHighlighter 0.3s ease;
+    animation: inputHighlighter 0.3s ease;
+}
+/* animation */
+@-webkit-keyframes inputHighlighter {
+    from {
+        background: var(--primary);
+    }
+    to {
+        width: 0;
+        background: transparent;
+    }
+}
+@-moz-keyframes inputHighlighter {
+    from {
+        background: var(--primary);
+    }
+    to {
+        width: 0;
+        background: transparent;
+    }
+}
+@keyframes inputHighlighter {
+    from {
+        background: var(--primary);
+    }
+    to {
+        width: 0;
+        background: transparent;
+    }
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    margin: 0;
+}
+label.form-label {
+    font-size: 14px;
+    font-weight: 600;
+    color: #0000009e;
+    margin-bottom: 0.2rem;
+}
+.form-field {
+    input.form-control {
+        border-top: none;
+        border-left: none;
+        border-right: none;
+        border-bottom: 1px solid #000 !important;
+        background: transparent;
+        margin-bottom: 15px;
+        font-size: 20px;
+        color: #000;
+        font-weight: 800;
+        border-radius: 0rem;
+        &:hover,
+        &:focus {
+            font-size: 20px;
+            color: #000;
+            font-weight: 800;
+        }
+    }
+}
+.usersignup {
+    position: static;
+    font-size: 16px;
+    text-align: center;
+}
+.userlogin {
+    position: static;
+    font-size: 16px;
+    margin-bottom: 12px;
+    text-align: center;
+}
+.btn-otp {
+    background: #007bff;
+    border: none;
+    width: 100%;
+    font-size: 16px;
+    font-weight: 800;
+    color: #fff;
+    border-radius: 5px;
+    padding: 14px 15px;
+    &:active {
+        color: #fff;
+    }
+    &:hover {
+        color: #fff;
+    }
+}
+.btn-login {
+    border-radius: 5px;
+    background: #ff033e;
+    width: 100%;
+    color: #fff;
+    font-size: 16px;
+    font-weight: 800;
+    padding: 14px 15px;
+    &:hover {
+        color: #fff;
+    }
+    &:active {
+        color: #fff;
+    }
+}
+
+@media (max-width: 1950px) {
+    .auth_page {
+        .gap {
+            padding: 170px 70px;
+        }
+    }
+}
+@media(max-width:1771px){
+    .auth_page{
+        .gap {
+            padding: 170px 30px;
+        }
+       
+    }
+}
+@media (max-width: 1540px) {
+    .auth_page {
+        .login_container {
+            padding: 150px 0px;
+            margin-top: 50px;
+            .login_title {
+                font-size: 8rem;
+                .sub_title {
+                    font-size: 8rem;
+                }
+            }
+            .title {
+                line-height: 20px;
+            }
+            p {
+                font-size: 1.1rem;
+            }
+        }
+
+        .gap {
+            padding: 100px 14px;
+            margin-top: 105px;
+        }
+    }
+}
+@media (max-width: 1440px) {
+    .auth_page {
+        .login_container {
+            margin-top: 130px;
+        }
+        .userlogin {
+            font-size: 14px;
+        }
+        .otp-input {
+            width: 3rem !important;
+            height: 3rem !important;
+        }
+    }
+}
+@media (max-width: 1439px) {
+    .otp-input {
+        width: 2.9rem !important;
+        height: 2.9rem !important;
+    }
+}
+@media (max-width: 1399px) {
+    .auth_page {
+        .otp-input {
+            width: 2.8rem !important;
+            height: 2.8rem !important;
+        }
+    }
+}
+@media (max-width: 1342px) {
+    .auth_page {
+        .otp-input {
+            width: 2.6rem !important;
+            height: 2.6rem !important;
+        }
+    }
+}
+@media (max-width: 1285px) {
+    .auth_page {
+        .otp-input {
+            width: 2.5rem !important;
+            height: 2.5rem !important;
+        }
+    }
+}
+@media (max-width: 1255px) {
+    .auth_page {
+        .otp-input {
+            width: 2.4rem !important;
+            height: 2.4rem !important;
+        }
+    }
+}
+@media (max-width: 1227px) {
+    .auth_page {
+        .otp-input {
+            width: 2.3rem !important;
+            height: 2.3rem !important;
+        }
+    }
+}
+@media (max-width: 1199px) and (min-width: 1025px) {
+    .auth_page {
+        .login_container {
+            margin-top: 170px;
+            .login_title {
+                font-size: 5rem;
+                .sub_title {
+                    font-size: 5rem;
+                }
+            }
+        }
+        .gap {
+            .form_card {
+                width: 80%;
+            }
+        }
+        .otp-input {
+            width: 2.5rem !important;
+            height: 2.5rem !important;
+        }
+    }
+}
+@media (max-width: 1024px) {
+    .auth_page {
+        .login_container {
+            margin-top: 170px;
+            .login_title {
+                font-size: 5rem;
+                .sub_title {
+                    font-size: 5rem;
+                }
+            }
+        }
+        p {
+            font-size: 16px;
+            .title_name {
+                font-size: 16px;
+            }
+        }
+        .otp-input {
+            width: 2.7rem !important;
+            height: 2.7rem !important;
+        }
+    }
+    .auth_card {
+        padding-left: 65px;
+    }
+    .userlogin {
+        margin-bottom: 10px;
+    }
+}
+@media (max-width: 976px) {
+    .auth_page {
+        .otp-input {
+            width: 2.6rem !important;
+            height: 2.6rem !important;
+        }
+    }
+}
+@media (max-width: 957px) {
+    .auth_page {
+        .otp-input {
+            width: 2.4rem !important;
+            height: 2.4rem !important;
+        }
+    }
+}
+@media (max-width: 919px) {
+    .auth_page {
+        .otp-input {
+            width: 2.2rem !important;
+            height: 2.2rem !important;
+        }
+    }
+}
+@media (max-width: 880px) {
+    .auth_page {
+        .otp-input {
+            width: 2rem !important;
+            height: 2rem !important;
+        }
+    }
+}
+@media (max-width: 841px) {
+    .auth_page {
+        .otp-input {
+            width: 1.8rem !important;
+            height: 1.8rem !important;
+        }
+    }
+}
+@media (max-width: 813px) {
+    .auth_page {
+        .otp-input {
+            width: 1.7rem !important;
+            height: 1.7rem !important;
+            margin-right: 5px !important;
+        }
+    }
+}
+@media (max-width: 768px) {
+    .auth_page {
+        .login_container {
+            padding: 130px 0px;
+            .loginFrom {
+                margin-top: 50px !important;
+            }
+            .login_title {
+                font-size: 4rem;
+                .sub_title {
+                    font-size: 4rem;
+                }
+            }
+            p {
+                font-size: 18px;
+                line-height: 23px !important;
+                margin-bottom: 0.2rem !important;
+            }
+        }
+        .otp-input {
+            width: 2.2rem !important;
+            height: 2.2rem !important;
+        }
+    }
+    .auth_card {
+        padding-left: 15px;
+    }
+    .btn-otp {
+        font-size: 14px;
+        padding: 10px 8px;
+    }
+    .btn-login {
+        padding: 10px 8px;
+    }
+    .usersignup {
+        font-size: 15px;
+    }
+    .userlogin {
+        font-size: 12px;
+    }
+}
+@media (max-width: 767px) {
+    .auth_page {
+        background: #fff;
+        min-height: 100vh;
+        .login {
+            height: 100%;
+            background: none;
+        }
+        .login_container {
+            display: none;
+        }
+        .gap {
+            padding: 130px 0px;
+
+            .form_card {
+                padding: 0px 10px 96px;
+                border-radius: 0;
+                &::after {
+                    display: block;
+                }
+                button {
+                    margin: auto;
+                    display: block;
+                }
+            }
+        }
+    }
+    .floating-label {
+        left: 0;
+    }
+    .floating-input:focus ~ .floating-label,
+    .floating-input:valid ~ .floating-label,
+    .floating-input:not(:placeholder-shown) ~ .floating-label {
+        font-size: 12px;
+    }
+    .header {
+        display: block;
+        padding-left: 0;
+        text-align: center;
+        position: relative;
+        padding-top: 30px;
+        img {
+            width: 100px;
+        }
+    }
+    .auth_form_title {
+        font-size: 24px;
+        font-weight: bold;
+    }
+    .icon img {
+        width: 25px;
+    }
+    .userlogin {
+        font-size: 18px;
+    }
+}
+
+@media (max-width: 767px) and (min-width: 426px) {
+    .auth_page {
+        .gap {
+            padding: 80px 80px;
+        }
+        .userlogin {
+            margin-top: 20px;
+            position: static;
+            font-size: 18px;
+        }
+        .otp-input {
+            width: 3rem !important;
+            height: 3rem !important;
+        }
+        .otplogin {
+            text-align: center !important;
+        }
+        .usersignup {
+            position: static;
+            text-align: center;
+        }
+    }
+}
+@media (max-width: 600px) {
+    .auth_page {
+        .gap {
+            padding: 130px 50px;
+        }
+    }
+}
+@media (max-width: 425px) {
+    .auth_page {
+        .gap {
+            padding: 130px 10px;
+            .otplogin {
+                position: static;
+                text-align: center;
+            }
+        }
+        .auth_form_title {
+            font-size: 25px;
+            font-family: "Poppins", sans-serif;
+        }
+        .auth_form_title_Sign_in {
+            font-size: 38px;
+        }
+        label.form-label {
+            font-size: 13px;
+        }
+        .form-field {
+            input.form-control {
+                font-size: 20px;
+                margin-bottom: 10px;
+                &:hover,
+                &:focus {
+                    font-size: 20px;
+                    margin-bottom: 10px;
+                }
+            }
+        }
+        .usersignup {
+            text-align: center !important;
+            position: static;
+        }
+        .userlogin {
+            margin-top: 10px;
+            position: static;
+            font-size: 15px;
+        }
+    }
+}
+@media (max-width: 375px) {
+    .btn-otp {
+        font-size: 16px;
+    }
+    .usersignup {
+        font-size: 15px;
+    }
+}
+
+@media (max-width: 353px) {
+    .userlogin {
+        font-size: 13px !important;
+    }
+    .btn-otp {
+        font-size: 12px;
+    }
+    .btn-login {
+        font-size: 12px;
+    }
+}

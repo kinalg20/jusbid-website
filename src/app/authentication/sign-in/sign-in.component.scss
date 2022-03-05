@@ -1,0 +1,409 @@
+// header Logo 
+.header {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #dedede;
+  box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+  padding: 0px 0 0 10px;
+  background: #fff;
+  position: fixed;
+  z-index: 9999;
+  top: 0;
+
+  img {
+    width: 100px;
+    outline: none;
+    cursor: pointer;
+    margin-left: 40px;
+  }
+}
+
+// desktop auth Screen 
+.auth_page {
+  background-image: url("../../../assets/images/login-background.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 100%;
+  min-height: 100vh;
+  position: relative;
+  display: grid;
+  align-items: center;
+  z-index: 999;
+
+  .login {
+    display: block;
+    height: 100%;
+    background: rgb(30 30 30 / 25%);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    align-items: center;
+
+    .login_body {
+      align-items: center;
+      margin-top: 12%;
+
+      .login_container {
+        align-items: center;
+        padding: 30px;
+
+        .loginFrom {
+          color: #fff;
+
+          .login_title {
+            font-size: 8rem;
+            font-weight: bold;
+
+            .sub_title {
+              font-weight: 200;
+            }
+          }
+
+          .title {
+            font-size: 1.5rem;
+            line-height: 34px;
+            margin-bottom: 0.5rem;
+            color: #fff;
+          }
+
+          .stay_connected {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #fff;
+          }
+        }
+      }
+
+      .gap {
+        padding: 0px 50px;
+
+        .form_card {
+          position: relative;
+          background: #fff;
+          padding: 50px 40px 70px;
+          width: 100%;
+          height: 100%;
+          border-radius: 10px;
+          overflow: hidden;
+
+          &:after {
+            content: "";
+            width: 100%;
+            height: 100%;
+            background: #fff;
+            position: absolute;
+            left: 0px;
+            right: 0;
+            top: 0px;
+            bottom: 0;
+            background-color: rgba(255, 255, 255, 0.95);
+
+            @supports (-webkit-backdrop-filter: none) or (backdrop-filter: none) {
+              background-color: rgba(255, 255, 255, 0);
+              -webkit-backdrop-filter: blur(30px) brightness(115%);
+              backdrop-filter: blur(30px) brightness(115%);
+            }
+          }
+
+          .glass-login {
+            position: relative;
+            z-index: 2;
+            background: transparent;
+
+            h5 {
+              font-size: 2.25rem;
+
+              .auth_form_title_Sign_in {
+                font-size: 32px;
+                line-height: 1.2;
+                font-weight: 700;
+                color: #ff033e;
+                margin-bottom: 5px;
+                font-family: "Poppins", sans-serif;
+              }
+            }
+
+            .login_credentials {
+              font-size: 15px;
+              margin-bottom: 30px
+            }
+
+            .form-field {
+              label.form-label {
+                font-size: 18px;
+                font-weight: 600;
+                color: #0000009e;
+                margin-bottom: 0.2rem;
+              }
+
+              input.form-control {
+                border-top: none;
+                border-left: none;
+                border-right: none;
+                border-bottom: 1px solid #000 !important;
+                background: transparent;
+                margin-bottom: 15px;
+                font-size: 20px;
+                color: #000;
+                font-weight: 800;
+                border-radius: 0rem;
+                padding-left: 4px;
+
+                &:hover,
+                &:focus {
+                  font-size: 20px;
+                  color: #000;
+                  font-weight: 800;
+                }
+              }
+            }
+
+            .btn-otp {
+              background: #007bff;
+              border: none;
+              width: 100%;
+              font-size: 16px;
+              font-weight: 800;
+              color: #fff;
+              border-radius: 5px;
+              padding: 14px 15px;
+
+              &:active {
+                color: #fff;
+              }
+
+              &:hover {
+                color: #fff;
+              }
+            }
+
+            .btn-login {
+              border-radius: 5px;
+              background: #ff033e;
+              width: 100%;
+              color: #fff;
+              font-size: 16px;
+              font-weight: 800;
+              padding: 14px 15px;
+
+              &:hover {
+                color: #fff;
+              }
+
+              &:active {
+                color: #fff;
+              }
+            }
+
+            .userlogin {
+              position: static;
+              font-size: 16px;
+              margin-top: 12px;
+              margin-bottom: 12px;
+              text-align: center;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width:1650px) {
+  .auth_page {
+    .login {
+      .login_body {
+        margin-top: 10%;
+        .login_container {
+            padding-top: 12%;
+          .loginFrom {
+            .login_title {
+              font-size: 5rem;
+            }
+          }
+        }
+    }
+      }
+    }
+  }
+
+
+  @media (max-width:1440px) {
+    .auth_page {
+      .login {
+        .login_body {
+          margin-top: 10%;
+
+          .gap {
+            padding: 0px 20px;
+          }
+        }
+      }
+    }
+  }
+
+  @media (max-width:1199px) {
+    .auth_page {
+      .login {
+        .login_body {
+          margin-top: 10%;
+
+          .gap {
+            padding: 0px 20px;
+          }
+        }
+      }
+    }
+  }
+
+  @media (max-width:1024px) {
+    .auth_page {
+      .login {
+        .login_body {
+          margin-top: 15%;
+          .login_container {
+            padding: 0px;
+            padding-top: 120px;
+
+            .loginFrom {
+              .login_title {
+                font-size: 5rem;
+              }
+
+              .title {
+                font-size: 1.1rem;
+                line-height: 20px;
+              }
+
+              .stay_connected {
+                font-size: 1.1rem;
+              }
+            }
+          }
+
+          .gap {
+            padding: 0px 20px;
+
+          }
+        }
+      }
+    }
+  }
+
+  @media (max-width:768px) {
+    .auth_page {
+      .login {
+        .login_body {
+          margin-top: 25%;
+
+          .login_container {
+            .loginFrom {
+              .login_title {
+                font-size: 4rem;
+              }
+
+              .title {
+                font-size: 1rem;
+              }
+
+              .stay_connected {
+                font-size: 1.1rem;
+              }
+            }
+          }
+
+          .gap {
+            padding: 0px 5px;
+
+            .form_card {
+              padding: 30px 20px 40px;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  @media (max-width:767px) {
+    .auth_page {
+      background: #fff;
+      min-height: 100vh;
+
+      .login {
+        background: #fff;
+
+        .login_body {
+          margin-top: 10%;
+
+          .login_container {
+            display: none;
+          }
+
+          .gap {
+            .form_card {
+              padding: 50px 40px 70px;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  @media (max-width:425px) {
+    .auth_page {
+      background: #fff;
+      min-height: 100vh;
+
+      .login {
+        background: #fff;
+
+        .login_body {
+          margin-top: 20%;
+
+          .login_container {
+            display: none;
+          }
+
+          .gap {
+            .form_card {
+              padding: 50px 0px 70px;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  @media (max-width:375px) {
+    .auth_page {
+      .login {
+        .login_body {
+          .gap {
+            padding: 0px 0px;
+          }
+        }
+      }
+    }
+  }
+
+  @media (max-width:320px) {
+    .auth_page {
+      .login {
+        .login_body {
+          .gap {
+            .form_card {
+              .glass-login {
+                .userlogin {
+                  font-size: 15px;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }

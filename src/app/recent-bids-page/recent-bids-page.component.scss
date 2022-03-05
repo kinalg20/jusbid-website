@@ -1,0 +1,633 @@
+.bid-header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 50px 0 40px;
+	width: 100%;
+	.heading {
+		h5 {
+			font-size: 28px;
+			font-weight: 700;
+		}
+	}
+	.filters {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		.filter_by_status {
+			margin-right: 20px;
+            .wrap-drop {
+                background: transparent;
+                box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.2);
+                border: 1px solid #dedede;
+                cursor: pointer;
+                width: 250px;
+                font-size: 16px;
+                padding: 17px 3rem 12px 2rem;
+                position: relative;
+                z-index: 3;
+                border-radius: 0.25rem;
+            }
+            .wrap-drop::after {
+                content: "\f078";
+                font-family: "FontAwesome";
+                height: 100%;
+                position: absolute;
+                right: 10%;
+                top: 0%;
+                width: 10px;
+                display: grid;
+                align-items: center;
+                color: #000;
+            }
+            .wrap-drop .drop {
+                box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.2);
+                display: none;
+                left: 0;
+                list-style: none;
+                margin-top: 0;
+                opacity: 0;
+                padding-left: 0;
+                pointer-events: none;
+                position: absolute;
+                right: 0;
+                top: 100%;
+                z-index: 2;
+            }
+            .wrap-drop .drop li a {
+                color: rgb(0, 0, 0);
+                display: block;
+                padding: 0.6rem;
+                text-decoration: none;
+                font-size: 13px;
+                text-align: left;
+                background-color: #fff;
+            }
+            .wrap-drop span {
+                color: #928579;
+                font-size: 15px;
+            }
+            .wrap-drop .drop li:hover a {
+                background-color: #f1f1f1;
+            }
+            .wrap-drop.active::after {
+                content: "\f077";
+            }
+            .wrap-drop.active .drop {
+                display: block;
+                opacity: 1;
+                pointer-events: auto;
+                border: 1px solid lightgray;
+            }
+		}
+       
+		.search_filter {
+			.search_input {
+				border-radius: 0.25rem;
+				display: flex;
+				align-items: center;
+				border: 1px solid #dedede;
+				padding: 5px 20px;
+				input {
+					padding: 5px 20px;
+					border: none;
+					&:focus {
+						outline: none;
+						box-shadow: none;
+					}
+				}
+			}
+		}
+	}
+}
+.bidding_card_container {
+    list-style: none;
+    .bidding_card {
+        margin-bottom: 30px;
+        padding: 15px;
+        border: none;
+        border-radius: 10px;
+        box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+        .hotel_img {
+            height: 150px;
+            img {
+                border-radius: 10px;
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+        }
+        .hotel_info {
+            .info {
+                p {
+                    line-height: 1.2 ;
+                }
+                p.booking_date {
+                    font-size: 15px;
+                    font-weight: bold;
+                    color: #222;
+                    margin: 0;
+                }
+                h5.name {
+                    margin: 10px 0 0 0;
+                    font-size: 20px;
+                    font-weight: 700;
+                    color: var(--primary);
+                    cursor: pointer;
+                    outline: none;
+                }
+                p.guest_and_room {
+                    font-size: 18px;
+                    font-weight: bold;
+                    color: #222;
+                    margin: 0;
+                }
+                p.room_type {
+                    font-size: 18px;
+                    font-weight: bold;
+                    color: #222;
+                    margin: 0;
+                }
+            }
+        }
+        .bidding_action {
+            text-align: right;
+            .btns {
+                p {
+                    line-height: 1.3;
+                }
+                ul {
+                    padding-left: 0;
+                    li {
+                        display: inline-block;
+                        height: 100%;
+                        .price {
+                            margin-right: 15px;
+                            line-height: 1;
+                            .amount {
+                                font-weight: 700;
+                            }
+                            .time {
+                                font-size: 10px;
+                            }
+                        }
+                        .btn {
+                            height: 46px;
+                            p {
+                                display: grid;
+                                height: 100%;
+                                margin-top: 5px;
+                                color: #fff;
+                            }
+                        }
+                        .btn-orange {
+                            background: #ea4b35;
+                            color: #fff;
+                            cursor: initial;
+                            margin-left: 17px;
+                            &:hover {
+                                color: #fff;
+                                background-color: #ea4b35;
+                            }
+                        }
+                        .btn-blue {
+                            color: #fff;
+                            background-color: rgba(57, 175, 209, 1);
+                            cursor: initial;
+                            margin-left: 17px;
+                            &:hover {
+                                color: #fff;
+                                background-color: rgba(57, 175, 209, 1);
+                            }
+                        }
+                        .btn-yellow {
+                            color: #fff;
+                            background-color: #9d9d9d;
+                            cursor: initial;
+                            margin-left: 17px;
+                            &:hover {
+                                color: #fff;
+                                background-color: #9d9d9d;
+                            }
+                        }
+                        .btn-red {
+                            color: #fff;
+                            background-color: rgba(250, 92, 124, 1);
+                            cursor: initial;
+                            margin-left: 17px;
+                            &:hover {
+                                color: #fff;
+                                background-color: rgba(250, 92, 124, 1);
+                            }
+                        }
+                        .btn-green {
+                            color: #fff;
+                            background-color: #2e7d32;
+                            cursor: pointer;
+                            margin-left: 17px;
+                            &:hover {
+                                color: #fff;
+                                background-color: #226d26;
+                            }
+                        }
+                        p {
+                            margin-bottom: 0;
+                        }
+                    }
+                }
+            }
+            .approved {
+                line-height: 1.3;
+                display: block;
+                text-align: right;
+                span {
+                    border: 1px solid green;
+                    padding: 5px;
+                    display: inline-block;
+                    border-radius: 5px;
+                    color: green;
+                    i {
+                        color: green;
+                        font-size: 12px;
+                    }
+                }
+            }
+            .On-Hold {
+                line-height: 1.3;
+                display: block;
+                text-align: right;
+                span {
+                    border: 1px solid #ff9933;
+                    padding: 5px;
+                    display: inline-block;
+                    border-radius: 5px;
+                    color: #ff9933;
+                    i {
+                        color: #ff9933;
+                        font-size: 12px;
+                    }
+                }
+            }
+            .missed {
+                line-height: 1.3;
+                display: block;
+                text-align: right;
+                span {
+                    border: 1px solid #245585;
+                    padding: 5px;
+                    display: inline-block;
+                    border-radius: 5px;
+                    color: #245585;
+                    i {
+                        color: #245585;
+                        font-size: 12px;
+                    }
+                }
+            }
+            .Rejected {
+                line-height: 1.3;
+                display: block;
+                text-align: right;
+                span {
+                    border: 1px solid #ea4b35;
+                    padding: 5px;
+                    display: inline-block;
+                    border-radius: 5px;
+                    color: red;
+                    i {
+                        color: #ea4b35;
+                        font-size: 12px;
+                    }
+                }
+            }
+            .clear {
+                clear: both;
+            }
+            .mobile-view-status {
+                display: none;
+            }
+            // p {
+            //     line-height: 1.3;
+            //     color: #333;
+            // }
+        }
+        .bid-reason {
+            display: none;
+        }
+        .bid-rsn {
+            i {
+                color: #ea4b35;
+                font-size: 12px;
+            }
+            p {
+                line-height: 1;
+                margin-bottom: 0;
+                color: #333;
+            }
+        }
+        .addon-list {
+            display: flex;
+            align-self: center;
+            .addon-box {
+                box-shadow: 0 3px 6px rgb(0 0 0 / 16%), 0 3px 6px rgb(0 0 0 / 23%);
+                background: #fff;
+                margin-right: 17px;
+                padding: 17px;
+                border: 1px solid #ccc;
+                border-radius: 5px;
+                h6 {
+                    margin-bottom: 5px;
+                    font-weight: 700;
+                    font-size: 1rem;
+                    letter-spacing: 1.5px;
+                    text-transform: capitalize;
+                    color: var(--primary);
+                }
+                p {
+                    margin-bottom: 0;
+                }
+            }
+            .addon-box.active {
+                border: 1px solid #2e7d32;
+            }
+        }
+    }
+}
+@media (max-width:1024px)   {
+    .bidding_card_container {
+		.bidding_card {
+			.hotel_img {
+                width: 130px;
+			}
+		}
+	}
+}
+
+
+@media (max-width: 768px) {
+	.bidding_card_container {
+		.bidding_card {
+			.hotel_img {
+                width: 110px;
+			}
+		}
+	}
+	.hotel_info {
+		.info {
+			.booking_date {
+				font-size: 14px;
+			}
+			.name {
+				font-size: 18px ;
+			}
+			.guest_and_room {
+				font-size: 14px ;
+			}
+			.room_type {
+				font-size: 14px ;
+			}
+		}
+	}
+	.bid-history {
+		.bid-data {
+			.wrap-drop {
+				background: transparent;
+				border: 1px solid #dedede;
+				cursor: pointer;
+				width: 172px;
+				font-size: 13px;
+				padding: 10px 3rem 12px 2rem;
+				position: relative;
+				z-index: 3;
+				border-radius: 0.25rem;
+			}
+		}
+	}
+	.filters {
+		.search_filter {
+			.search_input {
+				width: 175px;
+				font-size: 13px;
+			}
+		}
+	}
+}
+
+@media  (max-width: 767px) {
+	.bid-history {
+		.bid-data {
+            .bid-header {
+                padding: 17px 0px;
+                .heading {
+                    h5 {
+                        font-size: 18px;
+                        font-weight: 700;
+                    }
+                }
+                .filters {
+                    .filter_by_status {
+                        margin-right: 5px;
+                        .wrap-drop {
+                            width: 172px;
+                            font-size: 13px;
+				            padding: 10px 3rem 12px 2rem;
+                        }
+                    }
+                }
+            }
+			.bidding_card_container {
+				padding: 0px 0px;
+				.bidding_card {
+					padding: 17px;
+					.hotel_img {
+                        height: 250px;
+						width: 100%;
+					}
+				}
+                .bidding_action {
+                    text-align: left;
+                    width: 100%;
+                    p.bidding_date {
+                        font-size: 14px;
+                        span{
+                            font-size: 14px;
+                            font-weight: bold;
+                        }
+                    }
+                .btns {
+                    ul {
+                        li {
+                            .time {
+                                color: #000 ;
+                            }
+                            .btn-green {
+                                font-size: 17px ;
+                            }
+                            .btn-orange {
+                                width: 20% ;
+                                position: absolute;
+                                top: -356px;
+                                right: 21px;
+                                background: #ffff ;
+                                color: #000 ;
+                            }
+                            display: block;
+                            margin-top: 10px;
+    
+                            .btn-green {
+                                margin-left: 0;
+                                margin-top: 10px;
+                            }
+                            .btn-success {
+                                margin-left: 0;
+                                margin-top: 10px;
+                            }
+                            .btn-yellow {
+                                margin-left: 0;
+                                margin-top: 10px;
+                            }
+                            .btn-success {
+                                margin-left: 0;
+                                margin-top: 10px;
+                            }
+                            .btn-red {
+                                margin-left: 0;
+                                margin-top: 10px;
+                            }
+                            .btn {
+                                display: grid;
+                                width: 100%;
+                                align-items: center;
+                                p {
+                                    color: black ;
+                                }
+                            }
+                            .price {
+                                position: absolute;
+                                width: 22% ;
+                                top: -356px;
+                                right: 20px ;
+                                background-color: white ;
+                                color: black ;
+                                z-index: 1;
+                                br {
+                                    display: none;
+                                }
+                            }
+                        }
+                    }
+                }
+                .approved {
+                    display: none;
+                }
+                .mobile-view-status {
+                    display: block ;
+                    margin-top: 15px;
+                }
+                
+            }
+            .bid-rsn {
+                p {
+                    font-size: 16px;
+                    font-weight: bold;
+                }
+            }
+            .hotel_info {
+                padding-top: 20px;
+                .info {
+                    .booking_date {
+                        font-size: 14px;
+                    }
+                    .name {
+                        font-size: 18px ;
+                    }
+                    .guest_and_room {
+                        font-size: 14px ;
+                    }
+                    .room_type {
+                        font-size: 14px ;
+                    }
+                }
+            }
+			}
+         
+		}
+	}
+  
+}
+
+@media (max-width:425px) {
+    .bid-history {
+		.bid-data {
+            .bid-header{
+                .heading {
+                    h5 {
+                        font-size: 18px;
+
+                    }
+                }
+                .filters{
+                    .filter_by_status{
+                        .wrap-drop{
+                            padding: 10px 2rem 11px 1rem;
+                            span{
+                                font-size: 13px;
+                            }
+                        }
+                    }
+                }
+            }
+			.bidding_card_container {
+                .bidding_action{
+                    .btns {
+                        ul {
+                            li {
+                                .btn-orange {
+                                    width: 30%;
+                                    top: -369px;
+                                    right: 21px;
+                                }
+                            }
+                        }
+                    }
+                }
+               
+            }
+        }
+    }
+}
+
+@media (max-width:320px) {
+    .bid-history {
+		.bid-data {
+            .bid-header {
+                .filters {
+                    .filter_by_status {
+                        .wrap-drop {
+                            width: 130px;
+                            padding: 15px 1.2rem 15px 1.1rem;
+                            span{
+                                font-size: 13px;
+                            }
+                        }
+                    }
+                }
+            }
+            .bidding_card_container {
+                .bidding_action{
+                    .btns {
+                        ul {
+                            li {
+                                .btn-orange {
+                                    width: 50%;
+
+                                }
+                            }
+                        }
+                    }
+                }
+               
+            }
+        }
+    }
+}

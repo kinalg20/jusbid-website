@@ -1,0 +1,622 @@
+<div class="Round-Trip-list-card">
+    <div class="card py-3">
+        <div class="row row-cols-1 row-cols-sm-2 mb-2">
+            <div class="title col">
+                <div class="Depapture_name">DEPAPTURE </div>
+            </div>
+            <div class="title col">
+                <div class="Depapture_name">RETURN </div>
+            </div>
+        </div>
+        <ng-container *ngFor="let flight of roundTripFlights; index as i">
+            <div class="row row-cols-1 row-cols-sm-2">
+                <div class="col p-1">
+                    <div class="card_body">
+                        <div class="list_card_body">
+                            <div class="flight_brnd">
+                                <img [src]="this.apiRequestService?.getAbsoluteImagePath(getAirlineObj(flight.first_flight.flightSegment.Carrier).image)"
+                                    class="img-fluid" alt="Airline Logo">
+                                <span
+                                    style="font-size: 15px; font-weight: 700;">{{getAirlineObj(flight.first_flight.flightSegment.Carrier).airline}}</span>
+                            </div>
+
+                            <div class="list_card mb-2">
+                                <div class="flight_details">
+                                    <div class="from">
+                                        <span class="city">{{flight.first_flight.Origin}}</span>
+                                        <span class="time">{{flight.first_flight.flightSegment.DepartureTime |
+                                            date:'HH:mm'}}</span>
+                                        <div class="date">
+                                            <div>{{flight.first_flight.flightSegment.DepartureTime | date:'EE, dd MMM'}}
+                                            </div>
+                                            <div class="country">{{getCityNameByIATA_Code(flight.first_flight.Origin)}}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="duration">
+                                        <span
+                                            class="duration_time">{{seconds_to_days_hours_mins_secs_str(flight.first_flight.flightSegment.FlightTime)}}</span>
+                                        <span class="flight_destination_line"><img
+                                                src="assets/images/flg-destionation.png" alt=""></span>
+                                    </div>
+                                    <div class="destination pl-70">
+                                        <span class="city">{{flight.first_flight.Destination}}</span>
+                                        <span class="time">{{flight.first_flight.flightSegment.ArrivalTime |
+                                            date:'HH:mm'}}</span>
+                                        <div class="date">
+                                            <div>{{flight.first_flight.flightSegment.ArrivalTime | date:'EE, dd MMM'}}
+                                            </div>
+                                            <div>{{getCityNameByIATA_Code(flight.first_flight.Destination)}}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="price_bottom_section">
+                                    <div class="price_section">
+                                        <div class="prices">
+                                            <span
+                                                class="booking_price">{{getPrice(flight.first_flight.flightSegment.fareInfo.Amount)
+                                                | currency:'INR' }}</span>
+                                        </div>
+                                    </div>
+                                    <div class="checkbox">
+                                        <input class="check-input" type="radio"
+                                            (click)="selectFlight('FIRST_FLIGHT', flight.first_flight, i)"
+                                            [checked]="selected_first_flight_index===i" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col p-1">
+                    <div class="card_body">
+                        <div *ngIf="selectedFlights[0]"
+                            [ngClass]="selectedFlights[0]?.flightSegment.Carrier != flight.return_flight.flightSegment.Carrier ? 'disabled' : ''">
+                        </div>
+                        <div class="list_card_body px-2">
+                            <div class="flight_brnd">
+                                <img [src]="this.apiRequestService?.getAbsoluteImagePath(getAirlineObj(flight.return_flight.flightSegment.Carrier).image)"
+                                    class="img-fluid" alt="Airline Logo">
+                                <span
+                                    style="font-size: 15px; font-weight: 700;">{{getAirlineObj(flight.return_flight.flightSegment.Carrier).airline}}</span>
+                            </div>
+
+                            <div class="list_card mb-2">
+                                <div class="flight_details">
+                                    <div class="from">
+                                        <span class="city">{{flight.return_flight.Origin}}</span>
+                                        <span class="time">{{flight.return_flight.flightSegment.DepartureTime |
+                                            date:'HH:mm'}}</span>
+                                        <div class="date">
+                                            <div>{{flight.return_flight.flightSegment.DepartureTime | date:'EE, dd
+                                                MMM'}}
+                                            </div>
+                                            <div class="country">{{getCityNameByIATA_Code(flight.return_flight.Origin)}}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="duration">
+                                        <span
+                                            class="duration_time">{{seconds_to_days_hours_mins_secs_str(flight.return_flight.flightSegment.FlightTime)}}</span>
+                                        <span class="flight_destination_line"><img
+                                                src="assets/images/flg-destionation.png" alt=""></span>
+                                    </div>
+                                    <div class="destination pl-70">
+                                        <span class="city">{{flight.return_flight.Destination}}</span>
+                                        <span class="time">{{flight.return_flight.flightSegment.ArrivalTime |
+                                            date:'HH:mm'}}</span>
+                                        <div class="date">
+                                            <div>{{flight.return_flight.flightSegment.ArrivalTime | date:'EE, dd MMM'}}
+                                            </div>
+                                            <div>{{getCityNameByIATA_Code(flight.return_flight.Destination)}}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="price_bottom_section">
+                                    <div class="price_section">
+                                        <div class="prices">
+                                            <span
+                                                class="booking_price">{{getPrice(flight.return_flight.flightSegment.fareInfo.Amount)
+                                                | currency:'INR' }}</span>
+                                        </div>
+                                    </div>
+                                    <div class="checkbox">
+                                        <input class="check-input" type="radio"
+                                            (click)="selectFlight('RETURN_FLIGHT', flight.return_flight, i)"
+                                            [checked]="selected_return_flight_index===i" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </ng-container>
+    </div>
+    <div class="mt-4 mb-4"
+        *ngIf="selectedFlights.length==2 && selectedFlights[0]?.flightSegment.Carrier === selectedFlights[1]?.flightSegment.Carrier">
+        <div class="round_trip_book_container">
+             <div class="round_trip_body">
+                <div class="Depapture_box ">
+                    <div class="Depapture_name"> DEPAPTURE
+                        <div class="flight_brnd">
+                            <img [src]="this.apiRequestService?.getAbsoluteImagePath(getAirlineObj(selectedFlights[0]?.flightSegment?.Carrier).image)"
+                                class="img-fluid" alt="">
+                            <span
+                                style="font-size: 15px; font-weight: 500; color: white;">{{getAirlineObj(selectedFlights[0]?.flightSegment?.Carrier).airline}}</span>
+                            <div class="from">
+                                <span class="time">{{selectedFlights[0]?.flightSegment.DepartureTime |
+                                    date:'HH:mm'}}</span>
+                                <div class="more_detail_header">
+                                    <a class="dropdown-toggle noselect" (click)="openCancellationFeesModal()">Flight
+                                        Details</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="Depapture_Price">
+                    <div>{{getPrice(selectedFlights[0]?.flightSegment?.fareInfo?.Amount) | currency:'INR'}}</div>
+                </div>
+                <div class="vl "></div>
+                <div class="Depapture_box ">
+                    <div class="Depapture_name"> RETURN
+                        <div class="flight_brnd">
+                            <img [src]="this.apiRequestService?.getAbsoluteImagePath(getAirlineObj(selectedFlights[1]?.flightSegment?.Carrier).image)"
+                                class="img-fluid" alt="">
+                            <span
+                                style="font-size: 15px; font-weight: 500; color: white;">{{getAirlineObj(selectedFlights[1]?.flightSegment?.Carrier).airline}}</span>
+                            <div class="from">
+                                <span class="time">{{selectedFlights[1]?.flightSegment.DepartureTime |
+                                    date:'HH:mm'}}</span>
+                                <div class="more_detail_header">
+                                    <a class="dropdown-toggle noselect" (click)="openCancellationFeesModal()">Flight
+                                        Details</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="Depapture_Price">
+                    <div>{{getPrice(selectedFlights[1]?.flightSegment?.fareInfo?.Amount) | currency:'INR'}}</div>
+                </div>
+                <div class="vl"></div>
+                <div class="price_bottom_section">
+                    <div class="price_section">
+                        <div class="prices">
+                            <span class="booking_price">TOTAL PRICE</span>
+                            <span
+                                class="off_price">{{getPrice(selectedFlights[0]?.flightSegment?.fareInfo?.Amount)+getPrice(selectedFlights[0]?.flightSegment?.fareInfo?.Amount)
+                                | currency:'INR'}}</span>
+                        </div>
+                    </div>
+
+                    <div class="booking_btns">
+                        <button type="button" (click)="bookNow()" class="btn btn-success btn-gn px-4">Book</button>
+                    </div>
+                </div> 
+            </div>
+        </div>
+    </div>
+    <div class="custom_modal" *ngIf="is_openCancellationFeesModal">
+        <div class="card card-Showdow">
+            <div class="card_header ">
+                <div class="title">
+                    <h5 class="Card-title">Fare Rule</h5>
+                </div>
+                <div class="close_modal"><i (click)="openCancellationFeesModal()"
+                        class="cursor-pointer fa fa-times"></i>
+                </div>
+            </div>
+            <div class="header">
+                <div class="tabs-header">
+                    <ul class="d-flex justify-content-between ">
+                        <li class="tab">
+                            <a class="cursor-pointer" [ngClass]="active == 0?'active':''" (click)="tabChange(0)">
+                                Flight Details</a>
+                        </li>
+                        <li class="tab">
+                            <a class="cursor-pointer" [ngClass]="active == 1?'active':''" (click)="tabChange(1)">
+                                Fare Summary</a>
+                        </li>
+                        <li class="tab">
+                            <a class="cursor-pointer" [ngClass]="active == 2?'active':''" (click)="tabChange(2)">
+                                Cancellation</a>
+                        </li>
+                        <li class="tab">
+                            <a class="cursor-pointer" [ngClass]="active == 3?'active':''" (click)="tabChange(3)">
+                                Date Change</a>
+                        </li>
+                    </ul>
+                </div>
+                <ng-container *ngIf="active == 0">
+                    <div class="Tabs_body">
+                        <div class="d-flex justify-content-between">
+                            <div class="col-6">
+                                <div class="tabs_title mt-2">
+                                    <div class="departure_flight">DEPAPTURE FLIGHT </div>
+                                </div>
+                                <div class="card_body mt-2">
+                                    <div class="card_title">
+                                        <span class="flight_date_city">New Dehli to Bengaluru , 17 April</span>
+                                    </div>
+                                    <hr style="margin-top: 4px; margin-bottom: 0px;">
+                                    <div class="flight_brnd">
+                                        <img src="https://play-lh.googleusercontent.com/AVcvRbkNrd8Tq3ZmEHoOnqYCtBbGmhyQ8ZYCcGBczDX8qxI_143o-ZtB-W_j0E-waut5=s1200"
+                                            class="img-fluid" alt="">
+                                        <span>Air india | SG 636</span>
+                                    </div>
+                                    <div class="flight_details">
+                                        <div class="from">
+                                            <span class="city">New Dehli</span>
+                                            <span class="time">21:00</span>
+                                            <div class="date">
+                                                <div>Wed, 31 Mar 21</div>
+                                                <div>indra gandhi</div>
+                                                <div>international Airport</div>
+                                                <div>terminal 3</div>
+                                            </div>
+                                        </div>
+                                        <div class="duration">
+                                            <span class="duration_time">2hr 10min</span>
+                                            <p class="flight_speed">Non-stop</p>
+                                        </div>
+                                        <div class="destination pl-70">
+                                            <span class="city">hyderabad</span>
+                                            <span class="time">23:30</span>
+                                            <div class="date">
+                                                <div>Wed, 31 Mar 21</div>
+                                                <div>indra gandhi</div>
+                                                <div>international Airport</div>
+                                                <div>terminal 1</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="change-plane d-flex justify-content-between mt-4">
+                                    <div class="DotLines"></div>
+                                    <span class="chplane">Change plane at Hyderabad(HYD), Connecting Time : 1h
+                                        10m</span>
+                                    <span class="DotLines"></span>
+                                </div>
+
+                                <div class="card_body mt-2">
+                                    <div class="card_title">
+                                        <span class="flight_date_city">Bengaluru To New Dehli, 21 April</span>
+                                    </div>
+                                    <hr style="margin-top: 4px; margin-bottom: 0px;">
+
+                                    <div class="flight_brnd">
+                                        <img src="https://play-lh.googleusercontent.com/AVcvRbkNrd8Tq3ZmEHoOnqYCtBbGmhyQ8ZYCcGBczDX8qxI_143o-ZtB-W_j0E-waut5=s1200"
+                                            class="img-fluid" alt="">
+                                        <span>Air india | SG 636</span>
+                                    </div>
+                                    <div class="flight_details">
+                                        <div class="from">
+                                            <span class="city">hyderabad</span>
+                                            <span class="time">21:00</span>
+                                            <div class="date">
+                                                <div>Wed, 31 Mar 21</div>
+                                                <div>indra gandhi</div>
+                                                <div>international Airport</div>
+                                                <div>terminal 1</div>
+                                            </div>
+                                        </div>
+                                        <div class="duration">
+                                            <span class="duration_time">2hr 10min</span>
+
+                                            <p class="flight_speed">Non-stop</p>
+                                        </div>
+                                        <div class="destination pl-70">
+                                            <span class="city">Bengaluru</span>
+                                            <span class="time">23:30</span>
+                                            <div class="date">
+                                                <div>Wed, 31 Mar 21</div>
+                                                <div>indra gandhi</div>
+                                                <div>international Airport</div>
+                                                <div>terminal 1</div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                            <div class="col-6">
+                                <div class="tabs_title mt-2">
+                                    <div class="departure_flight"> RETURN FLIGHT </div>
+                                </div>
+                                <div class="card_body mt-2">
+                                    <div class="card_title">
+                                        <span class="flight_date_city">Bengaluru To New Dehli, 21 April</span>
+                                    </div>
+                                    <hr style="margin-top: 4px; margin-bottom: 0px;">
+
+                                    <div class="flight_brnd">
+                                        <img src="https://play-lh.googleusercontent.com/AVcvRbkNrd8Tq3ZmEHoOnqYCtBbGmhyQ8ZYCcGBczDX8qxI_143o-ZtB-W_j0E-waut5=s1200"
+                                            class="img-fluid" alt="">
+                                        <span>Air india | SG 636</span>
+                                    </div>
+                                    <div class="flight_details">
+                                        <div class="from">
+                                            <span class="city">hyderabad</span>
+                                            <span class="time">21:00</span>
+                                            <div class="date">
+                                                <div>Wed, 31 Mar 21</div>
+                                                <div>indra gandhi</div>
+                                                <div>international Airport</div>
+                                                <div>terminal 1</div>
+                                            </div>
+                                        </div>
+                                        <div class="duration">
+                                            <span class="duration_time">2hr 10min</span>
+
+                                            <p class="flight_speed">Non-stop</p>
+                                        </div>
+                                        <div class="destination pl-70">
+                                            <span class="city">Bengaluru</span>
+                                            <span class="time">23:30</span>
+                                            <div class="date">
+                                                <div>Wed, 31 Mar 21</div>
+                                                <div>indra gandhi</div>
+                                                <div>international Airport</div>
+                                                <div>terminal 1</div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="change-plane d-flex justify-content-between mt-4">
+                                    <div class="DotLines"></div>
+                                    <span class="chplane">Change plane at Hyderabad(HYD), Connecting Time : 1h
+                                        10m</span>
+                                    <span class="DotLines"></span>
+                                </div>
+                                <div class="card_body mt-2">
+                                    <div class="card_title">
+                                        <span class="flight_date_city">Bengaluru To New Dehli, 21 April</span>
+                                    </div>
+                                    <hr style="margin-top: 4px; margin-bottom: 0px;">
+
+                                    <div class="flight_brnd">
+                                        <img src="https://play-lh.googleusercontent.com/AVcvRbkNrd8Tq3ZmEHoOnqYCtBbGmhyQ8ZYCcGBczDX8qxI_143o-ZtB-W_j0E-waut5=s1200"
+                                            class="img-fluid" alt="">
+                                        <span>Air india | SG 636</span>
+                                    </div>
+                                    <div class="flight_details">
+                                        <div class="from">
+                                            <span class="city">hyderabad</span>
+                                            <span class="time">21:00</span>
+                                            <div class="date">
+                                                <div>Wed, 31 Mar 21</div>
+                                                <div>indra gandhi</div>
+                                                <div>international Airport</div>
+                                                <div>terminal 1</div>
+                                            </div>
+                                        </div>
+                                        <div class="duration">
+                                            <span class="duration_time">2hr 10min</span>
+
+                                            <p class="flight_speed">Non-stop</p>
+                                        </div>
+                                        <div class="destination pl-70">
+                                            <span class="city">Bengaluru</span>
+                                            <span class="time">23:30</span>
+                                            <div class="date">
+                                                <div>Wed, 31 Mar 21</div>
+                                                <div>indra gandhi</div>
+                                                <div>international Airport</div>
+                                                <div>terminal 1</div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </ng-container>
+                <ng-container *ngIf="active == 1">
+                    <div class="Tabs_body">
+                        <div class="fare_Bareakup mt-2 ">
+                            <h6 class="titile_name">Fare Bareakup</h6>
+                            <hr class="my-1">
+                            <div class="d-flex justify-content-between">
+                                <div class="col-3 ">
+                                    <h6 class="Total_Price">Total</h6>
+                                </div>
+                                <div class="col-3">
+                                    <h6 class="Total_Price">₹ 5,265</h6>
+                                </div>
+                                <div class="col-3"></div>
+                                <div class="col-3"></div>
+                            </div>
+                            <div class="d-flex justify-content-between">
+                                <div class="col-3">
+                                    <h6 class="fare_title">Base Fare</h6>
+                                </div>
+                                <div class="col-3">
+                                    <h6 class="fare_title">₹5,265</h6>
+                                </div>
+                                <div class="col-3"></div>
+                                <div class="col-3"></div>
+                            </div>
+                            <div class="d-flex justify-content-between">
+                                <div class="col-3">
+                                    <h6 class="fare_title">SubCharges</h6>
+                                </div>
+                                <div class="col-3 ">
+                                    <h6 class="fare_title">₹ 5,265</h6>
+                                </div>
+                                <div class="col-3 "></div>
+                                <div class="col-3"></div>
+                            </div>
+                        </div>
+                    </div>
+                </ng-container>
+                <ng-container *ngIf="active == 2">
+                    <div class="Tabs_body">
+                        <div class="d-flex justify-content-between">
+                            <div class="col-6">
+                                <div class="flight_brnd">
+                                    <img src="https://play-lh.googleusercontent.com/AVcvRbkNrd8Tq3ZmEHoOnqYCtBbGmhyQ8ZYCcGBczDX8qxI_143o-ZtB-W_j0E-waut5=s1200"
+                                        class="img-tab" alt="">
+                                    <span>Air India</span>
+                                    <span class="stop px-2">DEL -BLR (via stop 1 - PNQ)</span>
+                                </div>
+                                <div class="Table-selection">
+                                    <table class="table table-bordered">
+                                        <tr>
+                                            <th>Time Frame
+                                                <h6 class="Scheduled"> (From Scheduled flight departure)</h6>
+                                            </th>
+                                            <th>Airline Free + Jusbid Fee
+                                                <h6 class="Scheduled"> (per Passenger)</h6>
+                                            </th>
+                                        </tr>
+                                        <tr>
+                                            <td>0 hours to 2 hours*</td>
+                                            <td>
+                                                ADULT : Non Refundable</td>
+                                        </tr>
+                                        <tr>
+                                            <td>2 hours to 4 days*</td>
+                                            <td>ADULT : 5,265 + 300</td>
+                                        </tr>
+                                        <tr>
+                                            <td>4 days to 365 days*</td>
+                                            <td>ADULT : 3000 + 300</td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="flight_brnd">
+                                    <img src="https://play-lh.googleusercontent.com/AVcvRbkNrd8Tq3ZmEHoOnqYCtBbGmhyQ8ZYCcGBczDX8qxI_143o-ZtB-W_j0E-waut5=s1200"
+                                        class="img-tab" alt="">
+                                    <span>Air India</span>
+                                    <span class="stop px-2">DEL -BLR (via stop 1 - PNQ)</span>
+                                </div>
+                                <div class="Table-selection">
+                                    <table class="table table-bordered">
+                                        <tr>
+                                            <th>Time Frame
+                                                <h6 class="Scheduled"> (From Scheduled flight departure)</h6>
+                                            </th>
+                                            <th>Airline Free + Jusbid Fee
+                                                <h6 class="Scheduled"> (per Passenger)</h6>
+                                            </th>
+                                        </tr>
+                                        <tr>
+                                            <td>0 hours to 2 hours*</td>
+                                            <td>
+                                                ADULT : Non Refundable</td>
+                                        </tr>
+                                        <tr>
+                                            <td>2 hours to 4 days*</td>
+                                            <td>ADULT : 5,265 + 300</td>
+                                        </tr>
+                                        <tr>
+                                            <td>4 days to 365 days*</td>
+                                            <td>ADULT : 3000 + 300</td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mt-4 px-4">
+                            <h6 style="font-size:12px; font-weight: bold; ">*Important:The airline fee is indicative.
+                                Jusbid does not guarantee the
+                                accuracy of this information. All Fees Mentioned are per Passenger .
+                            </h6>
+                        </div>
+                    </div>
+                </ng-container>
+                <ng-container *ngIf="active == 3">
+                    <div class="Tabs_body">
+                        <div class="d-flex justify-content-between">
+                            <div class="col-6">
+                                <div class="flight_brnd">
+                                    <img src="https://play-lh.googleusercontent.com/AVcvRbkNrd8Tq3ZmEHoOnqYCtBbGmhyQ8ZYCcGBczDX8qxI_143o-ZtB-W_j0E-waut5=s1200"
+                                        class="img-tab" alt="">
+                                    <span>Air India</span>
+                                    <span class="stop px-2">DEL -BLR (via stop 1 - PNQ)</span>
+                                </div>
+                                <div class="Table-selection">
+                                    <table class="table table-bordered">
+                                        <tr>
+                                            <th>Time Frame
+                                                <h6 class="Scheduled"> (From Scheduled flight departure)</h6>
+                                            </th>
+                                            <th>Airline Free + Jusbid Fee
+                                                <h6 class="Scheduled"> (per Passenger)</h6>
+                                            </th>
+                                        </tr>
+                                        <tr>
+                                            <td>0 hours to 2 hours*</td>
+                                            <td>
+                                                ADULT : Non Refundable</td>
+                                        </tr>
+                                        <tr>
+                                            <td>2 hours to 4 days*</td>
+                                            <td>ADULT : 5,265 + 300</td>
+                                        </tr>
+                                        <tr>
+                                            <td>4 days to 365 days*</td>
+                                            <td>ADULT : 3000 + 300</td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="flight_brnd">
+                                    <img src="https://play-lh.googleusercontent.com/AVcvRbkNrd8Tq3ZmEHoOnqYCtBbGmhyQ8ZYCcGBczDX8qxI_143o-ZtB-W_j0E-waut5=s1200"
+                                        class="img-tab" alt="">
+                                    <span>Air India</span>
+                                    <span class="stop px-2">DEL -BLR (via stop 1 - PNQ)</span>
+                                </div>
+                                <div class="Table-selection">
+                                    <table class="table table-bordered">
+                                        <tr>
+                                            <th>Time Frame
+                                                <h6 class="Scheduled"> (From Scheduled flight departure)</h6>
+                                            </th>
+                                            <th>Airline Free + Jusbid Fee
+                                                <h6 class="Scheduled"> (per Passenger)</h6>
+                                            </th>
+                                        </tr>
+                                        <tr>
+                                            <td>0 hours to 2 hours*</td>
+                                            <td>
+                                                ADULT : Non Refundable</td>
+                                        </tr>
+                                        <tr>
+                                            <td>2 hours to 4 days*</td>
+                                            <td>ADULT : 5,265 + 300</td>
+                                        </tr>
+                                        <tr>
+                                            <td>4 days to 365 days*</td>
+                                            <td>ADULT : 3000 + 300</td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mt-4 px-2">
+                            <h6 style="font-size:12px; font-weight: bold; ">*Important:The airline fee is indicative.
+                                Jusbid does not guarantee the
+                                accuracy of this information. All Fees Mentioned are per Passenger .
+                            </h6>
+                        </div>
+                    </div>
+                </ng-container>
+            </div>
+
+
+        </div>
+    </div>
+</div>

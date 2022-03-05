@@ -1,0 +1,116 @@
+<!-- Logo  -->
+<div class="header d-md-block d-none">
+    <nav class="navbar sticky-top">
+        <img src="https://storage.googleapis.com/jusbid_cloud_storage/assets/images/logos/Jusbid_logo.png"
+            routerLink="/" alt="">
+    </nav>
+</div>
+
+<!-- auth page -->
+<div class="auth_page">
+    <div class="login">
+        <div class="container-fluid">
+            <div class="login_body">
+                <div class="row">
+                    <div class="col-12 col-sm-0 col-md-6 col-xl-7">
+                        <div class="login_container">
+                            <div class="loginFrom">
+                                <h2 class="login_title"><span class="sub_title">Welcome to</span> JusBid</h2>
+                                <p class="title">Find the most affordable hotels and flights through the
+                                    JusBid and get the most suitable
+                                    accommodation for your vacation & work.
+                                </p>
+                                <p class="stay_connected">
+                                    To find budget hotels, Stay connected with us!
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 mx-md-auto col-md-6 col-xl-4">
+                        <div class="gap">
+                            <div class="form_card">
+                                <div class="glass-login">
+                                    <section>
+                                        <h5><span class="auth_form_title_Sign_in">Hello!</span>🤟</h5>
+                                        <p class="login_credentials">Enter your credentials to continue!
+                                        </p>
+                                        <form #signinWithEmailForm="ngForm"
+                                            (submit)="signinWithEmail(signinWithEmailForm)" autocomplete="off">
+                                            <ng-container *ngIf="resMsg">
+                                                <div class="alert alert-danger" role="alert" id="loginAlert">
+                                                    {{ resMsg }}
+                                                </div>
+                                            </ng-container>
+
+                                            <div class="form-field">
+                                                <label for="user" class="form-label">
+                                                    E-mail or Mobile Number
+                                                </label>
+
+                                                <input class="form-control" autocomplete="off" id="user" name="user"
+                                                    ngModel required (input)="this._utilsService.validatedEmail($event)"
+                                                    (input)="this._utilsService.validateMobile($event)" (keydown)="this._utilsService.maxlengthMobile($event)"
+                                                    maxlength="100" />
+                                                <h6 class="text-danger" *ngIf="this._utilsService.invalidEmail || this._utilsService.invalidMobile">
+                                                    {{
+                                                   this._utilsService.invalidEmail
+                                                    ? "Invalid Email"
+                                                    : this._utilsService.invalidMobile
+                                                    ? "Invalid Mobile"
+                                                    : ""
+                                                    }}
+                                                </h6>
+                                            </div>
+                                            <div class="form-field">
+                                                <div
+                                                    style="display: flex;justify-content: space-between;align-items: center;">
+                                                    <label for="password" class="form-label">Password</label>
+
+                                                </div>
+                                                <div style="display: flex; position: relative">
+                                                    <input [type]="hidePassword ? 'password' : 'text'"
+                                                        class="form-control w-100" autocomplete="off" id="password"
+                                                        name="password" ngModel required />
+                                                    <span (click)="showPassword()"
+                                                        style="position: absolute; top: 0; right: 0">
+                                                        <img width="28px" [src]="
+                                                          hidePassword
+                                                            ? 'https://storage.googleapis.com/jusbid_cloud_storage/assets/images/icons/show_passowrd.png'
+                                                            : 'https://storage.googleapis.com/jusbid_cloud_storage/assets/images/icons/hide_passowrd.png'
+                                                        " alt="Show Password" />
+                                                    </span>
+                                                </div>
+                                            </div>
+                                            <div class="text-right align-items: center; font-size:15px">
+                                                <a class="link" routerLink="/authentication/forgot-password">Forgot Password ?</a>
+                                            </div>
+
+                                            <button type="submit" class="btn btn-login btn-block mt-3">Login</button>
+
+                                        </form>
+                                        <h6 class="text-center mt-2 phone_no" style="font-size: 15px; color: #000;">or
+                                        </h6>
+                                        <div class="text-center mt-2" style="font-size: 15px; font-weight: bold;">
+                                            <button class="btn btn-otp btn-block "
+                                                routerLink="/authentication/login-Otp">
+                                                <span>Continue with <a style="color: #fff; font-weight: bold;">Phone
+                                                        Number</a>
+                                                </span>
+                                            </button>
+                                        </div>
+                                        <div class="userlogin">
+                                            <span>Don't have account? <a routerLink="/authentication/sign-up"
+                                                    style="color: #007bff;">Create Account</a></span>
+                                        </div>
+                                    </section>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</div>

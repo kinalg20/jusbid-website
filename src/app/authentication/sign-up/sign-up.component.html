@@ -1,0 +1,102 @@
+<!-- Logo  -->
+<div class="header d-md-block d-md-block">
+    <nav class="navbar sticky-top">
+        <img src="https://storage.googleapis.com/jusbid_cloud_storage/assets/images/logos/Jusbid_logo.png"
+            routerLink="/" alt="">
+    </nav>
+</div>
+
+<!-- auth page -->
+<div class="auth_page">
+    <div class="login">
+        <div class="container-fluid">
+            <div class="login_body">
+                <div class="row">
+                    <div class="col-12 col-sm-0 col-md-6 col-xl-7">
+                        <div class="login_container">
+                            <div class="loginFrom">
+                                <h2 class="login_title"><span class="sub_title">Welcome to</span> JusBid</h2>
+                                <p class="title">Find the most affordable hotels and flights through the
+                                    JusBid and get the most suitable
+                                    accommodation for your vacation & work.
+                                </p>
+                                <p class="stay_connected">
+                                    To find budget hotels, Stay connected with us!
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 mx-md-auto col-md-6 col-xl-4">
+                        <div class="gap">
+                            <div class="form_card">
+                                <div class="glass-login">
+                                    <section>
+                                        <h5 class="auth_form_title">Create Your Account</h5>
+                                        <form #signUpForm="ngForm" (submit)="SignUp(signUpForm)" class="my-2"
+                                            autocomplete="off">
+                                            <ng-container *ngIf="resMsg">
+                                                <div class="alert alert-danger" role="alert" id="loginAlert">
+                                                    {{ resMsg }}
+                                                </div>
+                                            </ng-container>
+                                            <div class="form-field">
+                                                <label for="firstname" class="form-label">First Name</label>
+                                                <input type="text" class="form-control" autocomplete="off"
+                                                    id="firstname" maxlength='50' name="firstname" ngModel required>
+                                            </div>
+                                            <div class="form-field">
+                                                <label for="lastname" class="form-label">Last Name</label>
+                                                <input type="text" class="form-control" maxlength='50'
+                                                    autocomplete="off" id="lastname" name="lastname" ngModel required>
+                                            </div>
+                                            <div class="form-field">
+                                                <label for="mobile" class="form-label">Mobile</label>
+                                                <input class="form-control" autocomplete="off" id="mobile" name="mobile"
+                                                    ngModel required maxlength="10"
+                                                    (input)="this._utilsService.validateMobile($event)"
+                                                    (keydown)="this._utilsService.inputMobile($event)" />
+                                                <h6 class="text-danger" *ngIf="this._utilsService.invalidMobile">
+                                                    {{ this._utilsService.invalidMobile ? "Invalid Mobile" : "" }}
+                                                </h6>
+                                            </div>
+                                            <div class="form-field">
+                                                <label for="email" class="form-label">Email Address</label>
+                                                <input type="email" class="form-control" autocomplete="off" id="email"
+                                                    (input)="this._utilsService.validatedEmail($event)" name="email" ngModel required
+                                                    maxlength="30" />
+                                                <h6 class="text-danger" *ngIf="this._utilsService.invalidEmail">
+                                                    {{ this._utilsService.invalidEmail ? "Invalid Email" : "" }}
+                                                </h6>
+
+                                            </div>
+                                            <div class="form-field">
+                                                <label for="password" class="form-label">Password</label>
+                                                <input type="password" class="form-control" autocomplete="off"
+                                                    id="password" ngModel name="password">
+                                            </div>
+                                            <div class="form-field">
+                                                <label for="cpassword" class="form-label">Confirm Password</label>
+                                                <input type="password" class="form-control" autocomplete="off"
+                                                    id="cpassword" ngModelname="cpassword">
+                                                <!-- <p class="mt-2 text-danger" *ngIf="cpass ">{{ password == cpass?'':'Password Not
+                                                    Match' }}</p> -->
+                                            </div>
+
+                                            <button type="submit" class="btn btn-primary btn-block mt-4">Sign
+                                                Up</button>
+                                        </form>
+                                        <div class="usersignup" style="font-size: 16px;">
+                                            <span style="text-align: center;">Already have a account? <a
+                                                    routerLink='/authentication' style="color: #007bff;">Login
+                                                </a></span>
+                                        </div>
+                                    </section>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

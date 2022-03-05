@@ -1,0 +1,1118 @@
+.Round-Trip-list-card{
+	margin-top: 20px;
+	margin-left: 0px;
+	padding-bottom: 100px;
+		.card{
+			border-radius: 5px;
+			padding: 20px;
+			background: #fff;
+			.card_body{
+				box-shadow: 0px 0px 4.48px 1.12px rgb(0 0 0 / 10%);
+				border-radius: 5px;
+				padding: 1px;
+			}
+			.title {
+				border-radius: 5px;
+			  color: white;
+			  
+			  .Depapture_name{
+				font-size: 15px;
+				font-weight: 700;
+				border-radius: 5px;
+			
+			   color: #E21224;
+			   text-align: left;
+			}
+			}
+			.list_card_body{
+				padding:  10px 5px;
+				.flight_brnd {
+					width: 100%;
+					
+					img {
+						width: 40px;
+						height: 40px;
+					}
+					p {
+						font-weight: 500;
+						font-size: 20px;
+						
+					}	}
+					.list_card {
+						display: flex;
+						align-items: center;
+		
+						.flight_details {
+							width: 100%;
+							display: flex;
+							
+							.from {
+								font-size: 12px;
+								font-style: normal;
+								font-weight: 400;
+								line-height: 18px;
+								letter-spacing: 0em;
+								display: grid;
+								min-width: 70px;
+								text-align: right;
+								span.city {
+									font-weight: bold;
+									font-size: 12px;
+									line-height: 18px;
+									color: #000000;
+								}
+								span.time {
+									font-weight: 600;
+									font-size: 12px;
+									line-height: 13px;
+									text-align: right;
+		
+									
+								}
+								div.date {
+									font-size: 12px;
+									color: rgb(143, 141, 141);
+									font-weight: 500;
+									letter-spacing: 0em;
+									.country{
+									font-weight: normal;
+									font-size: 12px;
+									line-height: 13px;
+									text-align: right;
+									}
+								}
+								
+							 }
+							.duration  {
+								align-items: flex-start;
+								text-align: center;
+								margin: 0 20px;
+								letter-spacing: 0em;
+								.duration_time,
+								.flight_destination_line{
+									img{
+										width: 100px;
+									}
+									}
+								.flight_speed {
+									font-weight: 500;
+									font-size: 14px;
+									
+								}
+							}
+							.destination {
+								font-size: 12px;
+								font-style: normal;
+								font-weight: 400;
+								line-height: 18px;
+								letter-spacing: 0em;
+								text-align: left;
+								display: grid;
+								min-width: 90px;
+								
+						
+								span.city {
+									font-weight: bold;
+									font-size: 12px;
+									line-height: 18px;
+									color: #000000;
+
+								}
+								span.time {
+									font-weight: bold;
+									font-size: 12px;
+									line-height: 13px;
+									text-align: left;
+									
+									
+								}
+								div.date {
+									font-weight: normal;
+									font-size: 12px;
+									line-height: 13px;
+									text-align: left;
+									
+								}
+							}
+						}
+						.price_bottom_section{
+							display: flex;
+							width: 50%;
+							
+							align-items: center;
+							justify-content: center;
+							.price_section {
+								margin: 0 12px;
+								display: flex;
+								.prices {
+									display: grid;
+									.booking_price {
+									font-family: 'Roboto', sans-serif;
+									font-size: 16px;
+									font-style: normal;
+									font-weight: 600;
+									line-height: 24px;
+									letter-spacing: 0em;
+									text-align: left;
+									color: #E21224;
+									}
+								}
+							}
+							.checkbox{
+								display: flex;
+								.check-input{
+									align-items: center;
+									justify-content: center;
+									
+								}
+								}
+						}
+					
+						
+					}
+		}
+		
+		}	
+			.round_trip_book_container{
+		
+			background: linear-gradient(90deg, #000000 32.49%, #B62532 86.43%);
+			box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.25);
+			border-radius: 6px;
+			padding : 5px 40px;
+			position: fixed;
+			bottom: 20px;
+			z-index: 999;
+			.round_trip_body{
+				
+				align-items: center;
+				justify-content: center;
+				display: flex;
+			}
+			.Depapture_box{
+				min-width: 150px;
+				letter-spacing: 0em;
+				display: grid;
+				font-family: 'Poppins' sans-serif;
+				color: white;
+
+				.Depapture_name{
+					font-size: 13px;
+					font-weight: 700;
+					
+				}
+
+			.flight_brnd {
+				width: 100%;
+				font-family: 'Poppins' sans-serif;
+				   font-style: normal;
+				img {
+					width: 20px;
+					height: 30px;
+				}
+				span.time{
+					font-size: 12px;
+				}
+				.more_detail_header{
+					a{
+						font-size: 15px;
+						text-decoration: none;
+					}
+
+
+				}
+			}
+			.from {
+				font-size: 12px;
+				font-style: normal;
+				font-weight: 400;
+				line-height: 18px;
+				letter-spacing: 0em;
+				display: grid;
+				min-width: 65px;
+				font-family: 'Poppins' sans-serif;
+				color: white;
+				span.city {
+					font-weight: bold;
+					font-size: 12px;
+					
+				}
+				span.time {
+					font-size: 15px;
+					font-style: normal;
+					font-weight: 500;
+				
+				}
+
+			}
+		}
+.Depapture_Price{
+       min-width: 70px;
+	   color: white;
+	   margin: 0 15px;
+}
+.vl {
+	border-left: 1px solid rgb(184, 184, 184);
+	height: 80px;
+	margin: 0 12px;
+	padding-right: 20px;
+  }
+  .price_bottom_section{
+	display: flex;
+	width: 50%;
+	
+	align-items: center;
+	justify-content: center;
+  .price_section {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	color: white;
+	margin: 0 12px;
+	.prices {
+		display: grid;
+		.booking_price {
+		 font-family: 'Roboto', sans-serif;
+		font-size: 15px;
+		font-style: normal;
+		font-weight: 700;
+		line-height: 30px;
+		letter-spacing: 0em;
+		text-align: left;
+		color: #ffffff;
+		}
+		.off_price {
+			font-family: 'Poppins' sans-serif;
+			font-size: 15px;
+			font-style: normal;
+			font-weight: 400;
+			line-height: 18px;
+			letter-spacing: 0em;
+			text-align: center;
+		}
+	}
+}
+  }
+.btn-gn{
+	height: 50%;
+	width: 100%;
+	border-radius: 10px;
+	margin: 0 12px;
+	
+}		
+		}
+		.card_body .disabled{
+			width: 100%;
+			height: 100%;
+			background: rgba(255, 255, 255, 0.8);
+			position: absolute;
+			top: 0;
+			left: 0;
+			box-shadow: 0px 0px 4.48px 1.12px rgba(0, 0, 0, 0.25);
+			border-radius: 12.32px;
+			padding: 20px;
+		}	
+		}
+	
+	
+/////////////// custom_modal/////////////////////////////
+
+		.custom_modal {
+			background: rgba(0, 0, 0, 0.6);
+			position: fixed;
+			top: 0;
+			left: 0;
+			z-index: 9999;
+			display: grid;
+			align-items: center;
+			justify-content: center;
+			width: 100%;
+			height: 100%;
+		   overflow: hidden;
+		   color: #000;
+			.card {
+				border-radius: 10px;
+				padding: 20px;
+			
+				.card_header {
+					display: flex;
+					justify-content: space-between;
+					align-items: center;
+					margin-bottom: 5px;
+				}
+				.Card-title{
+					font-size: 25px;
+					color: #000;
+					font-weight: bold;
+				}
+				.header-title{
+					font-size: 14px;
+		             margin-bottom: 5px;
+				}
+				
+			}
+			.tabs-header{
+				margin-top: 10px;
+			  border: 1px solid #dedede;
+			   border-radius: 5px;
+			   padding: 5px;
+			 padding-right: 50px;
+			 ul{
+			  list-style-type: none;
+			  margin-bottom: 0px;
+			 }
+			 .tab {
+			  overflow: hidden;
+			  
+			}
+			
+			.tab a {
+			  background-color: inherit;
+			  float: left;
+			  border: none;
+			  outline: none;
+			  cursor: pointer;
+			  padding: 2px 5px;
+			  transition: 0.3s;
+			  font-size: 17px;
+			  text-decoration: none;
+			  color: #000;
+			}
+			
+			.tab a.active {
+				padding: 2px 15px;
+				border-radius: 5px;
+			  background-color: rgb(251, 26, 26);
+			  color: white;
+			}
+			
+			
+			.tabcontent {
+			  display: none;
+			  padding: 6px 12px;
+			  border: 1px solid #ccc;
+			  border-top: none;
+			}
+			
+			}
+			.tabs_title{
+				.departure_flight{
+                   font-size: 15px;
+				   font-weight: 700;
+				   color: red;
+				   text-align: center;
+		}}
+		.card_body{
+			box-shadow: 0px 0px 4.48px 1.12px rgba(0, 0, 0, 0.25);
+			border-radius: 10px;
+			padding: 20px;
+			width: 100%;
+			.card_title{
+				width: 100%;
+					font-family: 'Poppins' sans-serif;
+				.flight_date_city{
+					color: #000;
+					font-size: 15px;
+					font-weight: 700;
+					align-items: center;
+					justify-content: center;
+					text-align: center;
+				}
+			}
+				.flight_brnd {
+					width: 100%;
+					font-family: 'Poppins' sans-serif;
+					img {
+						width: 50px;
+						height: 50px;
+					}
+					span {
+						font-weight: 500;
+						font-size: 15px;
+					}
+				}
+				.flight_details {
+					width: 100%;
+					display: flex;
+				
+					.from {
+						font-size: 12px;
+						font-style: normal;
+						font-weight: 400;
+						line-height: 18px;
+						letter-spacing: 0em;
+						text-align: left;
+						display: grid;
+						min-width: 150px;
+						font-family: 'Poppins' sans-serif;
+						span.city {
+							font-weight: bold;
+							font-size: 15px;
+							color: rgb(107, 107, 107);
+						}
+						span.time {
+							font-size: 15px;
+							font-style: normal;
+							font-weight: 500;
+							line-height: 31px;
+							letter-spacing: 0em;
+							text-align: left;
+						}
+						div.date {
+							font-size: 12px;
+							color: rgb(116, 115, 115);
+							font-weight: 500;
+							letter-spacing: 0em;
+						}
+					}
+					.duration  {
+						align-items: flex-start;
+						text-align: center;
+						display: grid;
+						margin: 0 20px;
+						letter-spacing: 0em;
+						.duration_time,
+						.flight_destination_line{
+							img{
+								width: 100px;
+							}
+							}
+						.flight_speed {
+							font-weight: 500;
+							font-size: 14px;
+							
+						}
+					}
+					.destination {
+						font-size: 12px;
+						font-style: normal;
+						font-weight: 400;
+						line-height: 18px;
+						letter-spacing: 0em;
+						text-align: right;
+						display: grid;
+						min-width: 150px;
+						font-family: 'Poppins' sans-serif;
+					
+						span.city {
+							font-weight: bold;
+							font-size: 15px;
+							color: rgb(114, 114, 114);
+						}
+						span.time {
+							font-weight: 500;
+							font-size: 15px;
+						}
+						div.date {
+							font-size: 12px;
+							color: grey;
+							font-weight: 500;
+						}
+					}
+				}
+				
+		}.change-plane{
+			width: 100%;
+			margin-bottom: 10px;
+		}
+		.DotLines{ border-top: 1px dashed rgb(163, 163, 163); 
+			width: 9%; text-align: center; margin-top: 10px;}
+		.chplane{
+			background-color: rgb(209, 39, 39);
+			color: rgb(255, 255, 255);
+			padding-left: 25px;
+			padding-right: 25px;
+			padding-top: 5px;
+			padding-bottom: 5px;
+			border-radius: 10px;
+			font-size: 10px;  
+			font-weight: 700;
+		   
+		}
+		.Tabs_body{
+			.flight_brnd {
+				width: 100%;
+				font-family: 'Poppins' sans-serif;
+				.img-tab{
+					width: 45px;
+					height: 45px;
+				}
+				span{
+					font-size: 16px;
+					font-weight: bold;
+					color: #000;
+				}
+				.stop{
+					font-size: 16px;
+					font-weight: bold;
+					color: red;
+				}
+
+				}
+				.titile_name{
+                    font-size: 18px;
+					font-weight: bold;
+					color: #000;
+			}
+		.Total_Price{
+			font-size: 15px;
+			font-weight: bold;
+			color: #000;
+		}
+		.fare_title{
+			font-size: 15px;
+			color: rgb(143, 141, 141);
+			font-weight: 500;
+		}
+		.fare_Bareakup{
+			margin-bottom: 50%;
+			padding-top: 5px;
+
+		}
+			}
+		}
+		
+
+ 
+@media   (max-width: 1440px) {
+	.Round-Trip-list-card{
+			.card{
+			
+				.list_card_body{
+					.list_card {
+							display: grid;
+							align-items: center;
+			
+							.price_bottom_section{
+								display: flex;
+								width: 100%;
+								align-items: center;
+								justify-content: center;
+								.price_section {
+									margin: 0 12px;
+									display: flex;
+									.prices {
+										display: grid;
+										.booking_price {
+										font-family: 'Roboto', sans-serif;
+										font-size: 16px;
+										font-style: normal;
+										font-weight: 600;
+										line-height: 24px;
+										letter-spacing: 0em;
+										text-align: left;
+										color: #E21224;
+										}
+									}
+								}
+								.checkbox{
+									display: flex;
+									.check-input{
+										align-items: center;
+										justify-content: center;
+										
+									}
+									}
+							}
+						
+							
+						}
+			}
+			
+			}		
+			}
+			
+}
+@media  (max-width: 1024px) {
+	.Round-Trip-list-card{
+		.card{
+		
+			.list_card_body{
+				.list_card {
+						display: grid;
+						align-items: center;
+		
+						.price_bottom_section{
+							display: flex;
+							width: 100%;
+							align-items: center;
+							justify-content: center;
+							.price_section {
+								margin: 0 12px;
+								display: flex;
+								.prices {
+									display: grid;
+									.booking_price {
+									font-family: 'Roboto', sans-serif;
+									font-size: 16px;
+									font-style: normal;
+									font-weight: 600;
+									line-height: 24px;
+									letter-spacing: 0em;
+									text-align: left;
+									color: #E21224;
+									}
+								}
+							}
+							.checkbox{
+								display: flex;
+								.check-input{
+									align-items: center;
+									justify-content: center;
+									
+								}
+								}
+						}
+					
+						
+					}
+		}
+		
+		}		
+		}
+			
+ }
+@media (max-width: 768px) {
+	.Round-Trip-list-card{
+		.card{
+		
+			.list_card_body{
+				.list_card {
+						display: grid;
+						align-items: center;
+						.flight_details {
+							width: 100%;
+							display: flex;
+							margin-bottom: 2px;
+							.duration  {
+								margin: 0 10px;
+								letter-spacing: 0em;
+								.duration_time
+								{
+									font-size: 10px;
+								}
+								.flight_destination_line{
+									img{
+										width: 80px;
+									}
+									}
+								.flight_speed {
+									font-weight: 500;
+									font-size: 14px;
+									
+								}
+							}
+							
+						}
+						.price_bottom_section{
+							display: flex;
+							width: 100%;
+							align-items: center;
+							justify-content: center;
+							.price_section {
+								margin: 0 12px;
+								display: flex;
+								.prices {
+									display: grid;
+									.booking_price {
+									font-family: 'Roboto', sans-serif;
+									font-size: 16px;
+									font-style: normal;
+									font-weight: 600;
+									line-height: 24px;
+									letter-spacing: 0em;
+									text-align: left;
+									color: #E21224;
+									}
+								}
+							}
+							.checkbox{
+								display: flex;
+								.check-input{
+									align-items: center;
+									justify-content: center;
+									
+								}
+								}
+						}
+					
+						
+					}
+		}
+		
+		}		
+		}
+			
+}
+
+@media  (max-width: 767px) {
+	.Round-Trip-list-card{
+		margin-top: 120px;
+			.card{
+				.list_card_body{
+						.list_card {
+							.flight_details {
+								.duration  {
+									margin: 0 10px;
+									letter-spacing: 0em;
+									.duration_time{
+										font-size: 8px;
+									}
+									.flight_destination_line{
+										img{
+											width: 80px;
+										}
+										}
+									.flight_speed {
+										font-weight: 500;
+										font-size: 14px;
+										
+									}
+								}
+							
+							}
+							.price_bottom_section{
+								display: grid;
+								width: 50%;
+								
+								align-items: center;
+								justify-content: center;
+								.price_section {
+									margin: 0 1px;
+									display: flex;
+								
+								}
+								.checkbox{
+									display: flex;
+									 align-items: center;
+									 margin: 0  30px;
+									.check-input{
+										align-items: center;
+										justify-content: center;
+										
+									}
+									}
+							}
+						
+							
+						}
+			}
+			
+			}		
+			}
+			
+ }
+@media (max-width: 766px) {
+	.Round-Trip-list-card{
+		margin-top: 120px;
+		.list_card {
+			display: flex;
+			align-items: center;
+			
+			.flight_details {
+				width: 100%;
+				display: flex;
+				
+				.from {
+					font-size: 10px;
+					font-style: normal;
+					font-weight: 400;
+					line-height: 18px;
+					letter-spacing: 0em;
+					display: grid;
+					min-width: 70px;
+					text-align: left;
+					span.city {
+						font-weight: bold;
+						font-size: 12px;
+						text-align: right;
+					}
+					span.time {
+						font-size: 15px;
+						font-style: normal;
+						font-weight: 500;
+						text-align: right;
+					}
+					div.date {
+						font-size: 12px;
+						color: rgb(143, 141, 141);
+						font-weight: 500;
+						letter-spacing: 0em;
+						.country{
+							font-size: 12px;
+							color: rgb(143, 141, 141);
+							font-weight: 500;
+							width: 60px;
+							text-align: right;
+						
+						}
+					}
+					
+				}
+				 .duration  {
+					align-items: flex-start;
+					text-align: center;
+					display: grid;
+					margin: 0 5px;
+					.duration_time,
+					.flight_speed {
+						font-weight: 500;
+						font-size: 14px;
+	
+					}
+				}
+				.destination {
+					font-size: 10px;
+					font-style: normal;
+					font-weight: 400;
+					line-height: 18px;
+					letter-spacing: 0em;
+					text-align: left;
+					display: grid;
+					min-width: 90px;
+					
+			
+					span.city {
+						font-weight: bold;
+						font-size: 14px;
+						text-align: left;
+					}
+					span.time {
+						font-weight: 500;
+						font-size: 15px;
+						text-align: left;
+					}
+					div.date {
+						font-size: 12px;
+						color: rgb(143, 141, 141);
+						font-weight: 500;
+						text-align: left;
+					}
+				}
+			}
+			.price_bottom_section{
+				display: grid;
+				width: 90%;
+				align-items: center;
+				justify-content: center;
+			.price_section {
+				width: 30%;
+				display: grid;
+				align-items: center;
+				justify-content: center;
+				
+				.prices {
+					display: grid;
+					.booking_price {
+					
+					font-size: 18px;
+					font-style: normal;
+					font-weight: 400;
+					line-height: 33px;
+					letter-spacing: 0em;
+					text-align: left;
+					color: red;
+					}
+				}
+			}
+			.checkbox{
+				display: flex;
+				.check-input{
+					align-items: center;
+					justify-content: center;
+					
+				}
+				}
+			
+		}
+	}
+		
+	}
+			
+}
+@media (max-width: 425px) {
+	.Round-Trip-list-card{
+		margin-top: 120px;
+		margin-left: 0px;
+		padding-bottom: 100px;
+			.card{
+				.list_card_body{
+						.list_card {
+							display: flex;
+							.flight_details {
+								
+								.duration  {
+									margin: 0 10px;
+									letter-spacing: 0em;
+									.duration_time{
+										font-size: 8px;
+									}
+									.flight_destination_line{
+										img{
+											width: 80px;
+										}
+										}
+									.flight_speed {
+										font-weight: 500;
+										font-size: 14px;
+										
+									}
+								}
+							
+							}
+							.price_bottom_section{
+								display: grid;
+								width: 50%;
+								
+								align-items: center;
+								justify-content: center;
+								.price_section {
+									margin: 0 1px;
+									display: flex;
+								
+								}
+								.checkbox{
+									display: flex;
+									 align-items: center;
+									 margin: 0  30px;
+									.check-input{
+										align-items: center;
+										justify-content: center;
+										
+									}
+									}
+							}
+						
+							
+						}
+			}
+			
+			}		
+			}
+			.round_trip_book_container{
+				background: linear-gradient(90deg, #000000 32.49%, #B62532 86.43%);
+				box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.25);
+				border-radius: 6px;
+				padding: 5px;
+				position: fixed;
+				bottom: 20px;
+				z-index: 999;
+				.round_trip_body{
+					
+					align-items: center;
+					justify-content: center;
+					display: flex;
+				}
+				.Depapture_box{
+					min-width: 50px;
+					letter-spacing: 0em;
+					display: grid;
+					font-family: 'Poppins' sans-serif;
+					color: white;
+	
+					.Depapture_name{
+						font-size: 13px;
+						font-weight: 700;
+						
+					}
+	
+				.flight_brnd {
+					width: 100%;
+					font-family: 'Poppins' sans-serif;
+					   font-style: normal;
+					img {
+						width: 20px;
+						height: 30px;
+					}
+					span.time{
+						font-size: 12px;
+					}
+					.more_detail_header{
+						a{
+							font-size: 15px;
+							text-decoration: none;
+						}
+	
+	
+					}
+				}
+				.from {
+					font-size: 12px;
+					font-style: normal;
+					font-weight: 400;
+					line-height: 18px;
+					letter-spacing: 0em;
+					display: grid;
+					min-width: 65px;
+					font-family: 'Poppins' sans-serif;
+					color: white;
+					span.city {
+						font-weight: bold;
+						font-size: 12px;
+						
+					}
+					span.time {
+						font-size: 15px;
+						font-style: normal;
+						font-weight: 500;
+					
+					}
+	
+				}
+			}
+	.Depapture_Price{
+		   min-width: 70px;
+		   color: white;
+		   margin: 0 15px;
+	}
+	.vl {
+		border-left: 1px solid rgb(184, 184, 184);
+		height: 80px;
+		margin: 0 12px;
+		padding-right: 20px;
+	  }
+	  .price_bottom_section{
+		display: flex;
+		width: 50%;
+		
+		align-items: center;
+		justify-content: center;
+	  .price_section {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		color: white;
+		margin: 0 12px;
+		.prices {
+			display: grid;
+			.booking_price {
+			 font-family: 'Roboto', sans-serif;
+			font-size: 15px;
+			font-style: normal;
+			font-weight: 700;
+			line-height: 30px;
+			letter-spacing: 0em;
+			text-align: left;
+			color: #E21224;
+			}
+			.off_price {
+				font-family: 'Poppins' sans-serif;
+				font-size: 15px;
+				font-style: normal;
+				font-weight: 400;
+				line-height: 18px;
+				letter-spacing: 0em;
+				text-align: center;
+			}
+		}
+	}
+	  }
+	.btn-gn{
+		height: 50%;
+		width: 100%;
+		border-radius: 10px;
+		margin: 0 12px;
+		
+	}		
+			}
+ }
+

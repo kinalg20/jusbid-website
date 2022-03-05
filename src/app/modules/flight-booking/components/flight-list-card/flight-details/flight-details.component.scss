@@ -1,0 +1,46 @@
+.flight_card{
+    display: grid;
+    grid-template-columns: 15% auto;
+
+    background: #fafafa;
+    border: 2px dashed rgb(230, 230, 230);
+    padding: 10px 40px;
+    border-radius: 10px;
+    .airline_details{
+        .airline_icon{
+            img{
+                width: 50px;
+                height: 50px;
+            }
+        }
+        .airline_name{
+            font-size: 14px;
+            font-weight: 800;
+        }
+        .airline_number_code{
+            color: #242424;
+            font-size: 12px;
+        }
+    }
+    .source_to_destination{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        .city_code{
+            font-size: 14px;
+            font-weight: 900;
+            line-height: 1.5rem;
+            span.time{
+                margin-left: 5px;
+                font-weight: 500;
+            }
+        }
+        .city_airport{
+            font-size: 12px;
+            max-width: 150px;
+            color: rgb(105, 105, 105);
+        }
+
+    }
+}

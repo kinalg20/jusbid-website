@@ -1,0 +1,155 @@
+// @import url("https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap");
+.businesspartnes {
+    border-radius: 2px;
+    box-shadow: 2px 4px 8px 0 rgb(0 0 0 / 10%);
+    border: 1px solid #d6d6d6;
+    box-sizing: border-box;
+    padding: 20px;
+}
+.container {
+    padding: 50px 20px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    h1 {
+        font-size: 2rem;
+        font-family: "Poppins", Sans-serif;
+        color: #e21224;
+        font-weight: 600;
+    }
+
+    .para {
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 1.8rem;
+        color: black;
+        text-align: justify;
+        font-family: "Poppins", Sans-serif;
+        p {
+            color: black !important;
+        }
+    }
+    .image-box {
+        width: 450px !important;
+        height: 450px !important;
+        padding-top: 70px;
+        top: 250px;
+    }
+    .content {
+        text-align: justify;
+        h5 {
+            font-size: 16px;
+        }
+        h1 {
+            font-weight: 900;
+            font-size: 16px;
+        }
+        span {
+            font-size: 16px;
+        }
+        li {
+            margin-left: 25px;
+        }
+    }
+
+    .page {
+        .div {
+            h5 {
+                text-align: center;
+                font-family: "Poppins", sans-serif;
+                font-weight: 900;
+                font-size: 15px;
+            }
+        }
+    }
+    
+    table {
+        font-family: arial, sans-serif;
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+    td,
+    th {
+        border: 1px solid #dddddd;
+        text-align: left;
+        padding: 8px;
+    }
+}
+
+@media (max-width: 896px) {
+    .container {
+        .row {
+            flex-direction: column-reverse;
+            h3 {
+                display: none;
+            }
+            .image-box {
+                position: sticky;
+                margin-left: 100px;
+                margin-top: -90px;
+            }
+        }
+    }
+}
+
+@media (max-width: 768px) {
+    .container {
+        .row {
+            flex-direction: column-reverse;
+            h3 {
+                display: none;
+            }
+            .image-box {
+                position: sticky;
+            }
+        }
+    }
+}
+
+@media (max-width: 748px) {
+    .container {
+        .row {
+            flex-direction: column-reverse;
+            h3 {
+                display: none;
+            }
+            .image-box {
+                position: sticky;
+                margin-left: 30px;
+            }
+        }
+    }
+}
+
+@media (max-width: 552px) {
+    .container {
+        .row {
+            flex-direction: column;
+            h1 {
+                display: none;
+            }
+            .image-box {
+                position: sticky;
+                margin-left: 0px;
+            }
+        }
+    }
+    .businesspartnes {
+        padding: 0px;
+    }
+}
+
+@media (max-width: 375px) {
+    .container {
+        .row {
+            flex-direction: column;
+            h1 {
+                display: none;
+            }
+            .image-box {
+                width: 600px !important;
+                height: 300px !important;
+            }
+        }
+    }
+}

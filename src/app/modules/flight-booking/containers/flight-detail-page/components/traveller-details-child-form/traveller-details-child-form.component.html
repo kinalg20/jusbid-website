@@ -1,0 +1,87 @@
+<form #childForm="ngForm">
+    <div class="travellers_infomation_selection mt-1">
+        <div class="d-flex justify-content-between border-bottom mb-3">
+            <h6 class="adult text-capitalize d-flex">
+                <div>
+                    <input type="checkbox" name="selectAmenity" class="mr-2" [checked]="is_selected_child_form" [disabled]="childForm.invalid" (click)="selectChildData(formIndex)">
+                </div>
+                <b *ngIf="name_title || firstname  || lastname">{{name_title+' '+firstname+' '+lastname}}</b>
+                <b *ngIf="!name_title && !firstname  && !lastname">Child-{{formIndex+1}}</b>
+            </h6>
+        </div>
+        <h6 class="Important_Id">
+            IMPORTANT : Name should be same as in Goverment ID proof
+        </h6>
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 mt-3">
+            <div class="col mb-2" style="display: flex;align-items: center;">
+                <div class="Text">
+                    <label for="name_title" class="name">Title</label>
+                    <select name="name_title" id="name_title" class='input_box' [(ngModel)]="name_title"
+                        style="border-top-right-radius: 0;border-bottom-right-radius: 0; padding: 8px;border-right: none;min-width: 70px;" required>
+                        <option value="">Title</option>
+                        <option value="MISS">Miss</option>
+                        <option value="MASTER">Master</option>
+                    </select>
+                </div>
+                <div class="Text">
+                    <label for="first" class="name">(First Name & (Middle name, if any)</label>
+                    <input type="text" id="firstname" class='input_box' name="firstname" [(ngModel)]="firstname"
+                        style="border-top-left-radius: 0;border-bottom-left-radius: 0;" required>
+                </div>
+            </div>
+            <div class="col mb-2">
+                <div class="Text">
+                    <label for="lastname" class="lname">Last Name</label>
+                    <input type="text" id="lastname" class='input_box' name="lastname" [(ngModel)]="lastname" required>
+                </div>
+            </div>
+            <div class="col mb-2 my-auto">
+                <div class="topnav">
+                    <div class="d-flex justify-content-between ">
+                        <ng-container class="tab">
+                            <a class="cursor-pointer" (click)="selectGender('M')" [ngClass]=" gender === 'M' ? 'active' : '' ">
+                                Male</a>
+                        </ng-container>
+                        <ng-container class="tab">
+                            <a class="cursor-pointer" (click)="selectGender('F')" [ngClass]=" gender === 'F' ? 'active' : '' ">
+                                Female</a>
+                        </ng-container>
+                        <ng-container class="tab">
+                            <a class="cursor-pointer" (click)="selectGender('O')" [ngClass]=" gender === 'O' ? 'active' : '' ">
+                                Special </a>
+                        </ng-container>
+                    </div>
+ 
+                </div>
+            </div>
+            <div class="col mb-2">
+                <div class="Text">
+                    <label for="nationality" class="nationality">Nationality</label>
+                    <select name="nationality" id="nationality" class='input_box' [(ngModel)]="nationality" required>
+                        <option value="">Select Nationality</option>
+                        <option value="IN">Hindu</option>
+                        <option value="US">American</option>
+                        <option value="UP">Uropean</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col mb-2">
+                <div class="Text">
+                    <label for="dob" class="dob">Date of Birth</label>
+                    <input type="date" id="dob" class='input_box' name="dob" [(ngModel)]="dob" required [max]="todayDate">
+                </div>
+            </div>
+        </div>
+        <hr style="margin-top: 20px;margin-bottom: 10px;">
+        <div class="return_trip_check_box">
+            <label class="custom-check" style="display: flex;align-items: center;">
+                <input type="checkbox" name="selectAmenity" class="mr-2">
+                <label class="form-check-label" for="exampleCheck">Same travellers in return
+                    trip
+                    and unchecked
+                    ,
+                    edit travellers details</label>
+            </label>
+        </div>
+    </div>
+</form>

@@ -1,0 +1,843 @@
+footer {
+	.footer-top {
+		background: #565656;
+		padding: 17px 0px;
+		a {
+			color: #fff;
+			display: block;
+			padding: 17px 0px;
+			text-decoration: none;
+			font-size: 18px;
+		}
+	}
+	.footer-middle {
+		background: var(--primary);
+		width: 100%;
+		padding: 20px 0px;
+		.footer-bottom-content {
+			.download-section {
+				.download-link {
+				}
+				.footer-social-links {
+					padding: 0px 4px;
+					font-size: 24px;
+					color: #fff;
+					&:first-child {
+						margin-right: 10px;
+					}
+					img {
+						width: 128px;
+						height: 40px;
+						cursor: pointer;
+						display: inline-block;
+						object-fit: cover;
+					}
+				}
+				.download-link {
+					span {
+						white-space: nowrap;
+					}
+				}
+			}
+			.rounded-img {
+				width: 85px;
+				height: 85px;
+				border-radius: 50%;
+				border: 2px solid #fff;
+				margin-right: 10px;
+			}
+		}
+	}
+	.footer-gray-common {
+		background-color: #242424;
+		padding: 40px 0;
+		p {
+			margin-bottom: 0;
+			font-size: 0.8rem;
+			font-family: 500;
+			padding: 15px 0px;
+			color: #fff;
+		}
+	}
+}
+
+.footer-gray{
+	.row{
+		padding-top:15px;
+	}
+}
+.small-footer {
+	display: none;
+	position: sticky;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	z-index: 99;
+	background: #fff;
+	padding-top: 8px;
+	padding-bottom: 8px;
+	border-top: 1px solid rgba(0, 0, 0, 0.12);
+	ul {
+		padding-left: 0;
+		margin-bottom: 0;
+		li {
+			display: inline-block;
+			width: 25%;
+			a {
+				text-align: center;
+				display: block;
+				align-items: center;
+				justify-content: center;
+				color: #000;
+				img {
+					width: 20px;
+					margin: auto;
+					margin-bottom: 2px;
+				}
+				font-size: 12px;
+				font-weight: 500;
+				display: grid;
+				i {
+					font-size: 18px;
+				}
+			}
+			a.active {
+				color: var(--primary);
+			}
+		}
+	}
+}
+.best-reach-row {
+	.span-cards {
+		font-size:12px;
+	}
+	
+}
+.important_link{
+	width: 100%;
+    background: #f1f1f1;
+	padding: 20px 0;
+	a{
+		cursor: pointer;
+		text-decoration: none;
+		color: #000;
+		&:hover{
+			color: #e21224;
+		}
+	}
+}
+
+span.footer-social-links {
+	padding: 5px 1px !important;
+	font-size: 25px !important;
+}
+
+
+@media (max-width: 1200px) {
+	footer {
+		.footer-middle {
+			.footer-bottom-content {
+				.download-section {
+					.footer-social-links {
+						font-size: 14px;
+						img {
+							width: 120px;
+							height: 40px;
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+@media (max-width: 768px) {
+	.container {
+		max-width: 750px;
+	}
+	.download-link {
+		display: block !important;
+		span {
+			display: none;
+		}
+	}
+	footer {
+		.footer-gray-common {
+			margin-bottom: 44px;
+			p {
+				font-size: 13px;
+			}
+		}
+	}
+}
+
+@media (max-width: 767px) {
+	.download-link {
+		display: inline-block !important;
+	}
+	.footer-bottom-content {
+		text-align: center;
+	}
+	.download-section {
+		text-align: center !important;
+	}
+	.small-footer {
+		display: block;
+		position: sticky;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		z-index: 99;
+		background: #fff;
+		padding-top: 8px;
+		padding-bottom: 8px;
+		border-top: 1px solid rgba(0, 0, 0, 0.12);
+		ul {
+			padding-left: 0;
+			margin-bottom: 0;
+			li {
+				display: inline-block;
+				width: 25%;
+				a {
+					text-align: center;
+					display: block;
+					align-items: center;
+					justify-content: center;
+					color: #000;
+					img {
+						width: 20px;
+						margin: auto;
+						margin-bottom: 2px;
+					}
+					font-size: 12px;
+					font-weight: 500;
+					display: grid;
+					i {
+						font-size: 18px;
+					}
+				}
+				a.active {
+					color: var(--primary);
+				}
+			}
+		}
+	}
+}
+
+@media (max-width: 414px) {
+	footer {
+		.footer-middle {
+			.footer-bottom-content {
+				.download-section {
+					.footer-social-links {
+						img {
+							width: 115px;
+							height: 35px;
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+// -===========================
+.footer-banner {
+	position: relative;
+	background-size: contain;
+	background-repeat: no-repeat;
+	background-position-y: bottom;
+	background-position-x: center;
+	overflow-x: hidden;
+	padding: 0;
+	.section-3-title {
+		color: #fff;
+	}
+	.footer_partner {
+		.footer-buttons-big {
+			border-radius: 10px;
+			font-size: 18px;
+			margin-right: 20px;
+			display: inline-block;
+			margin-bottom: 10px;
+		}
+	}
+	.footer-bottom-content {
+		position: absolute;
+		bottom: 50px;
+		width: 100%;
+		background: rgba(128, 197, 222, 0.8);
+		padding: 2rem;
+		position: absolute;
+		bottom: 0px;
+		width: 100%;
+		min-height: 259px;
+		display: grid;
+		align-items: center;
+		overflow: hidden;
+		.rounded-img {
+			width: 80px;
+			height: 80px;
+			border-radius: 50%;
+			border: 2px solid #fff;
+			margin-right: 5px;
+		}
+		.footer-bottom-content-link {
+			text-align: right;
+		}
+		.footer-social-links {
+			padding: 0px 4px;
+			font-size: 24px;
+			color: #fff;
+			text-decoration: none !important;
+			&:first-child {
+				margin-right: 10px;
+			}
+			&:hover {
+				i {
+					color: var(--primary);
+				}
+			}
+		}
+		.box-drift {
+			position: absolute;
+			width: 100px;
+			height: 100%;
+			left: 90%;
+			animation: doDrift 16s infinite;
+			.box-bob {
+				width: 100px;
+				background: none;
+				animation: doBob 2s infinite;
+				.box-pitch {
+					animation: doPitch 1s infinite;
+					img {
+						height: 100px;
+					}
+				}
+			}
+			@keyframes doDrift {
+				0% {
+					left: 100%;
+				}
+				10% {
+					left: 90%;
+				}
+				20% {
+					left: 80%;
+				}
+				50% {
+					left: 50%;
+				}
+				80% {
+					left: 20%;
+				}
+				100% {
+					left: -5%;
+				}
+			}
+		}
+		.aquarium-block {
+			height: 100%;
+			background-size: cover;
+			position: absolute;
+			width: 100%;
+			z-index: 1;
+		}
+		[class*="ag-fish-"] {
+			margin-left: -100px;
+			z-index: 1;
+			position: absolute;
+			left: 0;
+		}
+		[class*="ag-fish-"]>div {
+			width: 100%;
+		}
+		[class*="ag-fish-"]>div,
+		[class*="ag-fish-"]>div:before {
+			height: 100%;
+			background-repeat: no-repeat;
+			position: absolute;
+			top: 0;
+		}
+		[class*="ag-fish-"]>div:before {
+			content: "";
+			display: block;
+			width: 25px;
+			background-size: 100% 100%;
+		}
+		.ag-fish-1 {
+			height: 33px;
+			width: 60px;
+			top: 10%;
+			animation: an-fish-anim-1 50s linear 0ms reverse none infinite running;
+		}
+		.ag-fish-1>div {
+			width: 51px;
+			background-image: url(https://raw.githubusercontent.com/SochavaAG/example-mycode/master/pens/aquarium/images/fish-1.png);
+			left: 0;
+			animation: an-fish-anim-2 20s ease 0ms reverse none infinite running;
+		}
+		.ag-fish-1>div:before {
+			background-image: url(https://raw.githubusercontent.com/SochavaAG/example-mycode/master/pens/aquarium/images/fishtail-1.png);
+			left: 100%;
+			animation: an-fish-anim-3 0.8s linear -0.2s reverse none infinite running;
+		}
+		.ag-fish-2 {
+			height: 37px;
+			width: 53px;
+			top: 80%;
+			animation: an-fish-anim-1 60s linear -10s reverse none infinite running;
+		}
+		.ag-fish-2>div {
+			width: 43px;
+			background-image: url(https://raw.githubusercontent.com/SochavaAG/example-mycode/master/pens/aquarium/images/fish-2.png);
+			left: 0;
+			animation: an-fish-anim-2 20s ease -5s normal none infinite running;
+		}
+		.ag-fish-2>div:before {
+			background-image: url(https://raw.githubusercontent.com/SochavaAG/example-mycode/master/pens/aquarium/images/fishtail-2.png);
+			left: 100%;
+			animation: an-fish-anim-31s linear -0.4s reverse none infinite running;
+		}
+		.ag-fish-3 {
+			height: 70px;
+			width: 99px;
+			top: 25%;
+			animation: an-fish-anim-1 90s linear -20s normal none infinite running;
+		}
+		.ag-fish-3>div {
+			width: 78px;
+			background-image: url(https://raw.githubusercontent.com/SochavaAG/example-mycode/master/pens/aquarium/images/fish-3.png);
+			background-position: 100% 0;
+			right: 0;
+			animation: an-fish-anim-2 25s ease -10s normal none infinite running;
+		}
+		.ag-fish-3>div:before {
+			background-image: url(https://raw.githubusercontent.com/SochavaAG/example-mycode/master/pens/aquarium/images/fishtail-3.png);
+			right: 100%;
+			animation: an-fish-anim-3 1.4s linear -0.6s reverse none infinite running;
+		}
+		.ag-fish-4 {
+			height: 33px;
+			width: 69px;
+			top: 70%;
+			animation: an-fish-anim-170s linear -30s normal none infinite running;
+		}
+		.ag-fish-4>div {
+			width: 58px;
+			background-image: url(https://raw.githubusercontent.com/SochavaAG/example-mycode/master/pens/aquarium/images/fish-4.png);
+			background-position: 100% 0;
+			right: 0;
+			animation: an-fish-anim-230s ease -15s normal none infinite running;
+		}
+		.ag-fish-4>div:before {
+			background-image: url(https://raw.githubusercontent.com/SochavaAG/example-mycode/master/pens/aquarium/images/fishtail-4.png);
+			right: 100%;
+			animation: an-fish-anim-3 1.2s linear -0.8s reverse none infinite running;
+		}
+		.ag-fish-5 {
+			height: 48px;
+			width: 102px;
+			top: 60%;
+			animation: an-fish-anim-1 80s linear -40s reverse none infinite running;
+		}
+		.ag-fish-5>div {
+			left: 0;
+			width: 85px;
+			background-image: url(https://raw.githubusercontent.com/SochavaAG/example-mycode/master/pens/aquarium/images/fish-5.png);
+			animation: an-fish-anim-235s ease -20s normal none infinite running;
+		}
+		.ag-fish-5>div:before {
+			background-image: url(https://raw.githubusercontent.com/SochavaAG/example-mycode/master/pens/aquarium/images/fishtail-5.png);
+			left: 100%;
+			animation: an-fish-anim-3 1.6s linear -1s reverse none infinite running;
+		}
+		.ag-fish-6-1 {
+			height: 100px;
+			width: 104px;
+			z-index: 0;
+			top: 30%;
+			animation: an-fish-anim-1 80s linear 1s reverse none infinite running;
+		}
+		.ag-fish-6-1>div {
+			width: 104px;
+			background-image: url("https://storage.googleapis.com/jusbid_cloud_storage/assets/images/fish-6-1.png");
+			left: 0;
+		}
+		.ag-fish-6-2 {
+			height: 54px;
+			width: 137px;
+			z-index: 0;
+			top: 40%;
+			animation: an-fish-anim-1120s linear -10s normal none infinite running;
+		}
+		.ag-fish-6-2>div {
+			width: 137px;
+			background-image: url(https://raw.githubusercontent.com/SochavaAG/example-mycode/master/pens/aquarium/images/fish-6-2.png);
+			left: 0;
+		}
+		.ag-fish-6-3 {
+			height: 90px;
+			width: 332px;
+			z-index: 0;
+			top: 80%;
+			animation: an-fish-anim-1140s linear -20s normal none infinite running;
+		}
+		.ag-fish-6-3>div {
+			width: 332px;
+			background-image: url(https://raw.githubusercontent.com/SochavaAG/example-mycode/master/pens/aquarium/images/fish-6-3.png);
+			left: 0;
+		}
+		.ag-fish-6-4 {
+			height: 72px;
+			width: 160px;
+			z-index: 0;
+			top: 15%;
+			animation: an-fish-anim-1 160s linear -30s normal none infinite running;
+		}
+		.ag-fish-6-4>div {
+			width: 160px;
+			background-image: url("https://storage.googleapis.com/jusbid_cloud_storage/assets/images/fish-6-4.png");
+			left: 0;
+		}
+		.js-ag-bubble_item {
+			margin-bottom: -20px;
+			background-image: url(https://raw.githubusercontent.com/SochavaAG/example-mycode/master/pens/aquarium/images/bubble.png);
+			background-repeat: no-repeat;
+			background-size: 100% 100%;
+			position: absolute;
+			bottom: -10%;
+			animation: ag-bubble-anim linear reverse none infinite running;
+		}
+		.js-ag-bubble_item__dop {
+			margin-bottom: 20px;
+			opacity: 0.2;
+			bottom: 100%;
+			transition: bottom, opacity, margin-bottom;
+			transition-timing-function: linear;
+		}
+		.ag-bubble_list {
+			position: absolute;
+			top: 0;
+			right: 0;
+			left: 0;
+			bottom: 0;
+		}
+		@keyframes an-fish-anim-1 {
+			0% {
+				margin-left: -350px;
+				left: 0;
+			}
+			80% {
+				margin-left: 50px;
+				left: 100%;
+			}
+			to {
+				margin-left: 350px;
+				left: 100%;
+			}
+		}
+		@keyframes an-fish-anim-2 {
+			0% {
+				margin-top: -30px;
+			}
+			50% {
+				margin-top: 50px;
+			}
+			to {
+				margin-top: -30px;
+			}
+		}
+		@keyframes an-fish-anim-3 {
+			0% {
+				width: 25px;
+			}
+			50% {
+				width: 14px;
+			}
+			to {
+				width: 25px;
+			}
+		}
+		@keyframes ag-bubble-anim {
+			0% {
+				margin-left: -2px;
+				animation-timing-function: ease;
+			}
+			50% {
+				margin-left: 2px;
+				animation-timing-function: ease;
+			}
+			to {
+				margin-left: -2px;
+				animation-timing-function: ease;
+			}
+		}
+		@media only screen and (max-width: 767px) {
+			.ag-format-container {
+				width: 96%;
+			}
+		}
+		@media only screen and (max-width: 639px) {}
+		@media only screen and (max-width: 479px) {}
+		@media (min-width: 768px) and (max-width: 979px) {
+			.ag-format-container {
+				width: 750px;
+			}
+		}
+		@media (min-width: 980px) and (max-width: 1161px) {
+			.ag-format-container {
+				width: 960px;
+			}
+		}
+		.content_footer {
+			position: relative;
+			z-index: 2;
+		}
+	}
+}
+
+.footer-gray {
+	background-color: #f9f9f9;
+	font-size: 0.8rem;
+	a.company_name {
+		color: var(--primary);
+		text-decoration: none;
+	}
+}
+
+footer .tm-margin-b-0 {
+	color: #222 !important;
+}
+
+@media (max-width: 1540px) {
+	.footer-banner .footer-bottom-content {
+		.ocean {
+			bottom: -10px;
+		}
+		.wave {
+			top: -135px;
+			height: 135px;
+		}
+		.wave:nth-of-type(2) {
+			top: -120px;
+		}
+	}
+	.best-reach-cards {
+		.span-cards {
+			font-size: 1rem;
+		}
+	}
+}
+
+@media (max-width: 1445px) {
+	.footer-banner {
+		.footer-bottom-content {
+			min-height: 180px;
+			.rounded-img {
+				width: 50px;
+				height: 50px;
+			}
+		}
+	}
+	// .tm-main-content {
+	// 	min-height: 100%;
+	// 	background: #f1f1f1;
+	// 	padding: 24px 0px;
+	// }
+}
+
+@media screen and (max-width: 991px) {
+	.tm-top-bar.active .navbar-expand-lg .navbar-nav .nav-link,
+	.tm-top-bar .navbar-expand-lg .navbar-nav .nav-link {
+		padding: 12px 15px;
+	}
+	.heading-header-1 {
+		font-size: 3.5rem !important;
+	}
+	.tm-btn-search {
+		margin: auto;
+	}
+	.tm-search-form .tm-form-element {
+		width: 33%;
+		max-width: 215px;
+	}
+	.tm-search-form-row {
+		width: 98%;
+		max-width: 900px;
+	}
+	.tm-recommended-container {
+		margin-top: 30px;
+	}
+	video {
+		top: 25%;
+		left: 0;
+		min-width: 50%;
+		min-height: 50%;
+		width: auto;
+		height: auto;
+	}
+	.best-reach-cards .span-cards {
+		font-size: 0.9rem;
+	}
+	.tm-section {
+		.section-3-title {
+			font-size: 1.4rem;
+		}
+		.footer-buttons-big {
+			margin-right: 5px;
+			font-size: 16px;
+			margin-bottom: 0;
+		}
+	}
+	.footer-buttons-big {
+		margin-bottom: 2rem;
+	}
+	.footer-banner {
+		.footer-bottom-content {
+			.rounded-img {
+				width: 60px;
+				height: 60px;
+			}
+		}
+	}
+	.banner-form {
+		.input-top-holder {
+			font-size: 14px;
+		}
+	}
+	.footer-banner {
+		.footer-bottom-content {
+			padding: 0rem 2rem;
+			min-height: 150px;
+		}
+		.partner_top {
+			p {
+				font-size: 22px !important;
+				margin-bottom: 0.5rem;
+			}
+			.download-section {
+				span {
+					display: none;
+				}
+				.footer-social-links {
+					padding: 0px 4px;
+					font-size: 24px;
+					color: #fff;
+					img {
+						width: 128px;
+						height: 40px;
+						cursor: pointer;
+						display: inline-block;
+						object-fit: cover;
+					}
+				}
+				.download-link {
+					span {
+						white-space: nowrap;
+					}
+				}
+			}
+		}
+	}
+	.header-form-wrapper {
+		.tm-bg-glass {
+			.header-text {
+				font-size: 14px;
+			}
+		}
+	}
+	.cnt-search {
+		.btn {
+			font-size: 0.8rem;
+		}
+	}
+	.partner_compaines_section .state_wise_col ul li {
+		display: inline-block;
+		margin-right: 5px;
+		padding-right: 5px;
+		&:last-child {
+			border-right: none;
+		}
+	}
+}
+
+.state_name {
+	margin-bottom: 10px;
+}
+
+.partner_compaines_section {
+	width: 100%;
+	background: #f9f9f9;
+	padding: 20px 0 50px;
+	.state_wise_col {
+		
+		.header {
+			.state_name {
+				font-size: 18px;
+				font-weight: 600;
+				text-transform: uppercase;
+			}
+		}
+		ul {
+			list-style: none;
+			margin: 0;
+			padding: 0;
+			li {
+				margin-bottom: 2px;
+				a {
+					text-decoration: none;
+					color: #222;
+					font-size: 14px;
+					line-height: 26px;
+					cursor: pointer;
+					&:hover {
+						color: var(--primary);
+					}
+				}
+			}
+		}
+	}
+}
+
+.partner_compaines_section {
+	width: 100%;
+	background: #f9f9f9;
+	padding: 20px 0 50px;
+	.state_wise_col-1 {
+		
+		.header {
+			.state_name {
+				font-size: 18px;
+				font-weight: 600;
+				text-transform: uppercase;
+			}
+		}
+		ul {
+			list-style: none;
+			margin: 0;
+			padding: 0;
+			li {
+				margin-bottom: 2px;
+				a {
+					text-decoration: none;
+					color: #222;
+					font-size: 13px;
+					line-height: 26px;
+					cursor: pointer;
+					&:hover {
+						color: var(--primary);
+					}
+				}
+			}
+		}
+	}
+}
+
+
+@media (max-width: 325px) {
+	.partner_compaines_section{
+	    padding: 0;
+	}
+}

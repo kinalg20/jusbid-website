@@ -1,0 +1,22 @@
+<!-- Popular Cities -->
+<section class="container ">
+    <div class="container_section_PopularCity" *ngIf="citiesList.length>0">
+        <h3 class="section-3-title pb-3 m-0">Popular <b>Cities</b></h3>
+        <div class="section_body ">
+            <ul class="m-0 p-0 popular_city_section">
+                <ng-container *ngFor="let cities of citiesList.slice(0,7)">
+                    <li class="list-city-top text-center ">
+                        <div class="popular_city">
+                            <a (click)="searchBestReach(cities.city)" style="cursor: pointer;">
+                                <img src="{{apiBaseURL + cities.image}}" class="city-img citi_img">
+                            </a>
+                            <div class="py-1">
+                                <span class="city_name">{{ cities.city}}</span>
+                            </div>
+                        </div>
+                    </li>
+                </ng-container>
+            </ul>
+        </div>
+    </div>
+</section>

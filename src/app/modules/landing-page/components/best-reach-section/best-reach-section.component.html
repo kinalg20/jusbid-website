@@ -1,0 +1,52 @@
+<section class="tm-section tm-section-pad  container pt-0 pb-0 pt-0 mb-2">
+    <div class="container best-reach-container">
+        <div class="row">
+            <h3 class="section-3-title ">Our Best <b style="font-weight: bold;">Reach</b></h3>
+        </div>
+        <owl-carousel-o [options]="CitiesOptions" class="popular-slider cities-slider">
+            <ng-container *ngIf="shimmerLoad">
+                <ng-container *ngFor='let in of [0,1,2,3,4];'>
+                    <ng-template carouselSlide>
+                        <div class="card">
+                            <div class="photo shine"></div>
+
+                            <div class="card-body text-center">
+                                <div class="shine lines"></div>
+                            </div>
+                        </div>
+                    </ng-template> 
+                </ng-container>
+            </ng-container>
+            <ng-container *ngIf="!shimmerLoad">
+                <ng-container *ngFor="let cities of popularCities; index as i">
+                    <ng-template carouselSlide>
+                        <div class="card" (click)="searchBestReach(cities.city)">
+                            <ng-container *ngIf="cities.image">
+                                <div class="card-img-top"
+                                    style="background-image:url('{{apiBaseURL+cities.image}}'), url('https://storage.googleapis.com/jusbid_cloud_storage/assets/images/dummy_horizontal.jpg')"
+                                    alt="Card image">
+                                    <span class="top-side">{{ cities.hotels }} Properties</span>
+                                </div>
+                            </ng-container>
+                            <ng-container *ngIf="!cities.image">
+                                <div class="card-img-top backup-image"
+                                    style="background-image:url('https://storage.googleapis.com/jusbid_cloud_storage/assets/images/dummy_horizontal.jpg')"
+                                    alt="Card image">
+                                    <span class="top-side">{{ cities.hotels-1 }} Properties</span>
+                                </div>
+                            </ng-container>
+                            <div class="card-body text-center">
+                                <h5 class="card-title font-bolder">{{ cities.city }}</h5>
+                            </div>
+                        </div>
+                    </ng-template>
+                </ng-container>
+            </ng-container>
+        </owl-carousel-o>
+        <ng-container *ngIf="popularCities.length==0 && !shimmerLoad">
+            <div class="col-12 text-center nopopular">
+                <h3>No Popular Cities Available!</h3>
+            </div>
+        </ng-container>
+    </div>
+</section>

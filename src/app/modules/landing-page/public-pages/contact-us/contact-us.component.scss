@@ -1,0 +1,195 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap");
+.contact-form {
+    margin-top: 100px;
+    padding: 60px;
+    padding-right: 150px;
+    // box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    .form {
+        margin-right: 80px;
+        h1 {
+            text-align: center;
+            color: #e21224;
+            font-weight: 600;
+        }
+        form {
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+            padding: 25px;
+            border-radius: 10px;
+            .form-control {
+                background-color: white !important;
+                border: 1px solid #dedede !important;
+                font-size: 15px !important;
+                font-weight: normal !important;
+            }
+            .first-col {
+                margin-top: 20px;
+                input {
+                    padding: 30px;
+                }
+                label{
+                    font-weight: 600;
+                }
+            }
+            .Email {
+                margin-top: 5px;
+                input {
+                    padding: 30px;
+                }
+            }
+
+            .Message {
+                margin-top: 5px;
+                input {
+                    padding: 30px;
+                }
+            }
+
+            .Additional_Details {
+                margin-top: 5px;
+            }
+
+            .send-message {
+                margin-top: 10px;
+                text-align: center;
+
+                button {
+                    width: 100% !important;
+                    background-color: #e21224;
+                    font-family: "Poppins", Sans-serif;
+                    font-weight: 600;
+                }
+            }
+        }
+    }
+
+    .content {
+        margin-top: 20px;
+        margin-right: 60px;
+        p {
+            text-align: justify;
+            font-size: 1rem;
+            color: black;
+        }
+    }
+}
+
+.contact-info {
+    margin-top: 30px;
+    h5 {
+        text-align: center;
+        border-style: bold;
+        color: #e21224;
+        font-weight: 600;
+    }
+    .information {
+        display: flex;
+        justify-content: space-between;
+        .internet {
+            border: none;
+            padding: 5px;
+            max-width: 50px;
+            margin-top: 30px;
+            img {
+                margin-left: 25px;
+                width: 50px;
+            }
+            .contact-internet {
+                color: black;
+                width: 93px;
+            }
+        }
+        .location {
+            border: none;
+            padding: 5px;
+            max-width: 200px;
+            margin-top: 30px;
+            text-align: center;
+            margin-left: 50px;
+            img {
+                width: 50px;
+            }
+            .contact-location {
+                color: black;
+            }
+        }
+        .contact {
+            border: none;
+            padding: 5px;
+            margin-top: 30px;
+            text-align: center;
+            img {
+                width: 50px;
+                border-radius: 100%;
+            }
+            .contact-contact {
+                color: black;
+            }
+        }
+    }
+}
+.content{
+    .demo{
+        h2{
+            font-weight: 600;
+        }
+        h4{
+            font-weight: 600;
+        }
+    }
+}
+
+@media (max-width: 1440px) {
+    .contact-form {
+        padding-left: 100px;
+        margin-left: 30px;
+        .content {
+            margin-top: 10px;
+            margin-right: 30px;
+        }
+    }
+}
+
+@media (max-width: 1024px) {
+    .contact-form {
+        padding-left: 30px;
+        margin-left: 0px;
+        padding-right: 20px;
+        .form {
+            margin-right: -5px;
+        }
+        .content {
+            margin-top: 10px;
+            margin-right: 0px;
+            .demo {
+                h2 {
+                    font-size: 24px;
+                }
+                p {
+                    font-size: 14px;
+                }
+                h4 {
+                    font-size: 18px;
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 768px) {
+    .contact-form {
+        padding-left: 15px;
+        margin-top: 0%;
+        .content {
+            margin-top: 60px;
+        }
+        .first-col {
+            .label-2 {
+                padding-top: 25px;
+            }
+        }
+    }
+}
+
+.container {
+    width: 100%;
+}

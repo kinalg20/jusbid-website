@@ -1,0 +1,47 @@
+<ng-container *ngIf="true">
+    <nav class="navbar sticky-top">
+        <div class="logo">
+            <div class="d-none d-lg-block">
+                <a routerLink="/"><img src="/assets/icons/icon-128x128.png" width="100px" alt=""></a>
+            </div>
+            <div class="d-block d-lg-none">
+                <a routerLink="/"><img src="/assets/icons/icon-128x128.png" width="100px" alt=""></a>
+            </div>
+        </div>
+        <!-- <app-hotel-search-form></app-hotel-search-form> -->
+       
+        <ul>
+            <li>
+                <a routerLink="/auth">
+                    <span class="">
+                        <img src="/assets/images/svg_Icons/Icon awesome-user-astronaut.svg" width="15px" /> Log in &
+                        Create Account
+                    </span>
+                </a>
+            </li>
+            <li>
+                <div class="dropdown" *ngIf="false">
+                    <a class="dropdownBtn cursor-pointer">
+                        <span class="text-capitalize d-lg-block d-md-block d-none">
+                            <img src="/assets/images/svg_Icons/Icon awesome-user-astronaut.svg" width="15px" />
+                            firstname lastname
+                        </span>
+                        <span class="text-capitalize d-lg-none d-md-none d-block">
+                            firstname lastname
+                        </span>
+                    </a>
+                    <div class="dropdown-content">
+                        <div class="list-group">
+                            <a routerLink="/bidhistory/bid" class="list-group-item list-group-item-action">My
+                                Biddings</a>
+                            <a routerLink="/bookinghistory/booking" class="list-group-item list-group-item-action">My
+                                Bookings</a>
+                            <a routerLink="/profilepage" class="list-group-item list-group-item-action">My Profile</a>
+                            <a class="list-group-item list-group-item-action cursor-pointer">Logout</a>
+                        </div>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </nav>
+</ng-container>

@@ -1,0 +1,78 @@
+<main-header [header]="'main'"></main-header>
+<div class="container my-md-5 py-3 py-md-5">
+    <div class="row">
+        <div class="col-12 col-md-8 mx-auto">
+            <div class="header mb-4 border-bottom pb-2">
+                <h3 style="font-weight: 800;">Become Jusbid Partner</h3>
+                <p style="font-size: 14px;font-weight: 600;color: gray;">Thanks for your interest Tell us about your
+                    self 😀</p>
+
+                <div class="alert alert-success" role="alert" *ngIf="success_mgs">
+                    {{success_mgs}}
+                </div>
+            </div>
+            <form #becomeTravelAgentForm="ngForm" (submit)=onSubmit(becomeTravelAgentForm)>
+                <div class="mb-3">
+                    <label for="CompanyName" class="form-label">Company Name</label>
+                    <input type="text" class="form-control" id="CompanyName" name="company" autofocus="off"
+                        onKeyPress="if(this.value>101) return false" ngModel required>
+                </div>
+                <div class="mb-3">
+                    <label for="AgentName" class="form-label">Agent Name</label>
+                    <input type="text" class="form-control" id="AgentName" name="agent_name" autofocus="off"
+                        onKeyPress="if(this.value>101) return false" ngModel required>
+                </div>
+                <div class="mb-3">
+                    <label for="email" class="form-label">Email address</label>
+                    <input type="email" class="form-control" id="email" name="email" autofocus="off"
+                        onKeyPress="if(this.value.length>100) return false" ngModel required>
+                    <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+                </div>
+                <div class="mb-3">
+                    <label for="contactNumber" class="form-label">Contact Number</label>
+                    <input type="number" class="form-control" id="contactNumber" name="contact" autofocus="off"
+                        onKeyPress="if(this.value.length>14) return false" ngModel required>
+                </div>
+                <div class="mb-3">
+                    <label for="area" class="form-label">Area</label>
+                    <input type="text" class="form-control" id="area" name="area" autofocus="off"
+                        onKeyPress="if(this.value>101) return false" ngModel required>
+                </div>
+                <div class="mb-3">
+                    <label for="State" class="form-label">State</label>
+                    <select class="form-control" name="state" id="state" autofocus="off" ngModel required
+                        (change)="getStateCode($event)">
+                        <option value="" selected disabled>Select State</option>
+                        <ng-container *ngFor="let state of stateList">
+                            <option [value]="state.name">{{ state.name }}</option>
+                        </ng-container>
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label for="City" class="form-label">City</label>
+                    <select class="form-control" name="city" id="city" ngModel required>
+                        <option value="" selected disabled>Select City</option>
+                        <ng-container *ngFor="let city of cities_list">
+                            <option [value]="city">{{ city }}</option>
+                        </ng-container>
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label for="zip" class="form-label">Zip Code</label>
+                    <input type="number" class="form-control" name="zip" id="zip"
+                        onKeyPress="if(this.value.length>14) return false" autofocus="off" ngModel required>
+                </div>
+                <div class="mb-3">
+                    <label for="Address" class="form-label">Full Address</label>
+                    <textarea class="form-control" name="address" id="Address" rows="3" autofocus="off"
+                        onKeyPress="if(this.value.length>400) return false" ngModel required></textarea>
+                </div>
+
+                <div class="text-center">
+                    <button type="submit" class="btn btn-primary px-5">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<main-footer></main-footer>

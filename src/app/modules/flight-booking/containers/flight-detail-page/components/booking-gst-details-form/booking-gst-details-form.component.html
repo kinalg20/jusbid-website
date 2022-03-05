@@ -1,0 +1,19 @@
+<form #gstForm="ngForm">
+    <div class="row row-cols-2 row-cols-lg-3 py-4">
+
+        <div class="col">
+            <div class="Text">
+                <label for="company_name" class="input_label">Company Name</label>
+                <input type="text" id="company_name" class='input_box' name="company_name" [(ngModel)]="company_name" (input)="getCompanyName($event)" required>
+            </div>
+        </div>
+
+        <div class="col">
+            <div class="Text">
+                <label for="registration_no" class="input_label">Registration No.</label>
+                <input type="text" id="registration_no" name="registration_no" [(ngModel)]="registration_no" (input)="getRegistrationNo($event)" class='input_box'>
+            </div>
+        </div>
+
+    </div>
+</form>

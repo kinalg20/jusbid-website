@@ -1,0 +1,339 @@
+<app-header></app-header>
+<!-- filter on Moblie Screen -->
+<div class="app_body_container">
+    <div class="absolute" *ngIf="false">
+        <h5 title="Filter">
+            <i class="fa fa-filter">Filter</i>
+        </h5>
+    </div>
+    <!-- filter on  Desktop Screen -->
+    <div class="hotel-listing-container">
+        <section class="hotel-listing filter-section">
+            <div class="container-fluid">
+                <div class="clearfix">
+                    <div class="filter">
+                        <div class="filter-head">
+                            <div class="filter-title">
+                                <h6 class="filters_name">
+                                    <i class="fa fa-times"></i> Filters
+                                </h6>
+                                <span class="d-lg-none d-block">
+                                    <button type="submit" class="btn btn-success">Apply</button>
+                                </span>
+                            </div>
+                        </div>
+
+                        <div style="padding: 0 10px;">
+                            <section class="mt-0 pt-0">
+                                <div class="filter-title">
+                                    <h6>Search by Hotel</h6>
+                                    <span style="color: var(--primary);cursor: pointer;">Clear</span>
+                                </div>
+                                <div>
+                                    <form>
+                                        <input type="text" class="form-control" name="searchTerm">
+                                    </form>
+                                </div>
+                            </section>
+                            <hr>
+                            <section class="price_range_filter pt-0 mt-0">
+                                <div class="filter-title">
+                                    <h6>Price Range</h6>
+                                </div>
+                                <div class="custom-slider">
+                                    <!-- <ngx-slider [(value)]="minValue" [(highValue)]="highValue" [options]="options"
+                                        (mouseup)="slider_Event()" [(ngModel)]="price_Selection"></ngx-slider> -->
+                                </div>
+                                <div class="d-flex justify-content-between">
+                                    <div class="my-auto">
+                                        <h6 class="Price" style="font-weight: 800;"><span
+                                                style="font-family: robot;">&#x20B9;</span>1200
+
+                                        </h6>
+                                    </div>
+                                    <div class="my-auto">
+                                        <h6 class="Price" style="font-weight: 800;"><span
+                                                style="font-family: robot;">&#x20B9;</span>20000
+                                        </h6>
+                                    </div>
+                                </div>
+                                <hr>
+                            </section>
+                            <section class="filter-amenities mt-0 pt-0">
+                                <div class="filter-title">
+                                    <h6>Sort by</h6>
+                                </div>
+                                <div>
+                                    <select name="sort_price" id="sort_price" class="form-control" ngModel
+                                        style="border-radius: 5px ; color: #000;">
+                                        <option value="">Select Option</option>
+                                        <option value="price_ASC">Price low to high</option>
+                                        <option value="price_DESC">Price high to low</option>
+                                    </select>
+                                </div>
+                            </section>
+                            <hr>
+
+
+                            <section class="filter-amenities mt-0 pt-0" *ngIf="false">
+                                <div class="filter-title">
+                                    <h6>Amenities</h6>
+                                </div>
+                                <div>
+                                    <ng-container>
+                                        <ng-container *ngFor='let in of [0,1,2,3,4];'>
+                                            <div class="lines shine"></div>
+                                        </ng-container>
+                                    </ng-container>
+                                    <ng-container>
+                                        <ng-container>
+                                            <label class="custom-check">
+                                                wifi
+                                                <input type="checkbox" name="selectAmenity">
+                                                <span class="checkmark"></span>
+                                            </label>
+                                        </ng-container>
+                                    </ng-container>
+                                </div>
+                                <div>
+                                    <ng-container>
+                                        <label class="custom-check">
+                                            name
+                                            <input type="checkbox" name="selectAmenity">
+                                            <span class="checkmark"></span>
+                                        </label>
+                                    </ng-container>
+                                </div>
+                                <a class="cursor-pointer"><i class="fa fa-plus"></i>
+                                    showAllAmenitiesText</a>
+                            </section>
+                            <section class="filter-amenities mt-0 pt-0">
+                                <div class="filter-title">
+                                    <h6>Categories</h6>
+                                </div>
+                                <div>
+                                    <ng-container>
+                                        <ng-container>
+                                            <div class="lines shine"></div>
+                                        </ng-container>
+                                    </ng-container>
+                                    <ng-container>
+                                        <ng-container>
+                                            <label class="custom-check">
+                                                category
+                                                <input type="checkbox" name="selectCateory">
+                                                <span class="checkmark"></span>
+                                            </label>
+                                        </ng-container>
+                                    </ng-container>
+                                </div>
+                                <div>
+                                    <ng-container>
+                                        <label class="custom-check">
+                                            category
+                                            <input type="checkbox" name="selectCateory">
+                                            <span class="checkmark"></span>
+                                        </label>
+                                    </ng-container>
+                                </div>
+                                <a class="cursor-pointer"><i class="fa fa-plus"></i>
+                                    showAllCategoryText</a>
+                                <hr>
+                            </section>
+
+                            <!-- Redesign -->
+                            <section class="filter-amenities mt-0 pt-0">
+                                <div class="filter-title">
+                                    <h6>Amenities</h6>
+                                    <a class="cursor-pointer">
+                                        <i class="fa fa-plus"></i>
+                                        is_showAll
+                                    </a>
+                                </div>
+                                <div>
+                                    <ng-container>
+                                        <a class="list-group-item list-group-item-action cursor-pointer d-flex"
+                                            style="font-size: 13px;">
+                                            <input type="checkbox">
+                                            <span class="px-2 ">name</span>
+                                        </a>
+                                    </ng-container>
+                                </div>
+                            </section>
+                            <hr>
+                            <section class="filter-amenities mt-0 pt-0">
+                                <div class="filter-title">
+                                    <h6>Categories</h6>
+                                    <a class="cursor-pointer">
+                                        <i class="fa fa-plus"></i>
+                                        Show All
+                                    </a>
+                                </div>
+                                <div>
+                                    <ng-container>
+                                        <a class="list-group-item list-group-item-action cursor-pointer d-flex"
+                                            style="font-size: 13px;">
+                                            <input type="checkbox">
+                                            <span class="px-2">category</span>
+                                        </a>
+                                    </ng-container>
+                                </div>
+                            </section>
+                        </div>
+                    </div>
+                    <!-- Hotel Listing  -->
+                    <div class="list">
+                        <div class="row  d-lg-block d-none">
+                            <div class="col-3 col-sm-12 mb-3">
+                                <!-- breadcrumb  -->
+                                <nav aria-label="breadcrumb">
+                                    <ol class="breadcrumb">
+                                        <li class="breadcrumb-item" aria-current="page">
+                                            <a routerLink="" class="text-muted" style="text-decoration: none;">
+                                                <i class="fa fa-home" aria-hidden="true"></i>
+                                                Home
+                                            </a>
+                                        </li>
+                                        <li class="breadcrumb-item active">
+                                            <a class="text-dark" style="text-decoration: none;">
+                                                <i class="fa fa-city" aria-hidden="true"></i> city
+                                            </a>
+                                        </li>
+                                    </ol>
+                                </nav>
+                            </div>
+                        </div>
+                        <div class="notFound">
+                            <div class="row">
+                                <div class="col-12 mb-3">
+                                    <p style="font-size: 20px;
+                                    line-height: 32px;
+                                    font-weight: 700;
+                                    color: #333;">
+                                        1250 Result(s) Found
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <ng-container>
+                            <div class="row">
+                                <ng-container>
+                                    <div class="col-sm-12  col-md-12 col-lg-12  mb-4">
+                                        <div class="listing-box">
+                                            <div class="listing-box-image">
+                                                <div class="box shine"></div>
+                                            </div>
+                                            <div class="listing-box-details">
+                                                <div class="listing-box-head">
+                                                    <div class="lines shine"></div>
+                                                    <div class="listing-room-details">
+                                                        <div class="lines shine"></div>
+                                                    </div>
+                                                </div>
+                                                <p>
+                                                    <span class="lines shine"></span>
+                                                </p>
+                                                <div class="amenties-img shine"></div>
+                                            </div>
+                                            <div class="listing-box-bottom">
+                                                <div class="lines shine"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </ng-container>
+                            </div>
+                        </ng-container>
+                        <!-- Hotel  listing Details section -->
+                        <ng-container>
+                            <ng-container>
+                                <div class="row">
+                                    <ng-container>
+                                        <div class="col-sm-12  col-md-12 col-lg-12  mb-4">
+                                            <div class="listing-box">
+                                                <div class="listing-box-image">
+                                                    <ng-container>
+                                                        <img src="assets\images\landing_page_images\top_banner.jpg"
+                                                            class="img-fluid img-thumbnail">
+                                                    </ng-container>
+                                                </div>
+                                                <div class="listing-box-details-price">
+                                                    <div class="listing-box-details">
+                                                        <div class="listing-box-head">
+                                                            <h5>
+                                                                Hotel Devi Palace
+                                                            </h5>
+                                                        </div>
+                                                        <p class="text-capitalize"><i
+                                                                class="fa fa-map-marker text-danger mr-2"></i>
+                                                            Near Lake Pichola
+                                                        </p>
+                                                        <ng-container>
+                                                            <div class="listing-room-details">
+                                                                <div
+                                                                    class="row row-cols-5 row-cols-sm-5 row-cols-md-5 align-center">
+                                                                    <ng-container>
+                                                                        <div class="col my-auto">
+                                                                            <div class="amenties-list cursor-pointer">
+                                                                            </div>
+                                                                        </div>
+                                                                    </ng-container>
+                                                                    <div class="col p-0">
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <hr>
+                                                        </ng-container>
+                                                    </div>
+                                                    <div class="listing_box_price">
+                                                        <div class="listing-box-bottom">
+                                                            <h3>&#x20B9; 1250<span class=""
+                                                                    style="margin-left: 2px;"></span>
+                                                            </h3>
+                                                            <p>Per Room Per Night</p>
+                                                        </div>
+                                                        <div class="card-bottom-buttons_2">
+                                                            <a> View Details</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </ng-container>
+                                </div>
+                            </ng-container>
+                        </ng-container>
+
+
+                        <!-- Hotel not found -->
+                        <ng-container *ngIf="false">
+                            <div class="hotel_not_found">
+                                <div class="">
+                                    <div class="ads_banner_bid" routerLink="/auth">
+                                        <img class="img-fluid mb-3" src="assets/images/web banner-01.jpg">
+                                    </div>
+                                </div>
+                                <div class="">
+                                    <div class="ads_banner_bid" routerLink="Best-hotel-room-deals">
+                                        <img class="img-fluid mb-3" src="assets/images/web banner-01.jpg">
+                                    </div>
+                                </div>
+                                <div>
+                                    <h1>No Results Found</h1>
+                                    <div class="">
+                                        <p>There are no hotels in your desired destination for best Offer click here!
+                                        </p>
+                                        <button class="btn btn-submit" type="submit" routerLink="Best-hotel-room-deals">
+                                            Best Hotel Room Deals
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </ng-container>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>
+<app-footer></app-footer>

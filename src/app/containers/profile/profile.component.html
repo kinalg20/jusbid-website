@@ -1,0 +1,573 @@
+<main-header [header]="'main'"></main-header>
+<div class="loading_bar" *ngIf="this.common.is_app_loading">
+    <div class="text-primary" role="status">
+        <span class="visually-hidden">Loading...</span>
+    </div>
+</div>
+<section class="profile_page my-4">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xl-10 col-lg-11 mx-auto">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item" aria-current="page">
+                            <a routerLink="" class="none_active">
+                                <i class="fa fa-home" aria-hidden="true"></i>
+                                Home
+                            </a>
+                        </li>
+                        <li class="breadcrumb-item active">
+                            <a>
+                                <i class="fa fa-user" aria-hidden="true"></i> Profile
+                            </a>
+                        </li>
+                    </ol>
+                </nav>
+                <div style="display: flex;align-items: center; justify-content: space-between;">
+                    <div>
+                        <h1 style="font-weight: bold;">Profile</h1>
+                    </div>
+                    <div class="mx-4" *ngIf="profileEditResMsg">
+                        <div class="alert alert-success py-1" role="alert">
+                            {{profileEditResMsg}}
+                        </div>
+                    </div>
+                    <div class="mx-4" *ngIf="profileImgEditResMsg">
+                        <div class="alert alert-success py-1" role="alert">
+                            {{profileImgEditResMsg}}
+                        </div>
+                    </div>
+                    <div class="d-block d-lg-none">
+                        <a (click)="logout()" class="button-logout-profile cursor-pointer">Logout</a>
+                    </div>
+                </div>
+                <hr>
+                <div class="bid-data">
+                    <div class="row">
+                        <div class="col-xl-4 col-lg-5 col-md-12">
+                            <ng-container *ngIf="shimmerLoad">
+                                <div class="card shadow-sm mb-4 p-2">
+                                    <div class="card_body ">
+                                        <div class="prifle_img text-center">
+                                            <div class="shine photo"></div>
+                                        </div>
+                                        <div class="card_header">
+                                            <div class="lines shine"></div>
+                                        </div>
+                                        <div class="Profile">
+                                            <div class="lines shine"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card shadow-sm p-4 mb-4">
+                                    <div class="card_body">
+                                        <div class="row mb-2">
+                                            <div class="col-xl-4 col-lg-5 col-4">
+                                                <div class="lines shine"></div>
+
+                                            </div>
+                                            <div class="col-xl-8 col-lg-7 col-8">
+                                                <div class="lines shine"></div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-xl-4 col-lg-5 col-4">
+                                                <div class="lines shine"></div>
+                                            </div>
+                                            <div class="col-xl-8 col-lg-7 col-8">
+                                                <div class="lines shine"></div>
+                                            </div>
+
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-xl-4 col-lg-5 col-4">
+                                                <div class="lines shine"></div>
+                                            </div>
+                                            <div class="col-xl-8 col-lg-7 col-8">
+                                                <div class="lines shine"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </ng-container>
+                            <ng-container *ngIf="!shimmerLoad">
+                                <div class="card shadow-sm mb-4 p-2">
+                                    <div class="card_body ">
+                                        <form>
+                                            <div class="prifle_img mb-4 text-center">
+                                                <label for="profile" style="position: relative;">
+                                                    <ng-container *ngIf="userProfileImg; else noProfileImg">
+                                                        <i class="fa fa-edit bg-light p-2 rounded-circle border text-center shadow-sm cursor-pointer"
+                                                            style="position: absolute;bottom: 5px;right: 5px;"></i>
+                                                        <img [src]="this.api.getAbsolutePath(userProfileImg)" class=""
+                                                            width="120px" height="120px"
+                                                            style="object-fit: cover;border-radius: 100%;" alt="">
+                                                    </ng-container>
+                                                    <ng-template #noProfileImg>
+                                                        <i class="fa fa-edit bg-light p-2 rounded-circle border text-center shadow-sm cursor-pointer"
+                                                            style="position: absolute;bottom: 5px;right: 5px;"></i>
+                                                        <img src="https://storage.googleapis.com/jusbid_cloud_storage/assets/images/nobody_m.original.jpg"
+                                                            width="120px" alt="">
+                                                    </ng-template>
+                                                </label>
+                                                <input type="file" id="profile" ngModel
+                                                    (change)="updateProfielImg($event)" name="profile_img"
+                                                    style="display: none;" />
+                                            </div>
+                                            <div class="card_header">
+                                                <h5>{{user_all_data?.firstname + " " + user_all_data?.lastname}}</h5>
+                                            </div>
+                                            <div class="Profile">
+                                                <h6>Personal Profile</h6>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                                <div class="card shadow-sm p-4 mb-4">
+                                    <div class="card_body">
+                                        <div class="row mb-2">
+                                            <div class="col-xl-4 col-lg-5 col-4">
+                                                <label for="firstname" class="form-label">MOBILE NO</label>
+
+                                            </div>
+                                            <div class="col-xl-8 col-lg-7 col-8">
+                                                <label for="lastname"
+                                                    class="form-label">{{user_all_data?.mobile?user_all_data?.mobile:'-'}}
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="row mb-2">
+                                            <div class="col-xl-4 col-lg-5 col-4">
+                                                <label for="firstname" class="form-label">EMAIL ID</label>
+
+                                            </div>
+                                            <div class="col-xl-8 col-lg-7 col-8">
+                                                <label for="lastname"
+                                                    class="emailid">{{user_all_data?.email?user_all_data?.email:'-'}}
+                                                </label>
+                                            </div>
+
+                                        </div>
+                                        <div class="row">
+                                            <!-- <div class="col-xl-4 col-lg-5 col-4">
+                                                <label for="firstname" class="form-label">Password
+                                                </label>
+                                            </div> -->
+                                            <div class="col-xl-8 col-lg-7 col-8">
+                                                <!-- <label for="Password" class="form-label"
+                                                    style="display: flex;align-items: center;">
+                                                    <span *ngIf="!is_password_show">**********</span>
+                                                    <span
+                                                        *ngIf="is_password_show">{{user_all_data?.password?user_all_data?.password:'-'}}</span>
+                                                    <i class="fa cursor-pointer mx-2"
+                                                        [ngClass]="is_password_show?'fa-eye-slash':'fa-eye'"
+                                                        (click)="ShowPassword()"></i>
+                                                </label> -->
+                                                <span>
+
+                                                    <h6 class="change-password-title">
+                                                        <a class="Change-password cursor-pointer"
+                                                            (click)="openChangePasswordModal()">Change Password?</a>
+                                                    </h6>
+
+                                                </span>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </ng-container>
+                        </div>
+                        <div class="col-xl-8 col-lg-7 col-md-12">
+                            <ng-container *ngIf="shimmerLoad">
+                                <div class="card shadow-sm p-4">
+
+                                    <div class="row">
+                                        <div class="col-lg-10 col-9">
+                                            <div class="lines shine mt-0"></div>
+                                            <div class="lines shine"></div>
+                                        </div>
+                                        <div class="col-lg-2 col-3 text-right ">
+                                            <div class="button shine"></div>
+                                        </div>
+                                    </div>
+                                    <hr>
+                                    <div class="card_body mt-4">
+                                        <div class="row">
+                                            <div class="col-4">
+                                                <div class="lines shine"></div>
+                                            </div>
+                                            <div class="col-8">
+                                                <div class="lines shine"></div>
+                                            </div>
+
+                                        </div>
+                                        <div class="Barline mt-2"></div>
+                                        <div class="row mt-3">
+                                            <div class="col-4">
+                                                <div class="lines shine"></div>
+                                            </div>
+                                            <div class="col-8">
+                                                <div class="lines shine"></div>
+                                            </div>
+                                        </div>
+                                        <div class="Barline mt-3"></div>
+                                        <div class="row mt-4">
+                                            <div class="col-4">
+                                                <div class="lines shine"></div>
+                                            </div>
+                                            <div class="col-8">
+                                                <div class="lines shine"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </ng-container>
+                            <ng-container *ngIf="!shimmerLoad">
+                                <div class="card shadow-sm p-4">
+
+                                    <div class="d-flex justify-content-between">
+                                        <div class="my-auto d-flex">
+                                            <div class="line"></div>
+                                            <div class="User-Name mx-2">
+                                                <h6 class="User-Profile-Name">User Profile</h6>
+                                                <p class="Basic-info">Basic info, for a faster booking experience
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div class="my-auto">
+                                            <button type="button" class="button-logout-profile"
+                                                (click)="editProfileDetails()" *ngIf="!is_editProfileDetails">
+                                                Edit
+                                            </button>
+                                            <button type="button" class="button-logout-profile"
+                                                (click)="editProfileDetails()" *ngIf="is_editProfileDetails">
+                                                Cancel
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <hr>
+                                    <div class="card_body">
+                                        <ng-container *ngIf="!is_editProfileDetails">
+                                            <div class="row">
+                                                <div class="col-4">
+                                                    <label for="current_password" class="label-name">NAME</label>
+                                                </div>
+                                                <div class="col-8">
+                                                    <label class="user-Name" style="font-size: 16px;">
+                                                        {{user_all_data?.firstname + " " +
+                                                        user_all_data?.lastname}}</label>
+                                                </div>
+                                            </div>
+                                            <div class="Barline mt-2"></div>
+                                            <div class="row mt-3">
+                                                <div class="col-4">
+                                                    <label for="current_password" class="label-name">BIRTHDAY</label>
+                                                </div>
+                                                <div class="col-8">
+                                                    <b>{{user_all_data?.dob?user_all_data?.dob:'-'}}</b>
+                                                </div>
+                                            </div>
+                                            <div class="Barline mt-3"></div>
+                                            <div class="row mt-3">
+                                                <div class="col-4">
+                                                    <label for="current_password" class="label-name">GENDER</label>
+                                                </div>
+                                                <div class="col-8">
+                                                    <b>{{user_all_data?.gender?user_all_data?.gender:'-'}}</b>
+                                                </div>
+                                            </div>
+                                        </ng-container>
+                                        <ng-container *ngIf="is_editProfileDetails">
+                                            <form #editProfileForm="ngForm" (submit)=editProfile(editProfileForm)>
+                                                <div class="row mb-2">
+                                                    <div class="col-md-6">
+                                                        <div class="form-group">
+                                                            <label for="firstname" class="form-label">First Name</label>
+                                                            <input type="text" class="form-control" id="firstname"
+                                                                name="firstname" [(ngModel)]="user_all_data.firstname">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div class="form-group">
+                                                            <label for="lastname" class="form-label">Last Name</label>
+                                                            <input type="text" class="form-control" id="lastname"
+                                                                name="lastname" [(ngModel)]="user_all_data.lastname">
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="mb-4">
+                                                    <label for="mobile" class="form-label">Gender</label>
+                                                    <div>
+                                                        <div class="form-check form-check-inline">
+                                                            <input class="form-check-input" type="radio" name="gender"
+                                                                id="Male" [checked]="user_all_data.gender=='Male'"
+                                                                (click)="getGender('Male')">
+                                                            <label class="form-check-label" for="Male">Male</label>
+                                                        </div>
+                                                        <div class="form-check form-check-inline">
+                                                            <input class="form-check-input" type="radio" name="gender"
+                                                                id="Female" [checked]="user_all_data.gender=='Female'"
+                                                                (click)="getGender('Female')">
+                                                            <label class="form-check-label" for="Female">Female</label>
+                                                        </div>
+                                                        <div class="form-check form-check-inline">
+                                                            <input class="form-check-input" type="radio" name="gender"
+                                                                id="Other" [checked]="user_all_data.gender=='Other'"
+                                                                (click)="getGender('Other')">
+                                                            <label class="form-check-label" for="Other">Others</label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-xl-4 col-lg-6">
+                                                        <div class="mb-4">
+                                                            <label for="dob" class="form-label">Date of Birth</label>
+                                                            <input type="date" name="dob" class="form-control" id="dob"
+                                                                [value]="user_all_data.dob"
+                                                                [(ngModel)]="user_all_data.dob">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-xl-4 col-lg-6">
+                                                        <div class="mb-4">
+                                                            <label for="mobile" class="form-label">Phone Number</label>
+                                                            <input type="number" class="form-control" id="mobile"
+                                                                name="mobile" [(ngModel)]="user_all_data.mobile"
+                                                                (input)="validateMobile($event)"
+                                                                (keydown)="inputMobile($event)"
+                                                                onKeyPress="if(this.value.length==16) return false;">
+                                                                <h6 class="text-danger" *ngIf="invalidMobile">
+                                                                    {{ invalidMobile ? "Invalid Mobile" : "" }}
+                                                                  </h6>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-xl-4 col-lg-12">
+                                                        <div class="mb-4">
+                                                            <label for="email" class="form-label">Email Address</label>
+                                                            <input type="text" class="form-control" id="email"
+                                                                name="email" [(ngModel)]="user_all_data.email">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-lg-6">
+                                                        <div class="form-group mb-3">
+                                                            <label for="state">State</label>
+                                                            <select class="form-control" name="state" id="state"
+                                                                [(ngModel)]="user_all_data.state" required
+                                                                (change)="getStateCode($event)">
+                                                                <option value="" selected disabled>Select State</option>
+                                                                <ng-container *ngFor="let state of stateList">
+                                                                    <option [value]="state.name">{{ state.name }}
+                                                                    </option>
+                                                                </ng-container>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-6">
+                                                        <div class="form-group mb-3">
+                                                            <label for="city">City</label>
+                                                            <select class="form-control" name="city" id="city"
+                                                                [(ngModel)]="user_all_data.city" required>
+                                                                <option value="" disabled *ngIf="cities_list.length==0">
+                                                                    Please
+                                                                    Select state first</option>
+                                                                <option value="" disabled *ngIf="cities_list.length!=0">
+                                                                    Select
+                                                                    City</option>
+                                                                <ng-container *ngFor="let city of cities_list">
+                                                                    <option [value]="city">{{ city }}</option>
+                                                                </ng-container>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <input type="hidden" name="mobile" [value]="user_all_data.mobile"
+                                                    [(ngModel)]="user_all_data.mobile">
+
+                                                <input type="hidden" name="password" [value]="user_all_data.password"
+                                                    [(ngModel)]="user_all_data.password" [disabled]="user_all_data.mobile">
+                                                <button type="submit" class="btn btn-primary">Update</button>
+                                            </form>
+                                        </ng-container>
+                                    </div>
+                                </div>
+                                <div class="card shadow-sm p-4 mt-4 Save-card"
+                                    *ngIf="user_all_data?.role==4 || user_all_data?.role==6">
+
+                                    <div class="d-flex justify-content-between">
+                                        <div class="my-auto d-flex">
+                                            <div class="line"></div>
+                                            <div class="User-Name mx-2">
+                                                <h6 class="User-Profile-Name">Save Traveller(s) </h6>
+                                                <p class="Basic-info">You have {{myCustomersList.length}}
+                                                    traveller(s)
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div class="my-auto">
+                                            <button type="button" class="button-logout-profile"
+                                                (click)="openAddTravelAgentsCutsomerModal()">Add Traveller</button>
+                                        </div>
+                                    </div>
+                                    <hr>
+                                    <div class="customer_table">
+                                        <table class="table">
+                                            <thead>
+                                                <tr>
+                                                    <th scope="col">Sr.No.</th>
+                                                    <th scope="col">Customer Name</th>
+                                                    <th scope="col">Customer Email</th>
+                                                    <th scope="col">Customer Contact</th>
+                                                    <th scope="col">Customer Address</th>
+                                                    <th scope="col">Action</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr *ngFor="let customer of myCustomersList; index as i">
+                                                    <th scope="row">{{i+1}}</th>
+                                                    <td>{{customer.name}}</td>
+                                                    <td>{{customer.email}}</td>
+                                                    <td>{{customer.contact}}</td>
+                                                    <td><span
+                                                            title="{{customer.address}}">{{customer.address.slice(0,20)}}</span><span
+                                                            *ngIf="customer.address.length>20">...</span></td>
+                                                    <td style="display: flex;">
+                                                        <button class="btn btn-danger btn-sm mx-2"
+                                                            (click)="removeMyCustomerFromList(customer.id)">Remove</button>
+                                                        <button class="btn btn-warning btn-sm"
+                                                            (click)="openEditTravelAgentsCutsomerModal(customer)">Edit</button>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+
+                                </div>
+                            </ng-container>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<div class="custom_modal" *ngIf="is_openChangePasswordModal">
+    <div class="card">
+        <div class="card_header">
+            <div class="title">
+                <h5 class="change-title">Change Password</h5>
+            </div>
+            <div class="close_modal"><i (click)="openChangePasswordModal()" class="cursor-pointer fa fa-times"></i>
+            </div>
+        </div>
+        <form #changePassFrom="ngForm" (submit)=changeUserPassword(changePassFrom)>
+            <div class="mb-4">
+                <label for="current_password" class="form-label">Old Password</label>
+                <input type="password" class="form-control" placeholder="••••••••" id="current_password"
+                    name="current_password" ngModel required>
+            </div>
+            <div class="mb-4">
+                <label for="new_password" class="form-label">New Password</label>
+                <input type="password" class="form-control" placeholder="••••••••" id="new_password" name="new_password"
+                    ngModel required>
+                <div id="new_password" class="form-text">Password should have atleast 8
+                    characters including 1 special character.</div>
+            </div>
+
+            <div class="d-flex">
+                <button type="submit" class="btn btn-primary btn-md rounded border"
+                    [disabled]="changePassFrom.invalid">Update</button>
+                <button type="submit" class="btn btn-light border mx-2 btn-md"
+                    (click)="openChangePasswordModal()">Cancel</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="custom_modal" *ngIf="is_openAddTravelAgentsCutsomerModal">
+    <div class="card">
+        <div class="card_header">
+            <div class="title">
+                <h5>Add Customer Details</h5>
+            </div>
+            <div class="close_modal"><i (click)="openAddTravelAgentsCutsomerModal()"
+                    class="cursor-pointer fa fa-times"></i>
+            </div>
+        </div>
+        <form #addCustomerForm="ngForm" (submit)=addTravelAgentCustomer(addCustomerForm)>
+            <div class="mb-4">
+                <label for="name" class="form-label">Name</label>
+                <input type="text" class="form-control" placeholder="Full Name" id="name" name="name" ngModel required>
+            </div>
+            <div class="mb-4">
+                <label for="contact" class="form-label">Conatct Number</label>
+                <input type="text" class="form-control" placeholder="Conatct Number" id="contact" name="contact" ngModel
+                    required>
+            </div>
+            <div class="mb-4">
+                <label for="email" class="form-label">Email Address</label>
+                <input type="email" class="form-control" placeholder="Email Address" id="email" name="email" ngModel
+                    required>
+            </div>
+            <div class="mb-4">
+                <label for="address" class="form-label">Address</label>
+                <input type="text" class="form-control" placeholder="Address" id="address" name="address" ngModel
+                    required>
+            </div>
+
+            <div class="d-flex">
+                <button type="submit" class="btn btn-primary btn-md rounded border"
+                    [disabled]="addCustomerForm.invalid">ADD</button>
+                <button type="submit" class="btn btn-light border mx-2 btn-md"
+                    (click)="openAddTravelAgentsCutsomerModal()">Cancel</button>
+            </div>
+        </form>
+    </div>
+</div>
+<div class="custom_modal" *ngIf="is_openEditTravelAgentsCutsomerModal">
+    <div class="card" style="min-width: 500px;">
+        <div class="card_header">
+            <div class="title">
+                <h5>Edi Customer Details</h5>
+            </div>
+            <div class="close_modal"><i (click)="openEditTravelAgentsCutsomerModal()"
+                    class="cursor-pointer fa fa-times"></i>
+            </div>
+        </div>
+        <form #editCustomerForm="ngForm" (submit)=editTravelAgentCustomer(editCustomerForm)>
+            <div class="mb-4">
+                <label for="name" class="form-label">Name</label>
+                <input type="text" class="form-control" [(ngModel)]="editCustomerDetailsObj.name" id="name" name="name"
+                    required>
+            </div>
+            <div class="mb-4">
+                <label for="contact" class="form-label">Conatct</label>
+                <input type="text" class="form-control" [(ngModel)]="editCustomerDetailsObj.contact" id="contact"
+                    name="contact" required>
+            </div>
+            <div class="mb-4">
+                <label for="email" class="form-label">Email</label>
+                <input type="email" class="form-control" [(ngModel)]="editCustomerDetailsObj.email" id="email"
+                    name="email" required>
+            </div>
+            <div class="mb-4">
+                <label for="address" class="form-label">Address</label>
+                <input type="text" class="form-control" [(ngModel)]="editCustomerDetailsObj.address" id="address"
+                    name="address" required>
+            </div>
+
+            <div class="d-flex">
+                <button type="submit" class="btn btn-primary btn-md"
+                    [disabled]="editCustomerForm.invalid">Update</button>
+                <button type="submit" class="btn btn-light border mx-2 btn-md"
+                    (click)="openEditTravelAgentsCutsomerModal()">Cancel</button>
+            </div>
+        </form>
+    </div>
+</div>
+<main-footer></main-footer>

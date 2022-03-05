@@ -1,0 +1,58 @@
+<div class="flight_card">
+    <div class="airline_details">
+        <div class="airline_icon"><img
+                [src]="this.apiRequestService?.getAbsoluteImagePath(getAirlineObj(relatedFlightDetails?.Carrier).image)"
+                alt="Airline Logo"></div>
+        <div class="airline_name">{{getAirlineObj(relatedFlightDetails?.Carrier).airline}}</div>
+        <div class="airline_number_code">{{getAirlineObj(relatedFlightDetails?.Carrier).IATA}} -
+            {{relatedFlightDetails?.FlightNumber}}</div>
+    </div>
+    <div class="source_to_destination">
+        <div class="origin">
+            <div style="display: flex;align-items: center;">
+                <div class="mr-4">
+                    <h6 style="font-weight: 800;">{{relatedFlightDetails?.DepartureTime | date:'HH:mm'}}>
+                    </h6>
+                </div>
+                <div class="city_code" style="display: grid;margin-top: 10px;">
+                    <b style="margin: 0;padding: 0;line-height: 0.5;">{{getCityNameByIATA_Code(relatedFlightDetails?.Origin)}}
+                        ({{relatedFlightDetails?.Origin}})</b>
+                    <small class="my-0 py-0"
+                        style="margin: 0;padding: 0;">{{getAirPortNameByIATA_Code(relatedFlightDetails?.Origin)}}</small>
+                </div>
+            </div>
+            <div style="display: flex;align-items: center;">
+                <div class="mr-4">
+                    <h6 style="font-weight: 800;">{{relatedFlightDetails?.ArrivalTime | date:'HH:mm'}}
+                    </h6>
+                </div>
+                <div class="city_code" style="display: grid;margin-top: 10px;">
+                    <b style="margin: 0;padding: 0;line-height: 0.5;">{{getCityNameByIATA_Code(relatedFlightDetails?.Destination)}}
+                        ({{relatedFlightDetails?.Destination}})</b>
+                    <small class="my-0 py-0"
+                        style="margin: 0;padding: 0;">{{getAirPortNameByIATA_Code(relatedFlightDetails?.Destination)}}</small>
+                </div>
+            </div>
+        </div>
+        <div class="flight_duration">
+            <div>
+                <span class="dF justifyBetween alignItemsCenter backgroundLn">
+                    <i class="fa fa-minus text-danger"></i>
+                    <span class="mx-3">{{seconds_to_days_hours_mins_secs_str(relatedFlightDetails?.FlightTime)}}</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="1.5rem" height="1.5rem"
+                        fill="red" class="Flight__FlightIcon">
+                        <path
+                            d="M31.95 16.262c-.012 0-.012 0 0 0-.337.762-2.238 1.3-2.238 1.3l-8.137-.012-8.863 12.925-2.088-.15 4.063-10.875-.225-1.95-9.588-.025L.499 22.05l-.5.063 1.438-5.663-.475-.375-.113-.088.125-.1.475-.363L.024 9.849l.5.063 4.338 4.6h9.6l.225-1.95-4.025-10.887 2.088-.15 8.825 12.963 8.137.012s2.713.762 2.238 1.763z">
+                        </path>
+                    </svg>
+                </span>
+            </div>
+        </div>
+        <div class="destination">
+            <div class="city_code" *ngIf="relatedFlightDetails?.bookingInfoObj?.BookingCode">Class:
+                {{relatedFlightDetails?.bookingInfoObj?.BookingCode}}</div>
+            <div class="city_code">{{relatedFlightDetails?.bookingInfoObj?.CabinClass}}</div>
+
+        </div>
+    </div>
+</div>

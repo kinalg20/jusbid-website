@@ -1,0 +1,105 @@
+<main-header [header]="'main'"></main-header>
+<div class="container">
+    <div class="ads_banner_img">
+        <img class="img-fluid mb-3" src="/assets/images/web banner-01.jpg">
+    </div>
+</div>
+
+<form #getBidFrom="ngForm" (submit)="onSubmitBidFrom(getBidFrom)">
+    <div class="container my-md-3 py-3 py-md-3">
+        <div class="row">
+            <div class="col-12">
+                <div class="header_tab mb-4 border-bottom pb-2">
+                    <h3 style="font-weight: 800;"> Best Hotel Room Deals</h3>
+                    <p style="font-size: 14px;font-weight: 600;color: gray;">Thanks for your interest</p>
+                </div>
+                <ng-container *ngIf="!userStatus">
+                    <span class="input-top-holder">
+                        <span>Where</span>
+                    </span>
+                    <div class="form-group banner-form">
+                        <input ngx-google-places-autocomplete #placesRef="ngx-places"
+                            (onAddressChange)="handleAddressChange($event)" class="form-control" name="location"
+                            type="text" id="inputCity" placeholder="e.g. - Area or Landmark " [title]="geoCity" ngModel
+                            required>
+                    </div>
+                </ng-container>
+                <div class="form-group banner-form">
+                    <span class="mb-5">Check-In & Check-Out</span>
+                    <input name="date_range" type="text" class="form-control daterange" id="inputCheckOut"
+                        autocomplete="off" bsDaterangepicker [minDate]="check_in_date"
+                        placeholder="{{check_in_date | date:'dd/MM/yyy'}} - {{check_out_date | date:'dd/MM/yyy'}}"
+                        [bsConfig]="{isAnimated: true, rangeInputFormat : 'DD/MM/YYYY', showWeekNumbers: false, dateInputFormat: 'DD/MM/YYYY'}"
+                        [(ngModel)]="bsRangeValue" onKeyPress="if(this.value.length>=0) return false">
+                </div>
+                <div class="form-group banner-form">
+                    <span class="input-top-holder">
+                    </span>
+                    <div class="guestRoomPicker">
+                        <span>Rooms</span>
+                        <div class="form-control">
+                            <input type="hidden" name="room_count" [value]="roomCount" [(ngModel)]="roomCount"
+                                autofocus="off">
+                            <div class="row justify-content-between">
+                                <div class="ml-2">
+                                    <span [ngClass]="roomCount>1 ? 'select':''">
+                                        {{roomCount}}
+                                        Rooms</span>
+                                </div>
+                                <div class="" style="margin-right: 8px; margin-top: -4px;">
+                                    <button type="button" class="btn btn-light btn-sm border mr-2"
+                                        (click)="descreseRoomCount()">-</button>
+                                    <span class="m-1">{{roomCount}}</span>
+                                    <button type="button" class="btn btn-light btn-sm border ml-2"
+                                        (click)="increaseRoomCount()">+</button>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="form-group banner-form">
+                    Min Budget
+                    <span>(Per Night)</span>
+                    <span class="input-top-holder_price ">
+                    </span>
+                    <input name="min_budget" type="number" class="form-control" id="min_budget"
+                        placeholder="e.g. - Total Budget" title="e.g. - Total Budget" ngModel required autofocus="off">
+
+                </div>
+                <div class="form-group banner-form">
+                    Max Budget
+                    <span> (Per Night)</span>
+                    <span class="input-top-holder_price ">
+                    </span>
+                    <input name="max_budget" type="number" class="form-control" id="max_budget"
+                        placeholder="e.g. - Total Budget To" title="e.g. - Total Budget To" ngModel required
+                        autofocus="off">
+                </div>
+                <div class="form-group banner-form">
+                    <span>
+                        Prefer Hotel
+                    </span>
+                    <span class="input-top-holder">
+                    </span>
+                    <input name="prefered_hotel" type="text" class="form-control" id="prefered_hotel"
+                        placeholder="e.g. -  Prefer Hotel" title="e.g. -  Prefer Hotel" ngModel autofocus="off">
+                </div>
+
+                <div [ngClass]="geoLat == 0?'my-disable':''">
+                    <button type="submit" class="btn btn-primary tm-btn-search mobile-width-full rounded"
+                        [disabled]="!getBidFrom.valid">
+                        <ng-container *ngIf="searchLoader">
+                            <i class="fa fa-spinner fa-spin"></i>
+                        </ng-container>
+                        Submit Bid
+                    </button>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</form>
+<main-footer></main-footer>

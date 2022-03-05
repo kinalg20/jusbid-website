@@ -1,0 +1,394 @@
+body {
+    font-family: "Poppins", sans-serif;
+    font-size: 13px;
+    font-weight: 400;
+}
+.container_section_PopularCity {
+    padding: 54px 10px 20px 25px;
+}
+h3.section-3-title {
+    color: #000;
+    font-size: 1.75rem;
+    font-weight: 400;
+    margin-bottom: 2rem;
+    margin-left: 10px;
+}
+.container {
+    max-width: 1450px;
+    .list-city-top {
+        list-style: none;
+        display: inline-block;
+        margin: 10px;
+        margin-left: 0px;
+        margin-right: 40px;
+        .popular_city {
+            border-radius: 5px;
+        }
+        .city_name {
+            font-size: 12px;
+            font-weight: 600;
+            color: #222;
+        }
+        .city-img {
+            width: 157px;
+            height: 100px;
+            border-radius: 5px;
+        }
+    }
+}
+@media (max-width: 1650px) {
+    .container_section_PopularCity {
+        padding: 0px 140px;
+    }
+    .container {
+        .list-city-top {
+            margin-right: 22px;
+            .city-img {
+                width: 140px;
+            }
+        }
+    }
+}
+
+@media (max-width: 1600px) {
+    .container_section_PopularCity {
+        padding: 0px 150px;
+    }
+    .container {
+        .list-city-top {
+            margin-right: 20px;
+            .city-img {
+                width: 140px;
+            }
+        }
+    }
+}
+
+@media (max-width: 1440px) {
+    .container {
+        max-width: 1410px;
+        .section-3-title {
+            font-size: 1.75rem;
+        }
+        .list-city-top {
+            margin-right: 15px;
+            .city-img {
+                width: 125px;
+                height: 110px;
+                border-radius: 5px;
+            }
+        }
+        .container_section_our_bestReach {
+            margin: 0 50px;
+        }
+        .container_section_PopularCity {
+            padding: 0px 200px;
+        }
+        .ads_banner_section {
+            margin: 0 183px;
+        }
+    }
+}
+@media (max-width: 1366px) {
+    .container {
+        .list-city-top {
+            margin-right: 1rem !important;
+            .city-img {
+                width: 113px;
+                height: 100px;
+                border-radius: 5px;
+            }
+        }
+    }
+}
+@media (max-width: 1330px) {
+    .container {
+        .list-city-top {
+            margin-right: 0.97rem !important;
+        }
+    }
+}
+@media (max-width: 1200px) {
+    .container {
+        .list-city-top {
+            .city-img {
+                width: 95px;
+                height: 98px;
+                border-radius: 5px;
+            }
+        }
+    }
+}
+@media (max-width: 1179px) {
+    .container {
+        .list-city-top {
+            .city-img {
+                width: 90px;
+                height: 98px;
+                border-radius: 5px;
+            }
+        }
+    }
+}
+@media (max-width: 1159px) {
+    .container {
+        .list-city-top {
+            .city-img {
+                width: 88px;
+            }
+        }
+    }
+}
+@media (max-width: 1024px) {
+    .container {
+        .list-city-top {
+            margin-right: 1.93rem !important;
+            .city-img {
+                width: 89px;
+                height: 73px;
+                border-radius: 5px;
+            }
+        }
+        .container_section_PopularCity {
+            padding: 0 77px;
+            h3 {
+                align-items: center;
+            }
+            .section-3-title {
+                margin-top: 12px;
+                margin-bottom: 12px;
+                margin: 20px 50px;
+                font-size: 1.5rem;
+            }
+        }
+    }
+}
+@media screen and (max-width: 900px) {
+    .container {
+        .list-city-top {
+            .city-img {
+                width: 59px;
+                height: 60px;
+            }
+        }
+    }
+}
+@media screen and (max-width: 768px) {
+    .container {
+        .container_section_PopularCity {
+            padding: 0 25px;
+            .section-3-title {
+                font-size: 1.4rem;
+            }
+        }
+        .list-city-top {
+            margin-right: 1.2rem !important;
+            .city-img {
+                width: 77px;
+                height: 70px;
+            }
+        }
+    }
+}
+
+@media (max-width: 600px) {
+    img{
+        max-width: none;
+    }
+    .container {
+        .list-city-top {
+            margin-right: 0.3rem !important;
+            .popular_city {
+                margin-right: 5px;
+            }
+            .city-img {
+                width: 60px;
+                height: 60px;
+                border-radius: 50px;
+            }
+        }
+        .container_section_PopularCity {
+            padding: 0 10px 20px;
+            .section-3-title {
+                font-size: 1.5rem !important;
+            }
+            .pb-3 {
+                padding-bottom: 0.5rem !important;
+            }
+        }
+    }
+}
+
+@media (max-width: 524px) {
+	.tm-section-pad-2 {
+		padding: 20px 25px;
+	}
+	.tm-search-form .tm-form-element {
+		width: 100%;
+		max-width: 100%;
+	}
+	.tm-fx-col-xs {
+		flex-direction: column;
+	}
+	.tm-section-pad {
+		padding: 25px 0px !important;
+	}
+	.tm-main-content {
+		.banner-section-pad {
+			padding-top: 20px;
+			padding-left: 0px;
+			padding-right: 0px;
+		}
+	}
+	#tm-section-1 {
+		height: 600px;
+	}
+	.footer-banner .partner_top .download-section .footer-social-links img {
+		width: 115px;
+		// height: 35px;
+		object-fit: contain;
+	}
+	.footer-banner .footer-bottom-content .footer-social-links {
+		font-size: 22px;
+	}
+	.booking_tab li {
+		padding: 15px 24px;
+		font-size: 15px;
+	}
+	.tm-section-pad {
+		padding: 30px 0px;
+		margin-bottom: 20px;
+	}
+	.footer-bottom-content {
+		padding: 1.5rem 1rem !important;
+	}
+
+	.popular-slider {
+		.card {
+			padding: 7px;
+			.card-img-top {
+				min-height: 140px;
+				max-height: 250px;
+			}
+			.photo {
+				height: 140px;
+			}
+			.backup-image {
+				background-size: contain;
+			}
+		}
+	}
+	.header-text a img {
+		width: 105px;
+		height: 40px;
+	}
+
+	.heading-header-1 {
+        font-size: 1.5rem !important;
+    }
+    .heading-header-3 {
+        font-size: 1rem !important;
+    }
+	.container{
+		.container_section_PopularCity{
+			padding: 0 0px;
+		
+		}
+		.container_section_our_bestReach{
+			padding: 0 10px;
+			margin: 0 10px;
+		}
+		.ads_banner_section{
+			margin:  0 0px;
+	  }
+	  
+	}
+	.container_section {
+		.PopularHotel_section_body{
+
+			.card-body{
+				border: 1px solid rgba(0, 0, 0, 0.125);
+					background: #ffffff;
+					border-radius: 10px;
+			}
+		   }
+	}
+	.best-reach-cards {
+		.card-body {
+			.span-cards {
+				font-size: 10px !important;
+				font-weight: 900;
+				.marker-red {
+					color: rgb(124, 0, 0) !important;
+				}
+				
+			}
+		}
+	}
+	.popular_hotels_container{
+		.popular_hotels{	
+			padding-top: 30px;
+			.section-3-title{
+				margin: 20px 0px;
+				margin-bottom: 10px;
+			}
+			.ads_banner_img{
+				margin: auto 0px;
+				img{
+					width: 940px;
+					height: 130px;
+					object-fit: fill;
+				}
+			}
+		}
+		.owl-carousel {
+			.owl-item img{
+				display: block;
+               width: 100%;
+			}
+		}
+	}
+
+	.ads_banner{
+		margin-bottom: 50px;
+		padding: 0 0px;
+	}
+	.img-fluid {
+		max-width: 100%;
+		height: 120px;
+		object-fit: cover;
+
+	}
+	.section_body{
+		width: 100%;
+		height: 150%;
+		.popular_city_section{
+			display: flex;
+		   overflow-x: scroll
+		}
+	}
+	.btn-primary:disabled {
+		font-size: 15px;
+	}
+	
+		
+	.btn-primary {
+		font-size: 15px;
+		
+	}
+}
+
+@media (max-width: 425px) {
+    .container {
+        .container_section_PopularCity {
+            padding: 0 0px 20px;
+        }
+        .container_section_our_bestReach {
+            padding: 0 10px;
+            margin: 0 10px;
+        }
+        .ads_banner_section {
+            margin: 0 0px;
+        }
+    }
+}

@@ -1,0 +1,28 @@
+.flight_booking_confirmation{
+    width: 100%;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: #ffff;
+    overflow-y: hidden;
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    z-index: 99999;
+
+    .content{
+        .success_icon{
+            img{
+                width: 120px;
+                height: 120px;
+            }
+            margin-bottom: 20px;
+        }
+        .text_info{
+            color: #242424;
+        }
+    }
+
+}

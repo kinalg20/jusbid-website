@@ -1,0 +1,29 @@
+<div class="Cancel_Tabs_body border">
+    <div class="d-flex justify-content-between">
+        <div class="col-12 p-2">
+            <div style="display: flex;justify-content: end;" *ngIf="AirPricingInfo?.Refundable">
+                <div class="BrfhS Refundable" *ngIf="AirPricingInfo?.Refundable">Refundable</div>
+                <div class="BrfhS NoN_Refundable" *ngIf="!AirPricingInfo?.Refundable">Non Refundable</div>
+            </div>
+            <table class="table table-bordered table-sm">
+                <tr class="bg-light">
+                    <th>
+                        <div style="display: grid;"><b>Time Frame to cancel</b><small>Before scheduled departure
+                                time</small></div>
+                    </th>
+                    <th>
+                        <div style="display: grid;"><b>Airline Fees</b><small>per passenger</small></div>
+                    </th>
+                </tr>
+                <tr>
+                    <td>Cancel {{AirPricingInfo['air:CancelPenalty'].PenaltyApplies}}</td>
+                    <td>{{ getPrice(AirPricingInfo['air:CancelPenalty']['air:Amount']) | currency:'INR' }}</td>
+                </tr>
+                <tr>
+                    <td>Cahnge {{AirPricingInfo['air:ChangePenalty'].PenaltyApplies}}</td>
+                    <td>{{ getPrice(AirPricingInfo['air:ChangePenalty']['air:Amount']) | currency:'INR' }}</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>

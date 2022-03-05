@@ -1,0 +1,129 @@
+<app-header></app-header>
+<section class="bid-history">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xl-10 col-lg-11 mx-auto">
+                <div class="bid-data">
+                    <!-- navbar -->
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item" aria-current="page">
+                                <a routerLink="" class="none_active">
+                                    <i class="fa fa-home" aria-hidden="true"></i>
+                                    Home
+                                </a>
+                            </li>
+                            <li class="breadcrumb-item active">
+                                <a>
+                                    <i class="fa fa-history" aria-hidden="true"></i> Booking History
+                                </a>
+                            </li>
+                        </ol>
+                    </nav>
+                    <!-- Booking History Header Dropdown-->
+                    <div class="booking-header">
+                        <div class="heading">
+                            <h5><b>Booking History</b></h5>
+                        </div>
+                        <div class="filters">
+                            <div class="filter_by_status">
+                                <div class="wrap-drop" id="noble-gases">
+                                    <span> booking </span>
+                                    <ul class="drop">
+                                        <li class="selected"><a>All
+                                                Bookings</a></li>
+                                        <li>
+                                            <a>Current Bookings</a>
+                                        </li>
+                                        <li><a>Upcoming
+                                                Bookings</a></li>
+                                        <li><a>Completed
+                                                Bookings</a></li>
+                                        <li>
+                                            <a>Cancelled Bookings</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- //Hotel Details Card// -->
+                    <ul class="bidding_card_container">
+                        <ng-container>
+                            <li class="bidding_card">
+                                <div class="row align-center">
+                                    <div class="col-md-2">
+                                        <ng-container>
+                                            <div class="hotel_img"><img
+                                                    src="https://jusbid.in:1337/images/hotel/2021/09/05/6d20cdea-8fd3-4fc3-9342-5f9b432cbaab.jpg"
+                                                    alt=""></div>
+                                        </ng-container>
+                                    </div>
+                                    <div class="col-lg-6 col-md-5">
+                                        <div class="hotel_info">
+                                            <div class="info">
+                                                <p class="booking_date">12/20/2021 -
+                                                    16/20/2021
+                                                </p>
+                                                <h5 class="name">
+                                                    Gazebo Resort</h5>
+                                                <p class="guest_and_room">2 adult + 1 child
+                                                    Guest, 1 rooms
+                                                    Room</p>
+                                                <p class="room_type">Luxurybookingroomtype</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4 col-md-5">
+                                        <div class="text-right">
+                                            <p class="bidding_date">
+                                                <span>Bidding Date: </span> 12/12/2021
+                                            </p>
+                                            <a class="btn btn-light btn-sm border" target="_blank">
+                                                <i class="fa fa-download"></i>
+                                                <span
+                                                    style="font-size: 12px;font-weight: 600;margin-left: 5px;">Download
+                                                    Invoice</span>
+                                            </a>
+                                        </div>
+                                        <div class="bidding_action text-right">
+                                            <p class="approved">
+                                                <span style="margin-top:10px;"><i class="fa fa-circle"></i>
+                                                    Booked</span>
+                                            </p>
+                                            <div>
+                                                <!-- //Buttons// -->
+                                                <div class="btns">
+                                                    <ul style="margin: 0;padding: 0;list-style: none;">
+                                                        <li style="margin: 0;padding: 0;">
+                                                            <p class="price btn btn-orange"
+                                                                style="margin: 0; margin-top: 10px; margin-left: 15px;">
+                                                                <span class="amount"><span
+                                                                        style="font-family: roboto;">&#x20B9;</span>2000
+                                                                </span><br><span class="time">Per Room
+                                                                    night</span>
+                                                            </p>
+                                                        </li>
+                                                        <li>
+                                                            <div>
+                                                                <button class="btn btn-green"
+                                                                    style="margin-top: 10px;">Rate
+                                                                    Hotel</button>
+                                                            </div>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                        </ng-container>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<app-footer></app-footer>

@@ -1,0 +1,662 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300");
+header {
+    .header {
+        padding: 50px;
+        .career-heading {
+            text-align: center;
+            font-size: 2.5rem;
+            font-family: "Poppins", Sans-serif;
+            color: #e21224;
+            font-weight: 600;
+        }
+    }
+}
+
+body {
+    overflow: hidden;
+}
+
+.container {
+    max-width: 1150px !important;
+    .sub-heading {
+        font-size: 1.8rem;
+        font-family: "Poppins", Sans-serif;
+        font-weight: 600;
+    }
+    .sub-content {
+        font-size: 16px;
+        line-height: 1.8rem;
+        color: black;
+        text-align: justify;
+        font-family: "Poppins", Sans-serif;
+        width: 100%;
+    }
+    .col-image {
+        display: flex;
+        .image-1 {
+            width: 100px;
+            height: 100px;
+            img {
+                width: 100%;
+                height: 100%;
+            }
+        }
+        .image-2 {
+            width: 450px;
+            height: 450px;
+            img {
+                width: 100%;
+                height: 100%;
+            }
+        }
+    }
+}
+
+.section-1 {
+    margin-top: 50px;
+    .content {
+        .sub-content {
+            font-size: 16px;
+            line-height: 1.8rem;
+            color: black;
+            text-align: justify;
+            font-family: "Poppins", Sans-serif;
+            width: 100%;
+        }
+    }
+    .main-image {
+        img {
+            width: 100%;
+            height: 100%;
+        }
+    }
+}
+.section-line {
+    font-family: "Poppins", Sans-serif;
+    margin-top: 20px;
+    .career-section-line {
+        font-size: 2rem;
+        font-weight: 600;
+    }
+}
+
+.section-2 {
+    margin-top: 100px;
+    .column1-content {
+        .sub-heading {
+            font-weight: 600;
+        }
+    }
+}
+
+.section-3 {
+    margin-top: 100px;
+    .col-image {
+        .image-1 {
+            margin-left: 250px;
+        }
+    }
+    .column1-content{
+        .sub-heading{
+            font-weight: 600;
+        }
+    }
+}
+
+.section-4 {
+    margin-top: 100px;
+    .column1-content{
+        .sub-heading{
+            font-weight: 600;
+        }
+    }
+}
+
+.section-email {
+    margin-top: 100px;
+    text-align: center;
+    font-family: Sans-serif;
+    .section-email-career {
+        text-align: center;
+        font-weight: 600;
+    }
+}
+
+.section-5 {
+    margin-top: 60px;
+    font-family: Sans-serif;
+    font-size: 18px;
+    font-weight: 600;
+    .section-5-career {
+        text-align: center;
+        font-weight: 600;
+    }
+    .position {
+        margin-top: 1rem;
+        display: flex;
+        justify-content: center;
+        font-weight: 600;           
+        a:hover {
+            color: red;
+        }
+        button{
+            font-weight: 600;
+        }
+    }
+}
+
+.section-6 {
+    margin-top: 50px;
+    font-family: Sans-serif;
+    .card {
+        width: 100%;
+    }
+    .card-body {
+        justify-content: space-between;
+        .content{
+            .card-title{
+                font-weight: 600;
+            }
+        }
+        .button {
+            padding: 10px;
+            margin-top: 13px;
+        }
+    }
+}
+.position-buttons {
+    background-color: #e22123;
+    width: 110px;
+    height: 35px;
+    border-radius: 5px;
+    color: #fff;
+    font-size: 15px;
+    font-weight: 600;
+}
+.section-8 {
+    img {
+        width: 100%;
+        height: 100%;
+    }
+}
+
+.section-9 {
+    .custom_modal {
+        font-family: Sans-serif;
+        background: rgba(0, 0, 0, 0.6);
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 9999;
+        display: grid;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        height: 100%;
+        overflow-y: scroll;
+        color: #000;
+        .card {
+            border-radius: 10px;
+            padding: 20px;
+
+            .card_header {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                margin-bottom: 5px;
+            }
+            .Card-title {
+                font-size: 25px;
+                color: #000;
+                font-weight: bold;
+            }
+            .header-title {
+                font-size: 14px;
+                margin-bottom: 5px;
+            }
+            .button {
+                margin-top: 20px;
+                text-align: center;
+            }
+        }
+    }
+}
+
+.title-tag-career {
+    font-weight: bold;
+}
+
+@media (max-width: 1024px) {
+    .section-1 {
+        margin-top: 30px;
+    }
+    .section-line {
+        .career-section-line {
+            font-size: 30px;
+        }
+    }
+
+    .section-2 {
+        .col-image {
+            .image-1 {
+                width: 80px;
+                height: 80px;
+            }
+            .image-2 {
+                width: 350px;
+                height: 350px;
+            }
+        }
+    }
+    .section-3 {
+        .col-image {
+            .image-1 {
+                margin-left: 200px;
+                width: 80px;
+                height: 80px;
+            }
+            .image-2 {
+                width: 350px;
+                height: 350px;
+            }
+        }
+    }
+    .section-4 {
+        .col-image {
+            .image-1 {
+                width: 80px;
+                height: 80px;
+            }
+            .image-2 {
+                width: 350px;
+                height: 350px;
+            }
+        }
+    }
+}
+
+@media (max-width: 768px) {
+    .section-1 {
+        margin-top: 30px;
+        flex-direction: column-reverse;
+        .content {
+            margin-top: 20px;
+            padding-top: 0%;
+        }
+    }
+    .section-3 {
+        flex-direction: column-reverse;
+        .col-image {
+            .image-1 {
+                margin-left: 250px;
+            }
+        }
+        .column1-content {
+            margin-top: 20px;
+        }
+    }
+    .section-4 {
+        flex-direction: column;
+        .sub-heading {
+            margin-top: 15px;
+        }
+        .image-2 {
+            margin-left: -20%;
+        }
+    }
+    header {
+        .header{
+            padding: 15px;
+        }
+    }
+    .container{
+        margin-top: 5px!important;
+    }
+}
+
+@media (max-width: 425px) {
+    header {
+        .header {
+            padding: 40px;
+            width: 100%;
+            .career-heading {
+                font-size: 25px;
+            }
+        }
+    }
+
+    .container {
+        margin-top: 0px !important;
+        .sub-heading {
+            font-size: 1.5rem;
+        }
+        .sub-content {
+            font-size: 1rem;
+        }
+    }
+
+    .section-1 {
+        margin-top: 0px;
+        .content {
+            .sub-heading {
+                font-size: 1.5rem;
+            }
+            .sub-content {
+                font-size: 1.08rem;
+                line-height: 1.5rem;
+            }
+        }
+    }
+    .section-line {
+        .career-section-line {
+            font-size: 25px;
+        }
+    }
+    .section-2 {
+        .col-image {
+            margin-left: -4%;
+            .image-1 {
+                width: 60px !important;
+                height: 60px !important;
+            }
+            .image-2 {
+                width: 280px;
+                height: 280px;
+            }
+        }
+    }
+
+    .section-3 {
+        overflow-x: hidden;
+        .col-image {
+            .image-1 {
+                width: 60px !important;
+                height: 60px !important;
+                margin-left: -26px;
+            }
+            .image-2 {
+                width: 300px;
+                height: 300px;
+            }
+        }
+    }
+    .section-4 {
+        .col-image {
+            margin-left: -4%;
+            .image-1 {
+                width: 60px !important;
+                height: 60px !important;
+            }
+            .image-2 {
+                margin-left: -26px;
+                width: 280px;
+                height: 280px;
+            }
+        }
+    }
+    .section-email {
+        margin-top: 20px;
+        .section-email-career {
+            font-size: 16px;
+        }
+        .email-career-link {
+            font-size: 16px;
+        }
+    }
+
+    .section-5 {
+        .section-5-career {
+            font-size: 22px;
+        }
+        .position {
+            button {
+                font-size: 12px;
+            }
+        }
+    }
+    .section-6 {
+        .card-title {
+            font-size: 14px;
+        }
+        button {
+            font-size: 14px;
+        }
+    }
+}
+
+@media (max-width: 375px) {
+    .section-1 {
+        margin-top: 10px;
+        .content {
+            .sub-heading {
+                font-size: 18px;
+            }
+            .sub-content {
+                font-size: 15px;
+            }
+        }
+    }
+    .section-line {
+        .career-section-line {
+            font-size: 22px;
+        }
+    }
+    .section-2 {
+        .col-image {
+            .image-2 {
+                width: 250px;
+                height: 250px;
+            }
+            .image-1 {
+                width: 60px !important;
+                height: 60px !important;
+            }
+        }
+        .column1-content {
+            .sub-heading {
+                font-size: 20px;
+            }
+            .sub-content {
+                font-size: 14px;
+                line-height: 20px;
+            }
+        }
+    }
+
+    .section-3 {
+        overflow-x: hidden;
+        .col-image {
+            .image-2 {
+                width: 250px;
+                height: 250px;
+            }
+            .image-1 {
+                width: 60px !important;
+                height: 60px !important;
+            }
+        }
+        .column1-content {
+            .sub-heading {
+                font-size: 20px;
+            }
+            .sub-content {
+                font-size: 14px;
+                line-height: 20px;
+            }
+        }
+    }
+    .section-4 {
+        .col-image {
+            .image-2 {
+                width: 250px;
+                height: 250px;
+            }
+            .image-1 {
+                width: 60px !important;
+                height: 60px !important;
+            }
+        }
+        .column1-content {
+            .sub-heading {
+                font-size: 20px;
+            }
+            .sub-content {
+                font-size: 14px;
+                line-height: 20px;
+            }
+        }
+    }
+    .section-5 {
+        .position {
+            .button {
+                font-size: 12px;
+            }
+        }
+    }
+    .section-email {
+        margin-top: 50px;
+        .section-email-career {
+            font-size: 13px;
+        }
+        .email-career-link {
+            font-size: 14px;
+        }
+    }
+    .section-6 {
+        .card {
+            .button {
+                font-size: 12px;
+            }
+            .card-title {
+                font-size: 14px;
+            }
+        }
+    }
+    // .section-7 {
+    //     h1 {
+    //         font-size: 25px;
+    //     }
+    //     h6 {
+    //         font-size: 20px;
+    //     }
+    // }
+}
+
+@media (max-width: 320px) {
+    .header {
+        padding: 18px !important;
+        overflow-x: hidden;
+        .career-heading {
+            font-size: 18px !important;
+            font-family: sans-serif !important;
+        }
+    }
+    .section-line {
+        margin-top: 0%;
+    }
+    .section-2 {
+        margin-top: 0%;
+        .col-image {
+            .image-1 {
+                width: 40px !important;
+                height: 40px !important;
+            }
+            .image-2 {
+                width: 180px;
+                height: 180px;
+            }
+        }
+    }
+    .section-3 {
+        margin-top: 0%;
+        .col-image {
+            .image-1 {
+                width: 40px !important;
+                height: 40px !important;
+            }
+            .image-2 {
+                width: 180px;
+                height: 180px;
+            }
+        }
+    }
+    .section-4 {
+        margin-top: 0%;
+        .col-image {
+            .image-1 {
+                width: 40px !important;
+                height: 40px !important;
+            }
+            .image-2 {
+                width: 180px;
+                height: 180px;
+            }
+        }
+    }
+    .section-email {
+        .section-email-career {
+            font-size: 14px;
+        }
+        .email-career-link {
+            font-size: 14px;
+        }
+    }
+    .section-6 {
+        .card {
+            button {
+                font-size: 13px;
+            }
+            .card-title {
+                font-size: 14px;
+            }
+        }
+    }
+    .section-5 {
+        .section-5-career {
+            font-size: 15px;
+        }
+        .position {
+            button {
+                font-size: 10px;
+            }
+        }
+    }
+    // .section-7 {
+    //     h6 {
+    //         font-size: 11px;
+    //     }
+    //     h1 {
+    //         font-size: 18px;
+    //     }
+    // }
+}
+
+@media (max-width: 363px) {
+    .section-3 .col-image .image-1 {
+        width: 45px !important;
+        height: 45px !important;
+    }
+    .section-3 .col-image .image-2 {
+        width: 200px !important;
+        height: 200px !important;
+    }
+    .section-4 .col-image .image-1 {
+        width: 45px !important;
+        height: 45px !important;
+    }
+    .section-4 .col-image .image-2 {
+        width: 200px !important;
+        height: 200px !important;
+    }
+    .section-2 .col-image .image-1 {
+        width: 45px !important;
+        height: 45px !important;
+    }
+    .section-2 .col-image .image-2 {
+        width: 200px !important;
+        height: 200px !important;
+    }
+    .section-5 .position button {
+        font-size: 10px;
+    }
+}

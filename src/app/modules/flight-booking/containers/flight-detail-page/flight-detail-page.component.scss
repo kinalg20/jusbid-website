@@ -1,0 +1,1091 @@
+.app_body {
+	width: 100%;
+	color: #F1F1F1;
+}
+
+.app_container {
+	display: flex;
+	width: 100%;
+	.left {
+		width: 70%;
+		font-family: "poppins";
+	}
+	.right {
+		width: 30%;
+		font-family: "poppins";
+	}
+	.titlename {
+		font-size: 1.5rem;
+		font-weight: 500;
+		color: #000;
+		font-family: "poppins";
+		padding: 0 20px;
+	}
+	.card-Showdow {
+		border-radius: 15px;
+		box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+		.card-area {
+			padding: 20px;
+			.flight_time {
+				color: #E21224;
+				font-size: 18px;
+				font-weight: bold;
+				font-family: "poppins";
+			}
+			.vl {
+				border-left: 2px solid rgb(0, 0, 0);
+				height: 500px;
+				margin-left: 4px;
+			}
+			span .city {
+				color: black;
+				font-size: 18px;
+				font-family: "poppins";
+				margin-left: 4px;
+			}
+			.date_week {
+				color: #E21224;
+				font-size: 12px;
+				font-weight: bold;
+				font-family: "poppins";
+			}
+			.flight_class {
+				font-size: 15px;
+				font-family: "poppins";
+				font-weight: 700;
+				color: #000;
+				margin-left: 4px;
+			}
+			.flight_img {
+				width: 60px;
+				height: 60px;
+			}
+			.flight_name {
+				color: #000;
+				font-size: 15px;
+				font-weight: 600;
+				font-family: "poppins";
+			}
+			.from {
+				color: #000;
+				font-size: 12px;
+				font-style: normal;
+				font-weight: 400;
+				line-height: 18px;
+				letter-spacing: 0em;
+				text-align: left;
+				display: grid;
+				font-family: 'Poppins' sans-serif;
+				span.time {
+					font-size: 21px;
+					font-style: normal;
+					font-weight: bold;
+					line-height: 31px;
+					letter-spacing: 0em;
+					text-align: left;
+					height: 30px;
+				}
+				div.date {
+					font-size: 12px;
+					color: rgb(116, 115, 115);
+					font-weight: 500;
+					letter-spacing: 0em;
+				}
+				.date_week {
+					font-size: 12px;
+					color: rgb(0, 0, 0);
+					font-weight: 700;
+					letter-spacing: 0em;
+				}
+			}
+			.duration {
+				font-size: 14px;
+				color: #000;
+				text-align: center;
+				font-weight: 500;
+				font-family: "Poppins";
+				.flight_speed {
+					font-weight: 500;
+					font-size: 14px;
+				}
+			}
+			.check {
+				font-size: 15px;
+				color: #000;
+				font-weight: bold;
+				font-family: "Poppins";
+			}
+			.Piece {
+				font-size: 12px;
+				color: gray;
+				font-weight: 500;
+				font-family: "Poppins";
+			}
+			.adult {
+				font-size: 18px;
+				font-family: "poppins";
+				font-weight: 600;
+				color: #000;
+			}
+			.select {
+				color: #33e265;
+				font-size: 15px;
+				font-weight: 800;
+				font-family: "poppins";
+			}
+			.travellers_infomation_selection {
+				padding: 10px;
+				border: 1px solid #E2E1E1;
+				font-family: "Poppins";
+				.Important_Id {
+					font-size: 14px;
+					color: #000;
+					font-weight: 600;
+				}
+				.Complete_button {
+					background-color: #33e265;
+					border: none;
+					color: white;
+					padding: 5px 15px;
+					border-radius: 50px;
+					font-size: 12px;
+					cursor: pointer;
+					float: right;
+				}
+				.topnav {
+					overflow: hidden;
+				}
+				.topnav a {
+					float: left;
+					display: block;
+					color: black;
+					text-align: center;
+					padding: 5px 15px;
+					text-decoration: none;
+					font-size: 17px;
+					border-bottom: 3px solid transparent;
+					font-family: "Poppins";
+				}
+				.topnav a:hover {
+					border-bottom: 3px solid red;
+				}
+				.topnav a.active {
+					border-bottom: 3px solid red;
+					color: #000;
+					font-weight: 900;
+				}
+				.topnav a.Genderactive {
+					border-bottom: 3px solid red;
+					color: #000;
+					font-weight: 900;
+				}
+				.btn-Red {
+					height: 50%;
+				}
+				.btn-outline-danger {
+					color: #dc3545;
+					border-color: #dc3545;
+				}
+				.btn-outline-danger:hover {
+					color: #fff;
+					background-color: #dc3545;
+					border-color: #dc3545
+				}
+			}
+			.ticket_info {
+				font-size: 15px;
+				color: black;
+				font-weight: bold;
+				font-family: "Poppins";
+			}
+			.name {
+				font-size: 15px;
+				color: gray;
+				font-weight: 500;
+				font-family: "Poppins";
+			}
+			.lname {
+				width: 30%;
+				font-size: 14px;
+				color: gray;
+			}
+			.Email {
+				font-size: 14px;
+				width: 50%;
+				color: gray;
+				font-family: "Poppins";
+			}
+			.input_box {
+				width: 80%;
+				padding: 5px;
+				color: #000;
+				font-size: 15px;
+				font-weight: 500;
+				font-family: "Poppins";
+				&:focus {
+					outline-color: red;
+				}
+			}
+			input[type=text]:focus {
+				border-bottom: 1px solid red;
+			}
+			.country_input_box {
+				width: 60%;
+				padding: 5px;
+				color: #000;
+				font-size: 15px;
+				font-weight: 500;
+				font-family: "Poppins";
+				&:focus {
+					outline: none;
+				}
+			}
+		}
+		.custom-check {
+			display: block;
+			position: relative;
+			padding-left: 35px;
+			margin-top: 0px;
+			margin-bottom: 0px;
+			cursor: pointer;
+			font-size: 14px;
+			-webkit-user-select: none;
+			-moz-user-select: none;
+			-ms-user-select: none;
+			user-select: none;
+			input {
+				position: absolute;
+				opacity: 0;
+				cursor: pointer;
+				height: 0;
+				width: 0;
+			}
+			.checkmark {
+				position: absolute;
+				top: 0px;
+				left: 0;
+				height: 22px;
+				width: 22px;
+				background-color: #fff;
+				box-shadow: 0 0 5px rgb(0 0 0 / 25%);
+				border-radius: 5px;
+				&::after {
+					content: "";
+					position: absolute;
+					display: none;
+					left: 9px;
+					top: 5px;
+					width: 5px;
+					height: 10px;
+					border: solid white;
+					border-width: 0 3px 3px 0;
+					-webkit-transform: rotate(45deg);
+					-ms-transform: rotate(45deg);
+					transform: rotate(45deg);
+				}
+			}
+			&:hover {
+				.checkmark {
+					background-color: rgb(255, 255, 255);
+				}
+			}
+			input:checked~.checkmark {
+				background-color: var(--primary);
+			}
+			input:checked~.checkmark:after {
+				display: block;
+			}
+		}
+		.form-check-label {
+			font-size: 15px;
+			color: rgb(0, 0, 0);
+			font-weight: bold;
+		}
+	}
+	.text_area {
+		color: #000;
+		font-size: 14px;
+		font-weight: bold;
+	}
+	a {
+		text-decoration: none;
+		color: rgb(85, 162, 250);
+	}
+	.return_trip_check_box {
+		background-color: #ffffff;
+		padding: 5px;
+		.custom-check {
+			display: block;
+			position: relative;
+			padding-left: 35px;
+			margin-top: 0px;
+			margin-bottom: 0px;
+			cursor: pointer;
+			font-size: 14px;
+			-webkit-user-select: none;
+			-moz-user-select: none;
+			-ms-user-select: none;
+			user-select: none;
+			input {
+				position: absolute;
+				opacity: 0;
+				cursor: pointer;
+				height: 0;
+				width: 0;
+			}
+			.checkmark {
+				position: absolute;
+				top: 0px;
+				left: 0;
+				height: 22px;
+				width: 22px;
+				background-color: #fff;
+				box-shadow: 0 0 5px rgb(0 0 0 / 25%);
+				border-radius: 5px;
+				&::after {
+					content: "";
+					position: absolute;
+					display: none;
+					left: 9px;
+					top: 5px;
+					width: 5px;
+					height: 10px;
+					border: solid white;
+					border-width: 0 3px 3px 0;
+					-webkit-transform: rotate(45deg);
+					-ms-transform: rotate(45deg);
+					transform: rotate(45deg);
+				}
+			}
+			&:hover {
+				.checkmark {
+					background-color: rgb(255, 255, 255);
+				}
+			}
+			input:checked~.checkmark {
+				background-color: var(--primary);
+			}
+			input:checked~.checkmark:after {
+				display: block;
+			}
+		}
+		.form-check-label {
+			font-size: 15px;
+			color: gray;
+			font-weight: 500;
+		}
+	}
+	.place_img {
+		img {
+			width: 100%;
+			background-attachment: fixed;
+			border-radius: 10px;
+		}
+	}
+	/// face Summary
+	.fare_summary_body {
+		.Base_fare_section {
+			padding: 25px;
+			border: 1px solid #E2E1E1;
+			border-radius: 15px;
+			box-shadow: 0px 0px 4.48px 1.12px rgba(0, 0, 0, 0.25);
+			font-family: "Poppins";
+			.Base_Title {
+				font-size: 20px;
+				color: #000;
+				font-weight: bold;
+				font-family: "Poppins";
+			}
+			.Adults {
+				font-size: 13px;
+				color: #000;
+				font-weight: 500;
+				font-family: "Poppins";
+			}
+			.btn-success {
+				padding: 2px 12px;
+				border-radius: 10px;
+				text-align: center;
+				font-size: 15px;
+				font-weight: 400;
+				color: white;
+				font-family: "Poppins";
+			}
+			.break_line {
+				height: 2px;
+				margin-top: 10px;
+				background-color: black;
+			}
+			.Price {
+				font-size: 15px;
+				color: #000;
+				font-weight: bold;
+				font-family: "Poppins";
+			}
+			.discount_Price {
+				font-size: 15px;
+				font-weight: bold;
+				color: #27da4d;
+				font-family: "Poppins";
+			}
+		}
+		.input-group-append {
+			width: 15%;
+			padding: 5px;
+			border-top: 1px solid #E2E1E1;
+			border-left: none;
+			border-bottom: 1px solid #E2E1E1;
+			border-right: 1px solid #E2E1E1;
+			border-radius: 5px;
+			a {
+				color: #dc3545;
+				text-align: center;
+				font-size: 15px;
+				font-weight: bold;
+				font-family: "Poppins";
+			}
+		}
+		.coupan_section {
+			border-radius: 5px;
+			padding: 5px;
+			width: 94%;
+			margin-left: 15px;
+			border: 1px solid #E2E1E1;
+			.form-check-label {
+				font-size: 15px;
+				font-weight: 400;
+				font-family: "Poppins";
+			}
+			.deatiles {
+				font-size: 15px;
+				color: gray;
+				font-family: "Poppins";
+			}
+			.tcApply {
+				font-size: 15px;
+				font-weight: 500;
+				font-family: "Poppins";
+			}
+		}
+		.check_list_selection {
+			border-radius: 10px;
+			padding: 10px;
+			background-color: rgb(253, 240, 204);
+			.check-list_text {
+				font-size: 15px;
+				color: #000;
+				font-weight: bold;
+				font-family: "Poppins";
+			}
+			.Pre_Text {
+				font-size: 14px;
+				color: #000;
+				font-family: "Poppins";
+			}
+		}
+		.TaxesName {
+			font-size: 15px;
+			font-weight: bold;
+			color: #000;
+		}
+		.coupan_input {
+			border-radius: 5px;
+			width: 85%;
+			border-right: none;
+			border-top: 1px solid #E2E1E1;
+			border-left: 1px solid #E2E1E1;
+			border-bottom: 1px solid #E2E1E1;
+			padding: 5px;
+			&:focus {
+				outline: none;
+			}
+		}
+	}
+}
+
+.change-plane_selection {
+    width: 100%;
+    .DotLines {
+        border-top: 1px dashed rgb(163, 163, 163);
+        width: 23%;
+        text-align: center;
+        margin-top: 10px;
+    }
+    .change_plane {
+        background-color: rgb(209, 39, 39);
+        color: rgb(255, 255, 255);
+        padding-left: 25px;
+        padding-right: 25px;
+        padding-top: 2px;
+        padding-bottom: 5px;
+        border-radius: 10px;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 24px;
+        letter-spacing: 0em;
+        text-align: left;
+    }
+}
+
+.custom_modal {
+	background: rgba(0, 0, 0, 0.6);
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 9999;
+	display: grid;
+	align-items: center;
+	justify-content: center;
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+	color: #000;
+	.card {
+		border-radius: 10px;
+		padding: 20px;
+		.card_header {
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			margin-bottom: 5px;
+		}
+		.Card-title {
+			font-size: 25px;
+			color: #000;
+			font-weight: bold;
+		}
+		.header-title {
+			font-size: 14px;
+			margin-bottom: 5px;
+		}
+		.title-bar {
+			padding-top: 10px;
+			padding-left: 0px;
+			margin-bottom: 5px;
+		}
+		.Adult-label {
+			background-color: #E21224;
+			font-size: 15px;
+			width: 25%;
+			text-align: left;
+			color: white;
+			border-bottom-right-radius: 5px;
+			border-top-right-radius: 5px;
+			padding-left: 5px;
+		}
+		.Frist-name {
+			font-size: 18px;
+			color: gray;
+		}
+		.Name {
+			font-size: 18px;
+			color: #000;
+			font-weight: bold;
+		}
+		.btn-md {
+			width: 100%;
+			padding: 5px 15px;
+			border-radius: 50px;
+		}
+		.btn-md-2 {
+			padding: 6px 18px;
+			border-radius: 50px;
+		}
+		.Scroll {
+			width: 100%;
+			height: 300px;
+			overflow: auto;
+		}
+		.ADD-Scroll {
+			width: 100%;
+			height: 200px;
+			overflow: auto;
+		}
+		.Add-title-bar {
+			margin-bottom: 5px;
+			.Additional {
+				font-size: 15px;
+			}
+			.Price {
+				color: #000;
+				font-size: 15px;
+			}
+			.add-Total {
+				font-size: 12px;
+				color: #000;
+			}
+		}
+		.flight_Status {
+			margin-bottom: 10px;
+			font-family: "Poppins";
+			font-size: 15px;
+			color: red;
+			font-weight: 700;
+		}
+		.header {
+			.tabs-header {
+				margin-top: 10px;
+				border: 1px solid #dedede;
+				border-radius: 5px;
+				padding: 5px;
+				ul {
+					list-style-type: none;
+					margin-bottom: 0%;
+				}
+				.tab {
+					overflow: hidden;
+					align-items: center;
+					justify-content: center;
+					text-align: center;
+				}
+				.tab a {
+					background-color: inherit;
+					float: left;
+					border: none;
+					outline: none;
+					cursor: pointer;
+					padding: 2px 5px;
+					transition: 0.3s;
+					font-size: 17px;
+					text-align: center;
+					text-decoration: none;
+					color: #000;
+				}
+				.tab a.active {
+					padding: 2px 15px;
+					border-radius: 5px;
+					background-color: rgb(251, 26, 26);
+					color: white;
+				}
+				.tabcontent {
+					display: none;
+					padding: 6px 12px;
+					border: 1px solid #ccc;
+					border-top: none;
+				}
+			}
+		}
+		.Cancel_Tabs_body {
+			.tabs_title_selection {
+				.img-tab {
+					width: 45px;
+					height: 45px;
+				}
+				span {
+					font-size: 16px;
+					font-weight: bold;
+					color: #000;
+				}
+			}
+		}
+	}
+}
+
+.Add_extra_bags_section {
+	padding: 10px;
+	border: 1px solid #E2E1E1;
+	align-items: center;
+	justify-content: center;
+	display: flex;
+	border-radius: 10px;
+	box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.2), 0 1px 1px 0 rgba(0, 0, 0, 0.19);
+}
+.box {
+    img {
+        width: 60px;
+        padding: 10px;
+        background-color: #FFC9A9;
+    }
+}
+.addExtra {
+    font-size: 18px;
+    color: rgb(209, 39, 39);
+    font-weight: bold;
+}
+.baggage {
+    font-size: 15px;
+    color: #000;
+    font-weight: 500;
+    align-items: center;
+}
+.btn-Green {
+    height: 60%;
+    width: 90%;
+    border-radius: 10px;
+}
+.btn-outline-success {
+    color: #2CB753;
+    border-color: #2CB753
+}
+.btn-outline-success:hover {
+    color: #fff;
+    background-color: #2CB753;
+    border-color: #2CB753
+}
+
+.app_container_body {
+	padding: 30px 10px;
+	&::-webkit-scrollbar {
+		display: none;
+	}
+}
+.Refundable{
+    width: auto;
+    display: block;
+    background: #ffffff;
+    border-radius: 45px;
+    font-size: 10px;
+    font-weight: 900;
+    color: #2dca1c;
+    border: 1px solid #2dca1c;
+    margin: 40px auto 15px;
+    text-align: center;
+    padding: 2px 10px;
+    text-transform: uppercase;
+}
+.NoN_Refundable{
+    min-width: 120px;
+    width: auto;
+    display: block;
+    background: #ffffff;
+    border-radius: 45px;
+    font-size: 10px;
+    font-weight: 900;
+    color: #ca1c1c;
+    border: 1px solid #ad0303;
+    margin: 40px auto 15px;
+    text-align: center;
+    padding: 2px 10px;
+    text-transform: uppercase;
+}
+
+
+
+.list_card_container {
+	box-shadow: 0px 0px 4.48px 1.12px rgba(0, 0, 0, 0.25);
+	border-radius: 12.32px;
+	padding: 20px;
+	background: #fff;
+	color: #222 !important;
+	border: 1px solid #dedede;
+	.list_card {
+		display: flex;
+		align-items: center;
+		.flight_brnd {
+			width: 20%;
+			display: grid;
+			justify-content: start;
+			font-family: "Poppins";
+			align-items: center;
+			text-align: left;
+			img {
+				width: 50px;
+				height: 50px;
+			}
+			span {
+				font-family: "Poppins";
+				font-weight: 500;
+				font-size: 14px !important;
+			}
+		}
+		.flight_details {
+			width: 100%;
+			display: flex;
+			.from {
+				font-size: 12px;
+				font-style: normal;
+				font-weight: 400;
+				line-height: 18px;
+				letter-spacing: 0em;
+				text-align: right;
+				display: grid;
+				min-width: 100px;
+				font-family: 'Poppins';
+				span.city {
+					font-weight: bold;
+					font-size: 12px;
+					font-family: 'Poppins';
+				}
+				span.time {
+					font-size: 21px;
+					font-style: normal;
+					font-weight: 500;
+					line-height: 31px;
+					letter-spacing: 0em;
+					text-align: right;
+					font-family: 'Poppins';
+				}
+				div.date {
+					font-size: 12px;
+					color: rgb(143, 141, 141);
+					font-weight: 500;
+					letter-spacing: 0em;
+					font-family: 'Poppins';
+				}
+			}
+			.duration {
+				align-items: flex-start;
+				text-align: center;
+				display: grid;
+				margin: 0 35px;
+				letter-spacing: 0em;
+				.duration_time,
+				.flight_speed {
+					font-weight: 500;
+					font-size: 14px;
+					font-family: 'Poppins';
+				}
+			}
+			.destination {
+				font-size: 12px;
+				font-style: normal;
+				font-weight: 400;
+				line-height: 18px;
+				letter-spacing: 0em;
+				text-align: left;
+				display: grid;
+				min-width: 100px;
+				font-family: 'Poppins';
+				span.city {
+					font-weight: bold;
+					font-size: 12px;
+					font-family: 'Poppins';
+				}
+				span.time {
+					font-weight: 500;
+					font-size: 20px;
+					font-family: 'Poppins';
+				}
+				div.date {
+					font-size: 12px;
+					color: rgb(143, 141, 141);
+					font-weight: 500;
+					font-family: 'Poppins';
+				}
+			}
+		}
+		.price_section {
+			width: 100%;
+			margin: 0 20px;
+			display: flex;
+			align-items: center;
+			justify-content: end;
+			.prices {
+				display: grid;
+				.booking_price {
+					font-family: 'Poppins' sans-serif;
+					font-size: 18px;
+					font-style: normal;
+					font-weight: 900;
+					line-height: 33px;
+					letter-spacing: 0em;
+					text-align: left;
+					font-family: 'Poppins';
+				}
+				.off_price {
+					font-family: 'Poppins' sans-serif;
+					font-size: 12px;
+					font-style: normal;
+					font-weight: 400;
+					line-height: 18px;
+					letter-spacing: 0em;
+					text-align: left;
+					color: rgb(108, 173, 34);
+					font-family: 'Poppins';
+				}
+			}
+		}
+		.btn-sm {
+			background: var(--primary);
+			border-radius: 2.24px;
+			height: 35px;
+			font-size: 18px;
+			font-style: normal;
+			font-weight: 400;
+			line-height: 26px;
+			letter-spacing: 0em;
+			text-align: left;
+			font-family: 'Poppins';
+		}
+	}
+	.more_details {
+		width: 100%;
+		.more_detail_header {
+			text-align: right;
+			a {
+				text-decoration: none;
+				font-size: 12px;
+				color: var(--primary);
+				font-weight: 600;
+				cursor: pointer;
+			}
+		}
+		.tabs-header {
+			margin: 13px;
+			border: 1px solid #dedede;
+			border-radius: 20px;
+			background: #EFF3F8;
+			ul {
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+				list-style-type: none;
+				margin: 0;
+				padding: 0;
+			}
+			.tab {
+				overflow: hidden;
+			}
+			.tab a {
+				background-color: inherit;
+				float: left;
+				border: none;
+				outline: none;
+				cursor: pointer;
+				padding: 5px 30px;
+				text-transform: uppercase;
+				font-size: 12px;
+				text-decoration: none;
+				color: #000;
+			}
+			.tab a.active {
+				padding: 5px 30px;
+				border-radius: 20px;
+				background-color: var(--primary);
+				color: white;
+				font-size: 12px;
+			}
+			.tabcontent {
+				display: none;
+				padding: 6px 12px;
+				border: 1px solid #ccc;
+				border-top: none;
+			}
+		}
+		.Tabs_body {
+			margin-top: 10px;
+			padding: 10px;
+			.titile_name {
+				font-size: 18px;
+				font-weight: bold;
+				color: #000;
+			}
+			.Total_Price {
+				font-size: 15px;
+				font-weight: bold;
+				color: #000;
+			}
+			.fare_title {
+				font-size: 15px;
+				color: rgb(143, 141, 141);
+				font-weight: 500;
+			}
+			.detail_card {
+				.flight_brnd {
+					width: 100%;
+					display: grid;
+					justify-content: center;
+					font-family: "Poppins";
+					align-items: center;
+					text-align: center;
+					img {
+						width: 50px;
+						height: 50px;
+					}
+					span {
+						font-weight: 500;
+						font-size: 14px;
+					}
+				}
+				.detail_row {
+					display: flex;
+					justify-content: space-between;
+					width: 100%;
+					.flight_details {
+						display: flex;
+						align-items: left;
+						margin-top: 5px;
+						.from {
+							display: grid;
+							text-align: left;
+							span.time {
+								font-weight: 500;
+								font-size: 24px;
+							}
+							div.date {
+								font-size: 12px;
+								color: rgb(143, 141, 141);
+								font-weight: 500;
+							}
+						}
+						.duration {
+							text-align: center;
+							display: grid;
+							.duration_time,
+							.flight_speed {
+								font-weight: 500;
+								font-size: 14px;
+							}
+						}
+						.destination {
+							text-align: left;
+							display: grid;
+							span.time {
+								font-weight: 500;
+								font-size: 24px;
+							}
+							div.date {
+								font-size: 12px;
+								color: rgb(143, 141, 141);
+								font-weight: 500;
+							}
+						}
+					}
+					.extra_things_container {
+						display: flex;
+						justify-content: space-evenly;
+						.extra_things {
+							margin: 0 20px;
+							text-align: left;
+							.item_title {
+								font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+								font-size: 18px;
+								font-weight: 700;
+							}
+							.item_value {
+								font-size: 12px;
+								font-weight: 400;
+								color: #7c7c7c;
+							}
+						}
+					}
+				}
+			}
+		}
+		.Cancel_Tabs_body {
+			.tabs_title_selection {
+				.img-tab {
+					width: 15%;
+					height: 15%;
+				}
+				span {
+					font-size: 16px;
+					font-weight: bold;
+					color: #000;
+				}
+				.stop {
+					font-size: 16px;
+					font-weight: bold;
+					color: red;
+				}
+			}
+		}
+		.Scheduled {
+			font-size: 9.5px;
+			font-weight: bold;
+			text-align: center;
+		}
+	}
+}
+

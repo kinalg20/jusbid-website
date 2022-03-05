@@ -1,0 +1,64 @@
+.profile_page{
+    min-height: 75vh;
+    .card_body{
+        display: block;
+        .card_header {
+            text-align: center;
+            font-size: 25px;
+            font-weight: bold;
+       }
+   }
+    .Barline {
+        height: 1px;
+        width: 100%;
+        background-color: rgb(187, 187, 187);
+   }
+    .line {
+        background-color: red;
+        width: 1px;
+        height: 45px;
+        border-radius: 20px;
+        padding-right: 0px;
+        padding-left: 3px;
+        margin-left: 10px;
+   }
+    .User-Profile-Name {
+        font-size: 20px;
+        font-weight: bold;
+        color: red;
+   }
+    .Basic-info{
+        color: #000;
+        font-size: 15px;
+   }
+    .customer_table {
+        overflow-y: scroll;
+        max-height: 500px;
+        table {
+            thead {
+                tr {
+                    th {
+                        font-size: 16px;
+                   }
+               }
+           }
+            tbody {
+                tr {
+                    td {
+                        font-size: 16px;
+                   }
+               }
+           }
+       }
+   }
+}
+@media (max-width:375px) {
+    .profile_page{
+        .User-Profile-Name{
+            font-size: 17px;
+       }
+        .btn{
+            font-size: 13px;
+       }
+   }
+}

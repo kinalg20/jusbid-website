@@ -1,0 +1,376 @@
+<div class="header d-md-block d-none">
+  <!-- <div class="text-center" style="margin-right: 10px;">
+        <img src="assets/images/svg_Icons/left-arrow.svg" (click)="back()">
+    </div> -->
+  <nav class="navbar sticky-top">
+    <img src="https://storage.googleapis.com/jusbid_cloud_storage/assets/images/logos/Jusbid_logo.png" routerLink="/"
+      alt="" />
+  </nav>
+</div>
+
+<div class="auth_page">
+  <div class="container-fluid login">
+    <div class="row">
+      <div class="col-12 col-sm-0 col-md-6 col-xl-7">
+        <div class="login_container">
+          <div class="loginFrom">
+            <h2 class="login_title">
+              <span class="sub_title">Welcome to</span> JusBid
+            </h2>
+            <p class="title">
+              Find the most affordable hotels and flights through the JusBid and
+              get the most suitable accommodation for your vacation & work.
+            </p>
+            <p style="font-weight: bold; color: #fff">
+              To find budget hotels, Stay connected with us!
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="col-12 mx-md-auto col-md-6 col-xl-4 auth_card">
+        <div class="gap">
+          <div class="form_card">
+            <div class="loading_bar" *ngIf="this._commonService.is_app_loading">
+              <div class="spinner-border text-primary" role="status">
+                <span class="visually-hidden">Loading...</span>
+              </div>
+            </div>
+            <div class="glass-login">
+              <section *ngIf="ShowForm == 'signin'">
+                <!-- <div class="d-md-none d-block text-center logo">
+                                    <img src="https://storage.googleapis.com/jusbid_cloud_storage/assets/images/logos/Jusbid_logo.png"
+                                        routerLink="/" alt="" style="width: 120px;">
+                                </div> -->
+                <h5 class="hello_title"><span class="auth_form_title_Sign_in">Hello!</span>🤟</h5>
+                <p style="font-size: 15px; margin-bottom: 30px">
+                  Enter your credentials to continue!
+                </p>
+                <form #signinWithEmailForm="ngForm" (submit)="signinWithEmail(signinWithEmailForm)" autocomplete="off">
+                  <ng-container *ngIf="resMsg">
+                    <div class="alert alert-danger" role="alert" id="loginAlert">
+                      {{ resMsg }}
+                    </div>
+                  </ng-container>
+
+                  <div class="form-field">
+                    <label for="user" class="form-label">
+                      E-mail or Mobile Number
+                    </label>
+                    <!-- <input
+                      type="text"
+                      class="form-control"
+                      autocomplete="off"
+                      id="user"
+                      name="user"
+                      (input)="this._commonService.validateEmail($event)"
+                      onKeyPress="if(this.value.length>=30) return false"
+                      ngModel
+                      required
+                    />
+                    <h6
+                      class="text-danger"
+                      *ngIf="this._commonService.invalidEmail != ''"
+                    >
+                      {{ this._commonService.invalidEmail }}
+                    </h6> -->
+                    <input class="form-control" autocomplete="off" id="user" name="user" ngModel required
+                      (input)="validateEmail($event)" (input)="validateMobile($event)"
+                      (keydown)="maxlengthMobile($event)" maxlength="100" />
+                    <h6 class="text-danger" *ngIf="invalidEmail || invalidMobile">
+                      {{
+                      invalidEmail
+                      ? "Invalid Email"
+                      : invalidMobile
+                      ? "Invalid Mobile"
+                      : ""
+                      }}
+                    </h6>
+                  </div>
+                  <div class="form-field">
+                    <div style="
+                        display: flex;
+                        justify-content: space-between;
+                        align-items: center;
+                      ">
+                      <label for="password" class="form-label">Password</label>
+                    </div>
+                    <div style="display: flex; position: relative">
+                      <input [type]="hidePassword ? 'password' : 'text'" class="form-control w-100" autocomplete="off"
+                        id="password" name="password" ngModel required />
+                      <span (click)="showPassword()" style="position: absolute; top: 0; right: 0">
+                        <img width="28px" [src]="
+                            hidePassword
+                              ? 'https://storage.googleapis.com/jusbid_cloud_storage/assets/images/icons/show_passowrd.png'
+                              : 'https://storage.googleapis.com/jusbid_cloud_storage/assets/images/icons/hide_passowrd.png'
+                          " alt="Show Password" />
+                      </span>
+                    </div>
+                  </div>
+                  <div class="text-right align-items: center; font-size:15px">
+                    <a class="link" routerLink="/auth/forgot-password">
+                      Forgot Password ?
+                    </a>
+                  </div>
+
+                  <button type="submit" class="btn btn-login btn-block mt-3">
+                    Login
+                  </button>
+                </form>
+                <h6 class="text-center mt-2 phone_no" style="font-size: 15px; color: #000">
+                  or
+                </h6>
+                <div class="text-center mt-2" style="font-size: 15px; font-weight: bold">
+                  <button class="btn btn-otp btn-block" (click)="ShowForm = 'otplogin'">
+                    <span>
+                      Continue with
+                      <a style="color: #fff; font-weight: bold">Phone Number</a>
+                    </span>
+                  </button>
+                </div>
+                <!-- <div class="text-center my-4">
+                                        <h3><b>OR</b></h3>
+                                    </div> -->
+                <div class="text-center userlogin mt-4">
+                  <span>
+                    Don't have account?
+                    <a (click)="ShowForm = 'signup'" style="color: #007bff">Create Account</a>
+                  </span>
+                </div>
+              </section>
+            </div>
+            <div class="glass-login">
+              <section *ngIf="ShowForm == 'signup'">
+                <div class="d-md-block d-none text-center logo">
+                  <img src="https://storage.googleapis.com/jusbid_cloud_storage/assets/images/logos/Jusbid_logo.png"
+                    routerLink="/" alt="" style="width: 120px" />
+                </div>
+                <h5 class="auth_form_title">Create Your Account</h5>
+                <form #signUpForm="ngForm" (submit)="signUp(signUpForm)" class="my-2" autocomplete="off">
+                  <ng-container *ngIf="resSignupMsg">
+                    <div class="alert alert-danger" role="alert" id="loginAlert">
+                      {{ resSignupMsg }}
+                    </div>
+                  </ng-container>
+
+                  <div class="form-field">
+                    <label for="firstname" class="form-label">
+                      First Name
+                    </label>
+                    <input maxlength='50' class="form-control" autocomplete="off" id="firstname" name="firstname"
+                      ngModel required />
+                  </div>
+                  <div class="form-field">
+                    <label for="lastname" class="form-label"> Last Name </label>
+                    <input maxlength='50' class="form-control" autocomplete="off" id="lastname" name="lastname" ngModel
+                      required />
+                  </div>
+                  <div class="form-field">
+                    <label for="mobile" class="form-label"> Mobile </label>
+                    <!-- <input
+                      type="number"
+                      class="form-control"
+                      autocomplete="off"
+                      id="mobile"
+                      name="mobile"
+                      ngModel
+                      required
+                      onKeyPress="if(this.value.length==10) return false;"
+                    /> -->
+                    <input class="form-control" autocomplete="off" id="mobile" name="mobile" ngModel required
+                      maxlength="10" (input)="validateMobile($event)" (keydown)="inputMobile($event)" />
+                    <h6 class="text-danger" *ngIf="invalidMobile">
+                      {{ invalidMobile ? "Invalid Mobile" : "" }}
+                    </h6>
+                  </div>
+                  <div class="form-field">
+                    <label for="email" class="form-label">
+                      Email Address
+                    </label>
+                    <!-- <input
+                      type="email"
+                      class="form-control"
+                      autocomplete="off"
+                      id="email"
+                      (input)="this._commonService.validateEmail($event)"
+                      onKeyPress="if(this.value.length>=30) return false"
+                      name="email"
+                      ngModel
+                      required
+                    />
+                    <h6
+                      class="text-danger"
+                      *ngIf="this._commonService.invalidEmail != ''"
+                    >
+                      {{ this._commonService.invalidEmail }}
+                    </h6> -->
+                    <input type="email" class="form-control" autocomplete="off" id="email"
+                      (input)="validateEmail($event)" name="email" ngModel required maxlength="30" />
+                    <h6 class="text-danger" *ngIf="invalidEmail">
+                      {{ invalidEmail ? "Invalid Email" : "" }}
+                    </h6>
+                  </div>
+                  <div class="form-field">
+                    <label for="password" class="form-label"> Password </label>
+                    <input type="password" class="form-control" autocomplete="off" id="password" [(ngModel)]="password"
+                      name="password" />
+                  </div>
+                  <div class="form-field">
+                    <label for="cpassword" class="form-label">Confirm Password</label>
+                    <input type="password" class="form-control" autocomplete="off" id="cpassword"
+                      [(ngModel)]="confirmPassword" name="cpassword" />
+                    <p class="mt-2 text-danger" *ngIf="confirmPassword">
+                      {{
+                      password === confirmPassword ? "" : "Password Not Match"
+                      }}
+                    </p>
+                  </div>
+
+                  <!-- <div class="form-group">
+                                        <input type="text" name="firstname" id="firstname"
+                                            class="form-control floating-input" autocomplete="off" value="" ngModel
+                                            required>
+                                        <span class="highlight"></span>
+                                        <label for="email" class="form-label floating-label">First Name</label>
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="text" name="lastname" id="lastname"
+                                            class="form-control floating-input" autocomplete="off" value="" ngModel
+                                            required>
+                                        <span class="highlight"></span>
+                                        <label for="email" class="form-label floating-label">Last Name</label>
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="text" name="mobile" id="mobile" class="form-control floating-input"
+                                            autocomplete="off" value="" ngModel required
+                                            onKeyPress="if(this.value.length==10) return false;">
+                                        <span class="highlight"></span>
+                                        <label for="email" class="form-label floating-label">Mobile</label>
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="email" name="email" id="email" class="form-control floating-input"
+                                            autocomplete="off" value="" ngModel required>
+                                        <span class="highlight"></span>
+                                        <label for="email" class="form-label floating-label">Email Address</label>
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="password" name="password" id="password"
+                                            class="form-control floating-input" autocomplete="off"
+                                            [(ngModel)]='password' required>
+                                        <span class="highlight"></span>
+                                        <label for="email" class="form-label floating-label">Password</label>
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="password" name="cpassword" id="confirm-password" autocomplete="off"
+                                            class="form-control floating-input" [(ngModel)]='cpass' required>
+                                        <span class="highlight"></span>
+                                        <label for="email" class="form-label floating-label">Confirm Password</label>
+                                        <p class="mt-2 text-danger" *ngIf="cpass ">{{ password == cpass?'':'Password Not
+                                            Match' }}</p>
+                                    </div> -->
+
+                  <button type="submit" class="btn btn-primary btn-block mt-4">
+                    Sign Up
+                  </button>
+                </form>
+                <div class="usersignup mt-4" style="font-size: 16px">
+                  <span style="text-align: center">
+                    Already have a account?
+                    <a (click)="ShowForm = 'signin'" style="color: #007bff">
+                      Login
+                    </a>
+                  </span>
+                </div>
+              </section>
+            </div>
+            <div class="glass-login">
+              <section class="otplogin" *ngIf="ShowForm == 'otplogin'">
+                <h5 class="auth_form_title">Please Login</h5>
+
+                <section *ngIf="!sendOTP">
+                  <!-- <div class="form-group">
+                                        <label for="mobile" class="form-label floating-label mb-3">
+                                            <b>Please enter your phone number to continue</b></label>
+    
+                                        <input type="number" class="form-control floating-input" autocomplete="off"
+                                            id="mobile" name="mobile" [(ngModel)]="reqPhoneNo" required
+                                            onKeyPress="if(this.value.length==15) return false;" style="font-size: 30px;
+                                            padding: 0 10px;
+                                            background: #fff;
+                                            color: #000;">
+                                        
+                                    </div> -->
+                  <div class="form-field">
+                    <form #myForm="ngForm">
+                      <div class="form-group">
+                        <label for="mobile" class="form-label">
+                          Please enter your phone number to continue
+                        </label>
+                        <!-- <input
+                          type="number"
+                          class="form-control"
+                          autocomplete="off"
+                          id="mobile"
+                          required
+                          [(ngModel)]="reqPhoneNo"
+                          name="mobile"
+                          maxlength="10"
+                          (keyup)="validMobile($event)"
+                          onKeyPress="if(this.value.length==10) return false;"
+                          (keydown)="validateNumber($event)"
+                        /> -->
+                        <input class="form-control" autocomplete="off" id="mobile" required [(ngModel)]="reqPhoneNo"
+                          name="mobile" maxlength="10" (input)="enableButton($event)" (keydown)="inputMobile($event)" />
+                      </div>
+
+                      <button type="submit" [disabled]="disableMobile" class="btn btn-primary btn-block"
+                        (click)="loginWithPhoneNumber()">
+                        SEND OTP
+                      </button>
+                    </form>
+                  </div>
+                </section>
+                <section *ngIf="sendOTP">
+                  <!-- sendOTP -->
+                  <div class="form-group" *ngIf="false">
+                    <!-- <input type="number" class="form-control floating-input" autocomplete="off"
+                                            id="otp" name="otp" [(ngModel)]="userOTP" required
+                                            onKeyPress="if(this.value.length==6) return false;">
+                                        <span class="highlight"></span> -->
+
+                    <label for="otp" class="mb-2">
+                      <b>We have sent a OTP to you at +91-{{ reqPhoneNo }}</b>
+                    </label>
+                    <ng-otp-input (onInputChange)="onOtpChange($event)" [config]="{ length: 6 }">
+                    </ng-otp-input>
+                  </div>
+
+                  <div class="form-field">
+                    <label for="mobile" class="form-label">We have sent a OTP to you at +91-{{ reqPhoneNo }}
+                      <a class="text-primary" style="font-weight: 800" (click)="sendOTP = !sendOTP">Edit</a>
+                    </label>
+                    <ng-otp-input (onInputChange)="onOtpChange($event)" [config]="{ length: 6 }">
+                    </ng-otp-input>
+                  </div>
+
+                  <div class="my-4">
+                    <a class="text-primary" (click)="loginWithPhoneNumber()">Resend OTP?</a>
+                  </div>
+
+                  <button type="button" class="btn btn-primary btn-block" (click)="verifyOTP()">
+                    VERIFY
+                  </button>
+                </section>
+                <div class="text-center mt-4 usersignup" style="font-size: 14px">
+                  <span>
+                    Already have a account?
+                    <a (click)="ShowForm = 'signin'" style="color: #007bff">Click here</a>
+                  </span>
+                </div>
+              </section>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,50 @@
+<section class="popular_hotels_container">
+    <div class="popular_hotels">
+        <div class="ads_banner_img" *ngIf="!this.common.isAuthenticated()" routerLink="/auth"><img
+                class="img-fluid mb-3" src="/assets/images/web banner-01.jpg"></div>
+        <div class="ads_banner_img" *ngIf="this.common.isAuthenticated()" routerLink="/Best-hotel-room-deals"><img
+                class="img-fluid mb-3" src="/assets/images/web banner-01.jpg"></div>
+        <div class="container_section" *ngIf="popularHotels.length>0">
+            <h3 class="section-3-title ">Popular <b>Hotels</b></h3>
+            <div class="PopularHotel_section_body ">
+                <owl-carousel-o [options]="popularOptions" class="">
+                    <ng-container *ngIf="shimmerLoad">
+                        <ng-container *ngFor='let in of [0,1,2,3,4,5,6];'>
+                            <ng-template carouselSlide>
+                                <div class="card">
+                                    <div class="photo shine"></div>
+
+                                    <div class="card-body text-center">
+                                        <div class="shine lines"></div>
+                                    </div>
+                                </div>
+                            </ng-template>
+                        </ng-container>
+                    </ng-container>
+                    <ng-container *ngIf="!shimmerLoad">
+                        <ng-container *ngFor="let popularslider of popularHotels; index as i">
+                            <ng-template carouselSlide>
+                                <div class="card card-popularhotels cursor-pointer"
+                                    [routerLink]="['/hotel/id/',popularslider.id]">
+                                    <div class="card-body">
+                                        <div class="row">
+                                            <div class="col-sm-12 col-xl-12 img_section">
+                                                <img class="pop-hotel-img" src="{{apiBaseURL+popularslider.image}}"
+                                                    onError="this.src='/assets/images/dummy_horizontal.jpg';"
+                                                    alt="Card image">
+                                                <div class="mr-2">
+                                                    <p class="card-title">{{ popularslider.name.slice(0,15)}}</p>
+                                                    <p class="card-text">{{ popularslider.city }}</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </ng-template>
+                        </ng-container>
+                    </ng-container>
+                </owl-carousel-o>
+            </div>
+        </div>
+    </div>
+</section>

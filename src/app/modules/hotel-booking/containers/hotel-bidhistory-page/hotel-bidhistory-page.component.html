@@ -1,0 +1,682 @@
+<main-header [header]="'main'"></main-header>
+<section class="bid-history">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-10 mx-auto">
+                <div class="bid-data">
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item" aria-current="page">
+                                <a routerLink="" class="none_active">
+                                    <i class="fa fa-home" aria-hidden="true"></i>
+                                    Home
+                                </a>
+                            </li>
+                            <li class="breadcrumb-item active">
+                                <a>
+                                    <i class="fa fa-history" aria-hidden="true"></i> Bidding History
+                                </a>
+                            </li>
+                        </ol>
+                    </nav>
+                    <div class="bid-header">
+                        <div class="heading">
+                            <h5><b>Bidding History</b></h5>
+                        </div>
+                        <div class="filters">
+                            <div class="filter_by_status">
+                                <div class="wrap-drop" id="noble-gases" (click)="bidFilterDropdown()"
+                                    [ngClass]="showBidFilter?'active':''">
+                                    <span>{{ bid_name_status }}</span>
+                                    <ul class="drop">
+                                        <li class="selected" (click)="getBidsByStatus('All', 'All Biddings')"><a>All
+                                                Biddings</a></li>
+                                        <li (click)="getBidsByStatus('Processing','Pending Bids')"><a>Pending Bids</a>
+                                        </li>
+                                        <li (click)="getBidsByStatus('Approved', 'Approved Bids')"><a>Approved Bids</a>
+                                        </li>
+                                        <li (click)="getBidsByStatus('Rejected', 'Rejected Bids')"><a>Rejected Bids</a>
+                                        </li>
+                                        <li (click)="getBidsByStatus('OnHold', 'On Hold Bids')"><a>On Hold Bids</a></li>
+                                        <li (click)="getBidsByStatus('Missed_SLA', 'Missed Bids')"><a>Missed Bids</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="search_filter">
+                                <div class="d-md-block d-none">
+                                    <div class="search_input">
+                                        <input type="text" class="form-control" placeholder="Search By Name"
+                                            (keyup)="search_by_hotel_name($event)">
+                                        <div class="icons"><i class="fa fa-search"></i></div>
+                                    </div>
+                                </div>
+                                <div class="d-md-none d-block"
+                                    style="box-shadow: 0px 0px 3px rgb(0 0 0 / 20%); padding:12px 10px;border-radius: 0.25rem;">
+                                    <i class="fa" [ngClass]="responsiveFilter?'fa-times':'fa-search'"
+                                        (click)="showFilterSearch()"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <ng-container *ngIf="responsiveFilter">
+                        <div class="d-md-none d-block">
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="Search By Name"
+                                    (keyup)="search_by_hotel_name($event)" style="border-radius: 0.25rem;border: 1px solid #dedede;
+                                    padding: 5px 20px;">
+                            </div>
+                        </div>
+                    </ng-container>
+                    <div class="bidding_card_container">
+                        <!-- {{shimmerLoad}} -->
+                        <ng-container *ngIf="shimmerLoad">
+                            <ng-container *ngFor='let in of [0,1,2,3];'>
+                                <div class="bidding_card">
+                                    <div class="row align-center">
+                                        <div class="col-md-2">
+                                            <div class="box shine"></div>
+                                        </div>
+                                        <div class="col-lg-6 col-md-5">
+                                            <div>
+                                                <div class="lines shine"></div>
+                                                <div class="lines shine"></div>
+                                                <div class="lines shine"></div>
+                                                <div class="lines shine"></div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-4 col-md-5">
+                                            <div class="bid_btn_right">
+                                                <div class="rightlines shine"></div>
+                                                <div class="shimmerbtns">
+                                                    <ul>
+                                                        <li>
+                                                            <div class="button shine"></div>
+                                                        </li>
+                                                        <li>
+                                                            <div class="button shine"></div>
+
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </ng-container>
+                        </ng-container>
+                        <ng-container *ngIf="!shimmerLoad">
+                            <ng-container *ngIf="noRecentBidding && filter_bidding.length == 0">
+                                <div class="text-center my-5 py-5"
+                                    style="display: grid;align-items: center;height: 40vh;">
+                                    <h5>
+                                        {{ noRecentBidding }}
+                                    </h5>
+                                </div>
+                            </ng-container>
+                            <ng-container *ngIf="recent_bidding.length == 0">
+                                <div class="text-center my-5 py-5"
+                                    style="display: grid;align-items: center;height: 40vh;">
+                                    <h5>
+                                        No Bidding Available!
+                                    </h5>
+                                </div>
+                            </ng-container>
+                            <ng-container *ngIf="filter_bidding.length>0;">
+                                <ng-container *ngFor="let bid of filter_bidding;">
+                                    <div class="bidding_card">
+                                        <div class="row" style="align-items: center;">
+                                            <div class="col-md-2">
+                                                <ng-container *ngIf="bid.hotel_image; else noImg">
+                                                    <div class="hotel_img"><img [src]="this.apiBaseURL+bid.hotel_image"
+                                                            alt=""></div>
+                                                </ng-container>
+                                                <ng-template #noImg>
+                                                    <div class="hotel_img"><img width="300px"
+                                                            src="/assets/images/placeholders/placeholder-hotel-house.png"
+                                                            alt="">
+                                                    </div>
+                                                </ng-template>
+                                            </div>
+                                            <div class="col-lg-6 col-md-5 responsive-hotel-info">
+                                                <div class="hotel_info">
+                                                    <div class="info">
+                                                        <p class="booking_date">{{bid.arrival_date}} -
+                                                            {{bid.departure_date}}
+                                                        </p>
+                                                        <h5 class="name" [routerLink]="['/hotel/id/', bid.hotel_id]"
+                                                            (click)="onHotelDetails(bid.hotel_id)">
+                                                            {{bid.hotel_name}}</h5>
+                                                        <p class="guest_and_room">{{bid.adult + bid.child}} Guest,
+                                                            {{bid.rooms}}
+                                                            Room</p>
+                                                        <p class="room_type">{{bid.room_type}}</p>
+                                                    </div>
+                                                </div>
+                                                <div class="mt-2">
+                                                    <div class="bid-rsn" *ngIf="bid.reason">
+                                                        <p><i class="fa fa-circle"></i> {{ bid.reason }}</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-4 col-md-5">
+
+                                                <div class="bidding_action text-right">
+                                                    <p class="bidding_date"><span>Bidding Date: </span>{{bid.createdAt |
+                                                        date:'d/M/yy, h:mm a'}}
+                                                    </p>
+                                                    <p *ngIf="bid.status=='Approved'" class="approved">
+                                                        <span>
+
+                                                            <img src="/assets/images/icons/success_icon.png"
+                                                                alt="Booked" width="15px">
+
+                                                            {{ bid.is_booked ? 'Booked' : 'Approved' }}
+                                                        </span>
+                                                    </p>
+
+                                                    <div class="large-view-status">
+                                                        <p *ngIf="bid.status=='Missed_SLA'" class="missed"><span><i
+                                                                    class="fa fa-times-circle"></i> Missed</span></p>
+                                                        <p *ngIf="bid.status=='Rejected'" class="Rejected"><span><i
+                                                                    class="fa fa-times-circle"></i> Rejected</span></p>
+                                                        <p *ngIf="bid.status=='OnHold'" class="On-Hold"><span><i
+                                                                    class="fa fa-circle"></i> On Hold</span></p>
+                                                    </div>
+
+                                                    <div class="btns">
+                                                        <ul style="margin: 0;padding: 0;list-style: none;">
+                                                            <li style="margin: 0;padding: 0;">
+                                                                <p class="price btn btn-orange"
+                                                                    style=" border-radius: 5px; margin: 0;">
+                                                                    <span class="amount"><span
+                                                                            style="font-family: roboto;">&#x20B9;</span>{{bid.price}}</span><br><p class="time">Per Room {{ math.floor(bid.days) }}
+                                                                    night</p>
+                                                                </p>
+                                                            </li>
+
+
+                                                            <li>
+                                                                <div
+                                                                    *ngIf="bid.status=='Approved' && bid.is_booked == false">
+                                                                    <button class="btn btn-green"
+                                                                        (click)="hotelBooking(bid)">Just
+                                                                        Pay</button>
+                                                                </div>
+                                                                <div *ngIf="bid.status=='Processing'"
+                                                                    class="btn btn-yellow">
+                                                                    <p>{{bid.status}}</p>
+                                                                </div>
+                                                                <div *ngIf="bid.status=='OnHold'"
+                                                                    class="btn btn-yellow">
+                                                                    <p>{{bid.status}}</p>
+                                                                </div>
+                                                                <div *ngIf="bid.status=='Hold'" class="btn btn-yellow">
+                                                                    <p>OnHold</p>
+                                                                </div>
+                                                                <ng-container *ngIf="convertDate(bid.createdAt)">
+                                                                    <div
+                                                                        *ngIf="bid.status=='Missed_SLA' || bid.status=='Rejected'">
+                                                                        <button class="btn btn-green"
+                                                                            [routerLink]="['/hotel/id/', bid.hotel_id]">Re
+                                                                            Bid</button>
+                                                                    </div>
+                                                                </ng-container>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                    <div class="mobile-view-status">
+                                                        <p *ngIf="bid.status=='Missed_SLA'" class="missed"><span><i
+                                                                    class="fa fa-times-circle"></i> Missed</span></p>
+                                                        <p *ngIf="bid.status=='Rejected'" class="Rejected"><span><i
+                                                                    class="fa fa-times-circle"></i> Rejected</span></p>
+                                                        <p *ngIf="bid.status=='OnHold'" class="On-Hold"><span><i
+                                                                    class="fa fa-circle"></i> On Hold</span></p>
+                                                        <div class="mt-2 bid-reason">
+                                                            <div class="bid-rsn" *ngIf="bid.reason">
+                                                                <p><i class="fa fa-circle"></i> {{ bid.reason }}</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </ng-container>
+                            </ng-container>
+                        </ng-container>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- cartModal -->
+<div class="show_query_modal" *ngIf="cartModal">
+    <div class="container">
+        <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header border-0">
+                    <button type="button" class="close" (click)="closeModal()">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+
+                    <ng-container *ngIf="false">
+                        <div class="row">
+                            <div class="col-md-7">
+                                <div class="sub-head mb-4">
+                                    <h3>Payment Details</h3>
+                                </div>
+                                <table class="table table-image">
+                                    <tr>
+                                        <th width="30%">
+                                            <ng-container *ngIf="payment_data.hotel_image; else noImg">
+                                                <img [src]="apiBaseURL+payment_data.hotel_image"
+                                                    class="img-fluid img-thumbnail" [alt]="payment_data.hotel_name">
+                                            </ng-container>
+                                            <ng-template #noImg>
+                                                <img src="/assets/images/placeholders/placeholder-hotel-house.png"
+                                                    alt="">
+                                            </ng-template>
+                                        </th>
+                                        <td width="70%">
+                                            <h4>{{ payment_data.hotel_name }}</h4>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th>Room Type</th>
+                                        <td>{{ payment_data.room_type }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Checkin Date - Checkout Date</th>
+                                        <td>{{ payment_data.arrival_date }} - {{ payment_data.departure_date }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Room price</th>
+                                        <td>{{ payment_data.room_price | currency:'INR' }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Room price for {{payment_data.days}} Night X {{payment_data.adult}} Guests
+                                        </th>
+                                        <td>{{ payment_data.room_price * payment_data.rooms * payment_data.days |
+                                            currency:'INR' }}</td>
+                                    </tr>
+
+                                    <tr>
+                                        <th>Jusbid Discount Applied</th>
+                                        <td>- {{ ((payment_data.room_price*payment_data.rooms*payment_data.days) -
+                                            payment_data.price) | currency:'INR' }}</td>
+                                    </tr>
+
+
+                                    <tr>
+                                        <th>Bid Price</th>
+                                        <td>{{ payment_data.price | currency:'INR' }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Room Price including Property Tax</th>
+                                        <td>{{ this.payment_service.get_Calculated_Amount(payment_data.price,
+                                            payment_data.rooms, payment_data.adult, payment_data.days).room_price +
+                                            this.payment_service.get_Calculated_Amount(payment_data.price,
+                                            payment_data.rooms, payment_data.adult, payment_data.days).GST_Amt |
+                                            currency:'INR' }}</td>
+                                    </tr>
+
+                                    <tr>
+                                        <th>Service Fee Taxs {{
+                                            '('+this.payment_service.get_Calculated_Amount(payment_data.price,
+                                            payment_data.rooms, payment_data.adult,
+                                            payment_data.days).service_percentage +
+                                            '%)'
+                                            }}</th>
+                                        <td>{{ this.payment_service.get_Calculated_Amount(payment_data.price,
+                                            payment_data.rooms, payment_data.adult, payment_data.days).Service_Fee |
+                                            currency:'INR' }}</td>
+                                    </tr>
+
+
+
+
+
+                                    <tr
+                                        *ngIf="this.payment_service.get_Calculated_Amount(payment_data.price, payment_data.rooms, payment_data.adult, payment_data.days).Service_Fee != 0">
+                                        <th>CGST + SGST ({{
+                                            this.payment_service.get_Calculated_Amount(payment_data.price,
+                                            payment_data.rooms, payment_data.adult, payment_data.days).GST_Charge.CGST
+                                            +'%' }} + {{ this.payment_service.get_Calculated_Amount(payment_data.price,
+                                            payment_data.rooms, payment_data.adult, payment_data.days).GST_Charge.SGST
+                                            +'%' }})</th>
+                                        <td>
+                                            {{ (this.payment_service.get_Calculated_Amount(payment_data.price,
+                                            payment_data.rooms, payment_data.adult, payment_data.days).CGST +
+                                            this.payment_service.get_Calculated_Amount(payment_data.price,
+                                            payment_data.rooms, payment_data.adult, payment_data.days).SGST) |
+                                            currency:'INR' }}
+                                        </td>
+                                    </tr>
+
+
+                                    <tr>
+                                        <th>Total</th>
+                                        <td>
+
+                                            {{
+
+                                            (this.payment_service.get_Calculated_Amount(payment_data.price,
+                                            payment_data.rooms, payment_data.adult, payment_data.days).CGST +
+                                            this.payment_service.get_Calculated_Amount(payment_data.price,
+                                            payment_data.rooms, payment_data.adult, payment_data.days).SGST) +
+                                            this.payment_service.get_Calculated_Amount(payment_data.price,
+                                            payment_data.rooms, payment_data.adult, payment_data.days).Service_Fee +
+                                            this.payment_service.get_Calculated_Amount(payment_data.price,
+                                            payment_data.rooms, payment_data.adult, payment_data.days).subTotal
+
+
+                                            | currency:'INR'
+
+                                            }}
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                            <div class="col-md-5">
+                                <div class="sub-head mb-4">
+                                    <h3>Add-Ons</h3>
+                                </div>
+                                <hr>
+                                        
+                                <div class="bidtabs" *ngIf="addon_list.length>0">
+                                    <ng-container *ngFor="let addon of addon_list; index as i">
+                                        <div class="tab">
+                                            <input type="checkbox" [id]="addon.id">
+                                            <label class="tab-label " [for]="addon.id">
+                                                <div class="row">
+                                                    <div class="col-7">
+                                                        {{ addon.name }}
+                                                    </div>
+                                                    <div class="col-3">
+                                                        <p class="">&#8377; {{ addon.price }}</p>
+                                                    </div>
+                                                    <div class="col-2">
+                                                        <span (click)="getAddon(i, addon)">
+                                                            <ng-container *ngIf="addon_selected_list.includes(addon)">
+                                                                <i class="fa fa-minus"></i>
+                                                            </ng-container>
+                                                            <ng-container *ngIf="!addon_selected_list.includes(addon)">
+                                                                <i class="fa fa-plus"></i>
+                                                            </ng-container>
+                                                        </span>
+
+                                                    </div>
+                                                </div>
+                                            </label>
+                                            <div class="tab-content">
+                                                {{addon.description}}
+                                            </div>
+                                        </div>
+                                    </ng-container>
+                                    <hr>
+                                    <div class="d-flex justify-content-end">
+                                        <h5>Addon Total: <span class="price text-success">&#8377; {{ addon_price }}
+                                            </span></h5>
+                                    </div>
+                                </div>
+                                <ng-container *ngIf="addon_list.length==0">
+                                    <h5 class="text-center">
+                                        No Addon Found
+                                    </h5>
+                                </ng-container>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="d-flex justify-content-end">
+                            <h5>Grand Total: <span class="price text-success">
+
+                                    {{
+
+                                    (this.payment_service.get_Calculated_Amount(payment_data.price,
+                                    payment_data.rooms, payment_data.adult, payment_data.days).CGST +
+                                    this.payment_service.get_Calculated_Amount(payment_data.price,
+                                    payment_data.rooms, payment_data.adult, payment_data.days).SGST) +
+                                    this.payment_service.get_Calculated_Amount(payment_data.price,
+                                    payment_data.rooms, payment_data.adult, payment_data.days).Service_Fee +
+                                    this.payment_service.get_Calculated_Amount(payment_data.price,
+                                    payment_data.rooms, payment_data.adult, payment_data.days).subTotal + addon_price
+
+                                    | currency:'INR'
+
+                                    }}
+
+
+                                </span>
+                            </h5>
+                        </div>
+                    </ng-container>
+
+
+                    <!-- Redesign -->
+                    <div class="container-fluid booking_model">
+                        <div class="row">
+                            <div class="col-12 col-md-6">
+                                <div class="heading">
+                                    <h5>Booking Details</h5>
+                                </div>
+                                <div class="details_cards">
+                                    <div class="card detail_card mb-3">
+                                        <div class="">
+                                            <ng-container *ngIf="payment_data.hotel_image; else noImg">
+                                                <img [src]="apiBaseURL+payment_data.hotel_image" class="img-fluid"
+                                                    [alt]="payment_data.hotel_name">
+                                            </ng-container>
+                                            <ng-template #noImg>
+                                                <img src="/assets/images/placeholders/placeholder-hotel-house.png"
+                                                    class="img-fluid" alt="">
+                                            </ng-template>
+                                        </div>
+                                        <div class="details">
+                                            <div><span>Room Price</span>
+                                                <p>{{ payment_data.room_price | currency:'INR' }}</p>
+                                            </div>
+                                            <div><span>Hotel Name</span>
+                                                <p>{{ payment_data.hotel_name }}</p>
+                                            </div>
+                                            <div class="check_time">
+                                                <div class="time"><span>Check In</span>
+                                                    <p>{{ payment_data.arrival_date }}</p>
+                                                </div>
+                                                <div class="time"><span>Check Out</span>
+                                                    <p>{{ payment_data.departure_date }}</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="card">
+                                        <table class="table m-0">
+                                            <tbody>
+                                                <tr>
+                                                    <td>Room Type</td>
+                                                    <td style="text-align: right;"><b>{{ payment_data.room_type }}</b>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Room price for {{payment_data.days}} Night X
+                                                        {{payment_data.adult}} Guests</td>
+                                                    <td style="text-align: right;"><b>{{ payment_data.room_price *
+                                                            payment_data.rooms *
+                                                            payment_data.days | currency:'INR' }}</b></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Jusbid Discount Applied</td>
+                                                    <td style="text-align: right;"><b class="text-danger">- {{
+                                                            ((payment_data.room_price*payment_data.rooms*payment_data.days)
+                                                            - payment_data.price) | currency:'INR' }}</b></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Bid Price</td>
+                                                    <td style="text-align: right;"><b>{{ payment_data.price |
+                                                            currency:'INR' }}</b></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Room price including taxes</td>
+                                                    <td style="text-align: right;"><b>{{
+                                                            this.payment_service.get_Calculated_Amount(payment_data.price,
+                                                            payment_data.rooms, payment_data.adult,
+                                                            payment_data.days).room_price +
+                                                            this.payment_service.get_Calculated_Amount(payment_data.price,
+                                                            payment_data.rooms, payment_data.adult,
+                                                            payment_data.days).GST_Amt | currency:'INR' }}</b></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Service Fee {{
+                                                        '('+this.payment_service.get_Calculated_Amount(payment_data.price,
+                                                        payment_data.rooms, payment_data.adult,
+                                                        payment_data.days).service_percentage +
+                                                        '%)'
+                                                        }}</td>
+                                                    <td style="text-align: right;"><b>{{
+                                                            this.payment_service.get_Calculated_Amount(payment_data.price,
+                                                            payment_data.rooms, payment_data.adult,
+                                                            payment_data.days).Service_Fee |
+                                                            currency:'INR' }}</b></td>
+                                                </tr>
+
+                                                <tr
+                                                    *ngIf="this.payment_service.get_Calculated_Amount(payment_data.price, payment_data.rooms, payment_data.adult, payment_data.days).Service_Fee != 0">
+                                                    <td>CGST + SGST ({{
+                                                        this.payment_service.get_Calculated_Amount(payment_data.price,
+                                                        payment_data.rooms, payment_data.adult,
+                                                        payment_data.days).GST_Charge.CGST +'%' }} + {{
+                                                        this.payment_service.get_Calculated_Amount(payment_data.price,
+                                                        payment_data.rooms, payment_data.adult,
+                                                        payment_data.days).GST_Charge.SGST +'%' }})</td>
+                                                    <td style="text-align: right;">
+                                                        {{
+                                                        (this.payment_service.get_Calculated_Amount(payment_data.price,
+                                                        payment_data.rooms, payment_data.adult, payment_data.days).CGST
+                                                        + this.payment_service.get_Calculated_Amount(payment_data.price,
+                                                        payment_data.rooms, payment_data.adult, payment_data.days).SGST)
+                                                        |
+                                                        currency:'INR' }}
+                                                    </td>
+                                                </tr>
+
+
+                                                <tr style="background: rgb(247, 240, 240);">
+                                                    <td><b style="font-size: 16px;">Total</b></td>
+                                                    <td style="text-align: right; font-size: 16px;"><b>{{
+                                                            (this.payment_service.get_Calculated_Amount(payment_data.price,
+                                                            payment_data.rooms, payment_data.adult,
+                                                            payment_data.days).CGST +
+                                                            this.payment_service.get_Calculated_Amount(payment_data.price,
+                                                            payment_data.rooms, payment_data.adult,
+                                                            payment_data.days).SGST) +
+                                                            this.payment_service.get_Calculated_Amount(payment_data.price,
+                                                            payment_data.rooms, payment_data.adult,
+                                                            payment_data.days).Service_Fee +
+                                                            this.payment_service.get_Calculated_Amount(payment_data.price,
+                                                            payment_data.rooms, payment_data.adult,
+                                                            payment_data.days).subTotal
+                                                            | currency:'INR'
+                                                            }}</b></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-6">
+                                <div class="heading">
+                                    <h5>Add On</h5>
+                                </div>
+                                <div class="card">
+                                    <ol class="list-group list-group-numbered">
+                                        <ng-container *ngFor="let addon of addon_list; index as i">
+                                            <li
+                                                class="list-group-item d-flex justify-content-between align-items-start">
+                                                <div class="ms-2 me-auto">
+                                                    <div style="font-size: 16px;font-weight: 800;" class="text-danger">
+                                                        <b>{{addon.name}}</b>
+                                                    </div>
+                                                    <small class="text-muted">{{addon.description}}</small>
+                                                </div>
+                                                <div style="display: flex;align-items: center;">
+
+                                                    <h5 class="text-success my-0 p-0 mr-3"
+                                                        style="font-size: 16px;font-weight: 800;">{{addon.price |
+                                                        currency:'INR'}}</h5>
+                                                    <input type="checkbox" name="addon" (click)="getAddon(i, addon)"
+                                                        [checked]="addon_selected_list.includes(addon)">
+                                                </div>
+                                            </li>
+                                        </ng-container>
+
+                                    </ol>
+
+                                </div>
+                                <div style="display: flex;justify-content: end;text-align: right;padding: 20px 0;">
+                                    <div>
+                                        <small>Add On Total</small>
+                                        <h5 style="font-size: 16px;font-weight: 800;" class="text-danger">{{ addon_price
+                                            | currency:'INR' }}</h5>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+                <div class="modal-footer d-flex justify-content-between px-md-4">
+                    <div>
+                        <h5>Grand Total <b class="text-success">
+                                {{
+                                (this.payment_service.get_Calculated_Amount(payment_data.price,
+                                payment_data.rooms, payment_data.adult, payment_data.days).CGST +
+                                this.payment_service.get_Calculated_Amount(payment_data.price,
+                                payment_data.rooms, payment_data.adult, payment_data.days).SGST) +
+                                this.payment_service.get_Calculated_Amount(payment_data.price,
+                                payment_data.rooms, payment_data.adult, payment_data.days).Service_Fee +
+                                this.payment_service.get_Calculated_Amount(payment_data.price,
+                                payment_data.rooms, payment_data.adult, payment_data.days).subTotal + addon_price
+                                | currency:'INR'
+                                }}
+                            </b></h5>
+                    </div>
+                    <button type="button" class="btn btn-success"
+                        (click)="bookingPayment(payment_data.id,((this.payment_service.get_Calculated_Amount(payment_data.price,
+                        payment_data.rooms, payment_data.adult, payment_data.days).CGST + this.payment_service.get_Calculated_Amount(payment_data.price,
+                        payment_data.rooms, payment_data.adult, payment_data.days).SGST) + this.payment_service.get_Calculated_Amount(payment_data.price,
+                        payment_data.rooms, payment_data.adult, payment_data.days).Service_Fee + this.payment_service.get_Calculated_Amount(payment_data.price,
+                        payment_data.rooms, payment_data.adult, payment_data.days).subTotal + addon_price), gst_per, payment_data.hotel_id, payment_data.hotel_name)">Pay
+                        Now</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal" *ngIf="successAlert">
+    <div class="alertBox">
+        <div class="card rounded p-5">
+            <div class="mb-3">
+                <img src="/assets/images/icons/success_icon2.gif" width="120" alt="">
+            </div>
+            <h5><b>{{ success_msg }}</b></h5>
+        </div>
+    </div>
+</div>
+<div class="modal" *ngIf="errorAlert">
+    <div class="alertBox">
+        <div class="card rounded p-5">
+            <div class="mb-3">
+                <img src="/assets/images/icons/error.gif" width="120" alt="">
+            </div>
+            <h5><b>{{ error_msg }}</b></h5>
+        </div>
+    </div>
+</div>
+<main-footer></main-footer>

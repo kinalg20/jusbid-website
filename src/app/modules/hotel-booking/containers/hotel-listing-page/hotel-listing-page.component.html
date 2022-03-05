@@ -1,0 +1,737 @@
+<main-header [header]="''"></main-header>
+
+
+<div class="app_body_container">
+  <div class="absolute" *ngIf="!resultNotFound">
+    <h5 (click)="showFiterModel = !showFiterModel" title="Filter" class="absolute-filter">
+      <i class="fa fa-filter"></i>
+    </h5>
+  </div>
+
+
+
+  <!--Main filter-->
+  <div class="hotel-listing-container">
+    <section class="hotel-listing filter-section">
+      <div class="container-fluid">
+        <div class="clearfix">
+          <div class="filter">
+            <div class="filter-head">
+              <div class="filter-title">
+                <h6 class="filters_name">
+                  <i class="fa fa-times" (click)="showFilter(1)"></i> Filters
+                </h6>
+                <span class="d-lg-none d-block">
+                  <button type="submit" class="btn btn-success" (click)="showFilter(0)">
+                    Apply
+                  </button>
+                </span>
+              </div>
+            </div>
+
+            <div style="padding: 0 10px">
+              <section class="mt-0 pt-0">
+                <div class="filter-title">
+                  <h6>Search by Hotel</h6>
+                  <span style="color: var(--primary); cursor: pointer" (click)="showAllHotelList()">Clear</span>
+                </div>
+                <div>
+                  <form #searchForm="ngForm">
+                    <input type="text" class="form-control" name="searchTerm" [(ngModel)]="searchTerm"
+                      autocomplete="off" required placeholder="Search" (keyup.enter)="getSearchItem($event)" />
+                  </form>
+                </div>
+              </section>
+              <hr />
+              <section class="price_range_filter pt-0 mt-0" *ngIf="startPriceRangeValue && endPriceRangeValue">
+                <div class="filter-title">
+                  <h6>Price Range</h6>
+                </div>
+                <div class="custom-slider">
+                  <ngx-slider [(value)]="minValue" [(highValue)]="highValue" [options]="options"
+                    (mouseup)="slider_Event()" [(ngModel)]="price_Selection"></ngx-slider>
+                </div>
+                <div class="d-flex justify-content-between">
+                  <div class="my-auto">
+                    <h6 class="Price" style="font-weight: 800">
+                      <span style="font-family: robot">&#x20B9;</span>{{ price_Selection[0] }}
+                    </h6>
+                  </div>
+                  <div class="my-auto">
+                    <h6 class="Price" style="font-weight: 800">
+                      <span style="font-family: robot">&#x20B9;</span>{{ price_Selection[1] }}
+                    </h6>
+                  </div>
+                </div>
+                <hr />
+              </section>
+              <section class="filter-amenities mt-0 pt-0">
+                <div class="filter-title">
+                  <h6>Sort by</h6>
+                </div>
+                <div>
+                  <select name="sort_price" id="sort_price" class="form-control" (change)="sortBy($event)" ngModel
+                    style="border-radius: 5px; color: #000">
+                    <option value="">Select Option</option>
+                    <option value="price_ASC">Price low to high</option>
+                    <option value="price_DESC">Price high to low</option>
+                  </select>
+                </div>
+              </section>
+              <hr />
+
+              <section class="filter-amenities mt-0 pt-0" *ngIf="false">
+                <div class="filter-title">
+                  <h6>Amenities</h6>
+                </div>
+                <div>
+                  <ng-container *ngIf="amenitiesShimmerLoad">
+                    <ng-container *ngFor="let in of [0, 1, 2, 3, 4]">
+                      <div class="lines shine"></div>
+                    </ng-container>
+                  </ng-container>
+                </div>
+                <div style="overflow-y: scroll;
+                  height: 180px;">
+                  <ng-container *ngIf="!amenitiesShimmerLoad">
+                    <ng-container *ngFor="let amenity of amenitiesList.slice(0, 5)">
+                      <label class="custom-check">
+                        {{ amenity.name }}
+                        <input type="checkbox" name="selectAmenity" [value]="amenity.id"
+                          (change)="getFilterAmenity($event)" />
+                        <span class="checkmark"></span>
+                      </label>
+                    </ng-container>
+                  </ng-container>
+                </div>
+                <div *ngIf="showAllAmenities">
+                  <ng-container *ngFor="
+                      let amenity of amenitiesList.slice(
+                        5,
+                        amenitiesList.length
+                      )
+                    ">
+                    <label class="custom-check">
+                      {{ amenity.name }}
+                      <input type="checkbox" name="selectAmenity" [value]="amenity.id"
+                        (change)="getFilterAmenity($event)" />
+                      <span class="checkmark"></span>
+                    </label>
+                  </ng-container>
+                </div>
+                <a (click)="seeMore()" class="cursor-pointer"><i class="fa fa-plus"></i> {{ showAllAmenitiesText
+                  }}</a>
+              </section>
+              <section class="filter-amenities mt-0 pt-0" *ngIf="false">
+                <div class="filter-title">
+                  <h6>Categories</h6>
+                </div>
+                <div>
+                  <ng-container *ngIf="categoryShimmerLoad">
+                    <ng-container *ngFor="let in of [0, 1, 2, 3, 4]">
+                      <div class="lines shine"></div>
+                    </ng-container>
+                  </ng-container>
+                  <ng-container *ngIf="!categoryShimmerLoad">
+                    <ng-container *ngFor="let category of categoryList.slice(0, 5)">
+                      <label class="custom-check">
+                        {{ category }}
+                        <input type="checkbox" name="selectCateory" [value]="category"
+                          (change)="getFilterCategory($event)" />
+                        <span class="checkmark"></span>
+                      </label>
+                    </ng-container>
+                  </ng-container>
+                </div>
+                <div *ngIf="showAllCategory">
+                  <ng-container *ngFor="
+                      let category of categoryList.slice(5, categoryList.length)
+                    ">
+                    <label class="custom-check">
+                      {{ category }}
+                      <input type="checkbox" name="selectCateory" [value]="category"
+                        (change)="getFilterCategory($event)" />
+                      <span class="checkmark"></span>
+                    </label>
+                  </ng-container>
+                </div>
+                <a (click)="seeCategoryMore()" class="cursor-pointer"><i class="fa fa-plus"></i> {{
+                  showAllCategoryText
+                  }}</a>
+                <hr />
+              </section>
+              <!-- Redesign -->
+              <section class="filter-amenities mt-0 pt-0">
+                <div class="filter-title">
+                  <h6>Amenities</h6>
+                  <a (click)="showAll(amenitiesList.length)" class="cursor-pointer">
+                    <i class="fa fa-plus"></i>
+                    {{ is_showAll ? "Show Less" : "Show All" }}
+                  </a>
+                </div>
+                <div style="overflow-y: scroll;
+                  height: 180px;">
+                  <ng-container *ngFor="
+                      let amenity of amenitiesList.slice(0, lengthOfDataList)
+                    ">
+                    <a class="
+                        list-group-item list-group-item-action
+                        cursor-pointer
+                        d-flex
+                      " (click)="getSelectedAmenitiesList(amenity)" style="font-size: 13px">
+                      <input type="checkbox" [checked]="selected_amenity_list.includes(amenity)" />
+                      <span class="px-2">{{ amenity.name }}</span>
+                    </a>
+                  </ng-container>
+                </div>
+              </section>
+              <hr />
+              <section class="filter-amenities mt-0 pt-0">
+                <div class="filter-title">
+                  <h6>Categories</h6>
+                  <a (click)="showAllCategoryList(categoryList.length)" class="cursor-pointer">
+                    <i class="fa fa-plus"></i>
+                    {{ is_showCategoryAll ? "Show Less" : "Show All" }}
+                  </a>
+                </div>
+                <div style="overflow-y: scroll;
+                height: 180px;">
+                  <ng-container *ngFor="
+                      let category of categoryList.slice(
+                        0,
+                        lengthOfCategoryDataList
+                      )
+                    ">
+                    <a class="
+                        list-group-item list-group-item-action
+                        cursor-pointer
+                        d-flex
+                      " (click)="getSelectedCategory(category)" style="font-size: 13px">
+                      <input type="checkbox" [checked]="selected_category_list.includes(category)" />
+                      <span class="px-2">{{ category }}</span>
+                    </a>
+                  </ng-container>
+                </div>
+              </section>
+              <hr />
+              <!-- <section class="filter-amenities mt-0 pt-0">
+                  <div class="filter-title">
+                    <h6>Ratings</h6>
+                  </div>
+                  <div>
+                    <ng-container *ngFor="
+                      let rating of rating_array ">
+                      <a class="
+                        list-group-item list-group-item-action
+                        cursor-pointer
+                        d-flex
+                      " style="font-size: 13px">
+                        <input type="checkbox" (change)="getSelectedrating($event,rating.rating)"/>
+                        <span class="px-2">{{rating.rating}}</span>
+                      </a>
+                    </ng-container>
+                  </div>
+                </section> -->
+            </div>
+          </div>
+          <div class="list">
+            <div class="row d-lg-block d-none">
+              <div class="col-3 col-sm-12 mb-2">
+                <nav aria-label="breadcrumb">
+                  <ol class="breadcrumb">
+                    <li class="breadcrumb-item" aria-current="page">
+                      <a routerLink="" class="text-muted" style="text-decoration: none">
+                        <i class="fa fa-home" aria-hidden="true"></i>
+                        Home
+                      </a>
+                    </li>
+                    <li class="breadcrumb-item active">
+                      <a class="text-dark" style="text-decoration: none">
+                        <i class="fa fa-city" aria-hidden="true"></i>
+                        {{ search_q.city }}
+                      </a>
+                    </li>
+                  </ol>
+                </nav>
+              </div>
+            </div>
+            <div class="notFound">
+              <div class="row">
+                <div class="col-12 mb-2" *ngIf="!resultNotFound">
+                  <!-- <p style="
+                      font-size: 20px;
+                      line-height: 32px;
+                      font-weight: 700;
+                      color: #333;
+                      margin-bottom: 0rem;
+                    ">
+                    {{ smallData.length }} Result(s) Found
+                  </p> -->
+                </div>
+              </div>
+            </div>
+            <ng-container *ngIf="shimmerLoad">
+              <div class="card-list">
+                <div class="row">
+                  <ng-container *ngFor="let in of [].constructor(4)">
+                    <div class="col-lg-12 mb-4">
+                      <div class="listing-cards">
+                        <div class="list__card card">
+                          <div class="card_body">
+                            <div class="list__hotel_image">
+                              <div class="box shine"></div>
+                            </div>
+                            <div class="list__hotel_details">
+                              <div class="list__hotel_name">
+                                <div class="lines shine"></div>
+                              </div>
+                              <div class="list__address_facility">
+                                <div class="list__address">
+                                  <div class="lines shine"></div>
+                                </div>
+                                <div class="list__facility">
+                                  <div class="lines shine"></div>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="price-section">
+                              <div class="list__ending">
+                                <div class="lines shine"></div>
+                              </div>
+                              <div class="hotel_view_button">
+                                <div class="amount_number">
+                                  <div class="lines shine"></div>
+                                </div>
+                                <div class="list__button_detail">
+                                  <div class="lines shine"></div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </ng-container>
+                </div>
+              </div>
+            </ng-container>
+            <ng-container *ngIf="!shimmerLoad">
+              <ng-container *ngIf="allHotelData.length > 0">
+                <div class="card-list">
+                  <div class="row">
+                    <ng-container *ngFor="
+                      let hotel of smallData | sort: is_ASC?'asc':'desc' : filterBy; index as i
+                    ">
+                      <div class="col-lg-12 mb-4">
+                        <div class="listing-cards" [routerLink]="['/hotel/id/', hotel.id]">
+                          <div class="card list__card">
+                            <div class="card_body">
+                              <div class="list__hotel_image">
+                                <img [src]="apiBaseURL + hotel.image"
+                                  onError="this.src='assets/images/dummy.jpg';this.className='error_img'"
+                                  alt="hotel.name" class="img-fluid">
+                                <div class="hotel_view_button">
+                                  <div class="amount_number">
+                                    <h3 style="font-family: roboto;color: #e22124;" class="m-0 p-0 list__price">
+                                      <i class="fas fa-rupee-sign list_rupee_sign"></i><span class="list__price_">{{
+                                        hotel.room_price
+                                        }}</span>
+                                    </h3>
+                                    <p class="list__per">per room per night</p>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="list__hotel_details">
+
+                                <div class="list__hotel_name d-flex">
+
+                                  <h3 class="list__hotel_name_tag" [title]="hotel.name">{{hotel.name}}</h3>
+                                  <div class="d-lg-none d-block ">
+                                    <div class="rating_section">
+                                      <div class="price-section">
+                                    
+                                        <div class="list__ending">
+                                          <div class="list__rating">
+                                            <rating [ratingNumber]="hotel.hotel_rating2"></rating>
+                                          </div>
+                                          <div class="list_total_rating" *ngIf="hotel.hotel_rating2>0">
+                                            <p class="list__count m-0 p-0">{{hotel.hotel_rating2}}</p>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
+                                
+                                  </div>
+                                </div>
+                               
+                                <div class="list__address_facility">
+                                  <h5 class="list__address">
+                                    <ng-container *ngIf="hotel.street">
+                                      <span class="hotel_street">{{
+                                        hotel.street
+                                        ? hotel.street + " , "
+                                        : hotel.area + " , "
+                                        }}</span>
+                                    </ng-container>{{hotel.city}}
+                                  </h5>
+                                  <!-- <p class="list__desc" [innerHtml]="(hotel.description.length>200)? (hotel.description | slice:0:200)+'..':(hotel.description)"></p> -->
+
+                                  <div class="list__facility">
+                                    <div>
+                                      <ng-container *ngIf="hotel.amenityObj.length > 0">
+                                        <ng-container *ngFor="
+                                          let amenities of hotel.amenityObj.slice(
+                                            0,
+                                            4
+                                          )
+                                        ">
+                                          <div class="d-flex list__pink" [title]="amenities.name">
+                                            <div class="list__facility_img">
+                                              <img [src]="apiBaseURL + amenities.icon"
+                                                onError="this.src='assets/images/noimage.png';" alt="">
+                                            </div>
+                                            <div class="list__facility_text">
+                                              <p class="p-0 m-0" style="color: #000;">{{amenities.name}}</p>
+                                            </div>
+                                          </div>
+                                        </ng-container>
+                                        <a [routerLink]="['/hotel/id/', hotel.id]" class="show_amenities"
+                                          *ngIf="hotel.amenityObj.length > 4" style="color: #000000;">
+                                          + more</a>
+                                      </ng-container>
+                                    </div>
+                                  </div>
+                                </div>
+                                <!-- <div class="list__distance d-flex">
+                                  <div><i class='fa fa-map-marker list__distance_img'
+                                      style="font-size: 18px; color: #579657;"></i></div>
+                                  <div>
+                                    <p class="list__distance_text">2.7 km Distance From City Center</p>
+                                  </div>
+                                </div> -->
+
+                                <div class="list__services d-flex my-2">
+                                  <div class="list__extra d-flex">
+                                    <div class="extra__img">
+                                      <img src="../../../../../assets/images/imgpsh_fullsize_anim (1).png" alt=""
+                                        style="width: 100%; height: 100%;">
+                                    </div>
+                                    <div class="extra__text">
+                                      <p class="list__extra_text">Sanitized Room</p>
+                                    </div>
+                                  </div>
+                                  <div class="list__extra_1 d-flex ml-2">
+                                    <div class="extra__img_1">
+                                      <img src="../../../../../assets/images/imgpsh_fullsize_anim.png" alt=""
+                                        style="width: 100%; height: 100%;">
+                                    </div>
+                                    <div class="extra__text_1">
+                                      <p class="list__extra_text">Verified Stay</p>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="d-lg-block">
+                                <div class="price-section">
+                                  <div>
+                                    <div class="list__ending">
+                                      <div class="list__rating">
+                                        <rating [ratingNumber]="hotel.hotel_rating2"></rating>
+                                      </div>
+                                      <div class="list_total_rating" *ngIf="hotel.hotel_rating2>0">
+                                        <p class="list__count m-0 p-0">{{hotel.hotel_rating2}}</p>
+                                      </div>
+                                    </div>
+                                    <div class="hotel_view_button">
+                                      <div class="list__amount">
+                                        <div class="amount_number">
+                                          <h3 style="font-family: roboto;color: #e22124;" class="m-0 p-0 list__price">
+                                            <i class="fas fa-rupee-sign list_rupee_sign"></i><span class="list__price_">{{
+                                              hotel.room_price
+                                              }}</span>
+                                          </h3>
+                                          <p class="list__per">per room per night</p>
+                                        </div>
+                                      </div>
+                                      <div class="list__button_detail">
+                                        <button type="button" class="btn btn-outline-danger button__list">View
+                                          Details</button>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                             
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </ng-container>
+
+                    <!-- <ion-infinite-scroll threshold="25%" (ionInfinite)="loadData($event)">
+                        <ion-infinite-scroll-content>
+                          <div class="listing-cards">
+                            <div class="list__card card">
+                              <div class="card_body">
+                                <div class="list__hotel_image">
+                                  <div class="box shine"></div>
+                                </div>
+                                <div class="list__hotel_details">
+                                  <div class="list__hotel_name">
+                                    <div class="lines shine"></div>
+                                  </div>
+                                  <div class="list__address_facility">
+                                    <div class="list__address">
+                                      <div class="lines shine"></div>
+                                    </div>
+                                    <div class="list__facility">
+                                      <div class="lines shine"></div>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="price-section">
+                                  <div class="list__ending">
+                                    <div class="lines shine"></div>
+                                  </div>
+                                  <div class="hotel_view_button">
+                                    <div class="amount_number">
+                                      <div class="lines shine"></div>
+                                    </div>
+                                    <div class="list__button_detail">
+                                      <div class="lines shine"></div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </ion-infinite-scroll-content>
+                      </ion-infinite-scroll> -->
+                  </div>
+                </div>
+              </ng-container>
+            </ng-container>
+            <ng-container *ngIf="resultNotFound || allHotelData.length == 0">
+              <div class="hotel_not_found">
+                <div class="" *ngIf="!this._common.isAuthenticated()">
+                  <div class="ads_banner_bid" routerLink="/auth">
+                    <img class="img-fluid mb-3" src="assets/images/web banner-01.jpg" />
+                  </div>
+                </div>
+                <div class="" *ngIf="this._common.isAuthenticated()">
+                  <div class="ads_banner_bid" routerLink="Best-hotel-room-deals">
+                    <img class="img-fluid mb-3" src="assets/images/web banner-01.jpg" />
+                  </div>
+                </div>
+                <div>
+                  <h1>No Results Found</h1>
+                  <div class="">
+                    <p>
+                      There are no hotels in your desired destination for best
+                      Offer click here!
+                    </p>
+                    <button class="btn btn-submit" type="submit" routerLink="Best-hotel-room-deals">
+                      Best Hotel Room Deals
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </ng-container>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+</div>
+
+
+<!--Responsive Filter-->
+<div class="filter_model" *ngIf="showFiterModel">
+  <div class="filter">
+    <div class="filter-head">
+      <div class="filter-title">
+        <h6 class="filters_name">
+          <button id="close" (click)="showFiterModel = !showFiterModel" style="
+              border: none;
+              background: none;
+              font-weight: bolder;
+              width: 30px;
+            "></button>
+          Filters
+        </h6>
+        <span class="d-lg-none d-block">
+          <button type="submit" class="btn btn-success" (click)="showFiterModel = !showFiterModel">
+            Apply
+          </button>
+        </span>
+      </div>
+    </div>
+    <div style="padding: 0 10px">
+      <section class="price_range_filter pt-0 mt-0" *ngIf="startPriceRangeValue && endPriceRangeValue">
+        <div class="filter-title">
+          <h6>Price Range</h6>
+        </div>
+        <div class="custom-slider">
+          <ngx-slider [(value)]="minValue" [(highValue)]="highValue" [options]="options" (mouseup)="slider_Event()"
+            [(ngModel)]="price_Selection"></ngx-slider>
+        </div>
+        <div class="d-flex justify-content-between">
+          <div class="my-auto">
+            <h6 class="Price" style="font-weight: 800">
+              <span style="font-family: robot">&#x20B9;</span>{{ price_Selection[0] }}
+            </h6>
+          </div>
+          <div class="my-auto">
+            <h6 class="Price" style="font-weight: 800">
+              <span style="font-family: robot">&#x20B9;</span>{{ price_Selection[1] }}
+            </h6>
+          </div>
+        </div>
+        <hr />
+      </section>
+      <section class="filter-amenities mt-0 pt-0">
+        <div class="filter-title">
+          <h6>Sort by</h6>
+        </div>
+        <div>
+          <select name="sort_price" id="sort_price" class="form-control" (change)="sortBy($event)" ngModel
+            style="border-radius: 5px">
+            <option selected>Select Option</option>
+            <option value="price_ASC">Price low to high</option>
+            <option value="price_DESC">Price high to low</option>
+          </select>
+        </div>
+      </section>
+      <hr />
+      <section class="mt-0 pt-0">
+        <div class="filter-title">
+          <h6>Search by hotel name</h6>
+          <span style="color: var(--primary); cursor: pointer" (click)="showAllHotelList()">Clear</span>
+        </div>
+        <div>
+          <form #searchForm="ngForm">
+            <input type="text" class="form-control" name="searchTerm" [(ngModel)]="searchTerm" autocomplete="off"
+              required placeholder="Search" />
+          </form>
+        </div>
+      </section>
+      <hr />
+      <section class="filter-amenities mt-0 pt-0" *ngIf="false">
+        <div class="filter-title">
+          <h6>Amenities</h6>
+        </div>
+        <div>
+          <ng-container *ngIf="amenitiesShimmerLoad">
+            <ng-container *ngFor="let in of [0, 1, 2, 3, 4]">
+              <div class="lines shine"></div>
+            </ng-container>
+          </ng-container>
+          <ng-container *ngIf="!amenitiesShimmerLoad">
+            <ng-container *ngFor="let amenity of amenitiesList.slice(0, 5)">
+              <label class="custom-check">
+                <span>{{ amenity.name }}</span>
+                <input type="checkbox" name="0" [value]="amenity.id" (change)="getFilterAmenity($event)" />
+                <span class="checkmark"></span>
+              </label>
+            </ng-container>
+          </ng-container>
+        </div>
+        <div *ngIf="showAllAmenities">
+          <ng-container *ngFor="let amenity of amenitiesList.slice(5, amenitiesList.length)">
+            <label class="custom-check">
+              {{ amenity.name }}
+              <input type="checkbox" name="selectAmenity" [value]="amenity.id" (change)="getFilterAmenity($event)" />
+              <span class="checkmark"></span>
+            </label>
+          </ng-container>
+        </div>
+        <a (click)="seeMore()" class="cursor-pointer"><i class="fa fa-plus"></i> {{ showAllAmenitiesText }}</a>
+      </section>
+      <section class="filter-amenities mt-0 pt-0" *ngIf="false">
+        <div class="filter-title">
+          <h6>Categories</h6>
+        </div>
+        <div>
+          <ng-container *ngIf="categoryShimmerLoad">
+            <ng-container *ngFor="let in of [0, 1, 2, 3, 4]">
+              <div class="lines shine"></div>
+            </ng-container>
+          </ng-container>
+          <ng-container *ngIf="!categoryShimmerLoad">
+            <ng-container *ngFor="let category of categoryList.slice(0, 5)">
+              <label class="custom-check">
+                {{ category }}
+                <input type="checkbox" name="selectCateory" [value]="category" (change)="getFilterCategory($event)" />
+                <span class="checkmark"></span>
+              </label>
+            </ng-container>
+          </ng-container>
+        </div>
+        <div *ngIf="showAllCategory">
+          <ng-container *ngFor="let category of categoryList.slice(5, categoryList.length)">
+            <label class="custom-check">
+              {{ category }}
+              <input type="checkbox" name="selectCateory" [value]="category" (change)="getFilterCategory($event)" />
+              <span class="checkmark"></span>
+            </label>
+          </ng-container>
+        </div>
+        <a (click)="seeCategoryMore()" class="cursor-pointer"><i class="fa fa-plus"></i> {{ showAllCategoryText }}</a>
+        <hr />
+      </section>
+
+      <!-- Redesign -->
+      <section class="filter-amenities mt-0 pt-0">
+        <div class="filter-title">
+          <h6>Amenities</h6>
+          <a (click)="showAll(amenitiesList.length)" class="cursor-pointer">
+            <i class="fa fa-plus"></i>
+            {{ is_showAll ? "Show Less" : "Show All" }}
+          </a>
+        </div>
+        <div style="overflow-y: scroll;
+        height: 180px;">
+          <ng-container *ngFor="let amenity of amenitiesList.slice(0, lengthOfDataList)">
+            <a class="
+                list-group-item list-group-item-action
+                cursor-pointer
+                d-flex
+              " (click)="getSelectedAmenitiesList(amenity)" style="font-size: 13px; color: #000">
+              <input type="checkbox" [checked]="selected_amenity_list.includes(amenity)" />
+              <span class="px-2">{{ amenity.name }}</span>
+            </a>
+          </ng-container>
+        </div>
+      </section>
+      <hr />
+      <section class="filter-amenities mt-0 pt-0">
+        <div class="filter-title">
+          <h6>Categories</h6>
+          <a (click)="showAllCategoryList(categoryList.length)" class="cursor-pointer">
+            <i class="fa fa-plus"></i>
+            {{ is_showCategoryAll ? "Show Less" : "Show All" }}
+          </a>
+        </div>
+        <div style="overflow-y: scroll;
+        height: 180px;">
+          <ng-container *ngFor="
+              let category of categoryList.slice(0, lengthOfCategoryDataList)
+            ">
+            <a class="
+                list-group-item list-group-item-action
+                cursor-pointer
+                d-flex
+              " (click)="getSelectedCategory(category)" style="font-size: 13px; color: #000000">
+              <input type="checkbox" [checked]="selected_category_list.includes(category)" />
+              <span class="px-2">{{ category }}</span>
+            </a>
+          </ng-container>
+        </div>
+      </section>
+    </div>
+  </div>
+</div>
+
+
+<!--footer contain-->
+<main-footer></main-footer>

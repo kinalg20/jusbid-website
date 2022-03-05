@@ -1,0 +1,28 @@
+<div class="Cancel_Tabs_body mt-5" *ngIf="fareInfoDetails.length!=0">
+    <div class="tabs_title_selection mb-3">
+        <span>Air India {{MaxWeight.Value + '/' + MaxWeight.Unit}}</span>
+        <span class="stop px-2">DEL -BLR (via stop 1 - PNQ)</span>
+    </div>
+    <div class="Table-selection">
+        <table class="table table-bordered">
+            <tr>
+                <th>BasePrice</th>
+                <th>Taxes</th>
+                <th>Fees</th>
+                <th>TotalPrice</th>
+            </tr>
+            <ng-container *ngFor="let i of fareInfoDetails;">
+                <tr>
+                    <td>{{ getPrice(i.BasePrice) | currency:'INR' }}</td>
+                    <td>{{ getPrice(i.Fees) | currency:'INR' }}</td>
+                    <td>{{ getPrice(i.Taxes) | currency:'INR' }}</td>
+                    <td style="font-weight: 700;">{{ getPrice(i.TotalPrice) | currency:'INR' }}</td>
+                </tr>
+            </ng-container>
+        </table>
+    </div>
+</div>
+
+<div *ngIf="fareInfoDetails.length==0">
+    No Data available
+</div>

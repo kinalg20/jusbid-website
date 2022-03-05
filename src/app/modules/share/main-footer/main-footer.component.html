@@ -1,0 +1,165 @@
+<footer class="">
+    <div class="partner_compaines_section">
+        <div class="container">
+
+            <div class="row row-cols-2 row-cols-sm-3 row-cols-md-4 row-cols-lg-4 row-cols-xl-5 mx-2 md-5 mt-5">
+                <ng-container *ngFor="let contentlist of footerList.slice(0,6);">
+                    <div class="state_wise_col-1">
+                        <div>
+                            <div class="state_name"><b style="text-transform: uppercase; font-weight: bold">{{
+                                    contentlist.header }}</b></div>
+                        </div>
+                        <ul style="margin: 0;padding: 0; margin-bottom: 20px;">
+                            <ng-container *ngFor="let list of contentlist.list.slice(0,20);">
+                                <li>
+                                    <a [routerLink]="list.link">{{list.name}}</a>
+                                </li>
+                            </ng-container>
+                        </ul>
+                    </div>
+                </ng-container>
+                <div class="state_wise_col">
+                    <div class="state_name mb-3 "><span style="font-size: 12px;
+                            font-weight: 800;
+                            text-transform: uppercase;color: #000;">JusBid Mobile App</span></div>
+                    <div style="display: flex;align-items: center;">
+                        <a href="https://play.google.com/store/apps/details?id=com.jusbiduser.rudrouserin"
+                            target="_blank" class="footer-social-links"
+                            style="display: grid;justify-content: center;align-items: center;text-align: center;">
+                            <img src="/assets/images/QR/jusbid_android_app_download_QR.png" alt="Download Android App"
+                                width="100px" height="fit-content"> <span
+                                style="color: #222;margin-top: 5px;font-weight: 600;font-size: 12px;">Android</span>
+                        </a>
+                        <a href="https://apps.apple.com/in/app/jusbid/id1588715866" target="_blank"
+                            class="footer-social-links"
+                            style="display: grid;justify-content: center;align-items: center;text-align: center;margin: 0 5px;">
+                            <img src="/assets/images/QR/jusbid_IOS_app_download_QR.png" alt="Download Android App"
+                                width="100px" height="fit-content"> <span
+                                style="color: #222;margin-top: 5px;font-weight: 600;font-size: 12px;">IOS</span>
+                        </a>
+                    </div>
+
+                    <div class="state_name mt-5 mb-3"><span style="font-size: 12px;
+                            font-weight: 800;
+                            text-transform: uppercase;color: #000;">Follow us</span></div>
+                    <div style="display: flex;align-items: center;">
+                        <a href="https://www.facebook.com/Jusbid.in" target="_blank" class="mr-2"><img
+                                src="/assets/images/social_media_icons/facebook.svg" alt=""></a>
+                        <a href="https://www.instagram.com/jusbid.in" target="_blank" class="mr-2"><img
+                                src="/assets/images/social_media_icons/instagram.svg" alt=""></a>
+                        <a href="https://twitter.com/Jusbid_in" target="_blank" class="mr-2"><img
+                                src="/assets/images/social_media_icons/twitter.svg" alt=""></a>
+                        <a href="https://www.youtube.com/channel/UCR9yXwsw3c4u6Rz-TnV9y4g" target="_blank"
+                            class="mr-2"><img src="/assets/images/social_media_icons/youtube.png" alt=""
+                                width="40px"></a>
+                        <a href="https://www.linkedin.com/company/jusbid-in/" target="_blank"
+                            class="mr-2 jusbid_socialmedia"><img src="/assets/images/social_media_icons/linkdin.png"
+                                alt="" width="33px" style="border-radius: 5px;"></a>
+                        <a href="https://in.pinterest.com/Jusbid_in/" target="_blank"
+                            class="mr-2 jusbid_socialmedia"><img src="/assets/images/social_media_icons/pinterest.png"
+                                alt="" width="33px" style="border-radius: 5px;"></a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div class="important_link">
+        <div class="container">
+            <div class="d-md-block d-block d-lg-block">
+                <h6 class="mx-1 font-weight-bold">IMPORTANT LINKS</h6>
+                <div class="best-reach-row row mx-1">
+
+                    <ng-container *ngIf="!cityshimmerLoad">
+                        <ng-container *ngIf="popularCities.length>0">
+                            <ng-container *ngIf="popularCities ">
+                                <ng-container *ngFor="let cities of popularCities">
+                                    <div class="" (click)="searchBestReach(cities.city)">
+                                        <a class="span-cards">
+                                            Hotels in {{ cities.city }}, <span style="color: #f1f1f1;">ff</span>
+                                        </a>
+                                    </div>
+                                </ng-container>
+                            </ng-container>
+                        </ng-container>
+                    </ng-container>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="footer-gray">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12">
+                    <p class="text-center">
+                        Copyright &copy; <span class="tm-current-year">{{ minDate | date:'YYYY' }}</span> Rudrohom
+                        Comtrade Pvt Ltd. All Rights Reserved.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+<footer class="d-lg-none d-md-block d-block small-footer">
+    <div>
+        <ul>
+            <li>
+                <a routerLink="" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact: true}">
+                    <img src="https://storage.googleapis.com/jusbid_cloud_storage/assets/images/svg_Icons/house.svg"
+                        alt="" srcset="">
+                    Home
+                </a>
+            </li>
+            <ng-container *ngIf="this._common.isAuthenticated()">
+                <li>
+                    <a routerLink="/bookinghistory/booking" [routerLinkActive]="['active']"
+                        [routerLinkActiveOptions]="{exact: true}">
+                        <img src="https://storage.googleapis.com/jusbid_cloud_storage/assets/images/svg_Icons/suitcase.svg"
+                            alt="" srcset="">
+                        Booking
+                    </a>
+                </li>
+                <li>
+                    <a routerLink="/bidhistory/bid" [routerLinkActive]="['active']"
+                        [routerLinkActiveOptions]="{exact: true}">
+                        <img src="https://storage.googleapis.com/jusbid_cloud_storage/assets/images/svg_Icons/legal-hammer-symbol.svg"
+                            alt="" srcset="">
+                        Bidding
+                    </a>
+                </li>
+                <li>
+                    <a routerLink="/profilepage" [routerLinkActive]="['active']"
+                        [routerLinkActiveOptions]="{exact: true}">
+                        <img src="https://storage.googleapis.com/jusbid_cloud_storage/assets/images/svg_Icons/user.svg"
+                            alt="" srcset="">
+                        Profile
+                    </a>
+                </li>
+            </ng-container>
+            <ng-container *ngIf="!this._common.isAuthenticated()">
+                <li>
+                    <a routerLink="/auth">
+                        <img src="https://storage.googleapis.com/jusbid_cloud_storage/assets/images/svg_Icons/suitcase.svg"
+                            alt="" srcset="">
+                        Booking
+                    </a>
+                </li>
+                <li>
+                    <a routerLink="/auth">
+                        <img src="https://storage.googleapis.com/jusbid_cloud_storage/assets/images/svg_Icons/legal-hammer-symbol.svg"
+                            alt="" srcset="">
+                        Bidding
+                    </a>
+                </li>
+                <li>
+                    <a routerLink="/auth">
+                        <img src="https://storage.googleapis.com/jusbid_cloud_storage/assets/images/svg_Icons/user.svg"
+                            alt="" srcset="">
+                        Login
+                    </a>
+                </li>
+            </ng-container>
+        </ul>
+    </div>
+</footer>

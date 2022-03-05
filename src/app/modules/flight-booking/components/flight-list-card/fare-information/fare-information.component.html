@@ -1,0 +1,19 @@
+<div class="Cancel_Tabs_body">
+    <div class="d-flex justify-content-between">
+        <div class="col-4 px-1">
+            <table class="table table-bordered table-sm">
+                <tbody>
+                    <tr><td style="font-size: 14px;font-weight: 600;">Base Fare</td><td>{{ getPrice(AirPricingInfo?.BasePrice) | currency:'INR' }}</td></tr>
+                    <tr><td style="font-size: 14px;font-weight: 600;">Taxes</td><td>{{ getPrice(AirPricingInfo?.Taxes) | currency:'INR' }}</td></tr>
+                    <tr><td style="font-size: 14px;font-weight: 600;">Total</td><td>{{ getPrice(AirPricingInfo?.TotalPrice) | currency:'INR' }}</td></tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="col-8 p-0">
+            <cancellation-policy [AirPricingInfo]="AirPricingInfo"></cancellation-policy>
+        </div>
+    </div>
+    <div class="mt-2 px-3" *ngIf="AirPricingInfo['air:FareCalc']">
+        <h6 style="font-size:12px; font-weight: bold; ">*Important: {{AirPricingInfo['air:FareCalc']}}</h6>
+    </div>
+</div>

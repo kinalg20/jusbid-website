@@ -1,0 +1,65 @@
+<section class="container-fluid"
+    class="flight_header">
+    <p class="section_heading mb-0 pb-0" *ngIf="origin && destination">
+        Flights from {{origin}} to {{destination}}, on {{flightDate}}
+    </p>
+</section>
+<div class="container-fluid" *ngIf="false">
+    
+    <!-- Tabs -->
+    <div class="tabs my-3">
+        <div class="tab">
+            <span class="category">Cheapest</span>
+            <span class="price">Rs.5,265</span>
+        </div>
+        <div class="tab center active">
+            <span class="category">Bestest</span>
+            <span class="price">Rs.5,265</span>
+        </div>
+        <div class="tab">
+            <span class="category">Fastest</span>
+            <span class="price">Rs.5,265</span>
+        </div>
+    </div>
+
+    <!-- Filter Bar -->
+    <div class="filter_bar my-3">
+        <div class="item">
+            <select name="" id="">
+                <option value="">Sorted By</option>
+                <option value="">cate-2</option>
+                <option value="">cate-2</option>
+                <option value="">cate-2</option>
+            </select>
+        </div>
+        <div class="item">
+            <a href="#">Departure</a>
+        </div>
+        <div class="item">
+            <a href="#">Duration</a>
+        </div>
+        <div class="item">
+            <a href="#">Arrival</a>
+        </div>
+        <div class="item">
+            <select name="" id="">
+                <option value="">Price</option>
+                <option value="">cate-2</option>
+                <option value="">cate-2</option>
+                <option value="">cate-2</option>
+            </select>
+        </div>
+        <div class="item">
+            <a style="color: #E2E1E1;">Arrival</a>
+        </div>
+    </div>
+
+
+    <div class="my-3">
+        <ng-container *ngFor="let i of [0,0,0]">
+            <flight-list-card [for_open_round_trip_val]="is_open_round_trip_valr"></flight-list-card>
+        </ng-container>
+    </div>
+
+
+</div>

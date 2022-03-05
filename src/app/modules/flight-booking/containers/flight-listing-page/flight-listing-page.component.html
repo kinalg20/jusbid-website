@@ -1,0 +1,91 @@
+<div class="app_body container-fluid">
+    <div class="flight_listing_section">
+        <div class="row ">
+            <div class="col-md-3 col-sm-12  col-lg-3 col-xl-3 col-xxl-3 px-0"
+                *ngIf="min_Price_range && max_Price_range || is_Tow_Way_flight">
+                <div class="flights_filters">
+                    <flights-filters-section (selectedAirlinesCodeList)="filter_by_airlines($event)"
+                        (selectedActiveStop)="filter_by_flight_stop($event)" [min_Price_range]="min_Price_range"
+                        [max_Price_range]="max_Price_range" (selectedPriceRange)="getSelectedPriceRange($event)">
+                    </flights-filters-section>
+                </div>
+            </div>
+            <div class="col-md-9 col-sm-12 col-lg-9 col-xl-6  col-xxl-6 mx-auto px-3">
+
+                <div class="flight_listing">
+                    <ng-container *ngIf="response">
+
+                        <flight-list-section [origin]="searchQuery.departure" [destination]="searchQuery.arrival"
+                            [flightDate]="searchQuery.flightDate">
+                        </flight-list-section>
+
+                        <div class="card_list">
+
+                            <ng-container *ngIf="!this.__commonService.is_list_load">
+
+                                <ng-container *ngIf="!is_Tow_Way_flight">
+                                    <ng-container *ngFor="let flightData of jusbid_Flight_List; index as i">
+                                        <ng-container
+                                            *ngIf="selectedStopNumber === flightData?.customSegment.length-1 || selectedStopNumber === null">
+                                            <flight-list-card [for_open_round_trip_val]="!is_open_round_trip_valr"
+                                                [flightDetails]="flightData" [currentIndex]="i"
+                                                [FareInfoList]="FareInfoList" [airPortsList]="airPortsList"
+                                                [searchQueryParams]="searchQuery" [airLinesData]="airLinesData">
+                                            </flight-list-card>
+                                        </ng-container>
+                                    </ng-container>
+                                    <ng-container *ngIf="jusbid_Flight_List.length===0">
+                                        <div
+                                            style="width: 100%;min-height: 20vh;display: grid;justify-content: center;align-items: center;text-align: center;">
+                                            <span style="font-size: 16px;font-weight: 500;color: gray;">Sorry, we could
+                                                not
+                                                find
+                                                any
+                                                flights!
+                                                <br>
+                                                Please Modify search and try again
+                                            </span>
+                                        </div>
+                                    </ng-container>
+                                </ng-container>
+
+                                <ng-container *ngIf="is_Tow_Way_flight">
+                                    <flight-round-trip-list-card [for_open_round_trip_val]="is_open_round_trip_valr"
+                                        [connecting_flight_list]="connecting_flight_list" [FareInfoList]="FareInfoList"
+                                        [connect_Flights_List]="connect_Flights_List" [airPortsList]="airPortsList"
+                                        [airLinesData]="airLinesData" [searchQueryParams]="searchQuery"></flight-round-trip-list-card>
+                                </ng-container>
+
+                            </ng-container>
+
+                            <ng-container *ngIf="this.__commonService.is_list_load">
+                                <div
+                                    style="width: 100%;min-height: 80vh;display: grid;justify-content: center;align-content: center;text-align: center;">
+                                    <div class="spinner-border text-danger" role="status">
+                                        <span class="visually-hidden"></span>
+                                    </div>
+                                </div>
+                            </ng-container>
+
+                        </div>
+                    </ng-container>
+                    <ng-container *ngIf="!response">
+                        <div
+                            style="width: 100%;min-height: 100vh;display: grid;justify-content: center;align-content: center;text-align: center;">
+                            <div class="spinner-border text-danger" role="status">
+                                <span class="visually-hidden"></span>
+                            </div>
+                        </div>
+                    </ng-container>
+                </div>
+
+            </div>
+            <div class="col-md-3 col-12 col-lg-9 col-xl-3 col-xxl-3 px-0 flight_booking_Search">
+                <div class="flight_boking">
+                    <flight-booking-details-card (Roundtrip)="getroundtrip($event)" [searchQuery]="searchQuery">
+                    </flight-booking-details-card>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

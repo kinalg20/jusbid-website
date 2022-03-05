@@ -1,0 +1,10 @@
+
+  <main-header [header]="'main'"></main-header>
+  <div class="loading_bar" *ngIf="this.common.is_app_loading">
+    <div class="text-primary" role="status">
+        <span class="visually-hidden">Loading...</span>
+    </div>
+</div>
+  <iframe width="100%" height="1000px" frameBorder="0"  style="overflow: hidden;" [src]="link | iframe"></iframe>
+
+  <main-footer></main-footer>

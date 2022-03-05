@@ -1,0 +1,677 @@
+<app-header></app-header>
+
+<div class="bid-fixed" style="background-color: #e21224;">
+    <div>
+        <h5>
+            Jusbid
+        </h5>
+    </div>
+</div>
+<section class="hotel-detail mt-md-4">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xl-10 col-lg-11 col-md-12 mx-auto p-0">
+                <!-- {{Header tab}} -->
+                <div style="display: flex;align-items: center;justify-content: space-between; margin-top: 20px;"
+                    class="list_l">
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item" aria-current="page">
+                                <a routerLink="" class="text-muted" style="text-decoration: none;">
+                                    <i class="fa fa-home" aria-hidden="true"></i>
+                                    Home
+                                </a>
+                            </li>
+                            <li class="breadcrumb-item active">
+                                Udaipur
+                            </li>
+                            <li class="breadcrumb-item active">
+                                <a class="text-dark" style="text-decoration: none;">
+                                    <i class="fas fa-hotel" aria-hidden="true"></i>
+                                    hoteldata view name
+                                </a>
+                            </li>
+                        </ol>
+                    </nav>
+                    <div>
+                        <button type="button" class="share_btn">
+                            <i class="fa fa-share" style="margin-left: 8px;"></i>
+                            <span class="mx-3">Share</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- {{shimmerLoad}} -->
+                <div class="row">
+                    <div class="col-lg-6 col-md-12 p-0">
+                        <div class="hotel-map">
+                            <ng-container>
+                                <ng-container>
+                                    <div class="large-image d-xl-block d-lg-block">
+                                        <ng-container>
+                                            <div class="image_animation">
+                                                <img src="https://jusbid.in:1337/images/hotel/2021/06/12/52837668-0c5c-4d32-91b4-ec27ef06675a.jpg"
+                                                    alt="" class="">
+                                            </div>
+                                        </ng-container>
+                                        <ng-container>
+
+                                        </ng-container>
+                                    </div>
+                                </ng-container>
+                            </ng-container>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-12 p-0 small-images">
+                        <div class="row  row-cols-4 row-cols-md-4 row-cols-lg-2">
+                            <ng-container>
+                                <ng-container>
+                                    <div class="col p-0 hotel_overflow">
+                                        <div class="hotel-image">
+                                            <div class="hotel_show_more">
+                                                <img src="https://jusbid.in:1337/images/hotel/2021/06/12/52837668-0c5c-4d32-91b4-ec27ef06675a.jpg"
+                                                    onError="" alt="">
+                                                <span>Show
+                                                    More</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </ng-container>
+                            </ng-container>
+                        </div>
+                        <!-- Button trigger modal -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="detail-view">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-10 mx-auto p-0">
+                <div class="row">
+                    <div class="col-xl-8 col-lg-7 ">
+                        <div class="detail-view-left">
+                            <div class="detail-head">
+                                <ng-container>
+                                    <h1
+                                        style="text-transform: capitalize !important; margin-bottom: 0px; font-weight: bold;">
+                                        hoteldata view name
+                                    </h1>
+                                    <p class="address">
+                                        <i class="fa fa-map-marker" aria-hidden="true"></i>
+                                        getHotelfullAddress
+                                    </p>
+                                    <p class="rating-css1" style="margin-left: -10px;">
+                                        <span class="rating mb-4">
+
+                                        </span>
+                                    </p>
+                                </ng-container>
+                            </div>
+
+                            <!-- Description -->
+                            <section class="detail_section">
+                                <div class="section_header">
+                                    <h4 class="section_heading text-color">Description</h4>
+                                    <hr>
+                                </div>
+                                <div class="section_body">
+                                    <ng-container>
+                                        <div class="description">
+                                            <div class="desc">
+                                            </div>
+                                            <div>The precursor to the modern hotel was the inn of medieval Europe. For a
+                                                period of about 200 years from the mid-17th century, coaching inns
+                                                served as a place for lodging for coach travelers. Inns began to cater
+                                                to richer clients in the mid-18th century. One of the first hotels in a
+                                                modern sense was opened in Exeter in 1768. Hotels proliferated
+                                                throughout Western Europe and North America in the early 19th century,
+                                                and luxury hotels began to spring up in the later part of the 19th
+                                                century.</div>
+                                        </div>
+                                    </ng-container>
+                                </div>
+                            </section>
+
+                            <!-- Hotel Amenties -->
+                            <section class="detail_section">
+                                <div class="section_header">
+                                    <h4 class="section_heading text-color">Amenities</h4>
+                                    <hr>
+                                </div>
+                                <div class="section_body amenties sub-head">
+                                    <ng-container>
+                                        <div class="amenties-img"></div>
+                                    </ng-container>
+                                    <ng-container>
+                                        <div class="row row-cols-2 row-cols-sm-2 row-cols-md-4 mt-4">
+                                            <ng-container>
+                                                <ng-container>
+                                                    <div class="col">
+                                                        <div class="amenties-list">
+                                                            <img [src]="" alt="">
+                                                            <p> amenities name </p>
+                                                        </div>
+                                                    </div>
+                                                </ng-container>
+                                            </ng-container>
+                                            <ng-template #showAll>
+                                                <ng-container>
+                                                    <div class="col">
+                                                        <div class="amenties-list">
+                                                            <img [src]="" alt="">
+                                                            <p> amenities name </p>
+                                                        </div>
+                                                    </div>
+                                                </ng-container>
+                                            </ng-template>
+                                        </div>
+                                    </ng-container>
+                                </div>
+                            </section>
+
+                            <!-- Room Category -->
+                            <section class="detail_section room-category">
+                                <div class="section_header sub-head">
+                                    <h4 class="section_heading text-color">Choose your room</h4>
+                                    <hr>
+                                </div>
+                                <div class="section_body">
+                                    <ng-container>
+                                        <ng-container *ngFor='let in of [0,1,2];'>
+                                            <ng-template carouselSlide>
+                                                <div class="listing-box cursor-pointer">
+                                                    <div class="listing-box-image">
+                                                        <div class="box"></div>
+                                                    </div>
+                                                    <div class="listing-box-details">
+                                                        <div class="listing-box-head">
+                                                        </div>
+                                                    </div>
+                                                    <div class="detailbox"></div>
+                                                    <div class="listing-box-bottom">
+                                                    </div>
+                                                </div>
+                                            </ng-template>
+                                        </ng-container>
+                                    </ng-container>
+                                    <ng-container>
+                                        <ng-container>
+                                            <ng-template carouselSlide>
+                                                <div class="listing-box cursor-pointer">
+                                                    <div class="listing-box-list">
+                                                        <div class="listing-box-image">
+                                                            <p class="p-card-top">Save
+                                                                listing downfall % </p>
+                                                            <div>
+                                                                <ng-container>
+                                                                    <div class="overlay"></div>
+                                                                    <img [src]=""
+                                                                        onError="this.src='/assets/images/dummy.jpg'"
+                                                                        alt="">
+                                                                </ng-container>
+                                                                <ng-container>
+                                                                    <div class="overlay"></div>
+                                                                    <img src="/assets/images/dummy.jpg" alt="">
+                                                                </ng-container>
+                                                            </div>
+
+                                                            <div
+                                                                style="position: absolute;bottom: 15px;right: 15px;z-index: 3;background: rgba(0, 0, 0, .5);border-radius: 100%;padding: 10px;">
+                                                                <svg xmlns="http://www.w3.org/2000/svg" width="16"
+                                                                    height="13" viewBox="0 0 16 13">
+                                                                    <!-- <path fill="white" fill-rule="evenodd"
+                                                                            d="M1.016.467h14.48c.267 0 .483.207.483.463v10.978c0 .256-.216.678-.483.678H1.016c-.266 0-.483-.422-.483-.678V.93c0-.256.217-.463.483-.463zm.483 8.984v2.142h9.025L5.183 6.096a.404.404 0 00-.295-.128.403.403 0 00-.291.135L1.499 9.45zm9.653-2.494c-1.065 0-1.93-.832-1.93-1.855 0-1.022.865-1.854 1.93-1.854s1.931.832 1.931 1.854c0 1.023-.866 1.855-1.93 1.855zm0-2.782c-.532 0-.965.417-.965.927 0 .511.433.928.965.928s.966-.417.966-.928c0-.51-.434-.927-.966-.927zm3.862 7.418v-10.2H1.499v6.662l2.376-2.568a1.374 1.374 0 011.001-.446c.385-.004.744.146 1.013.423l5.955 6.129h3.17z">
+                                                                        </path> -->
+                                                                </svg>
+                                                            </div>
+                                                            <div
+                                                                style="position: absolute;top: 15px;left: 15px;z-index: 3;">
+                                                                <img src="/assets/images/icons/success_icon.png"
+                                                                    style="width: 35px;height: 35px;" alt="">
+                                                            </div>
+                                                            <ng-container>
+                                                                <div
+                                                                    style="position: absolute;top: 0px;right: 15px;z-index: 3; background-color: white; border-bottom-left-radius: 5px; border-bottom-right-radius: 5px;">
+                                                                    <div class="listing-box-bottom">
+                                                                        <h3>&#x20B9;
+                                                                            <span> bnvgf hghgfh </span>
+                                                                        </h3>
+                                                                        <p>Per Room Per Night</p>
+                                                                    </div>
+                                                                </div>
+                                                            </ng-container>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="listing-box-details">
+                                                        <div class="listing-box-head">
+                                                            <h4> Delux Room</h4>
+                                                            <span><i class="fa fa-star"></i>
+                                                            </span>
+                                                        </div>
+                                                    </div>
+
+
+                                                    <div class="listing-room-details">
+                                                        <p class="m-0" style="color: black;">Room Size:
+                                                            <b>sqft</b>
+                                                        </p>
+                                                        <p class="m-0">Bed Size:
+                                                            <b>King Size</b>
+                                                        </p>
+                                                        <div class="listing-room-details-item" style="color: black;">
+                                                            <p class="m-0">Complimentary: <b>Breakfast</b></p>
+                                                        </div>
+                                                    </div>
+
+
+                                                    <div class="listing-amenities-details">
+                                                        <ng-container>
+                                                            <div
+                                                                class="row row-cols-5 row-cols-sm-5 row-cols-md-5 align-center">
+                                                                <ng-container>
+                                                                    <div class="col my-auto">
+                                                                        <div class="amenties-list cursor-pointer"
+                                                                            [title]="">
+                                                                            <img [src]=""
+                                                                                onError="this.src='/assets/images/noimage.png';"
+                                                                                alt="" style="filter: opacity(.5);">
+                                                                        </div>
+                                                                    </div>
+                                                                </ng-container>
+                                                            </div>
+                                                        </ng-container>
+                                                    </div>
+                                                    <div class="listing-room-available-details">
+
+                                                        <p class="m-0"><b></b></p>
+                                                    </div>
+                                                </div>
+                                            </ng-template>
+                                        </ng-container>
+                                    </ng-container>
+                                    <!-- //Room Inclusions// -->
+                                    <div class="card p-3 mt-4">
+                                        <div>
+                                            <div class="sub-head mb-4">
+                                                <h5 class="font-weight-bold text-color">Room Inclusions</h5>
+                                                <hr>
+                                            </div>
+                                            <ng-container>
+                                                <div class="check-time">
+                                                    <div> Boutique hotels are typically hotels with a unique environment
+                                                        or intimate setting</div>
+                                                </div>
+                                            </ng-container>
+                                        </div>
+                                        <!-- //Room Ementies// -->
+                                        <ng-container>
+                                            <div class="room-details">
+                                                <div class="sub-head mb-4">
+                                                    <h5 class="font-weight-bold text-color">Room Amenties</h5>
+                                                    <hr>
+                                                </div>
+                                                <div
+                                                    class="row row-cols-2 row-cols-sm-2 row-cols-md-3 row-cols-lg-2 row-cols-xl-4 mb-4">
+                                                    <ng-container>
+                                                        <ng-container>
+                                                            <div class="col">
+                                                                <div class="amenties-list">
+                                                                    <img [src]="" alt="" style="filter: opacity(.5);">
+                                                                    <p>amenities name</p>
+                                                                </div>
+                                                            </div>
+                                                        </ng-container>
+                                                    </ng-container>
+                                                </div>
+                                            </div>
+                                        </ng-container>
+                                        <!-- //Room Views// -->
+                                        <ng-container>
+                                            <div class="room-details">
+                                                <div class="sub-head mb-4">
+                                                    <h5 class="font-weight-bold text-color">Room Views</h5>
+                                                    <hr>
+                                                </div>
+                                                <ng-container>
+                                                    <div
+                                                        class="row row-cols-2 row-cols-sm-2 row-cols-xl-5 row-cols-lg-3 row-cols-md-4 mb-4">
+                                                        <ng-container>
+                                                            <div class="col p-0">
+                                                                <div class="view-list">
+                                                                    <p>★ Mountain view </p>
+                                                                </div>
+                                                            </div>
+                                                        </ng-container>
+                                                    </div>
+                                                </ng-container>
+                                            </div>
+                                        </ng-container>
+                                    </div>
+                                </div>
+                            </section>
+
+                            <!-- Hotel Addons -->
+                            <section class="detail_section">
+                                <div class="section_header">
+                                    <h4 class="section_heading text-color">Enjoy Addons Sevices during your stay</h4>
+                                    <hr>
+                                </div>
+                                <div class="section_body">
+                                    <ng-container>
+                                        <div>
+                                            <ng-container *ngFor='let in of [0, 1, 2, 3, 4, 5, 6, 7];'>
+
+                                            </ng-container>
+                                        </div>
+                                    </ng-container>
+                                    <ng-container>
+                                        <div
+                                            class="row row-cols-1 row-cols-sm-1 row-cols-md-1 row-cols-lg-1 row-cols-xl-3 mt-4">
+                                            <ng-container>
+                                                <div class="col mb-3">
+                                                    <div class="card shadow-sm ">
+                                                        <div class="enjoy_addoness">
+                                                            <div class="card_details">
+                                                                <p class="m-0 addOnname"><b>addOn name</b></p>
+                                                                <p class="m-0 description">
+                                                                    Jungle Safari
+                                                                </p>
+                                                            </div>
+                                                            <div class="Price">
+                                                                <p class="m-0 price_name">Price</p>
+                                                                <p class="price_number"><b><span class="rupess">₹</span>
+                                                                        250</b>
+                                                                </p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </ng-container>
+                                        </div>
+                                    </ng-container>
+                                </div>
+                            </section>
+
+                            <!-- Hotel Other Info -->
+                            <ng-container>
+                                <section class="detail_section">
+                                    <div class="section_header">
+                                        <h4 class="section_heading text-color">info type </h4>
+                                        <hr>
+                                    </div>
+                                    <div class="section_body">
+                                        <div class="check-time">
+                                            <div></div>
+                                            <div>NA</div>
+                                        </div>
+                                    </div>
+                                </section>
+                            </ng-container>
+
+                            <!-- FAQs -->
+                            <section class="detail_section">
+                                <div class="section_header">
+                                    <h4 class="section_heading text-color">FAQ</h4>
+                                    <hr>
+                                </div>
+                                <div class="section_body">
+                                    <ng-container>
+
+                                        <div>NA</div>
+                                    </ng-container>
+                                </div>
+                            </section>
+
+                            <!-- Map -->
+                            <ng-container>
+                                <section class="map-nearyby">
+
+                                    <div class="map">
+                                        <iframe
+                                            src="https://jusbid.in:1337/images/hotel/2021/06/12/52837668-0c5c-4d32-91b4-ec27ef06675a.jpg"
+                                            style="border:0;width: 100%;height: 100%;" allowfullscreen=""
+                                            loading="lazy"></iframe>
+                                    </div>
+                                </section>
+                            </ng-container>
+                        </div>
+                    </div>
+                    <div class="col-xl-4  col-lg-5">
+                        <!-- <form> -->
+                        <div class="deals-box">
+                            <div class="bid-div">
+                                <div class="deals-close">
+                                    <i class="fa fa-times"></i>
+                                </div>
+                                <div class="deals-head text-center">
+                                    <h5>JusBid Now</h5>
+                                </div>
+                                <div class="deals-bottom">
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <div class="form-group mb-3">
+
+                                                <h6 class="text-capitalize">Date</h6>
+
+                                                <input name="date_range" type="text" class="form-control"
+                                                    id="dateRange">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="pr-1 adult col-md-6">
+                                            <div class="form-group mb-3">
+                                                <h6 class="text-capitalize">Adults</h6>
+                                                <input type="text" autocomplete="off" name="adult" class="form-control">
+
+                                            </div>
+                                        </div>
+                                        <div class="pl-1 room col-md-6">
+                                            <div class="form-group mb-3">
+                                                <h6 class="text-capitalize">Rooms</h6>
+                                                <input type="text" autocomplete="off" name="rooms" class="form-control">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="text-capitalize my-2">
+                                        <input type="checkbox" id="childCount">
+                                        <label for="childCount" class="mx-2 cursor-pointer">Child below 6 years
+                                            old</label>
+                                    </div>
+
+                                    <h4> bid price <b><span class="rupess"> (&#x20B9;)</span></b></h4>
+                                    <div class="form-group mb-3">
+                                        <input type="text" name="bid__price" class="form-control"
+                                            placeholder="Please enter your bid price" style="font-size: 16px;"
+                                            required>
+                                    </div>
+                                    <div class="mb-4">
+                                        <div class="dropdown_roomtype mb-3 bg-light cursor-pointer border px-3">
+                                            <div class="more_detail_header">
+                                                <a class="noselect"
+                                                    style="display: flex;justify-content: space-between;align-items: center;">
+                                                    <span>More Details</span>
+                                                    <div class="arror_button">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                                                            fill="currentColor" class="bi bi-chevron-down shadow-sm"
+                                                            style="background: #fafafa;border-radius: 100%;padding: 3px;border: 1px solid #dedede;"
+                                                            viewBox="0 0 16 16">
+
+                                                        </svg>
+                                                    </div>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="d-grid">
+                                        <p class="text-center">You won't be
+                                            charged yet</p>
+                                        <ng-container>
+                                            <div>
+                                                <button type="button"
+                                                    class="btn btn-primary btn-block btn-bid">Jusbid</button>
+                                            </div>
+                                        </ng-container>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="recommended">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-10 mx-auto p-0">
+                <div class="sub-head mb-4 recommended-head">
+                    <h3 class="text-color">Recommended Hotels</h3>
+                    <hr>
+                </div>
+                <div class="list">
+                    <ng-container>
+
+                        <ng-container>
+                            <ng-container *ngFor='let in of [0,1,2];'>
+                                <ng-template carouselSlide>
+                                    <div class="listing-box">
+                                        <div class="listing-box-image">
+                                            <div class="box"></div>
+                                        </div>
+                                        <div class="listing-box-details">
+                                            <div class="listing-box-head">
+                                            </div>
+                                        </div>
+                                        <div class="listing-box-bottom">
+                                        </div>
+                                        <div class="card-bottom-buttons_2">
+                                        </div>
+                                    </div>
+                                </ng-template>
+                            </ng-container>
+                        </ng-container>
+                        <ng-container>
+                            <ng-container>
+                                <ng-container>
+                                    <ng-template carouselSlide>
+                                        <div class="listing-box">
+                                            <div class="listing-box-image">
+                                                <div
+                                                    style="position: absolute; top: 0px; right: 15px; z-index: 3; background-color: white; border-bottom-left-radius: 5px; border-bottom-right-radius: 5px;">
+                                                    <div class="listing-box-bottom">
+                                                        <h3> <span class="rupess">&#x20B9;</span>
+                                                            listingroompricetoLocaleString
+                                                        </h3>
+                                                        <p>Per Room Per Night</p>
+                                                    </div>
+                                                </div>
+                                                <ng-container>
+                                                    <img [src]="" onError="this.src='/assets/images/dummy.jpg'" alt=""
+                                                        style="border-radius: 10px;">
+                                                </ng-container>
+                                                <ng-container>
+                                                    <img src="/assets/images/dummy.jpg" alt=""
+                                                        style="border-radius: 10px;">
+                                                </ng-container>
+                                            </div>
+                                            <div class="listing-box-details" style="padding: 20px 0 5px 0;">
+                                                <div class="listing-box-head">
+                                                    <ng-container>
+                                                        <h6>
+                                                            listingviewnameslice
+                                                            21
+                                                        </h6>
+                                                    </ng-container>
+                                                    <ng-container>
+                                                        <h6 [title]="">listingnameslice
+                                                        </h6>
+                                                    </ng-container>
+                                                </div>
+                                                <div style="align-items: center;margin-bottom: 10px; margin-left: -10px;"
+                                                    class="rating-css">
+
+                                                </div>
+                                                <p style="font-size: 14px;font-weight: 800;margin-top: 10px;">
+                                                    listingcity </p>
+                                            </div>
+                                        </div>
+                                    </ng-template>
+                                </ng-container>
+                            </ng-container>
+
+                        </ng-container>
+
+                    </ng-container>
+                    <ng-container>
+                        <h4 class="text-center">No Recommended Hotel Found!</h4>
+                    </ng-container>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+
+
+<br><br>
+
+<!-- Ratings and reviews -->
+
+<section class="reviews">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-10 mx-auto p-0">
+                <div class="sub-head mb-4">
+                    <h3 class="text-color">Ratings & reviews</h3>
+                    <hr>
+                </div>
+                <div class="container-fluid">
+                    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 rating-card">
+                        <ng-container>
+                            <div class="col mb-4">
+                                <div class="card" style="padding: 10px;">
+                                    <div class="row" style="display: flex;">
+                                        <div class="col-lg-4 col-md-4 col-sm-6 col-3">
+                                            <div class="image">
+                                                <!-- <img [src]="" alt=""> -->
+                                                <img class="thumbnail-image" src="assets/images/user-avatar.png"
+                                                    alt="..." />
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-8 col-md-8 col-sm-6 col-9">
+                                            <div style="display: flex;">
+                                                <h6 style="font-weight: 600;">ratingname</h6>
+                                            </div>
+                                            <ng-container>
+                                                <span><i class="fa fa-star active "></i></span>
+                                            </ng-container>
+                                            <ng-container>
+                                                <span><i class="fa fa-star"></i></span>
+                                            </ng-container>
+                                            <hr>
+                                            <div class="review-block-description">
+                                                <p>ratingfeedback</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </ng-container>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<app-footer></app-footer>
+
+
+
